@@ -1,0 +1,3661 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PRISM SCAN — Background Product 3D Asset Generator</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;--s1:#0d1220;--s2:#111827;--s3:#161f30;
+  --b:rgba(255,255,255,0.07);--bb:rgba(255,255,255,0.13);
+  --a:#00d4ff;--a2:#0099cc;--ad:rgba(0,212,255,0.08);--ag:rgba(0,212,255,0.22);
+  --g:#22c55e;--y:#f59e0b;--r:#ef4444;--pu:#a78bfa;
+  --t:#f0f6ff;--s:rgba(139,163,196,1);--m:#4a6080;--f:#1e2d45;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'DM Sans',sans-serif;line-height:1.55;overflow-x:hidden;min-height:100vh}
+.d{font-family:'Syne',sans-serif}
+.mono{font-family:'JetBrains Mono',monospace;font-feature-settings:'tnum' 1,'zero' 1}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.2);border-radius:2px}
+input,button,select{font-family:inherit}
+button{cursor:pointer}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes su{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes sp{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes sp2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes pu{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes sh{0%{left:-100%}100%{left:100%}}
+@keyframes bg{0%,100%{box-shadow:0 0 0 1px rgba(0,212,255,0.15)}50%{box-shadow:0 0 0 1px rgba(0,212,255,0.5),0 0 30px rgba(0,212,255,0.1)}}
+.page{animation:fi .3s ease}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:300;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(8,12,20,0.6);border-bottom:1px solid transparent;backdrop-filter:blur(20px);transition:all .3s}
+.hdr.solid{background:rgba(8,12,20,0.96);border-color:var(--b)}
+.logo{display:flex;align-items:center;gap:9px;background:none;border:none;color:var(--t)}
+.logo-mark{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--a),#0066ff);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(0,212,255,0.35);flex-shrink:0}
+.logo-wm{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em}
+.logo-wm span{color:var(--a)}
+.hdr-r{display:flex;align-items:center;gap:6px}
+.hl{background:none;border:none;color:var(--m);font-size:13px;padding:5px 11px;border-radius:6px;transition:color .2s}
+.hl:hover,.hl.on{color:var(--t)}
+.hl.on{color:var(--a)}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 22px;border-radius:8px;border:none;font-size:14px;font-weight:600;letter-spacing:.01em;transition:all .2s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
+.bp{background:linear-gradient(135deg,var(--a),#0066ff);color:#fff}
+.bp:hover{box-shadow:0 4px 24px var(--ag);transform:translateY(-1px)}
+.bg2{background:rgba(255,255,255,0.05);border:1px solid var(--bb);color:var(--t)}
+.bg2:hover{background:rgba(255,255,255,0.09);border-color:rgba(0,212,255,0.4);color:var(--a)}
+.bo{background:transparent;border:1px solid rgba(0,212,255,0.4);color:var(--a)}
+.bo:hover{background:rgba(0,212,255,0.07)}
+.bsm{padding:7px 15px;font-size:13px}
+.blg{padding:13px 30px;font-size:15px;border-radius:10px}
+.bfull{width:100%}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+/* Chips */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.cg{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:var(--g)}
+.cy{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--y)}
+.ca{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--a)}
+.cdot::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;animation:pu 2s infinite}
+/* Layout helpers */
+.sect{padding:4.5rem 2.2rem}
+.inner{max-width:1280px;margin:0 auto}
+.inmd{max-width:1060px;margin:0 auto}
+.insm{max-width:760px;margin:0 auto}
+.tc{text-align:center}
+.flex{display:flex}.ic{align-items:center}.jb{justify-content:space-between}.gap2{gap:.5rem}.gap3{gap:.75rem}.gap4{gap:1rem}.fw{flex-wrap:wrap}
+.mt1{margin-top:.5rem}.mt2{margin-top:1rem}.mt3{margin-top:1.5rem}.mt4{margin-top:2rem}
+.mb1{margin-bottom:.5rem}.mb2{margin-bottom:1rem}.mb3{margin-bottom:1.5rem}
+.lbl{font-size:10px;font-weight:700;letter-spacing:.09em;color:var(--m);font-family:'Syne',sans-serif}
+.eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--a);margin-bottom:10px}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;color:var(--t);letter-spacing:-.02em;margin-bottom:8px}
+.divider{height:1px;background:var(--b);margin:1.5rem 0}
+/* ══ LANDING ══ */
+.hero{min-height:100vh;display:grid;place-items:center;padding:6.8rem 2rem 3.5rem;position:relative;overflow:hidden;text-align:center}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent)}
+.hglow{position:absolute;top:50%;left:50%;width:700px;height:700px;background:radial-gradient(circle,rgba(0,212,255,0.07),transparent 65%);transform:translate(-50%,-60%);pointer-events:none}
+.hbadge{display:inline-flex;align-items:center;gap:8px;padding:5px 16px;border-radius:999px;margin-bottom:20px;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.3);animation:fu .6s ease}
+.hbdot{width:6px;height:6px;border-radius:50%;background:var(--a);box-shadow:0 0 8px var(--a);animation:pu 2s infinite}
+.hbt{color:var(--a);font-size:11px;font-weight:700;letter-spacing:.07em}
+.h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4.4vw,4rem);font-weight:800;line-height:1.14;letter-spacing:-.018em;margin-bottom:18px;color:var(--t);animation:fu .7s .1s ease both;word-break:keep-all;max-width:980px;margin-left:auto;margin-right:auto}
+.h1 .ac{display:block;margin-top:.22em;font-size:.86em;line-height:1.08;background:linear-gradient(135deg,var(--a),#4488ff,#aa44ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:clamp(14px,1.35vw,20px);color:var(--s);max-width:760px;margin:0 auto 34px;line-height:1.65;animation:fu .7s .2s ease both;word-break:keep-all}
+.hact{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fu .7s .3s ease both;margin-bottom:64px}
+.hstats{display:flex;background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:14px;overflow:hidden;animation:fu .7s .4s ease both;max-width:1020px;margin:0 auto}
+.hstat{padding:18px 32px;border-right:1px solid var(--b);flex:1;min-width:0}
+.hstat:last-child{border-right:none}
+.sn{font-family:'JetBrains Mono',monospace;font-size:clamp(1.1rem,2.3vw,1.55rem);font-weight:700;color:var(--a);letter-spacing:-.03em;font-feature-settings:'tnum' 1}
+.sn.sfmt{font-family:'DM Sans',sans-serif;font-size:clamp(1rem,1.55vw,1.25rem);font-weight:700;letter-spacing:0}
+.sl{font-size:12px;color:var(--m);margin-top:4px;font-family:'DM Sans',sans-serif}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5px;background:var(--b);border-radius:14px;overflow:hidden}
+.step{background:var(--s1);padding:2rem 1.6rem;transition:background .3s}
+.step:hover{background:var(--s2)}
+.step-num{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:rgba(0,212,255,0.1);line-height:1;margin-bottom:14px;letter-spacing:-.04em}
+.step-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
+.step-t{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--t);margin-bottom:7px}
+.step-d{font-size:13px;color:var(--m);line-height:1.7}
+/* sample grid */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem}
+.scard{border-radius:14px;overflow:hidden;border:1px solid var(--b);cursor:pointer;transition:all .3s;background:var(--s1)}
+.scard:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,212,255,0.1)}
+.scw{height:170px;position:relative;background:var(--bg)}
+.scb{padding:.9rem}
+.scn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--t);margin-bottom:2px}
+.scm{font-size:11px;color:var(--m)}
+.scov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,12,20,0.6);opacity:0;transition:opacity .2s;backdrop-filter:blur(4px)}
+.scard:hover .scov{opacity:1}
+/* ══ UPLOAD ══ */
+.up-page{min-height:100vh;padding:5.5rem 2rem 3rem;display:flex;flex-direction:column;align-items:stretch}
+.up-hdr{text-align:center;margin-bottom:2.5rem}
+.up-title{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;color:var(--t);margin-bottom:8px}
+.up-sub{font-size:14px;color:var(--s)}
+/* mode tabs */
+.mtabs{display:flex;background:var(--s2);border:1px solid var(--b);border-radius:10px;padding:3px;gap:3px;margin-bottom:1.25rem}
+.mtab{flex:1;padding:9px;border:none;border-radius:7px;background:transparent;color:var(--m);font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s}
+.mtab.on{background:var(--s3);color:var(--t);border:1px solid var(--b)}
+.mtab:hover:not(.on){color:var(--t)}
+/* dropzone */
+.dz{position:relative;border:2px dashed rgba(0,212,255,0.22);border-radius:18px;padding:3.5rem 2rem;text-align:center;background:rgba(0,212,255,0.018);transition:all .3s;cursor:pointer;overflow:hidden}
+.dz:hover,.dz.ov{border-color:rgba(0,212,255,0.6);background:rgba(0,212,255,0.045)}
+.dz.ov{animation:bg 1s ease infinite}
+.dz-icon{width:68px;height:68px;border-radius:18px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.dz-t{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--t);margin-bottom:7px}
+.dz-s{font-size:13px;color:var(--m);margin-bottom:20px}
+.fmts{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.fmt{padding:3px 10px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid var(--b);color:var(--m);font-size:10px;font-weight:600}
+.dsh{position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.05),transparent);animation:sh 3s ease-in-out infinite;pointer-events:none}
+.dz.has-file{padding:0;min-height:440px;border-style:solid;background:#050912;display:flex;align-items:center;justify-content:center}
+.dz-preview-img{width:100%;height:100%;max-height:560px;object-fit:contain;display:block}
+.dz-file-badge{position:absolute;left:18px;bottom:18px;right:18px;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem .85rem;border-radius:14px;background:rgba(5,9,18,.76);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.dz-file-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t);font-size:12px;font-weight:800}
+.upload-file-actions{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-top:.85rem}
+.upload-file-meta{font-size:12px;color:var(--s)}
+input[type=file]{display:none}
+.upload-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:1.2rem;align-items:start}
+.upload-main{min-width:0}
+.demo-examples{position:sticky;top:76px;min-width:0}
+.demo-examples-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:.75rem}
+.demo-examples-title{display:flex;align-items:center;gap:.5rem;font-family:'Syne',sans-serif;font-size:15px;font-weight:850;color:var(--t)}
+.demo-examples-title span{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--a);padding:.14rem .42rem;border-radius:999px;border:1px solid rgba(0,212,255,.25);background:rgba(0,212,255,.08)}
+.demo-examples-count{font-size:11px;color:var(--m);font-weight:800}
+.demo-example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;max-height:calc(100vh - 142px);overflow-y:auto;padding-right:.18rem}
+.demo-example{position:relative;aspect-ratio:1;border-radius:11px;border:1px solid var(--bb);background:#050912;overflow:hidden;transition:all .18s}
+.demo-example:hover{border-color:rgba(0,212,255,.52);transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,212,255,.08)}
+.demo-example.on{border-color:rgba(0,212,255,.9);box-shadow:0 0 0 1px rgba(0,212,255,.28)}
+.demo-example img{width:100%;height:100%;object-fit:contain;display:block;padding:.35rem}
+.demo-example-badge{position:absolute;left:.42rem;bottom:.42rem;right:.42rem;padding:.28rem .38rem;border-radius:7px;background:rgba(5,9,18,.72);border:1px solid rgba(255,255,255,.08);font-size:9px;color:var(--s);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;opacity:0;transition:opacity .18s}
+.demo-example:hover .demo-example-badge,.demo-example.on .demo-example-badge{opacity:1}
+.demo-example-empty{padding:1rem;border:1px solid var(--b);border-radius:12px;background:var(--s1);font-size:12px;color:var(--m);line-height:1.65}
+/* preview */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.65rem}
+.pitem{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--b);aspect-ratio:1;background:var(--s2)}
+.pitem img{width:100%;height:100%;object-fit:cover;display:block}
+.prm{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:rgba(8,12,20,0.88);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:var(--m);font-size:10px;transition:all .2s}
+.prm:hover{background:rgba(239,68,68,0.82);color:#fff}
+.plbl{position:absolute;bottom:0;left:0;right:0;padding:3px 5px;background:rgba(8,12,20,0.82);font-size:9px;color:var(--m);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* submit */
+.sub-area{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--b);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sub-note{font-size:12px;color:var(--m);flex:1}
+.sub-note strong{color:var(--t)}
+.api-banner{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;border:1px solid var(--b);font-size:12px;line-height:1.55}
+.api-banner.ok{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.28);color:#9ee6b7}
+.api-banner.err{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.28);color:#ffb6b6}
+.ux-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.55rem}
+.recent-card{margin-top:1rem;padding:1rem;border-radius:12px;background:var(--s1);border:1px solid var(--b)}
+.recent-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.6rem}
+.recent-item{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.6rem .7rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--b)}
+.recent-main{min-width:0}
+.recent-id{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--t);font-weight:700}
+.recent-meta{font-size:11px;color:var(--m);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent-actions{display:flex;align-items:center;gap:.35rem}
+.icon-btn{width:26px;height:26px;border-radius:7px;border:1px solid var(--b);background:rgba(255,255,255,.03);color:var(--m);display:flex;align-items:center;justify-content:center}
+.icon-btn:hover{border-color:rgba(0,212,255,.42);color:var(--a)}
+/* tips */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.65rem;margin-top:2rem}
+.tip{padding:.9rem;border-radius:10px;background:var(--s1);border:1px solid var(--b)}
+.tip-ic{font-size:18px;margin-bottom:7px}
+.tip-t{font-size:12px;font-weight:600;color:var(--t);margin-bottom:3px}
+.tip-d{font-size:11px;color:var(--m);line-height:1.6}
+/* object selection */
+.seg-page{min-height:100vh;padding:5.5rem 2rem 3rem}
+.seg-layout{display:block}
+.seg-source,.seg-panel{background:var(--s1);border:1px solid var(--b);border-radius:16px;overflow:hidden}
+.seg-source{position:sticky;top:74px}
+.seg-source-img{width:100%;aspect-ratio:4/3;background:var(--bg);object-fit:contain;display:block}
+.seg-source-body{padding:1rem}
+.seg-loading-card{width:min(720px,100%);margin:0 auto;padding:2rem;border-radius:18px;background:var(--s1);border:1px solid var(--b);text-align:center}
+.seg-loading-card .pspin{margin-bottom:1.2rem}
+.seg-loading-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:850;color:var(--t);margin-bottom:.5rem}
+.seg-loading-desc{font-size:13px;color:var(--s);line-height:1.75}
+.seg-map-work{display:grid;grid-template-columns:minmax(420px,1fr) minmax(280px,.7fr);gap:1rem;padding:1rem;border-bottom:1px solid var(--b)}
+.seg-map-stage{position:relative;border:1px solid var(--b);border-radius:14px;background:#050912;overflow:hidden}
+.seg-map-canvas{position:relative;width:100%;cursor:pointer;user-select:none}
+.seg-map-canvas img.seg-map-img{width:100%;height:auto;display:block}
+.seg-mask-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.12;mix-blend-mode:screen;pointer-events:none;transition:opacity .14s ease,filter .14s ease,transform .14s ease}
+.seg-mask-layer.is-hover{opacity:.82;filter:drop-shadow(0 0 14px rgba(0,212,255,.8));transform:scale(1.012)}
+.seg-mask-layer.is-selected{opacity:.58;filter:drop-shadow(0 0 18px rgba(0,212,255,.65))}
+.seg-map-cursor{position:absolute;z-index:5;min-width:170px;max-width:220px;padding:.65rem;border-radius:12px;border:1px solid rgba(0,212,255,.42);background:rgba(8,12,20,.9);box-shadow:0 14px 34px rgba(0,0,0,.35);backdrop-filter:blur(10px);pointer-events:none;display:none}
+.seg-map-cursor img{width:100%;aspect-ratio:1.2;object-fit:contain;background:#050912;border-radius:8px;margin-bottom:.45rem}
+.seg-map-cursor .seg-name{font-size:12px}
+.seg-map-cursor .seg-meta{font-size:10px}
+.seg-map-hint{padding:.75rem 1rem;border-top:1px solid var(--b);font-size:11px;color:var(--m);line-height:1.65}
+.seg-picked{display:flex;flex-direction:column;gap:.75rem}
+.seg-picked-preview{position:relative;border:1px solid var(--b);border-radius:13px;background:#050912;min-height:250px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.seg-picked-preview.is-ready{border-color:rgba(0,212,255,.36);background-color:#050912;background-image:linear-gradient(45deg,rgba(255,255,255,.055) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,.055) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(255,255,255,.055) 75%),linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.055) 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+.seg-picked-preview img{width:100%;height:100%;object-fit:contain;display:block}
+.seg-picked-note{font-size:12px;color:var(--m);line-height:1.7}
+.seg-cutout-badge{position:absolute;top:10px;left:10px;z-index:1;padding:.24rem .55rem;border-radius:999px;background:rgba(0,212,255,.14);border:1px solid rgba(0,212,255,.42);color:#bff3ff;font-size:10px;font-weight:900;letter-spacing:.08em}
+.seg-cutout-callout{border:1px solid rgba(34,197,94,.22);border-radius:12px;background:rgba(34,197,94,.07);padding:.75rem .85rem;color:#bbf7d0;font-size:12px;font-weight:800;line-height:1.55}
+.seg-cutout-callout span{display:block;color:var(--s);font-weight:600;margin-top:.22rem}
+.seg-advanced{border-bottom:1px solid var(--b)}
+.seg-advanced summary{cursor:pointer;list-style:none;padding:1rem;color:var(--s);font-size:12px;font-weight:700}
+.seg-advanced summary::-webkit-details-marker{display:none}
+.seg-advanced summary:hover{color:var(--a)}
+.seg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem;padding:1rem}
+.seg-card{border:1px solid var(--b);border-radius:13px;background:rgba(255,255,255,.03);overflow:hidden;text-align:left;transition:all .18s}
+.seg-card:hover{border-color:rgba(0,212,255,.42);transform:translateY(-1px)}
+.seg-card.on{border-color:var(--a);box-shadow:0 0 0 1px rgba(0,212,255,.55),0 0 24px rgba(0,212,255,.08)}
+.seg-card img{width:100%;aspect-ratio:1;background:#050912;object-fit:contain;display:block}
+.seg-card-body{padding:.75rem}
+.seg-name{font-family:'Syne',sans-serif;font-weight:750;color:var(--t);font-size:13px;letter-spacing:.01em}
+.seg-meta{font-size:11px;color:var(--m);margin-top:3px}
+.seg-toolbar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:1rem;border-bottom:1px solid var(--b)}
+.seg-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.seg-empty{padding:2rem;text-align:center;color:var(--m);font-size:13px}
+.seg-work{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1.15fr);gap:1rem;padding:1rem;border-bottom:1px solid var(--b)}
+.seg-prompt-stage{border:1px solid var(--b);border-radius:12px;background:#050912;overflow:hidden}
+.seg-prompt-canvas{position:relative;display:inline-block;width:100%;cursor:crosshair;user-select:none;touch-action:none}
+.seg-prompt-canvas img{width:100%;height:auto;display:block}
+.seg-dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--a);border:2px solid #fff;box-shadow:0 0 0 4px rgba(0,212,255,.18);transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;color:#fff;font-size:16px;font-weight:950;line-height:18px;text-align:center}
+.seg-dot.neg{background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.2)}
+.seg-dot:hover{transform:translate(-50%,-50%) scale(1.12)}
+.seg-box{position:absolute;border:2px solid var(--a);background:rgba(0,212,255,.12);box-shadow:0 0 0 1px rgba(255,255,255,.18) inset;pointer-events:none}
+.seg-help{padding:.8rem 1rem;border-top:1px solid var(--b);font-size:11px;color:var(--m);line-height:1.6}
+.seg-manual{display:flex;flex-direction:column;gap:.75rem;justify-content:space-between}
+.seg-manual-title{font-size:12px;font-weight:750;color:var(--t)}
+.seg-manual-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.seg-point-tools{display:flex;align-items:center;justify-content:space-between;gap:.65rem;padding:.75rem 1rem;border-bottom:1px solid var(--b);background:rgba(255,255,255,.025)}
+.seg-point-toggle{display:flex;gap:3px;padding:3px;border:1px solid var(--b);border-radius:12px;background:#050912}
+.seg-point-toggle button{border:0;border-radius:9px;background:transparent;color:var(--m);font-size:11px;font-weight:800;padding:.48rem .68rem;cursor:pointer}
+.seg-point-toggle button.on{background:rgba(0,212,255,.13);color:var(--t);box-shadow:0 0 0 1px rgba(0,212,255,.35) inset}
+.seg-point-toggle button.neg.on{background:rgba(239,68,68,.14);box-shadow:0 0 0 1px rgba(239,68,68,.35) inset}
+.seg-point-tip{font-size:10px;color:var(--m);line-height:1.55}
+.seg-counts{display:inline-flex;align-items:center;gap:.35rem;margin-left:.55rem}
+.seg-count{display:inline-flex;align-items:center;justify-content:center;min-width:34px;padding:.12rem .35rem;border-radius:999px;border:1px solid rgba(0,212,255,.32);color:#7dd3fc;background:rgba(0,212,255,.08);font-weight:900}
+.seg-count.neg{border-color:rgba(239,68,68,.38);color:#fca5a5;background:rgba(239,68,68,.1)}
+.seg-ai-card{padding:1rem;border-bottom:1px solid var(--b);background:linear-gradient(135deg,rgba(0,212,255,.07),rgba(0,102,255,.035))}
+.seg-ai-row{display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:.65rem;align-items:center;margin-top:.75rem}
+.seg-text-input{width:100%;border:1px solid rgba(0,212,255,.22);border-radius:11px;background:#050912;color:var(--t);padding:.82rem .95rem;font-size:15px;font-weight:750;outline:none}
+.seg-text-input:focus{border-color:rgba(0,212,255,.62);box-shadow:0 0 0 3px rgba(0,212,255,.08)}
+.seg-provider-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .5rem;border-radius:999px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.28);color:#7dd3fc;font-size:10px;font-weight:900;letter-spacing:.08em}
+.upload-prompt-card{margin-top:1.1rem;padding:1rem;border:1px solid rgba(0,212,255,.18);border-radius:18px;background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(0,102,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.upload-prompt-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+.upload-prompt-title{font-size:13px;font-weight:900;color:var(--t)}
+.upload-prompt-sub{font-size:12px;color:var(--s);line-height:1.55;margin-top:.24rem}
+.seg-prompt-preview{border:1px solid var(--b);border-radius:12px;background:#050912;min-height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.seg-prompt-preview img{width:100%;height:100%;object-fit:contain;display:block}
+.seg-prompt-preview .seg-empty{padding:1rem}
+/* ══ PROCESSING ══ */
+.proc-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem;position:relative;overflow:hidden}
+.pbg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,212,255,0.05),transparent)}
+.pin{width:100%;max-width:560px;position:relative;z-index:1}
+.pspin{width:96px;height:96px;margin:0 auto 2.25rem;position:relative}
+.pring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+.pr1{border-top-color:var(--a);animation:sp 1.2s linear infinite}
+.pr2{inset:12px;border-right-color:rgba(0,212,255,0.4);animation:sp2 1.8s linear infinite}
+.pr3{inset:24px;border-top-color:rgba(0,212,255,0.2);animation:sp 2.4s linear infinite}
+.pc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.4);display:flex;align-items:center;justify-content:center}
+.pt{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--t);margin-bottom:7px;text-align:center}
+.ps{font-size:13px;color:var(--s);text-align:center;margin-bottom:2rem}
+.pmeta{font-size:12px;color:var(--m);text-align:center;margin-top:.65rem}
+.psteps{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
+.pstep{display:flex;align-items:center;gap:11px;padding:11px 15px;border-radius:10px;background:var(--s1);border:1px solid var(--b);transition:all .4s}
+.pstep.done{border-color:rgba(34,197,94,0.3);background:rgba(34,197,94,0.04)}
+.pstep.act{border-color:rgba(0,212,255,0.35);background:rgba(0,212,255,0.04);animation:bg 2s ease infinite}
+.pstep.wait{opacity:.4}
+.psico{width:30px;height:30px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.pstep.done .psico{background:rgba(34,197,94,0.1);color:var(--g)}
+.pstep.act .psico{background:rgba(0,212,255,0.1);color:var(--a)}
+.pstep.wait .psico{background:rgba(255,255,255,0.04);color:var(--m)}
+.psinfo{flex:1;min-width:0}
+.psn{font-size:13px;font-weight:600;color:var(--t)}
+.psd{font-size:11px;color:var(--m);margin-top:1px}
+.pss{font-size:11px;font-weight:600;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.pstep.done .pss{color:var(--g)}
+.pstep.act .pss{color:var(--a)}
+.ppwrap{margin-bottom:1.75rem}
+.ppl{display:flex;justify-content:space-between;margin-bottom:7px}
+.ppt{font-size:12px;color:var(--s)}
+.ppp{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--a);font-feature-settings:'tnum' 1}
+.ppbar{height:5px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden}
+.ppfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--a),#0066ff);transition:width .6s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.ppfill::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:sh 1.5s ease-in-out infinite}
+.pfrow{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.2rem}
+.pft{flex-shrink:0;width:46px;height:46px;border-radius:7px;background:var(--s2);border:1px solid var(--b);overflow:hidden}
+.pft img{width:100%;height:100%;object-fit:cover}
+/* ══ VIEWER ══ */
+.vp{height:100vh;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+.vtop{height:54px;flex-shrink:0;display:flex;align-items:center;gap:.7rem;padding:0 1.1rem;background:var(--s1);border-bottom:1px solid var(--b)}
+.vback{display:flex;align-items:center;gap:4px;background:none;border:none;color:var(--m);font-size:12px;transition:color .2s}
+.vback:hover{color:var(--t)}
+.vsep{width:1px;height:17px;background:var(--b)}
+.vid{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--m)}
+.vnm{font-size:13px;font-weight:500;color:var(--t);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vact{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.vbody{flex:1;display:flex;overflow:hidden}
+/* input panel */
+.ipanel{width:292px;flex-shrink:0;background:var(--s1);border-right:1px solid var(--b);display:flex;flex-direction:column;overflow:hidden}
+.phdr{padding:.65rem .9rem;border-bottom:1px solid var(--b);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--m);font-family:'JetBrains Mono',monospace}
+.ithumbs{flex:0 0 auto;max-height:194px;overflow-y:auto;padding:.45rem;border-bottom:1px solid var(--b)}
+.side-material{flex:1;overflow-y:auto;padding:.65rem}
+.side-empty{padding:.75rem;color:var(--m);font-size:11px;line-height:1.55;border-bottom:1px solid var(--b)}
+.ith{width:100%;aspect-ratio:4/3;border-radius:7px;overflow:hidden;margin-bottom:.4rem;border:1px solid var(--b);position:relative;background:var(--s2);cursor:pointer;transition:border-color .2s}
+.ith:hover{border-color:rgba(0,212,255,0.4)}
+.ith.on{border-color:var(--a);box-shadow:0 0 0 1px var(--a)}
+.ith img{width:100%;height:100%;object-fit:cover}
+.itl{position:absolute;bottom:0;left:0;right:0;padding:3px 5px;background:rgba(8,12,20,0.82);font-size:9px;color:var(--m);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.itdot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--a);box-shadow:0 0 6px var(--a)}
+.addbt{margin:.45rem;padding:.6rem;border-radius:7px;border:1px dashed rgba(0,212,255,0.2);background:transparent;color:var(--m);font-size:11px;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .2s}
+.addbt:hover{border-color:rgba(0,212,255,0.5);color:var(--a);background:rgba(0,212,255,0.04)}
+/* canvas */
+.vmain{flex:1;min-width:0;display:flex;flex-direction:column;position:relative;z-index:1;overflow:hidden}
+.carea{flex:1;min-height:0;position:relative;overflow:hidden;cursor:crosshair}
+.carea canvas{width:100%;height:100%;display:block}
+.result-model,.result-thumb{width:100%;height:100%;display:block;border:0;background:#404040}
+.viewer-mode-tabs{position:absolute;top:10px;left:12px;z-index:5000;display:flex;align-items:flex-end;gap:0;padding:0 6px;border-bottom:1px solid rgba(255,255,255,.15);pointer-events:auto!important;isolation:isolate}
+.viewer-mode-tab{height:30px;min-width:92px;padding:0 14px;border:1px solid rgba(255,255,255,.13);border-bottom:0;border-radius:9px 9px 0 0;background:rgba(7,10,16,.76);color:rgba(139,163,196,.92);font-size:11px;font-weight:850;letter-spacing:.02em;backdrop-filter:blur(10px);cursor:pointer!important;user-select:none;touch-action:manipulation;text-decoration:none;display:flex;align-items:center;justify-content:center;pointer-events:auto!important}
+.viewer-mode-tab+.viewer-mode-tab{margin-left:-1px}
+.viewer-mode-tab:hover{background:rgba(0,212,255,.13);color:#dffaff;border-color:rgba(0,212,255,.58)}
+.viewer-mode-tab.on{position:relative;z-index:1;background:rgba(18,24,34,.94);color:var(--t);border-color:rgba(0,212,255,.42);box-shadow:0 -1px 0 rgba(0,212,255,.22) inset}
+.viewer-mode-tab:focus-visible{outline:2px solid rgba(0,212,255,.72);outline-offset:2px}
+.mesh-compare{position:absolute;inset:0;width:100%;height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1px;background:rgba(255,255,255,.08);overflow:hidden}
+.mesh-full{position:absolute;inset:0;width:100%;height:100%;background:radial-gradient(circle at 50% 42%,#343840,#14181e 72%);overflow:hidden}
+.mesh-full model-viewer{width:100%;height:100%;display:block;background:transparent}
+.mesh-pane{position:relative;min-width:0;min-height:0;background:#303030;overflow:hidden}
+.mesh-pane model-viewer{width:100%;height:100%;display:block;background:#3f3f3f}
+.mesh-pane.clay model-viewer{background:radial-gradient(circle at 50% 42%,#343840,#14181e 72%)}
+.mesh-stats-float{position:absolute;top:52px;left:16px;z-index:3;width:min(300px,calc(100% - 32px));display:flex;flex-direction:column;gap:12px;pointer-events:none}
+.mesh-stats-card,.mesh-export-card{border-radius:14px;background:linear-gradient(135deg,rgba(0,0,0,.46),rgba(0,0,0,.28));border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px rgba(0,0,0,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.mesh-stats-card{padding:16px 20px 15px}
+.mesh-stats-row{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;color:rgba(238,242,247,.94);font-size:15px;line-height:1.3}
+.mesh-stats-row+.mesh-stats-row{margin-top:14px}
+.mesh-stats-row span:first-child{color:rgba(220,226,235,.72);font-weight:520}
+.mesh-stats-row span:last-child{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:520;font-feature-settings:'tnum' 1;color:rgba(248,250,252,.92);white-space:nowrap}
+.mesh-export-card{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;min-height:56px;padding:14px 20px;color:rgba(220,226,235,.68);font-size:15px;font-weight:520}
+.mesh-export-card .mesh-check{width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#32ff5f;color:#031006;font-size:13px;font-weight:950}
+.mesh-export-card.warn .mesh-check{background:#f59e0b;color:#140b00}
+.result-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--m);font-size:14px}
+.cotl{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:5px;pointer-events:none}
+.cotr{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:5px;pointer-events:none}
+.htag{padding:3px 9px;border-radius:999px;background:rgba(8,12,20,0.88);border:1px solid var(--b);font-size:10px;color:var(--m);backdrop-filter:blur(8px);font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+.htag.live{border-color:rgba(34,197,94,0.35);color:var(--g)}
+.htag.acc{border-color:rgba(0,212,255,0.35);color:var(--a)}
+.asset-insight{display:flex;flex-direction:column;gap:.5rem}
+.asset-insight-head{padding:.72rem .78rem;border-radius:10px;background:rgba(0,212,255,.055);border:1px solid rgba(0,212,255,.18)}
+.asset-insight-title{font-size:9px;font-weight:900;letter-spacing:.08em;color:var(--m);text-transform:uppercase}
+.asset-insight-name{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin-top:.34rem;line-height:1.25}
+.asset-insight-category{display:inline-flex;align-items:center;min-height:22px;padding:.16rem .48rem;border-radius:999px;background:rgba(0,212,255,.11);border:1px solid rgba(0,212,255,.26);color:#9befff;font-size:11px;font-weight:850}
+.asset-insight-divider{color:var(--m);font-size:11px;font-weight:700}
+.asset-insight-type{color:var(--t);font-size:15px;font-weight:900;letter-spacing:0}
+.asset-insight-sub{font-size:10.5px;color:var(--s);line-height:1.45;margin-top:.38rem}
+.asset-insight-grid{display:grid;grid-template-columns:1fr;gap:.4rem}
+.asset-insight-item{display:grid;grid-template-columns:38px minmax(0,1fr);gap:.58rem;align-items:flex-start;padding:.55rem .62rem;border-radius:10px;background:rgba(255,255,255,.028);border:1px solid var(--b)}
+.asset-insight-label{font-size:10px;font-weight:900;letter-spacing:.02em;color:var(--m);line-height:1.45;white-space:nowrap}
+.asset-insight-value{font-size:11.5px;font-weight:680;color:rgba(240,246,255,.9);line-height:1.48;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.asset-insight-link{display:flex;align-items:center;justify-content:center;min-height:34px;margin-top:.1rem;border-radius:8px;border:1px solid rgba(0,212,255,.22);background:rgba(0,212,255,.055);color:#9befff;font-size:11px;font-weight:850;text-decoration:none;transition:all .18s}
+.asset-insight-link:hover{border-color:rgba(0,212,255,.48);background:rgba(0,212,255,.11);color:#e7fbff}
+/* multi */
+.mvg{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:rgba(255,255,255,0.06)}
+.mvc{position:relative;background:var(--bg);overflow:hidden}
+.mvc canvas{width:100%;height:100%;display:block}
+.mvl{position:absolute;top:7px;left:9px;padding:3px 8px;border-radius:999px;background:rgba(8,12,20,0.88);font-size:10px;color:var(--m);font-family:'JetBrains Mono',monospace;pointer-events:none}
+/* hotspot */
+.hpin{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,212,255,0.15);border:2px solid rgba(0,212,255,0.8);color:var(--a);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;backdrop-filter:blur(4px);font-family:'JetBrains Mono',monospace;transition:all .2s;animation:pu 2.5s ease-in-out infinite}
+.hpin:hover{background:rgba(0,212,255,0.3);transform:translate(-50%,-50%) scale(1.15)}
+/* toolbar */
+.vtoolbar{height:46px;flex-shrink:0;display:flex;align-items:center;gap:2px;padding:0 .65rem;background:var(--s1);border-top:1px solid var(--b)}
+.tgrp{display:flex;align-items:center;gap:2px}
+.tsep{width:1px;height:18px;background:var(--b);margin:0 5px}
+.tb{width:32px;height:32px;border-radius:7px;border:none;background:transparent;color:var(--m);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.tb:hover{background:rgba(255,255,255,0.06);color:var(--t)}
+.tb.on{background:rgba(0,212,255,0.1);color:var(--a);border:1px solid rgba(0,212,255,0.3)}
+.vmtog{display:flex;background:rgba(255,255,255,0.04);border:1px solid var(--b);border-radius:7px;overflow:hidden}
+.vmtb{padding:4px 12px;border:none;background:transparent;font-size:11px;color:var(--m);transition:all .2s;border-right:1px solid var(--b)}
+.vmtb:last-child{border-right:none}
+.vmtb.on{background:rgba(0,212,255,0.1);color:var(--a);font-weight:600}
+.tsp{flex:1}
+/* info panel */
+.infop{width:258px;flex-shrink:0;background:var(--s1);border-left:1px solid var(--b);display:flex;flex-direction:column;overflow:hidden;position:relative;z-index:500}
+.itabs{display:flex;border-bottom:1px solid var(--b);position:relative;z-index:600;pointer-events:auto!important;isolation:isolate}
+.itb{flex:1;padding:10px 0;border:none;background:transparent;font-size:11px;font-weight:500;color:var(--m);border-bottom:2px solid transparent;transition:all .2s;cursor:pointer!important;user-select:none;touch-action:manipulation;text-decoration:none;display:flex;align-items:center;justify-content:center;pointer-events:auto!important}
+.itb:hover{background:rgba(0,212,255,.08);color:#dffaff}
+.itb.on{color:var(--a);border-color:var(--a);font-weight:600}
+.ibody{flex:1;overflow-y:auto;padding:.9rem}
+.isec{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--m);margin-bottom:9px;font-family:'JetBrains Mono',monospace}
+.irow{display:flex;justify-content:space-between;align-items:center;padding:.42rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.ik{font-size:11px;color:var(--m)}
+.iv{font-size:11px;font-weight:600;color:var(--t);font-family:'JetBrains Mono',monospace;font-feature-settings:'tnum' 1}
+.qm{margin:.65rem 0}
+.qml{display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px}
+.qmk{color:var(--m)}
+.qmv{font-weight:700;font-family:'JetBrains Mono',monospace;font-feature-settings:'tnum' 1}
+.qmb{height:4px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden;margin-bottom:3px}
+.qmf{height:100%;border-radius:999px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.hsc{padding:.6rem .7rem;border-radius:10px;margin-bottom:.45rem;background:rgba(255,255,255,0.03);border:1px solid var(--b);cursor:pointer;transition:all .2s}
+.hsc:hover,.hsc.on{background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.3)}
+.hsch{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.hscn{width:19px;height:19px;border-radius:50%;flex-shrink:0;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.4);font-size:9px;color:var(--a);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'JetBrains Mono',monospace}
+.hscl{font-size:12px;font-weight:600;color:var(--t)}
+.hscd{font-size:11px;color:var(--m);line-height:1.55}
+.expg{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.expo{padding:.7rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--b);cursor:pointer;text-align:center;transition:all .2s}
+.expo:hover{border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.04)}
+.exoi{font-size:18px;margin-bottom:4px}
+.exol{font-size:11px;font-weight:700;color:var(--t);font-family:'JetBrains Mono',monospace}
+.exof{font-size:9px;color:var(--m);margin-top:1px;font-family:'JetBrains Mono',monospace}
+.apibox{background:var(--s2);border:1px solid var(--b);border-radius:7px;padding:.7rem;font-size:10px;color:var(--m);font-family:'JetBrains Mono',monospace;line-height:1.9;word-break:break-all;letter-spacing:.02em}
+.friendly-card{background:linear-gradient(180deg,rgba(0,212,255,0.08),rgba(255,255,255,0.025));border:1px solid rgba(0,212,255,0.18);border-radius:12px;padding:.85rem;margin-bottom:.85rem}
+.friendly-state{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:var(--t);line-height:1.35}
+.state-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--a);box-shadow:0 0 12px rgba(0,212,255,0.65)}
+.friendly-state.ok .state-dot{background:var(--g);box-shadow:0 0 12px rgba(34,197,94,0.65)}
+.friendly-state.warn .state-dot{background:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,0.65)}
+.friendly-copy{font-size:12px;color:var(--s);line-height:1.65;margin-top:.45rem}
+.friendly-actions{display:flex;flex-direction:column;gap:.45rem;margin-top:.7rem}
+.guide-list{display:flex;flex-direction:column;gap:.45rem;margin-bottom:.9rem}
+.guide-item{display:flex;gap:8px;padding:.6rem .65rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--b)}
+.guide-num{width:20px;height:20px;border-radius:999px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--a);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.guide-copy{font-size:11px;color:var(--s);line-height:1.55}
+.metric-grid{display:grid;grid-template-columns:1fr;gap:.45rem;margin-bottom:.9rem}
+.metric-card{padding:.62rem .7rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--b)}
+.metric-label{font-size:10px;color:var(--m);letter-spacing:.06em;font-weight:700;text-transform:uppercase}
+.metric-value{font-size:14px;color:var(--t);font-weight:800;margin-top:2px}
+.quality-list{display:flex;flex-direction:column;gap:.45rem;margin-bottom:.9rem}
+.quality-item{display:flex;gap:8px;align-items:flex-start;padding:.6rem .65rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--b)}
+.quality-icon{width:20px;height:20px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:900;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);color:var(--g)}
+.quality-item.warn .quality-icon{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);color:#f59e0b}
+.quality-title{font-size:12px;font-weight:800;color:var(--t);line-height:1.35}
+.quality-desc{font-size:11px;color:var(--m);line-height:1.55;margin-top:2px}
+.download-picker{display:grid;grid-template-columns:1fr;gap:.55rem;margin-top:.75rem}
+.format-select{width:100%;height:38px;border-radius:10px;border:1px solid var(--b);background:var(--s2);color:var(--t);padding:0 .75rem;font-size:13px;font-weight:800;outline:none}
+.format-select:focus{border-color:rgba(0,212,255,0.55);box-shadow:0 0 0 3px rgba(0,212,255,0.08)}
+.download-helper{font-size:11px;color:var(--m);line-height:1.55}
+.download-helper strong{color:var(--s);font-weight:800}
+.download-picker .btn{width:100%}
+.download-progress{display:grid;grid-template-columns:1fr auto;gap:.45rem;align-items:center;font-size:11px;color:var(--s);font-weight:800}
+.download-track{grid-column:1 / -1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden}
+.download-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--a),var(--b2));transition:width .22s ease}
+.mat-live{display:flex;flex-direction:column;gap:.62rem}
+.mat-live-head{padding:.82rem;border-radius:12px;background:linear-gradient(180deg,rgba(0,212,255,0.08),rgba(255,255,255,0.025));border:1px solid rgba(0,212,255,0.18)}
+.mat-live-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:900;color:var(--t)}
+.mat-live-copy{font-size:11px;color:var(--s);line-height:1.55;margin-top:.35rem}
+.mat-control{display:block;padding:.58rem .62rem;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid var(--b)}
+.mat-control-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.38rem}
+.mat-control-name{font-size:12px;font-weight:850;color:var(--t)}
+.mat-control-value{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;color:var(--a);font-feature-settings:'tnum' 1}
+.mat-control input[type=range]{width:100%;accent-color:var(--a)}
+.mat-control-main{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:.5rem;align-items:center}
+.mat-number{width:72px;height:30px;border-radius:8px;border:1px solid var(--b);background:rgba(255,255,255,.045);color:var(--t);padding:0 .42rem;font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:800;outline:none;font-feature-settings:'tnum' 1}
+.mat-number:focus{border-color:rgba(0,212,255,.52)}
+.mat-section-title{margin:.18rem 0 -.22rem;font-size:9px;font-weight:900;letter-spacing:.09em;color:var(--m);text-transform:uppercase}
+.mat-color-row{display:grid;grid-template-columns:38px 1fr;gap:.55rem;align-items:center}
+.mat-color-row input[type=color]{width:38px;height:32px;border:1px solid var(--b);border-radius:9px;background:transparent;padding:0;overflow:hidden}
+.mat-color-row input[type=text]{width:100%;height:32px;border-radius:9px;border:1px solid var(--b);background:rgba(255,255,255,.04);color:var(--t);padding:0 .58rem;font-size:11px;font-family:'JetBrains Mono',monospace;outline:none}
+.mat-select{width:100%;height:34px;border-radius:9px;border:1px solid var(--b);background:rgba(255,255,255,.04);color:var(--t);padding:0 .55rem;font-size:11px;font-weight:800;outline:none}
+.mat-select:focus{border-color:rgba(0,212,255,.52)}
+.mat-toggle{width:100%;height:34px;border-radius:9px;border:1px solid var(--b);background:rgba(255,255,255,.035);color:var(--s);font-size:11px;font-weight:900;text-align:left;padding:0 .65rem}
+.mat-toggle.on{border-color:rgba(0,212,255,.48);background:rgba(0,212,255,.1);color:var(--a)}
+.env-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:.45rem}
+.env-option{height:34px;border-radius:9px;border:1px solid var(--b);background:rgba(255,255,255,.035);color:var(--s);font-size:11px;font-weight:800}
+.env-option.on{border-color:rgba(0,212,255,.48);background:rgba(0,212,255,.1);color:var(--a)}
+.mat-reset{height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);color:var(--s);font-size:12px;font-weight:800}
+.mat-reset:hover{border-color:rgba(0,212,255,.42);color:var(--a)}
+.channel-overlay{position:absolute;right:12px;bottom:12px;z-index:6;width:214px;border-radius:12px;border:1px solid rgba(0,212,255,.24);background:rgba(8,12,20,.88);backdrop-filter:blur(12px);box-shadow:0 16px 34px rgba(0,0,0,.28);overflow:hidden;pointer-events:none}
+.channel-overlay-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.52rem .64rem;border-bottom:1px solid var(--b)}
+.channel-overlay-title{font-size:10px;font-weight:900;color:var(--t);letter-spacing:.03em}
+.channel-overlay-kind{font-size:9px;font-weight:900;color:var(--a);font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.channel-overlay-preview{height:132px;background:#050912;display:flex;align-items:center;justify-content:center}
+.channel-overlay-preview img{width:100%;height:100%;object-fit:contain;display:block}
+.channel-overlay-empty{padding:.75rem;color:var(--m);font-size:11px;line-height:1.5;text-align:center}
+/* onboard */
+.obv{position:absolute;inset:0;z-index:500;background:rgba(8,12,20,0.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;animation:fi .4s ease}
+.obc{background:var(--s1);border:1px solid rgba(0,212,255,0.2);border-radius:18px;padding:2.1rem;max-width:420px;width:90%;box-shadow:0 0 80px rgba(0,212,255,0.08);animation:su .4s ease}
+.obt{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--t);margin-bottom:5px}
+.obs{font-size:13px;color:var(--m);margin-bottom:18px}
+.obks{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:1.4rem}
+.obk{display:flex;align-items:center;gap:7px;padding:.55rem .7rem;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:7px}
+.obkk{padding:2px 7px;border-radius:4px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--a);font-size:9px;font-weight:700;white-space:nowrap;font-family:'JetBrains Mono',monospace}
+.obkd{font-size:11px;color:var(--m)}
+/* responsive */
+@media(max-width:1020px){.upload-shell{grid-template-columns:1fr}.demo-examples{position:static}.demo-example-grid{grid-template-columns:repeat(auto-fill,minmax(112px,1fr));max-height:none}}
+@media(max-width:768px){.ipanel,.infop{display:none}.mesh-compare{grid-template-columns:1fr;grid-template-rows:1fr 1fr}.mesh-stats-float{display:none}.hstats{flex-direction:column}.hstat{border-right:none;border-bottom:1px solid var(--b)}.hstat:last-child{border-bottom:none}}
+@media(max-width:480px){.sect{padding:3.5rem 1rem}.hero{padding:7rem 1rem 3rem}.inner{padding:0 .5rem}}
+@media(min-width:1180px){
+  .hact{margin-bottom:52px}
+  .hstats{max-width:1040px}
+  .hstat{padding:16px 28px}
+  .up-page{padding-top:6rem}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ══════════════ STATE ══════════════ */
+const S={
+  page:'landing',
+  mode:'image',
+  files:[],
+  proc:{pct:0,si:0,label:'대기 중',desc:'업로드를 시작하면 처리 상태를 표시합니다.',failed:false},
+  viewer:{vm:'single',ar:false,hs:false,ahs:null,tab:'result',sceneTab:'viewer',ob:true,sb:true,mat:null},
+  scrolled:false,
+  ath:0,
+  sid:'',
+  modal:null,
+  busy:false,
+  err:null,
+  info:null,
+  pendingUpload:null,
+  imagePrompt:'',
+  seg:{loading:false,error:null,inputUrl:'',selectedId:null,candidates:[],map:{hoverId:null,loading:false,error:null},enhance:{loading:false,error:null,candidateId:null},text:{prompt:'',loading:false,error:null,confidenceThreshold:0.5,mergeMode:'best'},prompt:{points:[],box:null,labelType:'positive',loading:false,error:null,drag:null,imageSize:null}},
+  job:null,
+  result:null,
+  exports:{loading:false,error:null,items:null,busyFormat:null,downloadProgress:null,selectedFormat:'glb'},
+  demoExamples:{loading:false,error:null,items:null},
+  pollingTimer:null,
+  pollFailures:0,
+  resultFailures:0,
+  recent:[]
+};
+
+const SESSION_KEY='ai3d_prism_session_v2';
+const RECENT_KEY='ai3d_prism_recent_jobs_v2';
+const VIEWER_ASSET_VERSION='viewer-object-primary-20260519';
+let SEG_PROMPT_PREVIEW_TIMER=null;
+let SEG_PROMPT_REQUEST_SEQ=0;
+let SEG_LOADING_TIMER=null;
+let SEG_MAP_HOVER_FRAME=null;
+let SEG_MAP_PENDING_EVENT=null;
+let SEG_MAP_LAST_HOVER_ID=null;
+let SEG_MAP_LAST_SELECTED_ID=null;
+let SEG_MAP_LAST_CURSOR_ID=null;
+let SEG_PROMPT_DRAG_FRAME=null;
+let SEG_PROMPT_PENDING_BOX=null;
+const SEG_MAP_LAYER_CACHE=new Map();
+let EXPORT_PROGRESS_TIMER=null;
+const VIEWER_TEXTURE_CACHE=new Map();
+let VIEWER_TEXTURE_APPLY_KEY='';
+
+const DEFAULT_API_BASE_URL=(()=>{
+  if(window.location.protocol==='file:')return 'http://127.0.0.1:8000';
+  const port=window.location.port;
+  if(port&&port!=='8000')return `${window.location.protocol}//${window.location.hostname}:8000`;
+  return '';
+})();
+const API_BASE_URL=(window.__AI3D_API_BASE_URL||DEFAULT_API_BASE_URL).trim();
+let modelViewerRequested=false;
+function buildUrl(path){
+  if(!path)return '';
+  if(path.startsWith('http://')||path.startsWith('https://'))return path;
+  if(!API_BASE_URL)return path;
+  return new URL(path,API_BASE_URL).toString();
+}
+function versionedViewerUrl(path){
+  const built=buildUrl(path);
+  if(!built)return '';
+  const token=[
+    VIEWER_ASSET_VERSION,
+    S.sid||'',
+    S.job?.updated_at||S.job?.completed_at||S.job?.created_at||'',
+    S.result?.stage||S.result?.quality_status||''
+  ].filter(Boolean).join('|');
+  return `${built}${built.includes('?')?'&':'?'}viewer_v=${encodeURIComponent(token)}`;
+}
+function ensureModelViewerLoaded(){
+  if(window.customElements?.get('model-viewer')||modelViewerRequested)return;
+  modelViewerRequested=true;
+  const script=document.createElement('script');
+  script.type='module';
+  script.src='https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+  script.async=true;
+  document.head.appendChild(script);
+}
+async function req(path,opt={}){
+  const {timeoutMs=0,...fetchOptions}=opt||{};
+  let timer=null;
+  const controller=timeoutMs>0?new AbortController():null;
+  if(controller){
+    timer=setTimeout(()=>controller.abort(),timeoutMs);
+    fetchOptions.signal=controller.signal;
+  }
+  let res;
+  try{
+    res=await fetch(buildUrl(path),fetchOptions);
+  }catch(err){
+    if(err?.name==='AbortError')throw new Error('요청 시간이 초과되었습니다.');
+    throw err;
+  }finally{
+    if(timer)clearTimeout(timer);
+  }
+  const ctype=res.headers.get('content-type')||'';
+  const raw=await res.text();
+  let payload=raw;
+  if(raw&&ctype.includes('application/json')){
+    try{payload=JSON.parse(raw);}catch{payload=raw;}
+  }
+  if(!res.ok){
+    let detail=`${res.status} ${res.statusText}`;
+    if(payload&&typeof payload==='object')detail=payload.detail||JSON.stringify(payload);
+    else if(raw)detail=raw;
+    throw new Error(detail||'Request failed');
+  }
+  return payload;
+}
+async function apiUpload(type,file){
+  const form=new FormData();
+  form.append('type',type);
+  form.append('file',file);
+  return req('/api/upload',{method:'POST',body:form});
+}
+async function apiCreateJob(jobId,type,options={}){
+  return req('/api/jobs',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({job_id:jobId,type,options})
+  });
+}
+async function apiGetJob(jobId){return req(`/api/jobs/${jobId}`)}
+function normalizeResultPayload(payload){
+  if(payload?.mesh_url)payload.mesh_url=buildUrl(payload.mesh_url);
+  if(payload?.thumbnail_url)payload.thumbnail_url=buildUrl(payload.thumbnail_url);
+  if(payload?.metadata_url)payload.metadata_url=buildUrl(payload.metadata_url);
+  if(payload?.material_url)payload.material_url=buildUrl(payload.material_url);
+  if(payload?.asset_metadata_url)payload.asset_metadata_url=buildUrl(payload.asset_metadata_url);
+  if(payload?.job?.result){
+    if(payload.job.result.mesh_url)payload.job.result.mesh_url=buildUrl(payload.job.result.mesh_url);
+    if(payload.job.result.thumbnail_url)payload.job.result.thumbnail_url=buildUrl(payload.job.result.thumbnail_url);
+    if(payload.job.result.metadata_url)payload.job.result.metadata_url=buildUrl(payload.job.result.metadata_url);
+    if(payload.job.result.material_url)payload.job.result.material_url=buildUrl(payload.job.result.material_url);
+    if(payload.job.result.asset_metadata_url)payload.job.result.asset_metadata_url=buildUrl(payload.job.result.asset_metadata_url);
+  }
+  return payload;
+}
+async function apiGetResult(jobId){
+  const result=normalizeResultPayload(await req(`/api/jobs/${jobId}/result`,{timeoutMs:20000}));
+  result.hydrated=true;
+  return result;
+}
+function viewerResultFromJob(job){
+  const r=job?.result||{};
+  return normalizeResultPayload({
+    job_id:job?.job_id||S.sid,
+    type:job?.type||'image_to_3d',
+    viewer_type:r.viewer_type||'object_viewer',
+    mesh_url:r.mesh_url||'',
+    thumbnail_url:r.thumbnail_url||'',
+    metadata_url:r.metadata_url||'',
+    material_url:r.material_url||'',
+    asset_metadata_url:r.asset_metadata_url||'',
+    stage:job?.stage||'object_mesh_completed',
+    reason:job?.reason||null,
+    quality_status:job?.quality_status||job?.quality?.status||null,
+    quality:job?.quality||{},
+    job:job||null,
+    metadata:{},
+    material:null,
+    asset_metadata:null,
+    hydrated:false
+  });
+}
+function hasViewerAsset(result){
+  return Boolean(result?.mesh_url||result?.thumbnail_url||result?.job?.result?.mesh_url);
+}
+function normalizeExportPayload(payload){
+  const normalizeItem=(item)=>item?{...item,url:buildUrl(item.url||'')}:item;
+  if(Array.isArray(payload?.exports)){
+    payload.exports=payload.exports.map(normalizeItem);
+  }
+  if(payload?.url)payload=normalizeItem(payload);
+  return payload;
+}
+async function apiListExports(jobId){
+  return normalizeExportPayload(await req(`/api/jobs/${jobId}/exports`));
+}
+async function apiCreateExport(jobId,format){
+  return normalizeExportPayload(await req(`/api/jobs/${jobId}/exports/${encodeURIComponent(format)}`,{method:'POST'}));
+}
+function normalizeSegPayload(payload){
+  const cacheToken=Date.now().toString(36);
+  const bust=(url)=>{
+    const built=buildUrl(url);
+    if(!built)return built;
+    return `${built}${built.includes('?')?'&':'?'}v=${cacheToken}`;
+  };
+  if(payload?.input_url)payload.input_url=buildUrl(payload.input_url);
+  if(Array.isArray(payload?.candidates)){
+    payload.candidates=payload.candidates.map((candidate)=>({
+      ...candidate,
+      segmented_url:bust(candidate.segmented_url),
+      segmented_preview_url:bust(candidate.segmented_preview_url),
+      mask_url:bust(candidate.mask_url),
+      overlay_url:bust(candidate.overlay_url)
+    }));
+  }
+  return payload;
+}
+async function apiCreateSegPrompt(jobId,prompt){
+  const payload=await req(`/api/jobs/${jobId}/segmentation-prompt`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(prompt)
+  });
+  return normalizeSegPayload(payload);
+}
+async function apiCreateSegTextPrompt(jobId,prompt){
+  const payload=await req(`/api/jobs/${jobId}/segmentation-text-prompt`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(prompt)
+  });
+  return normalizeSegPayload(payload);
+}
+async function apiEnhanceSegCandidate(jobId,candidateId){
+  const payload=await req(`/api/jobs/${jobId}/segmentation-candidates/${encodeURIComponent(candidateId)}/enhance`,{
+    method:'POST'
+  });
+  return normalizeSegPayload(payload);
+}
+async function apiListTrellisDemoAssets(){
+  const payload=await req('/api/demo-assets/trellis');
+  if(Array.isArray(payload?.items)){
+    payload.items=payload.items.map((item)=>({
+      ...item,
+      url:buildUrl(item.url||'')
+    }));
+  }
+  return payload;
+}
+function parseJsonSafe(raw,fallback){
+  try{return JSON.parse(raw);}catch{return fallback;}
+}
+
+function escAttr(value){
+  return String(value??'')
+    .replaceAll('&','&amp;')
+    .replaceAll('"','&quot;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;');
+}
+
+function nowIso(){return new Date().toISOString();}
+
+function getRecentJobs(){
+  const list=parseJsonSafe(localStorage.getItem(RECENT_KEY)||'[]',[]);
+  if(!Array.isArray(list))return [];
+  return list.filter((item)=>item&&item.job_id&&item.type==='image_to_3d').slice(0,12);
+}
+
+function saveRecentJobs(list){
+  localStorage.setItem(RECENT_KEY,JSON.stringify((list||[]).slice(0,12)));
+  S.recent=getRecentJobs();
+}
+
+function upsertRecentJob(jobLike){
+  if(!jobLike?.job_id)return;
+  const list=getRecentJobs().filter((item)=>item.job_id!==jobLike.job_id);
+  list.unshift({
+    job_id:jobLike.job_id,
+    type:jobLike.type||'image_to_3d',
+    status:jobLike.status||'queued',
+    stage:jobLike.stage||null,
+    reason:jobLike.reason||null,
+    updated_at:jobLike.updated_at||nowIso()
+  });
+  saveRecentJobs(list);
+}
+
+function removeRecentJob(jobId){
+  if(!jobId)return;
+  const list=getRecentJobs().filter((item)=>item.job_id!==jobId);
+  saveRecentJobs(list);
+}
+
+function syncUrlState(){
+  const url=new URL(window.location.href);
+  if(S.mode)url.searchParams.set('mode',S.mode);
+  if(S.sid)url.searchParams.set('jobId',S.sid); else url.searchParams.delete('jobId');
+  if(S.page==='processing'||S.page==='viewer'||S.page==='upload'||S.page==='segment'){
+    url.searchParams.set('page',S.page);
+  }else{
+    url.searchParams.delete('page');
+  }
+  if(S.page==='viewer'&&S.viewer?.tab&&S.viewer.tab!=='result')url.searchParams.set('tab',S.viewer.tab);
+  else url.searchParams.delete('tab');
+  if(S.page==='viewer'&&S.viewer?.sceneTab==='mesh')url.searchParams.set('view','mesh');
+  else url.searchParams.delete('view');
+  history.replaceState({},'',url.toString());
+}
+
+function saveSessionState(){
+  if(S.proc?.failed)return;
+  const payload={
+    ts:Date.now(),
+    page:S.page,
+    mode:S.mode,
+    sid:S.sid||'',
+    job_status:S.job?.status||null
+  };
+  localStorage.setItem(SESSION_KEY,JSON.stringify(payload));
+}
+
+function fmtRecentTime(iso){
+  if(!iso)return '-';
+  const d=new Date(iso);
+  if(Number.isNaN(d.getTime()))return '-';
+  return d.toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+}
+
+function failureHint(job){
+  if(!job)return '';
+  const hints={
+    cuda_oom:'GPU 메모리 부족입니다. 더 작은 이미지 또는 단순한 객체로 다시 시도해 주세요.',
+    foreground_extraction_failed:'객체 분리에 실패했습니다. 대상이 더 크게 보이도록 촬영해 주세요.'
+  };
+  return hints[job.reason]||'입력 품질(선명도/조명/객체 크기)을 개선하면 성공률이 올라갑니다.';
+}
+function candidateLabel(candidate){
+  const label=(candidate?.label||'').trim();
+  if(label)return label.length>24?label.slice(0,21)+'…':label;
+  const id=(candidate?.candidate_id||'object').replace(/_/g,' ');
+  return id.length>24?id.slice(0,21)+'…':id;
+}
+
+const SEG_MASK_CACHE={};
+const SEG_COLORS=['#00d4ff','#7c5cff','#22c55e','#f59e0b','#ec4899','#38bdf8','#a3e635'];
+function segColor(index){return SEG_COLORS[index%SEG_COLORS.length]}
+function selectedSegCandidate(){
+  const candidates=S.seg?.candidates||[];
+  if(!S.seg?.selectedId)return null;
+  return candidates.find((candidate)=>candidate.candidate_id===S.seg.selectedId)||null;
+}
+function colorFilter(index){
+  const filters=[
+    'sepia(1) saturate(18) hue-rotate(145deg)',
+    'sepia(1) saturate(16) hue-rotate(215deg)',
+    'sepia(1) saturate(14) hue-rotate(80deg)',
+    'sepia(1) saturate(15) hue-rotate(10deg)',
+    'sepia(1) saturate(14) hue-rotate(285deg)',
+    'sepia(1) saturate(18) hue-rotate(165deg)'
+  ];
+  return filters[index%filters.length];
+}
+
+function resetSegUiCaches(){
+  if(SEG_MAP_HOVER_FRAME){
+    cancelAnimationFrame(SEG_MAP_HOVER_FRAME);
+    SEG_MAP_HOVER_FRAME=null;
+  }
+  if(SEG_PROMPT_DRAG_FRAME){
+    cancelAnimationFrame(SEG_PROMPT_DRAG_FRAME);
+    SEG_PROMPT_DRAG_FRAME=null;
+  }
+  SEG_MAP_PENDING_EVENT=null;
+  SEG_PROMPT_PENDING_BOX=null;
+  SEG_MAP_LAST_HOVER_ID=null;
+  SEG_MAP_LAST_SELECTED_ID=null;
+  SEG_MAP_LAST_CURSOR_ID=null;
+  SEG_MAP_LAYER_CACHE.clear();
+}
+
+function rebuildSegMapLayerCache(){
+  SEG_MAP_LAYER_CACHE.clear();
+  document.querySelectorAll('.seg-mask-layer').forEach((layer)=>{
+    const candidateId=layer.dataset.candidateId;
+    if(candidateId)SEG_MAP_LAYER_CACHE.set(candidateId,layer);
+  });
+}
+
+function segMapLayer(candidateId){
+  if(!candidateId)return null;
+  if(!SEG_MAP_LAYER_CACHE.size)rebuildSegMapLayerCache();
+  return SEG_MAP_LAYER_CACHE.get(candidateId)||null;
+}
+
+function candidateBBoxMetrics(candidate){
+  if(!Array.isArray(candidate?.bbox)||candidate.bbox.length!==4)return {bboxAreaRatio:0,fillRatio:1};
+  const [_x1,_y1,w,h]=candidate.bbox.map(Number);
+  const bboxArea=Math.max(0,w)*Math.max(0,h);
+  const imageWidth=Number(S.seg.map?.imageSize?.width||0);
+  const imageHeight=Number(S.seg.map?.imageSize?.height||0);
+  const imageArea=Math.max(1,imageWidth*imageHeight);
+  const bboxAreaRatio=imageArea?bboxArea/imageArea:0;
+  const areaRatio=Math.max(0,Number(candidate?.area_ratio||0));
+  const fillRatio=bboxAreaRatio>0?Math.min(1.2,areaRatio/Math.max(1e-8,bboxAreaRatio)):1;
+  return {bboxAreaRatio,fillRatio};
+}
+
+function candidateSelectPriority(candidate){
+  const area=Math.max(0,Number(candidate?.area_ratio||0));
+  const score=Number(candidate?.score||0);
+  const stability=Number(candidate?.stability_score||0);
+  const predictedIoU=Number(candidate?.predicted_iou||0);
+  const border=Number(candidate?.border_touch_count||0);
+  const {bboxAreaRatio,fillRatio}=candidateBBoxMetrics(candidate);
+
+  let areaBias=-3.2;
+  if(area>=0.03&&area<0.06)areaBias=-1.1+(area*6.0);
+  else if(area>=0.06&&area<=0.55)areaBias=1.65+Math.min(2.3,area*4.9);
+  else if(area>0.55&&area<=0.78)areaBias=1.95-((area-0.55)*4.5);
+  else if(area>0.78&&area<=0.9)areaBias=-1.2-((area-0.78)*8.0);
+
+  const fillBonus=fillRatio<0.1?-0.95:fillRatio<0.22?-0.35:Math.min(0.45,(fillRatio-0.22)*0.55);
+  const coveragePenalty=bboxAreaRatio>0.92?-1.1:0.0;
+
+  return (
+    areaBias
+    +(score*1.15)
+    +(stability*0.35)
+    +(predictedIoU*0.2)
+    +fillBonus
+    +coveragePenalty
+    -(border*0.38)
+  );
+}
+
+function sortSegHitCandidates(candidates){
+  const meaningfulAreaThreshold=0.08;
+  return [...(candidates||[])].sort((a,b)=>{
+    const aMeaningful=Number(a?.area_ratio||0)>=meaningfulAreaThreshold?1:0;
+    const bMeaningful=Number(b?.area_ratio||0)>=meaningfulAreaThreshold?1:0;
+    if(aMeaningful!==bMeaningful)return bMeaningful-aMeaningful;
+    return candidateSelectPriority(b)-candidateSelectPriority(a);
+  });
+}
+
+function renderSelectedPreviewHtml(selected){
+  const enhanced=String(selected?.candidate_id||'').endsWith('_enhanced')||String(selected?.pass_name||'').includes('enhanced');
+  return selected
+    ?`<div class="seg-cutout-badge">${enhanced?'SR 입력':'3D 입력'}</div><img src="${selected.segmented_preview_url||selected.segmented_url||selected.overlay_url}" alt="selected object">`
+    :`<div class="seg-empty">TEXT PROMPT로 객체를 찾으면 cutout이 표시됩니다.</div>`;
+}
+
+function selectedPreviewNote(selected){
+  if(!selected)return 'TEXT PROMPT로 생성한 투명 PNG cutout이 여기에 표시됩니다.';
+  const enhanced=String(selected?.candidate_id||'').endsWith('_enhanced')||String(selected?.pass_name||'').includes('enhanced');
+  return enhanced
+    ?`해상도 강화 완료 · 확대 보강된 ${candidateLabel(selected)} 이미지가 다음 단계로 전달됩니다.`
+    :`3D 입력 준비 완료 · 배경이 제거된 ${candidateLabel(selected)} 이미지만 다음 단계로 전달됩니다.`;
+}
+
+function renderDemoExamplesPanel(){
+  const state=S.demoExamples||{};
+  const items=Array.isArray(state.items)?state.items:[];
+  const selectedName=S.files?.[0]?.name||'';
+  const body=state.loading&&!items.length
+    ?`<div class="demo-example-empty">예시를 불러오는 중입니다.</div>`
+    :state.error&&!items.length
+      ?`<div class="demo-example-empty">${escAttr(state.error)}</div>`
+      :items.length
+        ?`<div class="demo-example-grid">
+          ${items.map((item)=>`<button class="demo-example${selectedName===item.file_name?' on':''}" onclick="selectDemoExample('${escAttr(item.id)}')" title="${escAttr(item.file_name)}" ${S.busy?'disabled':''}>
+            <img src="${escAttr(item.url)}" alt="${escAttr(item.file_name)}" loading="lazy">
+            <span class="demo-example-badge">${escAttr(item.file_name.slice(0,10))}</span>
+          </button>`).join('')}
+        </div>`
+        :`<div class="demo-example-empty">표시할 예시가 없습니다.</div>`;
+  return`<aside class="demo-examples">
+    <div class="demo-examples-head">
+      <div class="demo-examples-title">Examples <span>TRELLIS.2</span></div>
+      <div class="demo-examples-count">${items.length?`${items.length} ready`:''}</div>
+    </div>
+    ${body}
+  </aside>`;
+}
+
+function queueDemoExamplesLoad(){
+  const state=S.demoExamples||{};
+  if(state.loading||Array.isArray(state.items))return;
+  S.demoExamples={loading:true,error:null,items:null};
+  setTimeout(loadDemoExamples,0);
+}
+
+async function loadDemoExamples(){
+  try{
+    const payload=await apiListTrellisDemoAssets();
+    S.demoExamples={loading:false,error:null,items:payload.items||[]};
+    if(S.page==='upload')render();
+  }catch(err){
+    S.demoExamples={loading:false,error:`예시 목록을 불러오지 못했습니다: ${err.message}`,items:[]};
+    if(S.page==='upload')render();
+  }
+}
+
+function syncSegSelectionDom(){
+  const selected=selectedSegCandidate();
+  const meta=document.getElementById('seg-picked-meta');
+  if(meta){
+    meta.textContent=selected
+      ?'이 투명 PNG만 다음 3D 생성 단계로 전달합니다.'
+      :'아직 생성된 cutout이 없습니다.';
+  }
+  const preview=document.getElementById('seg-picked-preview');
+  if(preview){
+    preview.classList.toggle('is-ready',Boolean(selected));
+    preview.innerHTML=renderSelectedPreviewHtml(selected);
+  }
+  const note=document.getElementById('seg-picked-note');
+  if(note)note.textContent=selectedPreviewNote(selected);
+  const enhanceButton=document.getElementById('seg-enhance-selected');
+  if(enhanceButton){
+    const enhance=S.seg?.enhance||{};
+    const selectedEnhanced=String(selected?.candidate_id||'').endsWith('_enhanced')||String(selected?.pass_name||'').includes('enhanced');
+    enhanceButton.disabled=Boolean(S.busy||enhance.loading||!selected||selectedEnhanced);
+    enhanceButton.textContent=enhance.loading?'해상도 강화 중':selectedEnhanced?'해상도 강화 완료':'해상도 강화하기';
+  }
+  const button=document.getElementById('seg-start-selected');
+  if(button)button.disabled=Boolean(S.busy||!selected);
+
+  const selectedId=S.seg.selectedId||null;
+  if(SEG_MAP_LAST_SELECTED_ID!==selectedId){
+    segMapLayer(SEG_MAP_LAST_SELECTED_ID)?.classList.remove('is-selected');
+    segMapLayer(selectedId)?.classList.add('is-selected');
+    SEG_MAP_LAST_SELECTED_ID=selectedId;
+  }
+}
+
+function setSegSelectedCandidate(candidateId){
+  S.seg.selectedId=candidateId||null;
+  const selected=selectedSegCandidate();
+  if(S.seg.prompt)S.seg.prompt.preview=selected&&selected.pass_name==='prompt'?selected:null;
+  if(document.getElementById('seg-picked-preview')){
+    syncSegSelectionDom();
+    return;
+  }
+  render();
+}
+
+function invalidateSegPromptPreview(){
+  clearSegPromptPreviewTimer();
+  SEG_PROMPT_REQUEST_SEQ+=1;
+  const prompt=ensureSegPrompt();
+  prompt.loading=false;
+  prompt.preview=null;
+  S.seg.selectedId=null;
+  S.seg.candidates=[];
+}
+
+function cancelSegPromptWork(){
+  clearSegPromptPreviewTimer();
+  SEG_PROMPT_REQUEST_SEQ+=1;
+  const prompt=ensureSegPrompt();
+  prompt.loading=false;
+  prompt.error=null;
+}
+
+function stopSegLoadingProgress(){
+  if(SEG_LOADING_TIMER){
+    clearInterval(SEG_LOADING_TIMER);
+    SEG_LOADING_TIMER=null;
+  }
+}
+
+function updateSegLoadingProgressUi(){
+  const pct=Math.max(0,Math.min(99,Math.round(Number(S.seg?.progress?.pct||0))));
+  const label=document.getElementById('seg-load-pct');
+  const fill=document.getElementById('seg-load-fill');
+  if(label)label.textContent=`${pct}%`;
+  if(fill)fill.style.width=`${pct}%`;
+}
+
+function startSegLoadingProgress(){
+  stopSegLoadingProgress();
+  if(!S.seg.progress)S.seg.progress={pct:8};
+  updateSegLoadingProgressUi();
+  SEG_LOADING_TIMER=setInterval(()=>{
+    if(S.page!=='segment'||!S.seg?.loading){
+      stopSegLoadingProgress();
+      return;
+    }
+    const pct=Number(S.seg.progress?.pct||8);
+    const step=pct<45?5:pct<72?3:pct<88?1.5:.5;
+    S.seg.progress={pct:Math.min(92,pct+step)};
+    updateSegLoadingProgressUi();
+  },700);
+}
+/* ══════════════ 3D ENGINE ══════════════ */
+const PHI=(1+Math.sqrt(5))/2;
+const RV=[[-1,PHI,0],[1,PHI,0],[-1,-PHI,0],[1,-PHI,0],[0,-1,PHI],[0,1,PHI],[0,-1,-PHI],[0,1,-PHI],[PHI,0,-1],[PHI,0,1],[-PHI,0,-1],[-PHI,0,1]];
+const VT=RV.map(([x,y,z])=>{const l=Math.sqrt(x*x+y*y+z*z);return[x/l,y/l,z/l]});
+const FC=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+const ry=([x,y,z],a)=>[x*Math.cos(a)-z*Math.sin(a),y,x*Math.sin(a)+z*Math.cos(a)];
+const rx=([x,y,z],a)=>[x,y*Math.cos(a)-z*Math.sin(a),y*Math.sin(a)+z*Math.cos(a)];
+const rgba=(h,a)=>{const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return`rgba(${r},${g},${b},${a})`};
+const VW={};
+function startV(id,{ar=true,col='#00d4ff',mini=false}={}){
+  const c=document.getElementById(id);if(!c)return;
+  if(VW[id]){cancelAnimationFrame(VW[id].r);if(VW[id].ro)VW[id].ro.disconnect()}
+  const st={a:{y:.5,x:.2},drag:false,last:{},sc:0,col,ar};VW[id]=st;
+  const rsz=()=>{c.width=c.offsetWidth*devicePixelRatio;c.height=c.offsetHeight*devicePixelRatio};
+  rsz();const ro=new ResizeObserver(rsz);ro.observe(c);st.ro=ro;
+  const ctx=c.getContext('2d');
+  const draw=()=>{
+    if(!document.getElementById(id)){cancelAnimationFrame(st.r);ro.disconnect();return}
+    const W=c.width,H=c.height,dpr=devicePixelRatio||1;
+    if(W<2||H<2){st.r=requestAnimationFrame(draw);return}
+    ctx.clearRect(0,0,W,H);ctx.fillStyle='#080c14';ctx.fillRect(0,0,W,H);
+    const g=ctx.createRadialGradient(W*.5,H*.5,0,W*.5,H*.5,W*.44);
+    g.addColorStop(0,rgba(col,.09));g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    const gs=(mini?26:44)*dpr;ctx.strokeStyle='rgba(0,212,255,0.04)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    if(!mini){
+      ctx.strokeStyle='rgba(0,212,255,0.09)';ctx.lineWidth=1;ctx.setLineDash([4,7]);
+      ctx.beginPath();ctx.moveTo(W/2-44*dpr,H/2);ctx.lineTo(W/2+44*dpr,H/2);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(W/2,H/2-44*dpr);ctx.lineTo(W/2,H/2+44*dpr);ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    const ay=st.a.y,ax=st.a.x,sc=Math.min(W,H)*(mini?.21:.31);
+    const rotd=VT.map(v=>rx(ry(v,ay),ax));
+    const proj=rotd.map(([x,y,z])=>{const f=2.5,d=z+f;return[(x/d)*sc+W/2,(y/d)*sc+H/2,(z+1)/2]});
+    const sorted=FC.map(f=>({f,z:(proj[f[0]][2]+proj[f[1]][2]+proj[f[2]][2])/3})).sort((a,b)=>a.z-b.z);
+    for(const{f,z:dep}of sorted){
+      const[a,b,c2]=f.map(i=>proj[i]);
+      const cr=(a[0]-b[0])*(c2[1]-b[1])-(a[1]-b[1])*(c2[0]-b[0]);
+      ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.lineTo(c2[0],c2[1]);ctx.closePath();
+      ctx.fillStyle=rgba(col,cr>0?(.06+dep*.13):.01);ctx.fill();
+      ctx.strokeStyle=rgba(col,cr>0?(.2+dep*.52):.04);ctx.lineWidth=cr>0?1.1:.35;ctx.stroke();
+    }
+    for(const[px,py,dep]of proj){ctx.beginPath();ctx.arc(px,py,(1.5+dep*3)*dpr*.5,0,Math.PI*2);ctx.fillStyle=rgba(col,.35+dep*.65);ctx.fill()}
+    st.sc=(st.sc+1.8)%H;
+    const sg=ctx.createLinearGradient(0,st.sc-22*dpr,0,st.sc+22*dpr);
+    sg.addColorStop(0,'transparent');sg.addColorStop(.5,rgba(col,.11));sg.addColorStop(1,'transparent');
+    ctx.fillStyle=sg;ctx.fillRect(0,st.sc-22*dpr,W,44*dpr);
+    if(!mini){
+      ctx.font=`${8.5*dpr}px 'JetBrains Mono',monospace`;ctx.fillStyle=rgba(col,.6);
+      ctx.fillText('● LIVE SCAN',12*dpr,18*dpr);
+      ctx.fillText(`${((((ay*180/Math.PI)%360)+360)%360).toFixed(1)}°`,12*dpr,30*dpr);
+      ctx.fillText('4.2M POLY',W-78*dpr,18*dpr);ctx.fillText('32K UV',W-78*dpr,30*dpr);
+      const bs=13*dpr,br=6*dpr;ctx.strokeStyle=rgba(col,.3);ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(br,br+bs);ctx.lineTo(br,br);ctx.lineTo(br+bs,br);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(W-br-bs,br);ctx.lineTo(W-br,br);ctx.lineTo(W-br,br+bs);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(br,H-br-bs);ctx.lineTo(br,H-br);ctx.lineTo(br+bs,H-br);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(W-br-bs,H-br);ctx.lineTo(W-br,H-br);ctx.lineTo(W-br,H-br-bs);ctx.stroke();
+    }
+    if(st.ar)st.a.y+=.009;
+    st.r=requestAnimationFrame(draw);
+  };
+  c.onmousedown=e=>{st.drag=true;st.last={x:e.clientX,y:e.clientY}};
+  c.onmousemove=e=>{if(!st.drag)return;st.a.y+=(e.clientX-st.last.x)*.012;st.a.x+=(e.clientY-st.last.y)*.012;st.last={x:e.clientX,y:e.clientY}};
+  c.onmouseup=c.onmouseleave=()=>st.drag=false;
+  c.ontouchstart=e=>{st.drag=true;st.last={x:e.touches[0].clientX,y:e.touches[0].clientY};e.preventDefault()};
+  c.ontouchmove=e=>{if(!st.drag)return;st.a.y+=(e.touches[0].clientX-st.last.x)*.012;st.a.x+=(e.touches[0].clientY-st.last.y)*.012;st.last={x:e.touches[0].clientX,y:e.touches[0].clientY};e.preventDefault()};
+  c.ontouchend=()=>st.drag=false;
+  st.r=requestAnimationFrame(draw);
+}
+function stopAll(){for(const k in VW){cancelAnimationFrame(VW[k].r);if(VW[k].ro)VW[k].ro.disconnect();delete VW[k]}}
+/* ══════════════ DATA ══════════════ */
+const DP={col:'#00d4ff',poly:'4.2M',tex:'32K UV',acc:'±0.4μm',date:new Date().toLocaleDateString('ko-KR'),method:'Multi-Image Photogrammetry',dur:'2m 14s',
+  hs:[{id:'h1',lbl:'주요 측면',desc:'가장 복잡한 형상이 집중된 영역. 표면 편차 최소화 확인됨.',x:38,y:42},{id:'h2',lbl:'상단 구조',desc:'수직 정밀도 기준점. 기준면 대비 ±0.3μm 이내.',x:64,y:26},{id:'h3',lbl:'저면 접촉면',desc:'치구 접촉 기준면. 평면도 측정값 0.8μm.',x:52,y:72}],
+  ql:[{l:'이미지 품질',v:'92%',p:92,c:'#00d4ff'},{l:'포인트 밀도',v:'98%',p:98,c:'#22c55e'},{l:'메쉬 품질',v:'87%',p:87,c:'#00d4ff'},{l:'텍스처 선명도',v:'95%',p:95,c:'#22c55e'}]
+};
+const SR=[
+  {id:'s1',n:'배경 에셋 생성',m:'객체 분리 + DCC-ready 3D asset',c:'#00d4ff'},
+  {id:'s2',n:'텍스트 기반 객체 선택',m:'원하는 객체 이름으로 자동 cutout',c:'#a78bfa'},
+  {id:'s3',n:'결과 뷰 & 다운로드',m:'브라우저 뷰어 + DCC 파일 저장',c:'#22c55e'}
+];
+const PS=[{l:'이미지 검증',s:'해상도·노출·품질 분석',i:'🔍'},{l:'특징점 추출',s:'SIFT/ORB 키포인트 검출',i:'📍'},{l:'카메라 교정',s:'SfM 포즈 추정 및 번들 조정',i:'📷'},{l:'포인트 클라우드',s:'밀집 재구성 (MVS)',i:'✦'},{l:'메쉬 생성',s:'Poisson Surface Reconstruction',i:'◈'},{l:'텍스처 매핑',s:'UV 언래핑 및 고해상도 베이킹',i:'🎨'},{l:'품질 검사',s:'공차 분석 · GD&T 자동 측정',i:'✅'}];
+const IMG_STEPS=[
+  {l:'업로드',s:'입력 이미지를 저장합니다',i:'📤'},
+  {l:'입력 준비',s:'원본 이미지를 3D 생성 엔진에 전달합니다',i:'🖼️'},
+  {l:'3D 생성',s:'이미지 기반 3D 메시를 생성합니다',i:'⚙️'},
+  {l:'메쉬 정리',s:'뷰어/다운로드 가능한 형태로 정리합니다',i:'🧩'},
+  {l:'결과 로드',s:'결과 메시를 브라우저에 로드합니다',i:'🧊'},
+  {l:'완료',s:'결과를 확인할 수 있습니다',i:'✅'}
+];
+function activeSteps(proc=S.proc){
+  if(proc?.queued){
+    const steps=IMG_STEPS.map((step)=>({...step}));
+    steps[0]={l:'작업 대기열',s:'앞 작업이 끝나면 자동으로 시작합니다',i:'⏳'};
+    return steps;
+  }
+  return IMG_STEPS;
+}
+
+function resolveProgress(job){
+  if(!job){
+    return{pct:0,si:0,label:'대기 중',desc:'파일 업로드 후 스캔을 시작하세요.',failed:false};
+  }
+  if(job.status==='queued')return{pct:18,si:0,label:'작업 대기열',desc:'앞 작업이 끝나면 워커가 자동으로 시작합니다.',failed:false,queued:true};
+  if(job.status==='running'){
+    if(job.type==='image_to_3d'){
+      if(job.stage==='image_preprocess_running'||job.stage==='image_preprocess_completed')return{pct:32,si:1,label:'입력 준비',desc:'원본 이미지를 3D 생성 엔진 입력으로 준비합니다.',failed:false};
+      if(job.stage==='multiview_prior_running')return{pct:52,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성하고 있습니다.',failed:false};
+      if(job.stage==='object_mesh_running'||job.stage==='object_mesh_completed')return{pct:68,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성하고 있습니다.',failed:false};
+      if(job.stage==='mesh_cleanup_running')return{pct:86,si:3,label:'메쉬 후처리',desc:'아티팩트를 정리하고 결과를 저장합니다.',failed:false};
+      return{pct:70,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성 중입니다.',failed:false};
+    }
+    return{pct:70,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성 중입니다.',failed:false};
+  }
+  if(job.status==='failed'){
+    return{pct:100,si:3,label:'처리 실패',desc:job.error||'처리 엔진이 실패했습니다.',failed:true};
+  }
+  if(job.status==='completed'){
+    return{pct:97,si:5,label:'결과 로딩',desc:'최종 결과를 불러오는 중입니다.',failed:false};
+  }
+  return{pct:0,si:0,label:'대기 중',desc:'상태 정보를 기다리는 중입니다.',failed:false};
+}
+
+function clearPolling(){
+  if(S.pollingTimer){clearInterval(S.pollingTimer);S.pollingTimer=null;}
+}
+
+function notifyInfo(text){S.info=text;S.err=null;}
+function notifyError(text){S.err=text;S.info=null;}
+/* ══════════════ SVG ICONS ══════════════ */
+const I={
+  scan:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" width="16" height="16"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>`,
+  up:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="30" height="30"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`,
+  img:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+  vid:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>`,
+  bk:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="13" height="13"><polyline points="15 18 9 12 15 6"/></svg>`,
+  x:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="9" height="9"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+  rt:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.17"/></svg>`,
+  ey:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  mx:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+  cm:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  dl:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+  sh:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+  ly:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="15" height="15"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  pl:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="13" height="13"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
+  ck:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg>`,
+  zp:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+};
+/* ══════════════ HEADER ══════════════ */
+function hdr(pg){
+  return`<header class="hdr${S.scrolled?' solid':''}" id="mhdr">
+    <button class="logo" onclick="nav('landing')">
+      <div class="logo-mark">${I.scan}</div>
+      <span class="logo-wm d"><span>PRISM</span> SCAN</span>
+    </button>
+    <div class="hdr-r">
+      <button class="hl${pg==='upload'?' on':''}" onclick="nav('upload')">업로드</button>
+      <button class="hl${pg==='viewer'?' on':''}" onclick="nav('viewer')">결과 뷰어</button>
+      <button class="btn bp bsm" onclick="nav('upload')">${I.up} 에셋 생성</button>
+    </div>
+  </header>`;
+}
+/* ══════════════ LANDING ══════════════ */
+function renderLanding(){
+  return`${hdr('landing')}<div class="page">
+  <section class="hero">
+    <div class="hgrid"></div><div class="hglow"></div>
+    <div style="position:relative;z-index:1;width:100%;max-width:800px">
+      <div class="hbadge"><div class="hbdot"></div><span class="hbt">BACKGROUND PRODUCT 3D ASSET GENERATION</span></div>
+      <h1 class="h1 d">배경 배치용 제품·소품을<span class="ac">3D asset package로 생성합니다</span></h1>
+      <p class="hsub">PRISM SCAN은 close-up hero asset이 아니라 VFX·애니메이션 배경에 놓을 background product/prop asset을 빠르게 만드는 전용 생성 서비스입니다.</p>
+      <div class="hact">
+        <button class="btn bp blg" onclick="nav('upload')">${I.up} 에셋 생성 시작</button>
+        <button class="btn bg2 blg" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">작동 방식 보기</button>
+      </div>
+      <div class="hstats">
+        <div class="hstat"><div class="sn sfmt d">배경 제품·소품</div><div class="sl">background prop/product only</div></div>
+        <div class="hstat"><div class="sn d">2~8분</div><div class="sl">평균 처리 시간</div></div>
+        <div class="hstat"><div class="sn sfmt d">GLB · FBX · OBJ</div><div class="sl">DCC-ready package</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="sect" id="how" style="background:var(--s1)">
+    <div class="inner">
+      <div class="tc mb3"><div class="eyebrow">HOW IT WORKS</div><h2 class="sec-title">3단계로 완성되는 background asset package</h2></div>
+      <div class="steps">
+        ${[{n:'01',i:'📤',bc:'rgba(0,212,255,0.22)',bg:'rgba(0,212,255,0.1)',t:'제품·소품 이미지 업로드',d:'배경에 배치할 대상이 잘 보이는 이미지 1장을 업로드합니다.'},
+           {n:'02',i:'⚡',bc:'rgba(245,158,11,0.22)',bg:'rgba(245,158,11,0.1)',t:'객체 cutout & 3D 생성',d:'텍스트 prompt로 원하는 객체를 분리한 뒤 background asset용 3D 모델을 생성합니다.'},
+           {n:'03',i:'🧊',bc:'rgba(34,197,94,0.22)',bg:'rgba(34,197,94,0.1)',t:'패키지 확인 & 다운로드',d:'브라우저 뷰어에서 확인하고 GLB, DCC preset, metadata/material package로 내려받습니다.'}
+        ].map(s=>`<div class="step"><div class="step-num">${s.n}</div><div class="step-ico" style="background:${s.bg};border:1px solid ${s.bc}">${s.i}</div><div class="step-t">${s.t}</div><div class="step-d">${s.d}</div></div>`).join('')}
+      </div>
+    </div>
+  </section>
+  <section class="sect">
+    <div class="inner">
+      <div class="flex jb ic fw gap4 mb3">
+        <div><div class="eyebrow">CURRENT CAPABILITIES</div><h2 class="sec-title" style="margin-bottom:0">현재 지원 기능</h2></div>
+        <button class="btn bg2 bsm" onclick="nav('upload')">지금 업로드하기 →</button>
+      </div>
+      <div class="sgrid">
+        ${SR.map(r=>`<div class="scard" onclick="loadSample('${r.id}')">
+          <div class="scw"><canvas id="rc-${r.id}" style="width:100%;height:100%"></canvas>
+          <div class="scov"><button class="btn bp bsm">업로드로 이동</button></div></div>
+          <div class="scb"><div class="scn">${r.n}</div><div class="scm">${r.m}</div></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+  <section class="sect" style="background:var(--s1)">
+    <div class="insm tc">
+      <div class="eyebrow">START NOW</div>
+      <h2 class="sec-title">첫 background asset을 생성하세요</h2>
+      <p style="font-size:15px;color:var(--m);line-height:1.75;margin:0 auto 28px;max-width:520px">이미지 한 장으로 배경용 제품·소품을 분리하고, 3D asset, material, metadata, DCC export preset까지 하나의 package로 정리합니다.</p>
+      <button class="btn bp blg" onclick="nav('upload')">${I.up} 에셋 이미지 업로드</button>
+    </div>
+  </section>
+  <footer style="background:var(--bg);border-top:1px solid var(--b);padding:1.75rem;text-align:center">
+    <div style="font-family:'Syne',sans-serif;font-size:12px;color:var(--m)">© 2025 <span style="color:var(--a)">PRISM</span> SCAN — Background Product 3D Asset Generator</div>
+  </footer>
+  </div>`;
+}
+/* ══════════════ UPLOAD ══════════════ */
+function renderUpload(){
+  const hf=S.files.length>0,iv=false;
+  const selectedFile=S.files[0]||null;
+  const sz=S.files.reduce((a,f)=>a+f.size,0);
+  const imagePrompt=(S.imagePrompt||'').trim();
+  const recent=S.recent||[];
+  const banner=S.err?`<div class="api-banner err">${S.err}</div>`:S.info?`<div class="api-banner ok">${S.info}</div>`:'';
+  const recentCard=recent.length?`<div class="recent-card">
+      <div class="flex jb ic">
+        <div>
+          <div class="lbl">최근 작업</div>
+          <div style="font-size:12px;color:var(--m);margin-top:4px">새로고침 후에도 이어볼 수 있습니다.</div>
+        </div>
+        <button class="btn bg2 bsm" onclick="clearRecentJobs()">비우기</button>
+      </div>
+      <div class="recent-list">
+        ${recent.slice(0,6).map(item=>`<div class="recent-item">
+          <div class="recent-main">
+            <div class="recent-id">${item.job_id}</div>
+            <div class="recent-meta">image · ${item.status||'-'} · ${fmtRecentTime(item.updated_at)}</div>
+          </div>
+          <div class="recent-actions">
+            <button class="btn bg2 bsm" onclick="resumeRecent('${item.job_id}')">열기</button>
+            <button class="icon-btn" onclick="copyJobLink('${item.job_id}','image')" title="링크 복사">${I.sh}</button>
+            <button class="icon-btn" onclick="removeRecent('${item.job_id}')" title="삭제">${I.x}</button>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`:'';
+  return`${hdr('upload')}<div class="page up-page"><div class="inmd">
+    <div class="up-hdr"><div class="eyebrow">NEW BACKGROUND ASSET</div><h1 class="up-title d">배경 제품·소품 이미지 업로드</h1><p class="up-sub">이미지 1장으로 background prop/product asset package를 생성합니다.</p></div>
+    <div class="upload-shell">
+    <div class="upload-main">
+    <div class="dz${hf&&!iv?' has-file':''}" id="dz" ${hf&&!iv?'':`onclick="document.getElementById('fi').click()"`}
+      ondragover="event.preventDefault();this.classList.add('ov')"
+      ondragleave="this.classList.remove('ov')"
+      ondrop="onDrop(event)">
+      <div class="dsh"></div>
+      ${hf&&!iv?`
+        <img class="dz-preview-img" src="${selectedFile.dataUrl}" alt="선택한 이미지 미리보기">
+        <div class="dz-file-badge">
+          <div class="dz-file-name">${escAttr(selectedFile.name)}</div>
+          <div class="upload-file-meta">${(selectedFile.size/1024/1024).toFixed(1)} MB</div>
+        </div>`
+      :`
+        <div class="dz-icon">${I.up}</div>
+        <div class="dz-t">이미지 파일을 드래그하거나 클릭</div>
+        <div class="dz-s">JPG, PNG, WEBP — 배경용 제품·소품 이미지 1장</div>
+        <div class="fmts">${['JPG','PNG','WEBP','TIFF','RAW'].map(f=>`<span class="fmt">${f}</span>`).join('')}</div>`}
+    </div>
+    <input type="file" id="fi" accept="image/*" onchange="onFiles(this.files)"/>
+    ${hf&&!iv?`<div class="upload-file-actions">
+      <div class="upload-file-meta">선택한 이미지 1장으로 background asset 생성을 진행합니다.</div>
+      <div class="flex ic gap2">
+        <button class="btn bg2 bsm" onclick="document.getElementById('fi').click()" ${S.busy?'disabled':''}>다른 사진 선택하기</button>
+        <button class="btn bg2 bsm" onclick="clearF()" ${S.busy?'disabled':''}>선택 지우기</button>
+      </div>
+    </div>`:''}
+    ${hf?''
+    :`<div class="tips">
+      ${[['📸','제품·소품 1개 중심','배경에 놓을 대상을 프레임 중심에 크게 배치'],['💡','균일한 조명','그림자 없는 확산광으로 디테일 보존'],['🧩','Background prop 대상','close-up hero character보다 소품/제품/장식물에 최적화'],['🎯','초점 선명하게','흔들림 없이, 대상이 뚜렷하게 보이게 촬영']]
+      .map(([i,t,d])=>`<div class="tip"><div class="tip-ic">${i}</div><div class="tip-t">${t}</div><div class="tip-d">${d}</div></div>`).join('')}</div>`}
+    ${hf&&!iv?`<div class="upload-prompt-card">
+      <div class="upload-prompt-head">
+        <div>
+          <div class="seg-provider-pill">TEXT PROMPT</div>
+          <div class="upload-prompt-title mt1">배경 asset으로 만들 객체 이름</div>
+          <div class="upload-prompt-sub">예: snack package, bottle, chair, dinosaur fossil</div>
+        </div>
+      </div>
+      <div>
+        <input class="seg-text-input" value="${escAttr(S.imagePrompt||'')}" placeholder="예: snack package" oninput="setImagePrompt(this.value)" ${S.busy?'disabled':''}/>
+      </div>
+    </div>`:''}
+    ${banner}
+    ${S.sid?`<div class="ux-actions"><button class="btn bg2 bsm" onclick="copyShareLink()">현재 상태 링크 복사</button>${S.job?.status&&S.job.status!=='completed'?`<button class="btn bg2 bsm" onclick="retryCurrentJob()">현재 job 다시 조회</button>`:''}</div>`:''}
+    ${recentCard}
+    <div class="sub-area" style="margin-top:1.4rem">
+      <div class="sub-note"><strong>${S.files.length}</strong>개 파일 · image_to_3d · ${sz>0?(sz/1024/1024).toFixed(1)+' MB':'—'}${S.pendingUpload?.job_id?` · 업로드ID <span class="mono">${S.pendingUpload.job_id}</span>`:''}</div>
+      <button class="btn bg2 bsm" onclick="nav('landing')" ${S.busy?'disabled':''}>취소</button>
+      <button class="btn bg2${hf?'':' disabled'}" ${hf?`onclick="startProc()"`:''} ${hf&&(!S.busy)?'':'disabled'}>${S.busy?'처리 중...':'객체 선택 후 생성'}</button>
+      <button class="btn bp${hf?'':' disabled'}" ${hf?`onclick="startUploadedImageDirect()"`:''} ${hf&&(!S.busy)?'':'disabled'}>${S.busy?'처리 중...':`${I.zp} 업로드 이미지로 바로 생성`}</button>
+    </div>
+    </div>
+    ${renderDemoExamplesPanel()}
+    </div>
+  </div></div>`;
+}
+function renderPromptOverlay(){
+  const prompt=S.seg?.prompt||{};
+  const size=prompt.imageSize||{};
+  const w=Number(size.width||0);
+  const h=Number(size.height||0);
+  if(!w||!h)return '';
+  const dots=(prompt.points||[]).map((point,index)=>{
+    const isAdd=Number(point.label??1)>0;
+    return `<span class="seg-dot ${isAdd?'pos':'neg'}" title="${isAdd?'포함할 영역':'제거할 영역'} · 클릭하면 삭제" onclick="removeSegPromptPoint(event,${index})" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()" style="left:${(point.x/w)*100}%;top:${(point.y/h)*100}%">${isAdd?'+':'-'}</span>`;
+  }).join('');
+  const box=prompt.box;
+  const drag=prompt.drag;
+  const activeBox=box||drag?.box||null;
+  const boxEl=activeBox?(()=>{
+    const x1=Math.min(activeBox[0],activeBox[2]);
+    const y1=Math.min(activeBox[1],activeBox[3]);
+    const x2=Math.max(activeBox[0],activeBox[2]);
+    const y2=Math.max(activeBox[1],activeBox[3]);
+    return `<span class="seg-box" style="left:${(x1/w)*100}%;top:${(y1/h)*100}%;width:${((x2-x1)/w)*100}%;height:${((y2-y1)/h)*100}%"></span>`;
+  })():'';
+  return dots+boxEl;
+}
+
+function renderSegMapLayers(candidates,selectedId){
+  return (candidates||[]).map((candidate,index)=>{
+    const id=candidate.candidate_id;
+    const classes=['seg-mask-layer'];
+    if(id===selectedId)classes.push('is-selected');
+    return `<img class="${classes.join(' ')}" data-candidate-id="${id}" src="${candidate.mask_url}" alt="" decoding="async" style="filter:${colorFilter(index)};--seg-color:${segColor(index)}">`;
+  }).join('');
+}
+
+function renderSegmentSelect(){
+  const seg=S.seg||{};
+  const text=seg.text||{};
+  const candidates=seg.candidates||[];
+  const selected=selectedSegCandidate();
+  const enhance=seg.enhance||{};
+  const selectedEnhanced=String(selected?.candidate_id||'').endsWith('_enhanced')||String(selected?.pass_name||'').includes('enhanced');
+  const promptSrc=seg.inputUrl||S.files[0]?.dataUrl||'';
+  if(seg.loading){
+    const pct=Math.max(0,Math.min(99,Math.round(Number(seg.progress?.pct||8))));
+    return`${hdr('upload')}<div class="page proc-page"><div class="pbg"></div><div class="seg-loading-card">
+      <div class="eyebrow">OBJECT SELECTION</div>
+      <div class="seg-loading-title">Cutout 생성 중</div>
+      <div class="ppwrap" style="margin:1.5rem 0 .9rem">
+        <div class="ppl"><span class="ppt">AI cutout</span><span class="ppp d" id="seg-load-pct">${pct}%</span></div>
+        <div class="ppbar"><div class="ppfill" id="seg-load-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="pmeta mono">prompt segmentation</div>
+    </div></div>`;
+  }
+  const textDisabled=S.busy||text.loading||seg.loading;
+  const textPrompt=(text.prompt||'').trim();
+  const banner=seg.error
+    ?`<div class="api-banner err">객체 cutout 생성에 실패했습니다. 텍스트를 더 구체적으로 입력해 주세요.<br/><span class="mono">${seg.error}</span></div>`
+    :`<div class="api-banner ok">이미 alpha object 이미지라면 바로 생성하고, 일반 사진이라면 텍스트로 원하는 객체를 먼저 분리할 수 있습니다.</div>`;
+  const previewHtml=text.loading
+    ?`<div class="seg-empty">텍스트로 객체를 찾는 중입니다.</div>`
+    :renderSelectedPreviewHtml(selected);
+  return`${hdr('upload')}<div class="page seg-page"><div class="inner">
+    <div class="up-hdr"><div class="eyebrow">INPUT ROUTE</div><h1 class="up-title d">3D 입력 방식 선택</h1><p class="up-sub">업로드 이미지를 그대로 TRELLIS.2에 보내거나, 텍스트 prompt로 object-only PNG를 만든 뒤 생성할 수 있습니다.</p></div>
+    ${banner}
+    <div class="seg-layout mt3">
+      <section class="seg-panel">
+        <div class="seg-ai-card">
+          <div class="flex jb ic fw gap3">
+            <div>
+              <div class="seg-provider-pill">TEXT PROMPT</div>
+              <div class="seg-meta mt1">${text.loading?'이미지 안의 객체를 찾고 있습니다.':'원하는 객체 이름을 입력하면 AI가 먼저 자동으로 누끼를 만듭니다.'}</div>
+              ${text.error?`<div class="seg-meta mt1" style="color:#fca5a5">${text.error}</div>`:''}
+            </div>
+          </div>
+          <div class="seg-ai-row">
+            <input class="seg-text-input" value="${escAttr(text.prompt||'')}" placeholder="예: snack package, bottle, chair" oninput="setSegTextPrompt(this.value)" onkeydown="segTextPromptKey(event)" ${textDisabled?'disabled':''}/>
+            <button class="btn bp" onclick="generateTextPromptCandidate()" ${textDisabled||!textPrompt?'disabled':''}>${text.loading?'AI로 객체 찾는 중':'AI로 객체 찾기'}</button>
+          </div>
+        </div>
+        <div class="seg-toolbar">
+          <div>
+            <div class="lbl">Cutout 확인</div>
+            <div class="seg-meta mt1">${selected?'아래 투명 PNG가 background asset 생성 단계로 전달됩니다.':'배경 asset으로 만들 객체 이름을 입력하면 자동으로 cutout을 생성합니다.'}</div>
+          </div>
+          <div class="seg-actions">
+            <button class="btn bg2 bsm" onclick="nav('upload')" ${S.busy?'disabled':''}>업로드로 돌아가기</button>
+          </div>
+        </div>
+        <div class="seg-map-work">
+          <div class="seg-map-stage">
+            <div class="seg-toolbar" style="border-bottom:1px solid var(--b);border-top:0">
+              <div><div class="lbl">원본 이미지</div><div class="seg-meta mt1">이 이미지에서 텍스트에 해당하는 객체를 자동으로 분리합니다.</div></div>
+            </div>
+            ${promptSrc?`<div class="seg-prompt-canvas"><img id="seg-prompt-img" src="${promptSrc}" alt="source image"></div>`:`<div class="seg-empty">원본 이미지가 없습니다.</div>`}
+          </div>
+          <div class="seg-picked">
+            <div>
+              <div class="seg-manual-title">3D에 들어갈 이미지</div>
+              <div class="seg-meta mt1" id="seg-picked-meta">${selected?'이 투명 PNG를 3D 생성 단계로 전달할 수 있습니다.':'cutout 없이 업로드 이미지를 바로 쓰거나, 객체 이름을 입력해 cutout을 만들 수 있습니다.'}</div>
+            </div>
+            ${selected?`<div class="seg-cutout-callout">아래 이미지가 최종 3D 입력입니다.<span>배경이나 원하지 않는 물체가 보이면 객체 이름을 더 구체적으로 바꿔 다시 만들어 주세요.</span></div>`:''}
+              <div class="seg-picked-preview${selected?' is-ready':''}" id="seg-picked-preview">
+                ${previewHtml}
+            </div>
+            <div class="seg-picked-note" id="seg-picked-note">${selectedPreviewNote(selected)}</div>
+            <div class="seg-manual-actions">
+              <button class="btn bg2 bfull" id="seg-enhance-selected" onclick="enhanceSelectedCutout()" ${S.busy||enhance.loading||!selected||selectedEnhanced?'disabled':''}>${enhance.loading?'해상도 강화 중':selectedEnhanced?'해상도 강화 완료':'해상도 강화하기'}</button>
+              ${enhance.error?`<div class="seg-meta mt1" style="color:#fca5a5">${escAttr(enhance.error)}</div>`:''}
+              <button class="btn bp bfull" id="seg-start-selected" onclick="startSelectedObject()" ${S.busy||!selected?'disabled':''}>선택한 객체로 에셋 생성</button>
+              <button class="btn bg2 bfull" onclick="startOriginalImage()" ${S.busy?'disabled':''}>업로드 이미지로 바로 생성</button>
+            </div>
+          </div>
+        </div>
+        ${candidates.length?`<div class="seg-toolbar"><div><div class="lbl">최근 cutout</div><div class="seg-meta mt1">${candidates.length}개 prompt 결과가 준비되어 있습니다. 현재 선택된 cutout만 3D 생성에 사용됩니다.</div></div></div>`:''}
+      </section>
+    </div>
+  </div></div>`;
+}
+/* ══════════════ PROCESSING ══════════════ */
+function renderProcessing(){
+  const{pct,si,label,desc,failed}=S.proc;
+  const steps=activeSteps();
+  const job=S.job||{};
+  const hint=failed?failureHint(job):'';
+  const canOpenResult=Boolean(S.sid&&(job.status==='completed'||pct>=98));
+  return`${hdr('')}<div class="page proc-page"><div class="pbg"></div><div class="pin">
+    <div class="pspin"><div class="pring pr1"></div><div class="pring pr2"></div><div class="pring pr3"></div><div class="pc">⚡</div></div>
+    <div class="pt d">${failed?'처리 중 오류가 발생했습니다':'3D 모델 생성 중'}</div>
+    <div class="ps" id="proc-desc">${desc||'AI 처리 상태를 불러오는 중입니다.'}</div>
+    <div class="ppwrap">
+      <div class="ppl"><span class="ppt">전체 진행률</span><span class="ppp d" id="ppct">${pct}%</span></div>
+      <div class="ppbar"><div class="ppfill" id="ppf" style="width:${pct}%"></div></div>
+    </div>
+    <div class="psteps" id="psteps">
+      ${steps.map((st,i)=>{const st2=i<si?'done':i===si?(failed?'wait':'act'):'wait';return`<div class="pstep ${st2}"><div class="psico">${st2==='done'?I.ck:st.i}</div><div class="psinfo"><div class="psn">${st.l}</div><div class="psd">${st.s}</div></div><div class="pss">${st2==='done'?'완료':st2==='act'?'처리 중':''}</div></div>`}).join('')}
+    </div>
+    <div class="api-banner ${failed?'err':'ok'}" id="proc-label" style="margin-top:.85rem">${label||'진행 중'}</div>
+    ${hint?`<div class="api-banner err" style="margin-top:.55rem">${hint}</div>`:''}
+    <div class="pmeta mono">job_id: ${S.sid||'-'} · status: ${job.status||'-'}</div>
+    <div class="ux-actions" style="justify-content:center">
+      <button class="btn bg2 bsm" onclick="copyShareLink()">링크 복사</button>
+      <button class="btn bg2 bsm" onclick="retryCurrentJob()">다시 조회</button>
+      ${canOpenResult?`<button class="btn bp bsm" onclick="openCompletedResult()" ${S.busy?'disabled':''}>결과 열기</button>`:''}
+      <button class="btn bg2 bsm" onclick="nav('upload')">업로드로 이동</button>
+    </div>
+    ${failed?`<div class="sub-area" style="margin-top:.6rem;padding-top:0;border-top:none;justify-content:center"><button class="btn bp" onclick="retryCurrentJob()">재시도</button></div>`:''}
+    ${S.files.length>0?`<div class="lbl mb2">입력 파일</div><div class="pfrow">${S.files.slice(0,8).map(f=>`<div class="pft"><img src="${f.dataUrl}"></div>`).join('')}${S.files.length>8?`<div class="pft" style="display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--m)">+${S.files.length-8}</div>`:''}</div>`:''}
+  </div></div>`;
+}
+function formatNum(value){
+  const n=Number(value);
+  return Number.isFinite(n)?n.toLocaleString('ko-KR'):'-';
+}
+function formatBytes(value){
+  const n=Number(value);
+  if(!Number.isFinite(n)||n<=0)return '-';
+  const units=['B','KB','MB','GB'];
+  let size=n;
+  let unit=0;
+  while(size>=1024&&unit<units.length-1){size/=1024;unit++;}
+  return `${size.toFixed(size>=10||unit===0?0:1)} ${units[unit]}`;
+}
+function qualityPayload(result,meta,job){
+  return result.quality||meta.quality||job.quality||{};
+}
+function qualityOk(quality,checks,names,fallback){
+  const hasQuality=quality&&Object.keys(quality).length>0;
+  if(!hasQuality)return fallback;
+  return names.every((name)=>checks[name]!==false);
+}
+function qualitySummary(result,meta,job,meshUrl,thumbUrl){
+  const quality=qualityPayload(result,meta,job);
+  const checks=quality.checks||{};
+  const metrics=quality.metrics||{};
+  const status=String(result.quality_status||quality.status||job.quality_status||'').toLowerCase();
+  const usable=quality.usable!==false&&(quality.usable===true||status==='passed'||!!meshUrl);
+  const needsReview=!usable||status==='failed';
+  const rows=[
+    {
+      title:'3D 파일',
+      ok:qualityOk(quality,checks,['mesh_exists','mesh_non_empty','mesh_loadable'],!!meshUrl),
+      desc:meshUrl?'모델 파일이 생성되어 브라우저에서 열립니다.':'아직 다운로드 가능한 3D 파일이 없습니다.'
+    },
+    {
+      title:'형태 안정성',
+      ok:qualityOk(quality,checks,['bbox_valid','component_count_ok','largest_component_ratio_ok'],usable),
+      desc:qualityOk(quality,checks,['component_count_ok','largest_component_ratio_ok'],usable)?'큰 덩어리 하나로 잘 묶여 있어 사용하기 좋습니다.':'분리된 조각이나 비정상적인 형태가 있을 수 있습니다.'
+    },
+    {
+      title:'디테일',
+      ok:qualityOk(quality,checks,['vertex_count_ok'],usable),
+      desc:metrics.vertex_count?`약 ${formatNum(metrics.vertex_count)}개 점으로 구성되어 있습니다.`:'기본 디테일 검사를 확인했습니다.'
+    },
+    {
+      title:'미리보기',
+      ok:qualityOk(quality,checks,['thumbnail_exists'],!!thumbUrl),
+      desc:thumbUrl?'썸네일 이미지가 준비되어 결과를 빠르게 확인할 수 있습니다.':'썸네일 없이 3D 뷰어로만 확인할 수 있습니다.'
+    }
+  ];
+  return{
+    quality,
+    checks,
+    metrics,
+    usable,
+    needsReview,
+    label:needsReview?'확인 필요':'사용 가능',
+    headline:meshUrl?'3D 모델이 준비됐습니다':'결과 파일을 준비 중입니다',
+    desc:meshUrl?'마우스로 모델을 돌려보고, 마음에 들면 3D 파일을 다운로드하세요.':'잠시 뒤 다시 조회하거나 새 스캔을 시작해 주세요.',
+    rows
+  };
+}
+function canReuseImageInput(){
+  return Boolean(S.files?.[0]?.file);
+}
+function defaultExportItems(meshUrl){
+  return[
+    {format:'glb',label:'GLB',url:meshUrl,file_name:'object_mesh.glb',available:!!meshUrl,generated:!!meshUrl,tool_hint:'웹 뷰어, Blender, Unity, Unreal',note:'텍스처가 포함된 기본 결과 파일입니다.'},
+    {format:'gltf',label:'glTF',available:true,generated:false,tool_hint:'three.js, Babylon.js, 웹/게임 엔진',note:'gltf, bin, texture 파일을 ZIP으로 묶어 제공합니다.'},
+    {format:'obj',label:'OBJ',available:true,generated:false,tool_hint:'Blender, Maya, Cinema 4D, Unity',note:'obj, mtl, texture 파일을 함께 묶은 호환 패키지입니다.'},
+    {format:'fbx',label:'FBX',available:false,generated:false,tool_hint:'Maya, 3ds Max, Unity, Unreal',note:'FBX 변환 도구를 확인 중입니다.',reason:'FBX 변환에는 서버에 Blender CLI가 필요합니다.'},
+    {format:'stl',label:'STL',available:true,generated:false,tool_hint:'Cura, PrusaSlicer, Bambu Studio',note:'3D 프린팅용 geometry 포맷입니다. 색상과 텍스처는 포함되지 않습니다.'},
+    {format:'3mf',label:'3MF',available:true,generated:false,tool_hint:'Bambu Studio, PrusaSlicer, OrcaSlicer',note:'3D 프린팅 툴에서 쓰기 좋은 패키지형 geometry 포맷입니다.'}
+  ];
+}
+function exportItemsForDownload(meshUrl){
+  const state=S.exports||{};
+  return Array.isArray(state.items)&&state.items.length
+    ?state.items.filter((item)=>['glb','web','blender','maya','unreal','alembic','obj_legacy','gltf','obj','fbx','stl','3mf'].includes(item.format))
+    :defaultExportItems(meshUrl);
+}
+function selectedExportItem(meshUrl){
+  const items=exportItemsForDownload(meshUrl);
+  const selected=S.exports?.selectedFormat||'glb';
+  return items.find((item)=>item.format===selected)||items[0]||null;
+}
+function renderDownloadPicker(meshUrl){
+  const items=exportItemsForDownload(meshUrl);
+  const selected=selectedExportItem(meshUrl);
+  const busy=!!(selected&&S.exports?.busyFormat===selected.format);
+  const progress=busy?Math.max(0,Math.min(100,Math.round(S.exports?.downloadProgress??0))):0;
+  const buttonText=busy?'파일 다운중':'파일 다운로드';
+  const disabled=!selected||busy||selected.available===false;
+  const helperText=selected?.available===false
+    ?escAttr(selected.reason||selected.note||'이 포맷은 현재 서버에서 변환할 수 없습니다.')
+    :`${escAttr(selected?.tool_hint||'필요한 툴에서 사용할 수 있는 포맷입니다.')}<br>${escAttr(selected?.note||'')}`;
+  return`<div class="download-picker" data-download-picker>
+    <select class="format-select" onchange="setExportFormat(this.value)" ${S.exports?.busyFormat?'disabled':''}>
+      ${items.map((item)=>`<option value="${item.format}" ${selected?.format===item.format?'selected':''}>${escAttr(item.label||item.format.toUpperCase())}</option>`).join('')}
+    </select>
+    ${busy?`<div class="download-progress" data-download-progress><span>파일 다운중</span><span data-download-pct>${progress}%</span><div class="download-track"><div class="download-fill" data-download-fill style="width:${progress}%"></div></div></div>`:`<div class="download-helper"><strong>${escAttr(selected?.label||'3D 파일')}</strong> · ${helperText}</div>`}
+    <button class="btn bp bfull" onclick="downloadSelectedFormat()" ${disabled?'disabled':''}>${I.dl} ${selected?.available===false?'변환 준비 필요':buttonText}</button>
+    ${S.exports?.error?`<div class="api-banner err">${escAttr(S.exports.error)}</div>`:''}
+  </div>`;
+}
+function asFiniteNumber(value,fallback){
+  if(value===null||value===undefined||value==='')return fallback;
+  const n=Number(value);
+  return Number.isFinite(n)?n:fallback;
+}
+function clamp(value,min,max){return Math.max(min,Math.min(max,value))}
+function environmentPresets(material={}){
+  const raw=Array.isArray(material.environmentPresets)?material.environmentPresets:[];
+  const defaults=[
+    {id:'neutral',label:'Neutral',viewerValue:'neutral',viewerAvailable:true},
+    {id:'legacy',label:'Studio',viewerValue:'legacy',viewerAvailable:true}
+  ];
+  const presets=raw.length?raw:defaults;
+  return presets
+    .filter((preset)=>preset&&preset.id&&preset.viewerAvailable!==false)
+    .map((preset)=>({
+      id:String(preset.id),
+      label:String(preset.label||preset.id),
+      viewerValue:preset.viewerValue||preset.environmentImage||preset.id,
+      previewImage:preset.previewImage||''
+    }));
+}
+function environmentPreset(material={},id=''){
+  const presets=environmentPresets(material);
+  return presets.find((preset)=>preset.id===id)||presets[0]||{id:'neutral',label:'Neutral',viewerValue:'neutral'};
+}
+function environmentLabel(material={},id=''){
+  return environmentPreset(material,id).label||id||'Neutral';
+}
+function environmentViewerValue(material={},id=''){
+  const raw=environmentPreset(material,id).viewerValue||'neutral';
+  if(raw==='neutral'||raw==='legacy')return raw;
+  return materialTextureUrl(raw);
+}
+function materialDefaults(material={}){
+  const hasMetallicTexture=!!material.metallicTexture;
+  const viewTransform=material.colorManagement?.displayTransform||material.displayTransform||'ACES 1.0 SDR Video';
+  const envPresets=environmentPresets(material);
+  const defaultEnvironment=String(material.environmentPreset||material.defaultEnvironmentPreset||envPresets[0]?.id||'neutral');
+  return{
+    assetKey:'',
+    baseColor:normalizeHexColor(material.viewerBaseTint||material.baseColorFactorHex||'#ffffff','#ffffff'),
+    roughness:clamp(asFiniteNumber(material.viewerRoughnessValue??material.roughnessFactor??material.roughnessValue,1),0,1),
+    metallic:clamp(asFiniteNumber(material.viewerMetallicValue??material.metallicFactor??material.metallicValue,hasMetallicTexture?1:0),0,1),
+    transmission:clamp(asFiniteNumber(material.transmissionValue,0),0,1),
+    ior:clamp(asFiniteNumber(material.iorValue,1.5),1,2.5),
+    sssWeight:clamp(asFiniteNumber(material.subsurfaceWeight,0),0,1),
+    sssColor:normalizeHexColor(material.subsurfaceColorHex||'#ffffff','#ffffff'),
+    displacementEnabled:!!material.displacementTexture,
+    displacementScale:clamp(asFiniteNumber(material.displacementScale,0),0,0.1),
+    alphaCutout:String(material.alphaMode||'').toUpperCase()==='MASK',
+    alphaCutoff:clamp(asFiniteNumber(material.alphaCutoff,0.5),0,1),
+    exposureEV:clamp(asFiniteNumber(material.viewerExposureEV,0),-3,3),
+    hdriRotation:clamp(asFiniteNumber(material.hdriRotationDegrees,0),0,360),
+    colorManagement:viewTransform.includes('Linear')?'linear':viewTransform.includes('sRGB')?'srgb':'aces',
+    channelSolo:'beauty',
+    environment:envPresets.some((preset)=>preset.id===defaultEnvironment)?defaultEnvironment:(envPresets[0]?.id||'neutral')
+  };
+}
+function ensureViewerMaterialControls(material,assetKey){
+  const key=assetKey||'viewer_asset';
+  if(!S.viewer.mat||S.viewer.mat.assetKey!==key){
+    S.viewer.mat={...materialDefaults(material),assetKey:key};
+  }
+  return S.viewer.mat;
+}
+function viewerModelAttrs(controls,material={}){
+  const c=controls||materialDefaults();
+  return [
+    'camera-controls',
+    'touch-action="pan-y"',
+    `exposure="${evToExposure(c.exposureEV).toFixed(3)}"`,
+    `environment-image="${escAttr(environmentViewerValue(material,c.environment))}"`,
+    `orientation="0deg ${formatFloat(c.hdriRotation,1)}deg 0deg"`,
+    `tone-mapping="${escAttr(toneMappingForColorManagement(c.colorManagement))}"`,
+    'interaction-prompt="none"',
+    'camera-orbit="0deg 75deg 105%"',
+    'field-of-view="30deg"',
+    'min-field-of-view="20deg"',
+    'max-field-of-view="60deg"'
+  ].join(' ');
+}
+function clayModelAttrs(){
+  return [
+    'camera-controls',
+    'touch-action="pan-y"',
+    'exposure="0.950"',
+    'environment-image="neutral"',
+    'tone-mapping="aces"',
+    'interaction-prompt="none"',
+    'camera-orbit="0deg 75deg 105%"',
+    'field-of-view="30deg"',
+    'min-field-of-view="20deg"',
+    'max-field-of-view="60deg"'
+  ].join(' ');
+}
+function meshMetricRows(metrics={},q={}){
+  const extents=Array.isArray(metrics.bbox_extents)
+    ?metrics.bbox_extents.map((value)=>formatFloat(value,3)).join(' × ')
+    :'-';
+  return [
+    ['위상',metrics.face_count?'삼각형 면':'-'],
+    ['Surface / Face',metrics.face_count?`${formatNum(metrics.face_count)}개`:'-'],
+    ['Vertex',metrics.vertex_count?`${formatNum(metrics.vertex_count)}개`:'-'],
+    ['Mesh Island',metrics.component_count?`${formatNum(metrics.component_count)}개`:'-'],
+    ['Bounding Box',extents&&extents!=='-'?`${extents} m`:'-'],
+    ['파일 크기',formatBytes(metrics.mesh_size_bytes)],
+    ['출력 가능성',q.usable?'가능':'확인 필요']
+  ];
+}
+function renderMeshStatsFloat(metrics={},q={}){
+  const rows=[
+    ['위상','삼각형 면'],
+    ['면',metrics.face_count?formatNum(metrics.face_count):'-'],
+    ['정점 수',metrics.vertex_count?formatNum(metrics.vertex_count):'-']
+  ].filter(([,value])=>value&&value!=='-');
+  return`<div class="mesh-stats-float">
+    <div class="mesh-stats-card">
+      ${rows.map(([label,value])=>`<div class="mesh-stats-row"><span>${escAttr(label)}</span><span>${escAttr(value)}</span></div>`).join('')}
+    </div>
+    <div class="mesh-export-card ${q.usable?'':'warn'}"><span>출력 가능성</span><span class="mesh-check">${q.usable?'✓':'!'}</span></div>
+  </div>`;
+}
+function renderMeshInfoPanel(q={}){
+  const metrics=q.metrics||{};
+  const rows=meshMetricRows(metrics,q)
+    .filter(([,value])=>value&&value!=='-')
+    .map(([label,value])=>`<div class="metric-card"><div class="metric-label">${escAttr(label)}</div><div class="metric-value">${escAttr(value)}</div></div>`)
+    .join('');
+  return`
+    <div class="friendly-card">
+      <div class="friendly-state ${q.usable?'ok':'warn'}"><span class="state-dot"></span>${q.usable?'Mesh 확인 완료':'Mesh 확인 필요'}</div>
+      <div class="friendly-copy">왼쪽은 회색 clay mesh, 오른쪽은 TRELLIS.2 texture 결과입니다.</div>
+    </div>
+    <div class="isec">Mesh Stats</div>
+    ${rows?`<div class="metric-grid">${rows}</div>`:`<div class="friendly-copy">표시할 mesh 정보가 아직 없습니다.</div>`}
+  `;
+}
+function renderMeshCompare(meshSrc,modelAttrs,q){
+  return`<div class="mesh-compare">
+    <div class="mesh-pane clay">
+      <model-viewer class="mesh-clay-model" src="${escAttr(meshSrc)}" ${clayModelAttrs()}></model-viewer>
+      ${renderMeshStatsFloat(q.metrics||{},q)}
+    </div>
+    <div class="mesh-pane result">
+      <model-viewer class="result-model mesh-result-model" src="${escAttr(meshSrc)}" ${modelAttrs}></model-viewer>
+    </div>
+  </div>`;
+}
+function renderMeshViewer(meshSrc,q){
+  return`<div class="mesh-full">
+    <model-viewer class="mesh-clay-model" src="${escAttr(meshSrc)}" ${clayModelAttrs()}></model-viewer>
+    ${renderMeshStatsFloat(q.metrics||{},q)}
+  </div>`;
+}
+function viewerTabHash({sceneTab=S.viewer?.sceneTab||'viewer',infoTab=S.viewer?.tab||'result'}={}){
+  const params=new URLSearchParams();
+  params.set('scene',sceneTab);
+  params.set('tab',infoTab);
+  return`#${params.toString()}`;
+}
+function renderViewerModeTabs(active='viewer'){
+  return`<div class="viewer-mode-tabs">
+    ${[['viewer','Viewer'],['mesh','Mesh Viewer']].map(([id,label])=>`<a class="viewer-mode-tab${active===id?' on':''}" href="${viewerTabHash({sceneTab:id})}" data-scene-tab="${id}" onclick="return setSceneTab('${id}')">${label}</a>`).join('')}
+  </div>`;
+}
+function compactValue(value){
+  if(value===null||value===undefined||value==='')return '-';
+  if(Array.isArray(value))return value.length?value.join(', '):'-';
+  if(typeof value==='object')return JSON.stringify(value);
+  return String(value);
+}
+function renderInfoRows(rows){
+  const visible=rows.filter(([,value])=>compactValue(value)!=='-');
+  if(!visible.length)return'<div class="friendly-copy">표시할 정보가 아직 없습니다.</div>';
+  return`<div class="quality-list">${visible.map(([title,value])=>`
+    <div class="quality-item">
+      <div class="quality-icon">i</div>
+      <div><div class="quality-title">${escAttr(title)}</div><div class="quality-desc">${escAttr(compactValue(value))}</div></div>
+    </div>`).join('')}</div>`;
+}
+function formatFloat(value,decimals=2){return asFiniteNumber(value,0).toFixed(decimals)}
+function evToExposure(value){return Math.pow(2,clamp(asFiniteNumber(value,0),-3,3))}
+function toneMappingForColorManagement(value){
+  if(value==='linear')return 'none';
+  if(value==='srgb')return 'neutral';
+  return 'aces';
+}
+function numericLabel(key,value){
+  if(key==='exposureEV')return `${asFiniteNumber(value,0)>=0?'+':''}${formatFloat(value)} EV`;
+  if(key==='hdriRotation')return `${formatFloat(value,0)}°`;
+  if(key==='ior')return formatFloat(value,2);
+  if(key==='displacementScale')return formatFloat(value,3);
+  return formatFloat(value);
+}
+function renderRangeControl(key,label,min,max,step,value){
+  const numberValue=formatFloat(value);
+  return`<label class="mat-control">
+    <div class="mat-control-top"><span class="mat-control-name">${escAttr(label)}</span><span class="mat-control-value" data-mat-value="${escAttr(key)}">${escAttr(numericLabel(key,value))}</span></div>
+    <div class="mat-control-main">
+      <input type="range" min="${min}" max="${max}" step="${step}" value="${escAttr(value)}" data-mat-input="${escAttr(key)}" oninput="setViewerMaterialControl('${escAttr(key)}',this.value)">
+      <input class="mat-number" type="number" min="${min}" max="${max}" step="${step}" value="${escAttr(numberValue)}" data-mat-input="${escAttr(key)}" oninput="setViewerMaterialControl('${escAttr(key)}',this.value)">
+    </div>
+  </label>`;
+}
+function renderColorControl(key,label,value){
+  return`<label class="mat-control">
+    <div class="mat-control-top"><span class="mat-control-name">${escAttr(label)}</span><span class="mat-control-value" data-mat-value="${escAttr(key)}">${escAttr(value)}</span></div>
+    <div class="mat-color-row">
+      <input type="color" value="${escAttr(value)}" data-mat-input="${escAttr(key)}" oninput="setViewerMaterialControl('${escAttr(key)}',this.value)">
+      <input type="text" value="${escAttr(value)}" data-mat-input="${escAttr(key)}" oninput="setViewerMaterialControl('${escAttr(key)}',this.value)">
+    </div>
+  </label>`;
+}
+function renderSelectControl(key,label,value,options){
+  return`<label class="mat-control">
+    <div class="mat-control-top"><span class="mat-control-name">${escAttr(label)}</span><span class="mat-control-value" data-mat-value="${escAttr(key)}">${escAttr(value)}</span></div>
+    <select class="mat-select" data-mat-input="${escAttr(key)}" onchange="setViewerMaterialControl('${escAttr(key)}',this.value)">
+      ${options.map(([option,labelText])=>`<option value="${escAttr(option)}" ${value===option?'selected':''}>${escAttr(labelText)}</option>`).join('')}
+    </select>
+  </label>`;
+}
+function renderToggleControl(key,label,value){
+  return`<div class="mat-control">
+    <div class="mat-control-top"><span class="mat-control-name">${escAttr(label)}</span><span class="mat-control-value" data-mat-value="${escAttr(key)}">${value?'ON':'OFF'}</span></div>
+    <button class="mat-toggle${value?' on':''}" data-mat-input="${escAttr(key)}" onclick="setViewerMaterialControl('${escAttr(key)}',${value?'false':'true'})">${value?'Enabled':'Disabled'}</button>
+  </div>`;
+}
+function renderMaterialPanel(material,controls){
+  const c=controls||materialDefaults(material);
+  const envButtons=environmentPresets(material).map((preset)=>`<button class="env-option${c.environment===preset.id?' on':''}" data-env="${escAttr(preset.id)}" onclick="setViewerMaterialControl('environment','${escAttr(preset.id)}')">${escAttr(preset.label)}</button>`).join('');
+  return`
+    <div class="mat-live">
+      <div class="mat-live-head">
+        <div class="mat-live-title"><span class="state-dot"></span>Lookdev Controls</div>
+        <div class="mat-live-copy">PBR · HDRI · AOV</div>
+      </div>
+      <div class="mat-section-title">Surface</div>
+      ${renderColorControl('baseColor','Base Tint',c.baseColor)}
+      ${renderRangeControl('roughness','Roughness',0,1,0.01,c.roughness)}
+      ${renderRangeControl('metallic','Metallic',0,1,0.01,c.metallic)}
+      ${renderRangeControl('transmission','Transmission',0,1,0.01,c.transmission)}
+      ${renderRangeControl('ior','IOR',1,2.5,0.01,c.ior)}
+      ${renderToggleControl('alphaCutout','Alpha Cutout',c.alphaCutout)}
+      ${c.alphaCutout?renderRangeControl('alphaCutoff','Alpha Cutoff',0,1,0.01,c.alphaCutoff):''}
+      <div class="mat-section-title">Subsurface</div>
+      ${renderRangeControl('sssWeight','SSS Weight',0,1,0.01,c.sssWeight)}
+      ${renderColorControl('sssColor','SSS Color',c.sssColor)}
+      <div class="mat-section-title">Displacement</div>
+      ${renderToggleControl('displacementEnabled','Displacement',c.displacementEnabled)}
+      ${renderRangeControl('displacementScale','Displacement Scale',0,0.1,0.001,c.displacementScale)}
+      <div class="mat-section-title">Scene / Debug</div>
+      ${renderRangeControl('exposureEV','Exposure',-3,3,0.01,c.exposureEV)}
+      ${renderRangeControl('hdriRotation','HDRI Rotation',0,360,1,c.hdriRotation)}
+      <div class="mat-control">
+        <div class="mat-control-top"><span class="mat-control-name">Environment</span><span class="mat-control-value" data-mat-value="environment">${escAttr(environmentLabel(material,c.environment))}</span></div>
+        <div class="env-options">
+          ${envButtons}
+        </div>
+      </div>
+      ${renderSelectControl('colorManagement','View Transform',c.colorManagement,[['aces','ACES SDR'],['srgb','sRGB'],['linear','Linear Raw']])}
+      ${renderSelectControl('channelSolo','Channel Solo',c.channelSolo,[['beauty','Beauty'],['baseColor','Base Color'],['roughness','Roughness'],['metallic','Metallic'],['normal','Normal']])}
+      <button class="mat-reset" onclick="resetViewerMaterialControls()">Reset Lookdev View</button>
+    </div>`;
+}
+function materialRootUrl(){
+  const result=S.result||{};
+  const job=S.job||{};
+  const url=result.material_url||job?.result?.material_url||'';
+  if(!url)return '';
+  const built=buildUrl(url);
+  const absolute=new URL(built,window.location.href).toString();
+  return absolute.slice(0,absolute.lastIndexOf('/')+1);
+}
+function materialTextureUrl(path){
+  if(!path)return '';
+  const raw=String(path);
+  if(raw.startsWith('http://')||raw.startsWith('https://'))return raw;
+  const root=materialRootUrl();
+  return root?new URL(raw,root).toString():new URL(buildUrl(raw),window.location.href).toString();
+}
+async function cachedViewerTexture(model,url){
+  if(!url||!model?.createTexture)return null;
+  if(!VIEWER_TEXTURE_CACHE.has(url)){
+    VIEWER_TEXTURE_CACHE.set(url,model.createTexture(url).catch(()=>null));
+  }
+  return VIEWER_TEXTURE_CACHE.get(url);
+}
+function setTextureSlot(slot,texture){
+  if(!slot||!texture)return false;
+  try{
+    if(typeof slot.setTexture==='function'){slot.setTexture(texture);return true;}
+  }catch{}
+  return false;
+}
+function clearTextureSlot(slot){
+  if(!slot)return false;
+  try{
+    if(typeof slot.setTexture==='function'){slot.setTexture(null);return true;}
+    if('texture' in slot){slot.texture=null;return true;}
+  }catch{}
+  return false;
+}
+function applyClayMeshMaterial(model){
+  const materials=model?.model?.materials||[];
+  if(!materials.length)return;
+  for(const material of materials){
+    const pbr=material.pbrMetallicRoughness;
+    clearTextureSlot(pbr?.baseColorTexture);
+    clearTextureSlot(pbr?.metallicRoughnessTexture);
+    clearTextureSlot(material.normalTexture);
+    clearTextureSlot(material.occlusionTexture);
+    clearTextureSlot(material.emissiveTexture);
+    if(pbr?.setBaseColorFactor)try{pbr.setBaseColorFactor([0.56,0.57,0.56,1])}catch{}
+    if(pbr?.setRoughnessFactor)try{pbr.setRoughnessFactor(0.88)}catch{}
+    if(pbr?.setMetallicFactor)try{pbr.setMetallicFactor(0)}catch{}
+    if(material.setAlphaMode)try{material.setAlphaMode('OPAQUE')}catch{}
+    setFirstAvailable(material,['setEmissiveFactor','emissiveFactor'],[0,0,0]);
+  }
+}
+async function applyViewerPackageTextures(model,materialPackage,assetKey){
+  if(!model?.model?.materials?.length||!model.createTexture)return;
+  const baseUrl=materialTextureUrl(materialPackage.baseColorTexture);
+  const normalUrl=materialPackage.normalSource==='glb_normalTexture'?materialTextureUrl(materialPackage.normalTexture):null;
+  const applyKey=[assetKey,baseUrl,normalUrl].filter(Boolean).join('|');
+  if(!baseUrl||VIEWER_TEXTURE_APPLY_KEY===applyKey)return;
+  VIEWER_TEXTURE_APPLY_KEY=applyKey;
+  const baseTexture=await cachedViewerTexture(model,baseUrl);
+  const normalTexture=normalUrl?await cachedViewerTexture(model,normalUrl):null;
+  for(const material of model.model.materials){
+    const pbr=material.pbrMetallicRoughness;
+    setTextureSlot(pbr?.baseColorTexture,baseTexture);
+    setTextureSlot(material.normalTexture,normalTexture);
+  }
+}
+function channelSoloInfo(material,channel){
+  const map={
+    baseColor:{label:'Base Color',texture:material.baseColorTexture,value:material.baseColorValue},
+    roughness:{label:'Roughness',texture:material.roughnessTexture,value:material.roughnessValue},
+    metallic:{label:'Metallic',texture:material.metallicTexture,value:material.metallicValue},
+    normal:{label:'Normal',texture:material.normalTexture,value:material.normalSource}
+  };
+  return map[channel]||null;
+}
+function renderChannelSoloOverlay(material,controls){
+  const channel=controls?.channelSolo||'beauty';
+  if(channel==='beauty')return '';
+  const info=channelSoloInfo(material||{},channel);
+  if(!info)return '';
+  const textureUrl=materialTextureUrl(info.texture);
+  const fallback=info.value!==null&&info.value!==undefined?`Scalar: ${compactValue(info.value)}`:'Map not available';
+  return`<div class="channel-overlay">
+    <div class="channel-overlay-head">
+      <div class="channel-overlay-title">${escAttr(info.label)}</div>
+      <div class="channel-overlay-kind">SOLO</div>
+    </div>
+    <div class="channel-overlay-preview">
+      ${textureUrl?`<img src="${escAttr(textureUrl)}" alt="${escAttr(info.label)} texture">`:`<div class="channel-overlay-empty">${escAttr(fallback)}</div>`}
+    </div>
+  </div>`;
+}
+function firstText(value){
+  if(Array.isArray(value))return firstText(value[0]);
+  if(value&&typeof value==='object')return value.name||value.type||value.description||'';
+  return String(value??'').trim();
+}
+function hasGenericMetadataText(text){
+  const value=String(text||'').trim().toLowerCase();
+  return !value||
+    value.startsWith('a description of')||
+    value.startsWith('detailed description')||
+    value.includes('typically to be displayed')||
+    value.includes('showcasing its anatomy');
+}
+function allMetadataText(assetMetadata){
+  return [
+    assetMetadata.source_prompt,
+    assetMetadata.asset_name,
+    assetMetadata.raw_category,
+    assetMetadata.category,
+    assetMetadata.subcategory,
+    assetMetadata.specific_type,
+    assetMetadata.description,
+    firstText(assetMetadata.visual_features),
+    firstText(assetMetadata.material_hints),
+    firstText(assetMetadata.color_hints),
+    firstText(assetMetadata.recommended_usage),
+    firstText(assetMetadata.dcc_tags),
+    assetMetadata.vlm_raw_text
+  ].join(' ').toLowerCase();
+}
+function titleCaseWords(text){
+  return String(text||'').replace(/_/g,' ').replace(/\b\w/g,(char)=>char.toUpperCase()).trim();
+}
+function displayCategory(assetMetadata){
+  const id=String(assetMetadata.display_category||assetMetadata.normalized_category_id||assetMetadata.category||'').trim();
+  const map={dinosaur:'Dinosaur',chair:'Chair',sneaker:'Sneaker',snack_package:'Snack Package',small_prop:'Small Prop',toy:'Toy',bottle:'Bottle',box:'Box',bag:'Bag',human_head:'Human Head',unknown:'Unknown Prop'};
+  return map[id]||titleCaseWords(id)||'Generated Prop';
+}
+function displayAssetType(assetMetadata){
+  const provided=firstText(assetMetadata.display_type||assetMetadata.specific_type||assetMetadata.subcategory);
+  const haystack=allMetadataText(assetMetadata);
+  if(String(assetMetadata.normalized_category_id||'')==='human_head'){
+    if(/bust|shoulders|neck/.test(haystack))return 'Head And Shoulders';
+    return 'Portrait Head';
+  }
+  if(/triceratops/.test(haystack))return 'Triceratops';
+  if(/ceratopsian|ceratops|frill|horned dinosaur|three horn/.test(haystack))return 'Ceratopsian';
+  if(/\bhorn|horns|skull/.test(haystack))return 'Horned Dinosaur';
+  if(/tyrannosaurus|t[\s_-]?rex/.test(haystack))return 'Tyrannosaurus';
+  if(/velociraptor|raptor/.test(haystack))return 'Velociraptor';
+  if(!hasGenericMetadataText(provided)&&!['dinosaur',String(assetMetadata.normalized_category_id||'').toLowerCase()].includes(provided.toLowerCase()))return titleCaseWords(provided);
+  if(String(assetMetadata.normalized_category_id||'')==='dinosaur')return /fossil|skeleton|skeletal|bone/.test(haystack)?'Dinosaur Fossil':'Unknown Dinosaur';
+  return titleCaseWords(provided||assetMetadata.asset_name||assetMetadata.normalized_category_id||'Generated Asset');
+}
+function curatedInsight(assetMetadata,kind){
+  const category=String(assetMetadata.normalized_category_id||assetMetadata.category||'').toLowerCase();
+  const defaults={
+    human_head:{
+      visual:'Single-image human head reconstruction with visible facial features.',
+      material:'Skin, hair, and fabric surfaces for preview lookdev.',
+      usage:'Lookdev test, portrait scan preview, non-hero character placeholder.'
+    },
+    dinosaur:{
+      visual:'Fossilized skull or skeletal museum specimen.',
+      material:'Aged bone or matte fossil surface.',
+      usage:'Museum scene, set dressing, background creature prop.'
+    },
+    chair:{
+      visual:'Recognizable furniture shape for interior set dressing.',
+      material:'Wood, fabric, painted or worn surface.',
+      usage:'Interior scene, layout prop, background furniture.'
+    },
+    sneaker:{
+      visual:'Low-profile footwear shape with layered panels.',
+      material:'Fabric, rubber, synthetic surface.',
+      usage:'Wardrobe prop, room dressing, product layout.'
+    },
+    snack_package:{
+      visual:'Printed package shape with compact shelf-ready silhouette.',
+      material:'Plastic wrapper or printed packaging.',
+      usage:'Store shelf, desk clutter, kitchen set dressing.'
+    }
+  };
+  return defaults[category]?.[kind]||defaults.dinosaur[kind];
+}
+function insightText(assetMetadata,key,fallbackKind){
+  const direct=firstText(assetMetadata[key]||assetMetadata[`display_${key}`]);
+  const wordCount=direct.trim().split(/\s+/).filter(Boolean).length;
+  const category=String(assetMetadata.normalized_category_id||assetMetadata.category||'').toLowerCase();
+  if(category==='dinosaur'&&fallbackKind==='material'&&/painted resin|matte surface/.test(direct.toLowerCase())&&/bone|fossil|skull|skeleton|skeletal|horn/.test(allMetadataText(assetMetadata))){
+    return curatedInsight(assetMetadata,fallbackKind);
+  }
+  if(!hasGenericMetadataText(direct)&&!(fallbackKind!=='material'&&wordCount<3))return direct;
+  return curatedInsight(assetMetadata,fallbackKind);
+}
+function shortInfo(value,max=120){
+  const text=firstText(value).replace(/\s+/g,' ').trim();
+  if(!text)return '-';
+  return text.length>max?`${text.slice(0,max-1)}…`:text;
+}
+function renderAssetInsightPanel(assetMetadata,metadataUrl=''){
+  const category=displayCategory(assetMetadata);
+  const type=displayAssetType(assetMetadata);
+  const visual=shortInfo(insightText(assetMetadata,'visual_features','visual'));
+  const material=shortInfo(insightText(assetMetadata,'material_hints','material'));
+  const usage=shortInfo(insightText(assetMetadata,'recommended_usage','usage'));
+  const resultUrl=fastVlmResultUrl(assetMetadata,metadataUrl);
+  const fullMetadataLink=resultUrl
+    ?`<a class="asset-insight-link" href="${escAttr(resultUrl)}">FastVLM 이미지 설명 보기</a>`
+    :'';
+  return`
+    <div class="isec">에셋 정보</div>
+    <div class="asset-insight">
+      <div class="asset-insight-head">
+        <div class="asset-insight-title">분류</div>
+        <div class="asset-insight-name">
+          <span class="asset-insight-category">${escAttr(category)}</span>
+          <span class="asset-insight-divider">:</span>
+          <span class="asset-insight-type">${escAttr(type)}</span>
+        </div>
+        <div class="asset-insight-sub">씬 배치와 에셋 검색에 바로 쓰는 요약입니다.</div>
+      </div>
+      <div class="asset-insight-grid">
+        <div class="asset-insight-item"><div class="asset-insight-label">형태</div><div class="asset-insight-value">${escAttr(visual)}</div></div>
+        <div class="asset-insight-item"><div class="asset-insight-label">재질</div><div class="asset-insight-value">${escAttr(material)}</div></div>
+        <div class="asset-insight-item"><div class="asset-insight-label">쓰임</div><div class="asset-insight-value">${escAttr(usage)}</div></div>
+      </div>
+      ${fullMetadataLink}
+    </div>`;
+}
+function fastVlmResultUrl(assetMetadata={},metadataUrl=''){
+  const direct=assetMetadata.fastvlm_result_url||assetMetadata.fastvlm_demo_url||'';
+  if(direct)return buildUrl(direct);
+  const file=assetMetadata.fastvlm_result_file||'';
+  if(!metadataUrl)return '';
+  if(!file)return '';
+  return String(metadataUrl).replace(/[^/?#]+(?:[?#].*)?$/,String(file));
+}
+function currentViewerMaterial(){
+  const result=S.result||{};
+  const meta=result.metadata||{};
+  return result.material||meta.material_package||{};
+}
+function currentViewerAssetKey(){
+  const result=S.result||{};
+  const job=S.job||{};
+  return result.mesh_url||job?.result?.mesh_url||S.sid||'viewer_asset';
+}
+function normalizeHexColor(value,fallback='#ffffff'){
+  const raw=String(value||'').trim();
+  if(/^#[0-9a-f]{6}$/i.test(raw))return raw.toLowerCase();
+  if(/^[0-9a-f]{6}$/i.test(raw))return `#${raw.toLowerCase()}`;
+  return fallback;
+}
+function hexToRgbaFactor(hex,opacity){
+  const clean=normalizeHexColor(hex).slice(1);
+  const r=parseInt(clean.slice(0,2),16)/255;
+  const g=parseInt(clean.slice(2,4),16)/255;
+  const b=parseInt(clean.slice(4,6),16)/255;
+  return [r,g,b,clamp(asFiniteNumber(opacity,1),0.05,1)];
+}
+function hexToRgbFactor(hex){
+  const rgba=hexToRgbaFactor(hex,1);
+  return rgba.slice(0,3);
+}
+function setFirstAvailable(target,names,value){
+  if(!target)return false;
+  for(const name of names){
+    try{
+      if(typeof target[name]==='function'){target[name](value);return true;}
+      if(name in target){target[name]=value;return true;}
+    }catch{}
+  }
+  return false;
+}
+function materialExtension(material,names){
+  if(!material)return null;
+  for(const name of names){
+    try{
+      const ext=material.getExtension?.(name)||material.extensions?.[name];
+      if(ext)return ext;
+    }catch{}
+  }
+  return null;
+}
+function applyOptionalShaderControls(material,controls){
+  const transmission=clamp(asFiniteNumber(controls.transmission,0),0,1);
+  const ior=clamp(asFiniteNumber(controls.ior,1.5),1,2.5);
+  const sssWeight=clamp(asFiniteNumber(controls.sssWeight,0),0,1);
+  const transmissionExt=materialExtension(material,['KHR_materials_transmission']);
+  const iorExt=materialExtension(material,['KHR_materials_ior']);
+  const volumeExt=materialExtension(material,['KHR_materials_volume']);
+  const sssExt=materialExtension(material,['KHR_materials_subsurface','KHR_materials_diffuse_transmission']);
+  setFirstAvailable(transmissionExt||material,['setTransmissionFactor','setTransmission','transmissionFactor','transmission'],transmission);
+  setFirstAvailable(iorExt||material,['setIor','setIOR','setIorFactor','ior','iorFactor'],ior);
+  setFirstAvailable(volumeExt,['setThicknessFactor','thicknessFactor'],transmission>0?0.02:0);
+  setFirstAvailable(sssExt||material,['setSubsurfaceFactor','setSubsurfaceWeight','subsurfaceFactor','subsurfaceWeight'],sssWeight);
+  setFirstAvailable(sssExt||material,['setSubsurfaceColorFactor','setSubsurfaceColor','subsurfaceColorFactor','subsurfaceColor'],hexToRgbFactor(controls.sssColor));
+}
+function updateMatControlLabels(key,value){
+  document.querySelectorAll(`[data-mat-value="${key}"]`).forEach((node)=>{
+    if(key==='environment')node.textContent=environmentLabel(currentViewerMaterial(),value);
+    else if(key==='baseColor'||key==='sssColor'||key==='channelSolo'||key==='colorManagement')node.textContent=String(value);
+    else if(key==='alphaCutout'||key==='displacementEnabled')node.textContent=value?'ON':'OFF';
+    else node.textContent=numericLabel(key,value);
+  });
+  if(!['baseColor','sssColor','environment','channelSolo','colorManagement','alphaCutout','displacementEnabled'].includes(key)){
+    const formatted=formatFloat(value);
+    document.querySelectorAll(`[data-mat-input="${key}"]`).forEach((input)=>{
+      if(String(input.value)!==formatted)input.value=formatted;
+    });
+  }
+  if(key==='environment'){
+    document.querySelectorAll('.env-option').forEach((button)=>{
+      button.classList.toggle('on',button.getAttribute('data-env')===value);
+    });
+  }
+  if(key==='baseColor'||key==='sssColor'){
+    document.querySelectorAll(`[data-mat-input="${key}"]`).forEach((input)=>{
+      if(input.value!==value)input.value=value;
+    });
+  }
+}
+function applyViewerMaterialControls(){
+  const model=document.querySelector('model-viewer.result-model');
+  if(!model)return;
+  const sourceMaterial=currentViewerMaterial();
+  const controls=ensureViewerMaterialControls(sourceMaterial,currentViewerAssetKey());
+  const exposure=evToExposure(controls.exposureEV);
+  model.setAttribute('exposure',exposure.toFixed(3));
+  model.removeAttribute('shadow-intensity');
+  model.setAttribute('environment-image',environmentViewerValue(sourceMaterial,controls.environment));
+  model.setAttribute('orientation',`0deg ${formatFloat(controls.hdriRotation,1)}deg 0deg`);
+  model.setAttribute('tone-mapping',toneMappingForColorManagement(controls.colorManagement));
+  applyViewerPackageTextures(model,sourceMaterial,currentViewerAssetKey()).catch(()=>{});
+  const materials=model.model?.materials||[];
+  if(!materials.length)return;
+  const baseColor=hexToRgbaFactor(controls.baseColor,1);
+  for(const material of materials){
+    const pbr=material.pbrMetallicRoughness;
+    if(pbr?.setBaseColorFactor)try{pbr.setBaseColorFactor(baseColor)}catch{}
+    if(pbr?.setRoughnessFactor)try{pbr.setRoughnessFactor(clamp(asFiniteNumber(controls.roughness,1),0,1))}catch{}
+    if(pbr?.setMetallicFactor)try{pbr.setMetallicFactor(clamp(asFiniteNumber(controls.metallic,0),0,1))}catch{}
+    if(material.setAlphaMode)try{material.setAlphaMode(controls.alphaCutout?'MASK':(sourceMaterial.alphaMode||'OPAQUE'))}catch{}
+    if(controls.alphaCutout)setFirstAvailable(material,['setAlphaCutoff','alphaCutoff'],clamp(asFiniteNumber(controls.alphaCutoff,0.5),0,1));
+    applyOptionalShaderControls(material,controls);
+  }
+}
+function initViewerMaterialRuntime(){
+  const model=document.querySelector('model-viewer.result-model');
+  if(!model)return;
+  const sync=()=>applyViewerMaterialControls();
+  applyViewerMaterialControls();
+  model.addEventListener('load',sync,{once:true});
+  if(window.customElements?.whenDefined){
+    window.customElements.whenDefined('model-viewer').then(()=>{
+      requestAnimationFrame(sync);
+      if(model.updateComplete?.then)model.updateComplete.then(sync).catch(()=>{});
+    }).catch(()=>{});
+  }
+}
+function initClayMeshRuntime(){
+  const model=document.querySelector('model-viewer.mesh-clay-model');
+  if(!model)return;
+  const sync=()=>applyClayMeshMaterial(model);
+  applyClayMeshMaterial(model);
+  model.addEventListener('load',sync,{once:true});
+  if(window.customElements?.whenDefined){
+    window.customElements.whenDefined('model-viewer').then(()=>{
+      requestAnimationFrame(sync);
+      if(model.updateComplete?.then)model.updateComplete.then(sync).catch(()=>{});
+    }).catch(()=>{});
+  }
+}
+window.setViewerMaterialControl=(key,value)=>{
+  const controls=ensureViewerMaterialControls(currentViewerMaterial(),currentViewerAssetKey());
+  if(key==='baseColor'||key==='sssColor'){
+    controls[key]=normalizeHexColor(value,controls[key]||'#ffffff');
+    updateMatControlLabels(key,controls[key]);
+  }else if(key==='environment'){
+    controls.environment=String(value||'neutral');
+    updateMatControlLabels(key,controls.environment);
+  }else if(key==='channelSolo'||key==='colorManagement'){
+    controls[key]=String(value||(key==='channelSolo'?'beauty':'aces'));
+    updateMatControlLabels(key,controls[key]);
+    if(key==='channelSolo')render();
+  }else if(key==='alphaCutout'||key==='displacementEnabled'){
+    controls[key]=value===true||value==='true';
+    updateMatControlLabels(key,controls[key]);
+    render();
+  }else{
+    const ranges={
+      roughness:[0,1],
+      metallic:[0,1],
+      transmission:[0,1],
+      ior:[1,2.5],
+      sssWeight:[0,1],
+      displacementScale:[0,0.1],
+      alphaCutoff:[0,1],
+      exposureEV:[-3,3],
+      hdriRotation:[0,360]
+    };
+    const [min,max]=ranges[key]||[0,1];
+    controls[key]=clamp(asFiniteNumber(value,controls[key]??0),min,max);
+    updateMatControlLabels(key,controls[key]);
+  }
+  applyViewerMaterialControls();
+};
+window.resetViewerMaterialControls=()=>{
+  S.viewer.mat={...materialDefaults(currentViewerMaterial()),assetKey:currentViewerAssetKey()};
+  render();
+};
+/* ══════════════ VIEWER ══════════════ */
+function renderViewer(){
+  const v=S.viewer;
+  const f=S.files;
+  const result=S.result||{};
+  const meta=result.metadata||{};
+  const material=result.material||meta.material_package||{};
+  const assetMetadata=result.asset_metadata||meta.asset_metadata||{};
+  const job=S.job||{};
+  const meshUrl=result.mesh_url||job?.result?.mesh_url||'';
+  const thumbUrl=result.thumbnail_url||job?.result?.thumbnail_url||'';
+  const assetMetadataUrl=result.asset_metadata_url||job?.result?.asset_metadata_url||'';
+  const isGlb=/\.glb($|\?)/i.test(meshUrl||'');
+  const displayName=f.length>0?f[0].name.replace(/\.[^.]+$/,''):'생성 결과';
+  const safeDisplayName=escAttr(displayName);
+  const q=qualitySummary(result,meta,job,meshUrl,thumbUrl);
+  const qualityRows=q.rows.map((row)=>`<div class="quality-item ${row.ok?'':'warn'}">
+    <div class="quality-icon">${row.ok?'✓':'!'}</div>
+    <div><div class="quality-title">${row.title}</div><div class="quality-desc">${row.desc}</div></div>
+  </div>`).join('');
+  const metricRows=[
+    ['파일 크기',formatBytes(q.metrics.mesh_size_bytes)],
+    ['구성 점 수',q.metrics.vertex_count?`${formatNum(q.metrics.vertex_count)}개`:'-'],
+    ['표면 수',q.metrics.face_count?`${formatNum(q.metrics.face_count)}개`:'-'],
+    ['분리 조각',q.metrics.component_count?`${formatNum(q.metrics.component_count)}개`:'-']
+  ].filter(([,value])=>value&&value!=='-').map(([label,value])=>`<div class="metric-card"><div class="metric-label">${label}</div><div class="metric-value">${value}</div></div>`).join('');
+  const meshSrc=versionedViewerUrl(meshUrl);
+  if(v.tab==='metadata'||v.tab==='material'||v.tab==='mesh')v.tab='result';
+  if(!['viewer','mesh'].includes(v.sceneTab))v.sceneTab='viewer';
+  const materialControls=ensureViewerMaterialControls(material,currentViewerAssetKey());
+  const modelAttrs=viewerModelAttrs(materialControls,material);
+  const viewerMain=meshUrl&&isGlb
+    ?v.sceneTab==='mesh'
+      ?renderMeshViewer(meshSrc,q)
+      :`<model-viewer class="result-model" src="${escAttr(meshSrc)}" ${modelAttrs}></model-viewer>`
+    :thumbUrl
+      ?`<img class="result-thumb" src="${thumbUrl}" alt="thumbnail">`
+      :`<div class="result-empty">결과 미리보기를 표시할 수 없습니다.<br/>다운로드 링크를 이용해 확인해 주세요.</div>`;
+  const infoBody=v.tab==='quality'?`
+          <div class="friendly-card">
+            <div class="friendly-state ${q.needsReview?'warn':'ok'}"><span class="state-dot"></span>${q.needsReview?'확인이 필요한 결과입니다':'기본 품질 확인 완료'}</div>
+            <div class="friendly-copy">${q.needsReview?'모델은 생성됐지만 일부 항목은 눈으로 다시 확인해 주세요.':'파일 열림, 형태 안정성, 미리보기 등 기본 사용 조건을 확인했습니다.'}</div>
+          </div>
+          <div class="isec">확인한 항목</div>
+          <div class="quality-list">${qualityRows}</div>
+          <div class="divider"></div>
+          <div class="isec">모델 정보</div>
+          ${metricRows?`<div class="metric-grid">${metricRows}</div>`:`<div class="friendly-copy">표시할 모델 정보가 아직 없습니다.</div>`}
+        `:`
+          <div class="friendly-card">
+            <div class="friendly-state ${q.needsReview?'warn':'ok'}"><span class="state-dot"></span>${q.headline}</div>
+            <div class="friendly-copy">${q.desc}</div>
+            ${meshUrl?renderDownloadPicker(meshUrl):''}
+            <button class="btn bg2 bfull" onclick="reselectObjectFromResult()" ${S.busy?'disabled':''}>객체 선택 다시하기</button>
+          </div>
+          ${renderAssetInsightPanel(assetMetadata,assetMetadataUrl)}
+        `;
+  return`<div class="page vp">
+  <div class="vtop">
+    <button class="vback" onclick="nav('upload')">${I.bk} 업로드</button>
+    <div class="vsep"></div>
+    <span class="vnm">${safeDisplayName}</span>
+    <div class="vact">
+      <span class="chip cg">완료</span>
+      <button class="btn bg2 bsm" onclick="copyShareLink()">링크 복사</button>
+      <button class="btn bg2 bsm" onclick="nav('upload')">${I.up} 새 스캔</button>
+    </div>
+  </div>
+  <div class="vbody">
+    ${v.sb&&(f.length>0||meshUrl&&isGlb)?`<div class="ipanel">
+      <div class="phdr">입력 이미지</div>
+      ${f.length>0?`<div class="ithumbs">
+        ${f.map((fl,i)=>`<div class="ith${S.ath===i?' on':''}" onclick="setActiveInputThumb(${i})">
+            <img src="${fl.dataUrl}">
+          <div class="itl">${fl.name.length>16?fl.name.slice(0,13)+'…':fl.name}</div>
+          ${S.ath===i?'<div class="itdot"></div>':''}
+        </div>`).join('')}
+      </div>`:`<div class="side-empty">현재 세션의 입력 썸네일이 없습니다.</div>`}
+      ${meshUrl&&isGlb?`<div class="phdr">재질 / 조명</div><div class="side-material">${renderMaterialPanel(material,materialControls)}</div>`:''}
+    </div>`:''}
+    <div class="vmain">
+      <div class="carea">
+        ${viewerMain}
+        ${renderViewerModeTabs(v.sceneTab)}
+        ${v.sceneTab==='mesh'?'':renderChannelSoloOverlay(material,materialControls)}
+        ${v.sceneTab==='mesh'?'':`<div class="cotr">${meshUrl?`<span class="htag acc">3D 파일</span>`:''}<span class="htag acc">${q.label}</span></div>`}
+      </div>
+      <div class="vtoolbar">
+        <div class="tgrp">
+          ${thumbUrl?`<a class="btn bg2 bsm" href="${thumbUrl}" download="thumbnail.png">${I.cm} 이미지 저장</a>`:''}
+          ${!meshUrl?`<button class="btn bg2 bsm" onclick="retryResultFetch()">결과 다시 조회</button>`:''}
+        </div>
+        <div class="tsp"></div>
+      </div>
+    </div>
+    <div class="infop">
+      <div class="itabs">
+        ${[['result','결과'],['quality','품질']].map(([t,l])=>`<a class="itb${v.tab===t?' on':''}" href="${viewerTabHash({infoTab:t})}" data-info-tab="${t}" onclick="return setViewerTab('${t}')">${l}</a>`).join('')}
+      </div>
+      <div class="ibody">
+        ${infoBody}
+      </div>
+    </div>
+  </div></div>`;
+}
+/* ══════════════ RENDER ══════════════ */
+function render(){
+  stopAll();
+  resetSegUiCaches();
+  const app=document.getElementById('app');
+  if(S.page==='landing'){
+    document.body.style.overflow='';
+    app.innerHTML=renderLanding();
+    requestAnimationFrame(()=>SR.forEach(r=>startV(`rc-${r.id}`,{ar:true,col:r.c})));
+  }else if(S.page==='upload'){
+    document.body.style.overflow='';
+    app.innerHTML=renderUpload();
+    queueDemoExamplesLoad();
+  }else if(S.page==='segment'){
+    document.body.style.overflow='';
+    app.innerHTML=renderSegmentSelect();
+  }else if(S.page==='processing'){
+    document.body.style.overflow='';
+    app.innerHTML=renderProcessing();
+    if(!S.proc.failed)runProc();
+  }else if(S.page==='viewer'){
+    document.body.style.overflow='hidden';
+    if(S.viewer.tab==='export')S.viewer.tab='result';
+    if(S.viewer.tab==='metadata'||S.viewer.tab==='material')S.viewer.tab='result';
+    app.innerHTML=renderViewer();
+    if(app.querySelector('model-viewer'))ensureModelViewerLoaded();
+    initViewerMaterialRuntime();
+    initClayMeshRuntime();
+    queueExportListLoad();
+  }
+  initSc();
+  syncUrlState();
+  saveSessionState();
+}
+function queueExportListLoad(){
+  if(S.exports?.error)return;
+  if(!S.sid||S.exports?.loading||Array.isArray(S.exports?.items))return;
+  setTimeout(loadExportList,0);
+}
+async function loadExportList(){
+  if(!S.sid||S.exports?.loading||Array.isArray(S.exports?.items))return;
+  S.exports={...(S.exports||{}),loading:true,error:null};
+  try{
+    const payload=await apiListExports(S.sid);
+    S.exports={...(S.exports||{}),loading:false,error:null,items:payload.exports||[],busyFormat:S.exports?.busyFormat||null,downloadProgress:S.exports?.downloadProgress??null,selectedFormat:S.exports?.selectedFormat||'glb'};
+  }catch(err){
+    S.exports={...(S.exports||{}),loading:false,error:err.message,items:[],busyFormat:S.exports?.busyFormat||null,downloadProgress:S.exports?.downloadProgress??null,selectedFormat:S.exports?.selectedFormat||'glb'};
+  }
+  if(!refreshDownloadPicker())render();
+}
+function setExportFormat(format){
+  if(S.exports?.busyFormat)return;
+  S.exports={...(S.exports||{}),selectedFormat:format,error:null};
+  if(!refreshDownloadPicker())render();
+}
+function stopExportProgress(){
+  if(EXPORT_PROGRESS_TIMER){
+    clearInterval(EXPORT_PROGRESS_TIMER);
+    EXPORT_PROGRESS_TIMER=null;
+  }
+}
+function currentMeshUrl(){
+  return S.result?.mesh_url||S.job?.result?.mesh_url||'';
+}
+function refreshDownloadPicker(){
+  const picker=document.querySelector('[data-download-picker]');
+  if(!picker)return false;
+  picker.outerHTML=renderDownloadPicker(currentMeshUrl());
+  return true;
+}
+function updateExportProgressDom(){
+  const progress=Math.max(0,Math.min(100,Math.round(S.exports?.downloadProgress??0)));
+  const pct=document.querySelector('[data-download-pct]');
+  const fill=document.querySelector('[data-download-fill]');
+  if(pct)pct.textContent=`${progress}%`;
+  if(fill)fill.style.width=`${progress}%`;
+}
+function startExportProgress(format,ceiling=88){
+  stopExportProgress();
+  S.exports={...(S.exports||{}),loading:false,error:null,busyFormat:format,downloadProgress:0,selectedFormat:format};
+  if(!refreshDownloadPicker())render();
+  updateExportProgressDom();
+  EXPORT_PROGRESS_TIMER=setInterval(()=>{
+    const current=Math.round(S.exports?.downloadProgress??0);
+    if(current>=ceiling)return;
+    const step=current<45?8:current<72?5:2;
+    S.exports={...(S.exports||{}),downloadProgress:Math.min(ceiling,current+step)};
+    updateExportProgressDom();
+  },260);
+}
+function finishExportProgress(url,fileName){
+  stopExportProgress();
+  S.exports={...(S.exports||{}),downloadProgress:100};
+  updateExportProgressDom();
+  setTimeout(()=>{
+    triggerDownload(url,fileName);
+    S.exports={...(S.exports||{}),busyFormat:null,downloadProgress:null};
+    if(!refreshDownloadPicker())render();
+  },280);
+}
+function triggerDownload(url,fileName){
+  if(!url)return;
+  const a=document.createElement('a');
+  a.href=`${url}${url.includes('?')?'&':'?'}download_v=${Date.now().toString(36)}`;
+  a.download=fileName||'download';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+async function createExportFormat(format,options={}){
+  if(!S.sid)return;
+  if(S.exports?.busyFormat&&(!options.progressStarted||S.exports.busyFormat!==format))return;
+  if(!options.progressStarted)startExportProgress(format);
+  try{
+    const payload=await apiCreateExport(S.sid,format);
+    const current=Array.isArray(S.exports.items)?S.exports.items:[];
+    const next=current.length
+      ?current.map((item)=>item.format===payload.format?{...item,...payload}:item)
+      :defaultExportItems(S.result?.mesh_url||'').map((item)=>item.format===payload.format?{...item,...payload}:item);
+    S.exports={...(S.exports||{}),loading:false,error:null,items:next,selectedFormat:payload.format||format};
+    if(options.download!==false)finishExportProgress(payload.url,payload.file_name);
+    else{
+      stopExportProgress();
+      S.exports={...(S.exports||{}),busyFormat:null,downloadProgress:null};
+      if(!refreshDownloadPicker())render();
+    }
+  }catch(err){
+    stopExportProgress();
+    S.exports={...(S.exports||{}),loading:false,error:err.message,busyFormat:null,downloadProgress:null};
+    if(!refreshDownloadPicker())render();
+  }
+}
+function downloadSelectedFormat(){
+  const meshUrl=currentMeshUrl();
+  const selected=selectedExportItem(meshUrl);
+  if(!selected||S.exports?.busyFormat)return;
+  if(selected.available===false){
+    S.exports={...(S.exports||{}),error:selected.reason||selected.note||'이 포맷은 현재 서버에서 변환할 수 없습니다.'};
+    if(!refreshDownloadPicker())render();
+    return;
+  }
+  startExportProgress(selected.format,selected.url?92:88);
+  if(selected.url){
+    setTimeout(()=>finishExportProgress(selected.url,selected.file_name||`object_mesh.${selected.format}`),520);
+    return;
+  }
+  createExportFormat(selected.format,{progressStarted:true});
+}
+/* ══════════════ PROCESSING ANIMATION ══════════════ */
+function runProc(){
+  clearPolling();
+  if(!S.sid)return;
+  let pollInFlight=false;
+
+  const updateProgressUI=(p)=>{
+    S.proc={...S.proc,...p};
+    const pe=document.getElementById('ppct');
+    const pf=document.getElementById('ppf');
+    const pd=document.getElementById('proc-desc');
+    const pl=document.getElementById('proc-label');
+    if(pe)pe.textContent=`${p.pct}%`;
+    if(pf)pf.style.width=`${p.pct}%`;
+    if(pd)pd.textContent=p.desc||'처리 중입니다.';
+    if(pl){
+      pl.textContent=p.label||'진행 중';
+      pl.className=`api-banner ${p.failed?'err':'ok'}`;
+    }
+    const steps=activeSteps();
+    document.querySelectorAll('.pstep').forEach((el2,i)=>{
+      const s2=i<p.si?'done':i===p.si?(p.failed?'wait':'act'):'wait';
+      el2.className='pstep '+s2;
+      const ico=el2.querySelector('.psico');
+      const name=el2.querySelector('.psn');
+      const desc=el2.querySelector('.psd');
+      const st=el2.querySelector('.pss');
+      if(name&&steps[i])name.textContent=steps[i].l;
+      if(desc&&steps[i])desc.textContent=steps[i].s;
+      if(i<p.si){if(ico)ico.innerHTML=I.ck;if(st)st.textContent='완료'}
+      else if(i===p.si){if(ico)ico.innerHTML=steps[i]?.i||'⚙️';if(st)st.textContent=p.failed?'':'처리 중'}
+      else if(st)st.textContent='';
+    });
+  };
+
+  const handlePoll=async()=>{
+    if(pollInFlight)return;
+    pollInFlight=true;
+    try{
+      const job=await apiGetJob(S.sid);
+      S.job=job;
+      S.pollFailures=0;
+      S.mode='image';
+      upsertRecentJob(job);
+      updateProgressUI(resolveProgress(job));
+      if(job.status==='failed'){
+        notifyError(job.error||'작업이 실패했습니다.');
+        clearPolling();
+        S.proc={...resolveProgress(job),failed:true};
+        upsertRecentJob(job);
+        localStorage.removeItem(SESSION_KEY);
+        render();
+        return;
+      }
+      if(job.status==='completed'){
+        updateProgressUI({pct:99,si:5,label:'Viewer 여는 중',desc:'생성된 GLB를 viewer에 연결하고 있습니다.',failed:false});
+        if(enterViewerFromCompletedJob(job,viewerResultFromJob(job),true)){
+          render();
+          return;
+        }
+        S.resultFailures=(S.resultFailures||0)+1;
+        S.proc={pct:98,si:5,label:'결과 조회 재시도 중',desc:'완료 상태는 확인됐지만 결과 URL을 아직 찾지 못했습니다.',failed:false};
+        render();
+      }
+    }catch(err){
+      S.pollFailures=(S.pollFailures||0)+1;
+      if(S.pollFailures>=3){
+        notifyError(`polling 실패: ${err.message}`);
+        clearPolling();
+        S.proc={...S.proc,failed:true};
+        localStorage.removeItem(SESSION_KEY);
+        render();
+      }else{
+        notifyInfo(`상태 조회 재시도 중... (${S.pollFailures}/3)`);
+        render();
+      }
+    }finally{
+      pollInFlight=false;
+    }
+  };
+
+  handlePoll();
+  S.pollingTimer=setInterval(handlePoll,1800);
+}
+/* ══════════════ HANDLERS ══════════════ */
+function resetTransient(){
+  stopSegLoadingProgress();
+  stopExportProgress();
+  S.pendingUpload=null;
+  S.imagePrompt='';
+  S.seg={loading:false,error:null,inputUrl:'',selectedId:null,candidates:[],map:{hoverId:null,loading:false,error:null},enhance:{loading:false,error:null,candidateId:null},text:{prompt:'',loading:false,error:null,confidenceThreshold:0.5,mergeMode:'best'},prompt:{points:[],box:null,labelType:'positive',loading:false,error:null,drag:null,imageSize:null}};
+  S.job=null;
+  S.result=null;
+  S.exports={loading:false,error:null,items:null,busyFormat:null,downloadProgress:null,selectedFormat:'glb'};
+  S.sid='';
+  S.pollFailures=0;
+  S.resultFailures=0;
+  S.proc={pct:0,si:0,label:'대기 중',desc:'업로드를 시작하면 처리 상태를 표시합니다.',failed:false};
+}
+
+function currentShareUrl(jobId=S.sid,mode=S.mode,page=S.page){
+  const url=new URL(window.location.href);
+  if(jobId)url.searchParams.set('jobId',jobId); else url.searchParams.delete('jobId');
+  if(mode)url.searchParams.set('mode',mode); else url.searchParams.delete('mode');
+  if(page)url.searchParams.set('page',page); else url.searchParams.delete('page');
+  if(page==='viewer'&&S.viewer?.tab&&S.viewer.tab!=='result')url.searchParams.set('tab',S.viewer.tab);
+  else url.searchParams.delete('tab');
+  if(page==='viewer'&&S.viewer?.sceneTab==='mesh')url.searchParams.set('view','mesh');
+  else url.searchParams.delete('view');
+  return url.toString();
+}
+
+async function copyToClipboard(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    notifyInfo('링크를 클립보드에 복사했습니다.');
+  }catch{
+    notifyError('클립보드 복사에 실패했습니다.');
+  }
+}
+
+window.copyShareLink=()=>copyToClipboard(currentShareUrl());
+window.copyJobLink=(jobId,mode='image')=>copyToClipboard(currentShareUrl(jobId,mode,'processing'));
+window.removeRecent=(jobId)=>{removeRecentJob(jobId);render();};
+window.clearRecentJobs=()=>{saveRecentJobs([]);render();};
+window.resumeRecent=(jobId)=>loadSample(jobId);
+
+function enterViewerFromCompletedJob(job,result=null,hydrate=true){
+  const resolved=result||viewerResultFromJob(job);
+  if(!hasViewerAsset(resolved))return false;
+  S.job=job||S.job;
+  S.result=resolved;
+  if(resolved.hydrated)S.viewer.mat={...materialDefaults(currentViewerMaterial()),assetKey:currentViewerAssetKey()};
+  S.resultFailures=0;
+  S.exports={loading:false,error:null,items:null,busyFormat:null,downloadProgress:null,selectedFormat:'glb'};
+  S.proc={pct:100,si:6,label:'완료',desc:'결과를 불러왔습니다.',failed:false};
+  upsertRecentJob({...S.job,status:'completed',stage:resolved.stage||S.job?.stage,reason:resolved.reason||S.job?.reason});
+  clearPolling();
+  S.page='viewer';
+  if(hydrate)hydrateCompletedResult(S.sid);
+  return true;
+}
+
+async function hydrateCompletedResult(jobId){
+  if(!jobId)return;
+  try{
+    const result=await apiGetResult(jobId);
+    if(S.sid!==jobId||S.page!=='viewer')return;
+    const wasPlaceholder=S.result?.hydrated===false;
+    S.result=result;
+    if(result?.job)S.job=result.job;
+    if(wasPlaceholder||S.viewer.mat?.assetKey!==currentViewerAssetKey()){
+      S.viewer.mat={...materialDefaults(currentViewerMaterial()),assetKey:currentViewerAssetKey()};
+    }
+    S.resultFailures=0;
+    render();
+  }catch(err){
+    if(S.sid===jobId&&S.page==='viewer'){
+      notifyInfo('기본 viewer는 열렸고, 상세 결과 정보는 다시 조회할 수 있습니다.');
+    }
+  }
+}
+
+window.retryCurrentJob=()=>{
+  if(!S.sid){notifyError('복구할 job_id가 없습니다.');render();return;}
+  S.pollFailures=0;
+  S.resultFailures=0;
+  S.proc.failed=false;
+  S.page='processing';
+  notifyInfo('job 상태를 다시 조회합니다...');
+  render();
+};
+
+window.retryResultFetch=async()=>{
+  if(!S.sid){notifyError('job_id가 없습니다.');render();return;}
+  try{
+    if(S.job?.status==='completed'&&enterViewerFromCompletedJob(S.job,viewerResultFromJob(S.job),true)){
+      notifyInfo('완료된 job 결과를 열었습니다.');
+      render();
+      return;
+    }
+    notifyInfo('/result를 다시 조회 중입니다...');
+    render();
+    const result=await apiGetResult(S.sid);
+    enterViewerFromCompletedJob(result?.job||S.job,result,false);
+    notifyInfo('결과를 다시 불러왔습니다.');
+    render();
+  }catch(err){
+    notifyError(`/result 재조회 실패: ${err.message}`);
+    render();
+  }
+};
+
+window.openCompletedResult=async()=>{
+  if(!S.sid){notifyError('job_id가 없습니다.');render();return;}
+  try{
+    S.busy=true;
+    if(S.job?.status==='completed'&&enterViewerFromCompletedJob(S.job,viewerResultFromJob(S.job),true)){
+      notifyInfo('완료된 job 결과를 열었습니다.');
+      return;
+    }
+    S.proc={...S.proc,pct:98,si:5,label:'결과 여는 중',desc:'/result를 다시 조회하고 있습니다.',failed:false};
+    render();
+    const result=await apiGetResult(S.sid);
+    enterViewerFromCompletedJob(result?.job||S.job,result,false);
+  }catch(err){
+    notifyError(`결과 열기 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+window.nav=(pg)=>{
+  if(pg!=='processing')clearPolling();
+  S.page=pg;
+  if(pg==='upload'){
+    resetTransient();
+    localStorage.removeItem(SESSION_KEY);
+    S.viewer.ob=true;
+    S.err=null;
+    S.info=null;
+  }
+  window.scrollTo(0,0);
+  render();
+};
+
+window.selectSegCandidate=(candidateId)=>{
+  setSegSelectedCandidate(candidateId);
+};
+
+window.clearSegMapSelection=()=>{
+  S.seg.selectedId=null;
+  S.seg.map={...(S.seg.map||{}),hoverId:null};
+  updateSegMapDom(null,null);
+  if(document.getElementById('seg-picked-preview')){
+    syncSegSelectionDom();
+    return;
+  }
+  render();
+};
+
+function initSegMap(img){
+  const width=Number(img.naturalWidth||0);
+  const height=Number(img.naturalHeight||0);
+  if(!width||!height)return;
+  if(!S.seg.map)S.seg.map={hoverId:null,loading:false,error:null};
+  S.seg.map.imageSize={width,height};
+  S.seg.map.hitCandidates=sortSegHitCandidates(S.seg.candidates||[]);
+  preloadSegMasks(S.seg.candidates||[]);
+  rebuildSegMapLayerCache();
+  syncSegSelectionDom();
+  updateSegMapDom(S.seg.map.hoverId||null,null);
+}
+
+function preloadSegMasks(candidates){
+  for(const candidate of candidates||[]){
+    if(!candidate?.mask_url||SEG_MASK_CACHE[candidate.candidate_id])continue;
+    const img=new Image();
+    img.onload=()=>{
+      try{
+        const maxW=320;
+        const ratio=(img.naturalHeight||1)/(img.naturalWidth||1);
+        const w=maxW;
+        const h=Math.max(1,Math.round(maxW*ratio));
+        const canvas=document.createElement('canvas');
+        canvas.width=w;
+        canvas.height=h;
+        const ctx=canvas.getContext('2d',{willReadFrequently:true});
+        ctx.drawImage(img,0,0,w,h);
+        SEG_MASK_CACHE[candidate.candidate_id]={w,h,data:ctx.getImageData(0,0,w,h).data};
+      }catch(err){
+        SEG_MASK_CACHE[candidate.candidate_id]={error:String(err)};
+      }
+    };
+    img.onerror=()=>{SEG_MASK_CACHE[candidate.candidate_id]={error:'mask_load_failed'}};
+    img.src=candidate.mask_url;
+  }
+}
+
+function segPointFromMapEvent(event){
+  const img=document.getElementById('seg-map-img');
+  if(!img)return null;
+  const rect=img.getBoundingClientRect();
+  if(!rect.width||!rect.height)return null;
+  if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)return null;
+  const nx=(event.clientX-rect.left)/rect.width;
+  const ny=(event.clientY-rect.top)/rect.height;
+  const width=Number(img.naturalWidth||S.seg.map?.imageSize?.width||0);
+  const height=Number(img.naturalHeight||S.seg.map?.imageSize?.height||0);
+  return {nx,ny,x:nx*width,y:ny*height,clientX:event.clientX,clientY:event.clientY};
+}
+
+function maskContains(candidate,point){
+  if(!candidate||!point)return false;
+  if(Array.isArray(candidate.bbox)&&candidate.bbox.length===4&&S.seg.map?.imageSize){
+    const [x1,y1,w,h]=candidate.bbox.map(Number);
+    const x2=x1+w;
+    const y2=y1+h;
+    const pad=Math.max(S.seg.map.imageSize.width,S.seg.map.imageSize.height)*0.01;
+    if(point.x<x1-pad||point.x>x2+pad||point.y<y1-pad||point.y>y2+pad)return false;
+  }
+  const cache=SEG_MASK_CACHE[candidate.candidate_id];
+  if(!cache||!cache.data)return true;
+  const px=Math.max(0,Math.min(cache.w-1,Math.round(point.nx*(cache.w-1))));
+  const py=Math.max(0,Math.min(cache.h-1,Math.round(point.ny*(cache.h-1))));
+  for(let oy=-2;oy<=2;oy++){
+    for(let ox=-2;ox<=2;ox++){
+      const x=Math.max(0,Math.min(cache.w-1,px+ox));
+      const y=Math.max(0,Math.min(cache.h-1,py+oy));
+      const i=(y*cache.w+x)*4;
+      const value=Math.max(cache.data[i],cache.data[i+1],cache.data[i+2]);
+      if(value>40)return true;
+    }
+  }
+  return false;
+}
+
+function hitSegCandidate(event){
+  const point=segPointFromMapEvent(event);
+  if(!point)return null;
+  const rankedCandidates=S.seg.map?.hitCandidates?.length
+    ?S.seg.map.hitCandidates
+    :sortSegHitCandidates(S.seg.candidates||[]);
+  for(const candidate of rankedCandidates){
+    if(maskContains(candidate,point))return candidate;
+  }
+  return null;
+}
+
+function updateSegMapDom(hoverId,event){
+  if(SEG_MAP_LAST_HOVER_ID!==hoverId){
+    segMapLayer(SEG_MAP_LAST_HOVER_ID)?.classList.remove('is-hover');
+    segMapLayer(hoverId)?.classList.add('is-hover');
+    SEG_MAP_LAST_HOVER_ID=hoverId||null;
+  }
+  const cursor=document.getElementById('seg-map-cursor');
+  if(!cursor)return;
+  const candidate=(S.seg.candidates||[]).find(item=>item.candidate_id===hoverId);
+  if(!candidate||!event){
+    cursor.style.display='none';
+    SEG_MAP_LAST_CURSOR_ID=null;
+    return;
+  }
+  const stage=document.getElementById('seg-map-canvas');
+  const rect=stage?.getBoundingClientRect();
+  if(!rect){
+    cursor.style.display='none';
+    SEG_MAP_LAST_CURSOR_ID=null;
+    return;
+  }
+  if(SEG_MAP_LAST_CURSOR_ID!==hoverId){
+    cursor.innerHTML=`<img src="${candidate.segmented_preview_url||candidate.segmented_url||candidate.overlay_url}" alt=""><div class="seg-name">${candidateLabel(candidate)}</div><div class="seg-meta">클릭해서 선택 · 면적 ${(candidate.area_ratio*100).toFixed(1)}%</div>`;
+    SEG_MAP_LAST_CURSOR_ID=hoverId;
+  }
+  cursor.style.display='block';
+  const x=Math.min(Math.max(event.clientX-rect.left+18,8),Math.max(8,rect.width-230));
+  const y=Math.min(Math.max(event.clientY-rect.top+18,8),Math.max(8,rect.height-170));
+  cursor.style.left=`${x}px`;
+  cursor.style.top=`${y}px`;
+}
+
+window.segMapMove=(event)=>{
+  SEG_MAP_PENDING_EVENT={clientX:event.clientX,clientY:event.clientY};
+  if(SEG_MAP_HOVER_FRAME)return;
+  SEG_MAP_HOVER_FRAME=requestAnimationFrame(()=>{
+    SEG_MAP_HOVER_FRAME=null;
+    const pointer=SEG_MAP_PENDING_EVENT;
+    SEG_MAP_PENDING_EVENT=null;
+    if(!pointer)return;
+    const candidate=hitSegCandidate(pointer);
+    const hoverId=candidate?.candidate_id||null;
+    if(!S.seg.map)S.seg.map={hoverId:null};
+    S.seg.map.hoverId=hoverId;
+    updateSegMapDom(hoverId,pointer);
+  });
+};
+
+window.segMapLeave=()=>{
+  if(SEG_MAP_HOVER_FRAME){
+    cancelAnimationFrame(SEG_MAP_HOVER_FRAME);
+    SEG_MAP_HOVER_FRAME=null;
+  }
+  SEG_MAP_PENDING_EVENT=null;
+  if(!S.seg.map)S.seg.map={hoverId:null};
+  S.seg.map.hoverId=null;
+  updateSegMapDom(null,null);
+};
+
+window.segMapClick=(event)=>{
+  const candidate=hitSegCandidate(event);
+  if(!candidate){
+    notifyInfo('객체 내부를 클릭하거나 박스로 감싸 주세요.');
+    render();
+    return;
+  }
+  setSegSelectedCandidate(candidate.candidate_id);
+};
+
+function ensureSegPrompt(){
+  if(!S.seg.prompt)S.seg.prompt={points:[],box:null,labelType:'positive',loading:false,error:null,drag:null,imageSize:null};
+  if(!S.seg.prompt.labelType)S.seg.prompt.labelType='positive';
+  return S.seg.prompt;
+}
+
+function ensureSegText(){
+  if(!S.seg.text)S.seg.text={prompt:'',loading:false,error:null,confidenceThreshold:0.5,mergeMode:'best'};
+  if(S.seg.text.confidenceThreshold==null)S.seg.text.confidenceThreshold=0.5;
+  if(!S.seg.text.mergeMode)S.seg.text.mergeMode='best';
+  return S.seg.text;
+}
+
+function ensureSegEnhance(){
+  if(!S.seg.enhance)S.seg.enhance={loading:false,error:null,candidateId:null};
+  return S.seg.enhance;
+}
+
+window.setSegTextPrompt=(value)=>{
+  const text=ensureSegText();
+  text.prompt=value||'';
+  text.error=null;
+};
+
+window.segTextPromptKey=(event)=>{
+  if(event.key==='Enter'){
+    event.preventDefault();
+    window.generateTextPromptCandidate();
+  }
+};
+
+window.setSegPromptLabel=(label)=>{
+  if(S.seg?.loading)return;
+  const prompt=ensureSegPrompt();
+  prompt.labelType=label==='negative'?'negative':'positive';
+  render();
+};
+
+window.setSegPromptImageSize=(img)=>{
+  const prompt=ensureSegPrompt();
+  const width=Number(img.naturalWidth||0);
+  const height=Number(img.naturalHeight||0);
+  if(width&&height){
+    if(prompt.imageSize?.width===width&&prompt.imageSize?.height===height)return;
+    prompt.imageSize={width,height};
+    render();
+  }
+};
+
+function segPromptPointFromEvent(event){
+  const img=document.getElementById('seg-prompt-img');
+  if(!img)return null;
+  const rect=img.getBoundingClientRect();
+  if(!rect.width||!rect.height)return null;
+  const width=Number(img.naturalWidth||S.seg.prompt?.imageSize?.width||0);
+  const height=Number(img.naturalHeight||S.seg.prompt?.imageSize?.height||0);
+  if(!width||!height)return null;
+  const cx=Math.max(rect.left,Math.min(event.clientX,rect.right));
+  const cy=Math.max(rect.top,Math.min(event.clientY,rect.bottom));
+  return {
+    x:((cx-rect.left)/rect.width)*width,
+    y:((cy-rect.top)/rect.height)*height
+  };
+}
+
+function updateSegPromptDragDom(box){
+  const prompt=ensureSegPrompt();
+  const size=prompt.imageSize||{};
+  const w=Number(size.width||0);
+  const h=Number(size.height||0);
+  const host=document.getElementById('seg-prompt-canvas');
+  if(!host||!w||!h||!box)return;
+  let el=document.getElementById('seg-live-box');
+  if(!el){
+    el=document.createElement('span');
+    el.id='seg-live-box';
+    el.className='seg-box';
+    host.appendChild(el);
+  }
+  const x1=Math.min(box[0],box[2]);
+  const y1=Math.min(box[1],box[3]);
+  const x2=Math.max(box[0],box[2]);
+  const y2=Math.max(box[1],box[3]);
+  el.style.left=`${(x1/w)*100}%`;
+  el.style.top=`${(y1/h)*100}%`;
+  el.style.width=`${((x2-x1)/w)*100}%`;
+  el.style.height=`${((y2-y1)/h)*100}%`;
+}
+
+function clearSegPromptDragDom(){
+  if(SEG_PROMPT_DRAG_FRAME){
+    cancelAnimationFrame(SEG_PROMPT_DRAG_FRAME);
+    SEG_PROMPT_DRAG_FRAME=null;
+  }
+  SEG_PROMPT_PENDING_BOX=null;
+  document.getElementById('seg-live-box')?.remove();
+}
+
+function clearSegPromptPreviewTimer(){
+  if(SEG_PROMPT_PREVIEW_TIMER){
+    clearTimeout(SEG_PROMPT_PREVIEW_TIMER);
+    SEG_PROMPT_PREVIEW_TIMER=null;
+  }
+}
+
+function schedulePromptPreview(){
+  const prompt=ensureSegPrompt();
+  clearSegPromptPreviewTimer();
+  if(prompt.loading||prompt.drag)return;
+  if(!(prompt.points||[]).length&&!prompt.box)return;
+  SEG_PROMPT_PREVIEW_TIMER=setTimeout(()=>{
+    window.generatePromptCandidate(true);
+  },280);
+}
+
+function addSegPromptPoint(point,label){
+  if(!point)return;
+  const prompt=ensureSegPrompt();
+  invalidateSegPromptPreview();
+  prompt.points=[...(prompt.points||[]),{x:point.x,y:point.y,label:Number(label)>0?1:0}];
+  prompt.preview=null;
+  prompt.error=null;
+}
+
+window.segPromptDown=(event)=>{
+  if(S.seg?.loading)return;
+  if(event.button!==0||event.isPrimary===false)return;
+  const point=segPromptPointFromEvent(event);
+  if(!point)return;
+  const prompt=ensureSegPrompt();
+  cancelSegPromptWork();
+  event.currentTarget?.setPointerCapture?.(event.pointerId);
+  prompt.drag={start:point,box:[point.x,point.y,point.x,point.y]};
+  prompt.error=null;
+  updateSegPromptDragDom(prompt.drag.box);
+  event.preventDefault();
+};
+
+window.segPromptMove=(event)=>{
+  const prompt=ensureSegPrompt();
+  if(!prompt.drag)return;
+  const point=segPromptPointFromEvent(event);
+  if(!point)return;
+  prompt.drag.box=[prompt.drag.start.x,prompt.drag.start.y,point.x,point.y];
+  event.preventDefault();
+  SEG_PROMPT_PENDING_BOX=[...prompt.drag.box];
+  if(SEG_PROMPT_DRAG_FRAME)return;
+  SEG_PROMPT_DRAG_FRAME=requestAnimationFrame(()=>{
+    SEG_PROMPT_DRAG_FRAME=null;
+    const box=SEG_PROMPT_PENDING_BOX;
+    SEG_PROMPT_PENDING_BOX=null;
+    if(box)updateSegPromptDragDom(box);
+  });
+};
+
+window.segPromptCancel=(event)=>{
+  const prompt=ensureSegPrompt();
+  if(!prompt.drag)return;
+  if(event?.currentTarget?.hasPointerCapture?.(event.pointerId)){
+    event.currentTarget.releasePointerCapture(event.pointerId);
+  }
+  prompt.drag=null;
+  clearSegPromptDragDom();
+};
+
+window.segPromptUp=(event)=>{
+  const prompt=ensureSegPrompt();
+  if(!prompt.drag)return;
+  const point=segPromptPointFromEvent(event);
+  const start=prompt.drag.start;
+  if(event?.currentTarget?.hasPointerCapture?.(event.pointerId)){
+    event.currentTarget.releasePointerCapture(event.pointerId);
+  }
+  prompt.drag=null;
+  clearSegPromptDragDom();
+  if(!point||!start)return;
+  const dx=Math.abs(point.x-start.x);
+  const dy=Math.abs(point.y-start.y);
+  if(dx<10&&dy<10){
+    addSegPromptPoint(point,(prompt.labelType||'positive')==='negative'?0:1);
+  }else{
+    invalidateSegPromptPreview();
+    prompt.box=[Math.min(start.x,point.x),Math.min(start.y,point.y),Math.max(start.x,point.x),Math.max(start.y,point.y)];
+    prompt.preview=null;
+  }
+  prompt.error=null;
+  render();
+  schedulePromptPreview();
+};
+
+window.segPromptContext=(event)=>{
+  event.preventDefault();
+  if(S.seg?.loading)return;
+  const point=segPromptPointFromEvent(event);
+  if(!point)return;
+  const prompt=ensureSegPrompt();
+  addSegPromptPoint(point,(prompt.labelType||'positive')==='positive'?0:1);
+  render();
+  schedulePromptPreview();
+};
+
+window.removeSegPromptPoint=(event,index)=>{
+  event?.stopPropagation?.();
+  event?.preventDefault?.();
+  const prompt=ensureSegPrompt();
+  invalidateSegPromptPreview();
+  prompt.points=(prompt.points||[]).filter((_,i)=>i!==index);
+  prompt.preview=null;
+  render();
+  schedulePromptPreview();
+};
+
+window.undoSegPromptPoint=()=>{
+  const prompt=ensureSegPrompt();
+  invalidateSegPromptPreview();
+  prompt.points=(prompt.points||[]).slice(0,-1);
+  prompt.preview=null;
+  render();
+  schedulePromptPreview();
+};
+
+window.clearSegPrompt=()=>{
+  invalidateSegPromptPreview();
+  clearSegPromptDragDom();
+  S.seg.prompt={points:[],box:null,labelType:S.seg.prompt?.labelType||'positive',loading:false,error:null,drag:null,imageSize:S.seg.prompt?.imageSize||null};
+  if(S.seg.text)S.seg.text.error=null;
+  S.seg.selectedId=null;
+  S.seg.candidates=[];
+  render();
+};
+
+window.generateTextPromptCandidate=async()=>{
+  if(!S.pendingUpload?.job_id){notifyError('업로드된 이미지가 없습니다.');render();return;}
+  const text=ensureSegText();
+  const promptText=(text.prompt||'').trim();
+  if(!promptText){notifyError('찾을 객체 이름을 입력해 주세요.');render();return;}
+  const requestSeq=++SEG_PROMPT_REQUEST_SEQ;
+  clearSegPromptPreviewTimer();
+  text.loading=true;
+  text.error=null;
+  S.seg.error=null;
+  S.seg.enhance={loading:false,error:null,candidateId:null};
+  render();
+  try{
+    const payload=await apiCreateSegTextPrompt(S.pendingUpload.job_id,{
+      prompt:promptText,
+      confidence_threshold:Number(text.confidenceThreshold||0.5),
+      merge_mode:text.mergeMode||'best'
+    });
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    const textCandidate=(payload.candidates||[])[0]||null;
+    const oldCandidates=S.seg.candidates||[];
+    const incomingIds=new Set((payload.candidates||[]).map((candidate)=>candidate.candidate_id));
+    S.seg.candidates=[...(payload.candidates||[]),...oldCandidates.filter((candidate)=>!incomingIds.has(candidate.candidate_id))];
+    S.seg.inputUrl=payload.input_url||S.seg.inputUrl;
+    S.seg.selectedId=payload.selected_candidate_id||(textCandidate?.candidate_id||S.seg.selectedId);
+    S.seg.error=null;
+    S.seg.map={...(S.seg.map||{}),hitCandidates:sortSegHitCandidates(S.seg.candidates||[])};
+  }catch(err){
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    text.error=err.message;
+    S.seg.error=err.message;
+    notifyError(`객체 찾기 실패: ${err.message}`);
+  }finally{
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    text.loading=false;
+    render();
+  }
+};
+
+window.generatePromptCandidate=async(silent=false)=>{
+  if(!S.pendingUpload?.job_id){notifyError('업로드된 이미지가 없습니다.');render();return;}
+  if(S.seg?.loading){notifyInfo('cutout 준비 중입니다.');render();return;}
+  const prompt=ensureSegPrompt();
+  clearSegPromptPreviewTimer();
+  if(!(prompt.points||[]).length&&!prompt.box){notifyError('이미지에서 객체를 클릭하거나 박스로 선택해 주세요.');render();return;}
+  const requestSeq=++SEG_PROMPT_REQUEST_SEQ;
+  prompt.loading=true;
+  prompt.error=null;
+  S.seg.enhance={loading:false,error:null,candidateId:null};
+  render();
+  try{
+    const payload=await apiCreateSegPrompt(S.pendingUpload.job_id,{
+      points:prompt.points||[],
+      box:prompt.box||null
+    });
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    const promptCandidate=(payload.candidates||[])[0]||null;
+    const oldCandidates=S.seg.candidates||[];
+    const promptIds=new Set((payload.candidates||[]).map((candidate)=>candidate.candidate_id));
+    S.seg.candidates=[...(payload.candidates||[]),...oldCandidates.filter((candidate)=>!promptIds.has(candidate.candidate_id))];
+    S.seg.inputUrl=payload.input_url||S.seg.inputUrl;
+    S.seg.selectedId=payload.selected_candidate_id||(promptCandidate?.candidate_id||S.seg.selectedId);
+    S.seg.error=null;
+    S.seg.map={...(S.seg.map||{}),hitCandidates:sortSegHitCandidates(S.seg.candidates||[])};
+    prompt.preview=promptCandidate;
+  }catch(err){
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    prompt.error=err.message;
+    S.seg.error=err.message;
+    if(!silent)notifyError(`직접 선택 실패: ${err.message}`);
+  }finally{
+    if(requestSeq!==SEG_PROMPT_REQUEST_SEQ)return;
+    prompt.loading=false;
+    render();
+  }
+};
+
+window.enhanceSelectedCutout=async()=>{
+  if(S.busy)return;
+  if(!S.pendingUpload?.job_id){notifyError('업로드된 이미지가 없습니다.');render();return;}
+  const selected=selectedSegCandidate();
+  if(!selected){notifyError('강화할 cutout을 먼저 선택해 주세요.');render();return;}
+  const enhance=ensureSegEnhance();
+  if(enhance.loading)return;
+  if(String(selected.candidate_id||'').endsWith('_enhanced')){
+    notifyInfo('이미 강화된 cutout입니다.');
+    return;
+  }
+  try{
+    enhance.loading=true;
+    enhance.error=null;
+    enhance.candidateId=selected.candidate_id;
+    notifyInfo('선택 영역을 확대하고 해상도를 강화하는 중입니다...');
+    render();
+    const payload=await apiEnhanceSegCandidate(S.pendingUpload.job_id,selected.candidate_id);
+    const oldCandidates=S.seg.candidates||[];
+    const incoming=payload.candidates||[];
+    const incomingIds=new Set(incoming.map((candidate)=>candidate.candidate_id));
+    S.seg.candidates=[...incoming,...oldCandidates.filter((candidate)=>!incomingIds.has(candidate.candidate_id))];
+    S.seg.inputUrl=payload.input_url||S.seg.inputUrl;
+    S.seg.selectedId=payload.selected_candidate_id||S.seg.selectedId;
+    S.seg.map={...(S.seg.map||{}),hitCandidates:sortSegHitCandidates(S.seg.candidates||[])};
+    for(const candidate of incoming){
+      delete SEG_MASK_CACHE[candidate.candidate_id];
+    }
+    notifyInfo('해상도 강화 완료 · 강화된 cutout이 3D 입력으로 선택되었습니다.');
+  }catch(err){
+    enhance.error=err.message;
+    notifyError(`해상도 강화 실패: ${err.message}`);
+  }finally{
+    enhance.loading=false;
+    render();
+  }
+};
+
+window.startSelectedObject=async()=>{
+  if(S.busy)return;
+  try{
+    S.busy=true;
+    const options=imageJobOptions();
+    if(S.seg?.selectedId)options.sam2_candidate_id=S.seg.selectedId;
+    await createAndStartJobWithOptions(options);
+  }catch(err){
+    notifyError(`job 시작 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+window.startOriginalImage=async()=>{
+  if(S.busy)return;
+  if(!S.pendingUpload?.job_id){notifyError('업로드된 이미지가 없습니다.');render();return;}
+  try{
+    S.busy=true;
+    notifyInfo('업로드한 이미지를 그대로 TRELLIS.2 입력으로 사용합니다.');
+    await createAndStartJobWithOptions(imageJobOptions());
+  }catch(err){
+    notifyError(`job 시작 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+window.reselectObjectFromResult=async()=>{
+  if(S.busy)return;
+  if(!canReuseImageInput()){
+    notifyInfo('브라우저 세션에 원본 파일이 없어 업로드 화면으로 이동합니다. 이미지를 다시 선택해 주세요.');
+    S.page='upload';
+    S.sid='';
+    S.job=null;
+    S.result=null;
+    S.pendingUpload=null;
+    S.exports={loading:false,error:null,items:null,busyFormat:null,downloadProgress:null,selectedFormat:'glb'};
+    render();
+    return;
+  }
+  const sourceFile=S.files[0];
+  const promptText=(S.seg?.text?.prompt||S.imagePrompt||'').trim();
+  try{
+    S.busy=true;
+    stopExportProgress();
+    notifyInfo('같은 이미지로 객체 선택을 다시 준비합니다...');
+    render();
+    const upload=await apiUpload('image_to_3d',sourceFile.file);
+    S.pendingUpload=upload;
+    S.sid=upload.job_id;
+    S.pollFailures=0;
+    S.resultFailures=0;
+    S.job=null;
+    S.result=null;
+    S.imagePrompt=promptText;
+    S.exports={loading:false,error:null,items:null,busyFormat:null,downloadProgress:null,selectedFormat:'glb'};
+    S.seg={
+      loading:false,
+      error:null,
+      inputUrl:'',
+      selectedId:null,
+      candidates:[],
+      map:{hoverId:null,loading:false,error:null},
+      enhance:{loading:false,error:null,candidateId:null},
+      text:{prompt:promptText,loading:false,error:null,confidenceThreshold:0.5,mergeMode:'best'},
+      prompt:{points:[],box:null,labelType:'positive',loading:false,error:null,drag:null,imageSize:null}
+    };
+    S.page='segment';
+    notifyInfo(promptText?'객체 이름을 수정하거나 다시 찾으세요.':'객체 이름을 입력해 cutout을 먼저 확인하세요.');
+  }catch(err){
+    notifyError(`객체 선택 준비 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+window.loadSample=async(id)=>{
+  if(!id||id.startsWith('s')){
+    nav('upload');
+    return;
+  }
+  try{
+    clearPolling();
+    S.sid=id;
+    S.pollFailures=0;
+    S.resultFailures=0;
+    S.page='processing';
+    S.proc={pct:8,si:0,label:'기존 job 확인',desc:'저장된 결과를 조회하는 중입니다.',failed:false};
+    render();
+    const job=await apiGetJob(id);
+    S.job=job;
+    S.mode='image';
+    upsertRecentJob(job);
+    if(job.status==='completed'){
+      enterViewerFromCompletedJob(job,viewerResultFromJob(job),true);
+      render();
+      return;
+    }
+    S.page='processing';
+    render();
+  }catch(err){
+    notifyError(`job 로드 실패: ${err.message}`);
+    S.page='upload';
+    render();
+  }
+};
+
+window.setMode=()=>{
+  S.mode='image';
+  S.files=[];
+  S.err=null;
+  S.info=null;
+  resetTransient();
+  render();
+};
+
+window.onFiles=(files)=>{
+  const arr=Array.from(files||[]);
+  const nf=arr
+    .filter((file)=>file.type.startsWith('image')||/\.(jpe?g|png|webp|tiff?|bmp|heic|raw)$/i.test(file.name||''))
+    .map(f=>({id:Math.random().toString(36).slice(2),name:f.name,type:'image',size:f.size,dataUrl:URL.createObjectURL(f),file:f}));
+  S.files=nf.slice(0,1);
+  S.err=null;
+  S.info=null;
+  resetTransient();
+  render();
+};
+
+window.onDrop=(e)=>{e.preventDefault();document.getElementById('dz')?.classList.remove('ov');onFiles(e.dataTransfer.files)};
+window.rmF=(i)=>{S.files.splice(i,1);resetTransient();render()};
+window.clearF=()=>{S.files=[];resetTransient();render()};
+window.setImagePrompt=(value)=>{S.imagePrompt=value||''};
+window.selectDemoExample=async(id)=>{
+  const item=(S.demoExamples?.items||[]).find((candidate)=>candidate.id===id);
+  if(!item||S.busy)return;
+  try{
+    S.busy=true;
+    notifyInfo('예시 이미지를 선택하는 중입니다...');
+    render();
+    const response=await fetch(item.url);
+    if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
+    const blob=await response.blob();
+    const file=new File([blob],item.file_name,{type:blob.type||'image/webp'});
+    resetTransient();
+    S.files=[{
+      id:`demo_${item.id}`,
+      name:item.file_name,
+      type:'image',
+      size:file.size,
+      dataUrl:URL.createObjectURL(file),
+      file
+    }];
+    S.info='TRELLIS.2 예시 이미지를 선택했습니다.';
+    S.err=null;
+  }catch(err){
+    notifyError(`예시 선택 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+function imageJobOptions(extra={}){
+  return{
+    requested_reconstruction_head:'trellis',
+    image_quality_mode:'high_quality',
+    source_prompt:(S.seg?.text?.prompt||S.imagePrompt||'').trim(),
+    ...extra
+  };
+}
+
+async function createAndStartJobWithOptions(options={}){
+  if(!S.pendingUpload?.job_id)return;
+  stopSegLoadingProgress();
+  const type='image_to_3d';
+  notifyInfo('job 생성 중...');
+  render();
+  const created=await apiCreateJob(S.pendingUpload.job_id,type,options);
+  S.sid=S.pendingUpload.job_id;
+  S.pollFailures=0;
+  S.resultFailures=0;
+  S.job=created;
+  upsertRecentJob(created);
+  S.page='processing';
+  S.proc=resolveProgress(created);
+  render();
+}
+
+async function uploadCurrentImageIfNeeded(){
+  if(S.pendingUpload?.job_id)return S.pendingUpload;
+  if(!S.files.length)throw new Error('선택된 이미지가 없습니다.');
+  notifyInfo('업로드 중입니다...');
+  render();
+  const upload=await apiUpload('image_to_3d',S.files[0].file);
+  S.pendingUpload=upload;
+  S.sid=upload.job_id;
+  S.pollFailures=0;
+  S.resultFailures=0;
+  return upload;
+}
+
+window.startProc=async()=>{
+  if(S.busy||!S.files.length)return;
+  const selected=S.files[0];
+  const type='image_to_3d';
+  try{
+    S.busy=true;
+    notifyInfo('업로드 중입니다...');
+    render();
+    const upload=await apiUpload(type,selected.file);
+    S.pendingUpload=upload;
+    S.sid=upload.job_id;
+    S.pollFailures=0;
+    S.resultFailures=0;
+    S.busy=false;
+    S.page='segment';
+    S.seg={
+      loading:false,
+      error:null,
+      inputUrl:'',
+      selectedId:null,
+      candidates:[],
+      map:{hoverId:null,loading:false,error:null},
+      enhance:{loading:false,error:null,candidateId:null},
+      text:{prompt:(S.imagePrompt||'').trim(),loading:false,error:null,confidenceThreshold:0.5,mergeMode:'best'},
+      prompt:{points:[],box:null,labelType:'positive',loading:false,error:null,drag:null,imageSize:null}
+    };
+    const promptText=(S.seg.text?.prompt||'').trim();
+    notifyInfo(promptText?'입력한 텍스트로 객체 cutout을 생성합니다.':'텍스트로 만들 객체를 입력해 AI cutout을 먼저 생성하세요.');
+    render();
+    if(promptText){
+      setTimeout(()=>window.generateTextPromptCandidate(),0);
+    }
+  }catch(err){
+    S.busy=false;
+    notifyError(`시작 실패: ${err.message}`);
+    render();
+  }
+};
+
+window.startUploadedImageDirect=async()=>{
+  if(S.busy||!S.files.length)return;
+  try{
+    S.busy=true;
+    await uploadCurrentImageIfNeeded();
+    notifyInfo('업로드한 이미지를 그대로 TRELLIS.2 입력으로 사용합니다.');
+    await createAndStartJobWithOptions(imageJobOptions());
+  }catch(err){
+    notifyError(`시작 실패: ${err.message}`);
+  }finally{
+    S.busy=false;
+    render();
+  }
+};
+
+window.setViewerTab=(tab)=>{
+  if(!['result','quality'].includes(tab))return false;
+  if(S.viewer.tab===tab)return false;
+  S.viewer.tab=tab;
+  render();
+  return false;
+};
+window.setSceneTab=(tab)=>{
+  if(!['viewer','mesh'].includes(tab))return false;
+  if(S.viewer.sceneTab===tab)return false;
+  S.viewer.sceneTab=tab;
+  render();
+  return false;
+};
+window.setActiveInputThumb=(index)=>{
+  const n=Number(index);
+  if(!Number.isInteger(n)||n<0||n>=S.files.length)return;
+  S.ath=n;
+  render();
+};
+window.setVM=(m)=>{S.viewer.vm=m;render()};
+window.togR=()=>{S.viewer.ar=!S.viewer.ar;const v=VW['mc'];if(v)v.ar=S.viewer.ar;render()};
+window.togH=()=>{S.viewer.hs=!S.viewer.hs;render()};
+window.togSB=()=>{S.viewer.sb=!S.viewer.sb;render()};
+function applyViewerTabHash(){
+  const raw=(window.location.hash||'').replace(/^#/,'');
+  if(!raw||!raw.includes('='))return false;
+  const params=new URLSearchParams(raw);
+  const scene=params.get('scene');
+  const tab=params.get('tab');
+  let changed=false;
+  if(['viewer','mesh'].includes(scene)&&S.viewer.sceneTab!==scene){
+    S.viewer.sceneTab=scene;
+    changed=true;
+  }
+  if(['result','quality'].includes(tab)&&S.viewer.tab!==tab){
+    S.viewer.tab=tab;
+    changed=true;
+  }
+  if(changed&&S.page==='viewer')render();
+  return changed;
+}
+window.addEventListener('hashchange',applyViewerTabHash);
+function initSc(){
+  const h=document.getElementById('mhdr');if(!h)return;
+  const fn=()=>{const s=window.scrollY>20;if(s!==S.scrolled){S.scrolled=s;h.className='hdr'+(s?' solid':'')}};
+  window.removeEventListener('scroll',window._sh);window._sh=fn;window.addEventListener('scroll',fn,{passive:true});
+}
+function bootstrapFromQuery(){
+  S.recent=getRecentJobs();
+  const q=new URLSearchParams(window.location.search);
+  if(q.get('reset')==='1'){
+    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(RECENT_KEY);
+    S.recent=[];
+    const url=new URL(window.location.href);
+    url.searchParams.delete('reset');
+    history.replaceState({},'',url.toString());
+  }
+  const jobId=(q.get('jobId')||'').trim();
+  const pageParam=(q.get('page')||'').trim();
+  const tabParam=(q.get('tab')||'').trim();
+  const viewParam=(q.get('view')||'').trim();
+  if(['result','quality'].includes(tabParam))S.viewer.tab=tabParam;
+  if(tabParam==='mesh'||viewParam==='mesh')S.viewer.sceneTab='mesh';
+  applyViewerTabHash();
+  S.mode='image';
+  if(!jobId){
+    if(pageParam==='upload')S.page='upload';
+    if(pageParam==='segment')S.page='upload';
+    return;
+  }
+  S.sid=jobId;
+  S.page='processing';
+  S.proc={pct:8,si:0,label:'job 복원 중',desc:'URL/세션의 jobId를 복원하고 있습니다.',failed:false};
+}
+bootstrapFromQuery();
+render();
+</script>
+</body>
+</html>

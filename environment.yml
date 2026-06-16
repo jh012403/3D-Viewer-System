@@ -1,0 +1,13 @@
+name: ai3d-mvp
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - nodejs>=20
+  - ffmpeg
+  - numpy
+  - pillow
+  - trimesh
+  - lxml
+  - imageio
