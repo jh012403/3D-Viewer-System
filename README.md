@@ -1,8 +1,33 @@
+<div align="center">
+
 # PRISM SCAN
 
-Background product and prop 3D asset generation service built around a single-image workflow.
+Background product and prop 3D asset generation service for modeling-base and set-dressing workflows.
 
-This project is designed for background set dressing and modeling-base asset creation, not close-up hero assets, character likeness, or face-quality reconstruction.
+</div>
+
+## Overview
+
+PRISM SCAN is a single-image 3D asset generation service built for background props, product-like objects, and environment dressing assets.
+
+The system takes an uploaded image, isolates the target object, extracts semantic metadata, generates a 3D asset through TRELLIS.2, and packages the result for browser preview and downstream DCC workflows.
+
+This repository is intentionally scoped for background asset generation. It is not positioned as a hero-asset, facial likeness, or high-fidelity character generation system.
+
+## Why This Project Exists
+
+Most image-to-3D demos stop at "a mesh was generated."
+
+This project focuses on the service layer around that generation step:
+
+- text-guided object selection
+- semantic metadata extraction
+- viewer-ready result packaging
+- transform cleanup
+- material packaging
+- export-oriented structure for downstream DCC usage
+
+The core contribution is not inventing a new 3D foundation model. The core contribution is turning AI-generated background props into a service workflow that is easier to inspect, package, and reuse.
 
 ## Pipeline
 
@@ -16,33 +41,52 @@ Image Input
 -> Export
 ```
 
-## What This Repository Contains
+## Key Features
 
-- `backend/`
-  FastAPI service for upload, job creation, polling, result lookup, and export endpoints
-- `frontend/`
-  upload flow, object cutout screen, result viewer, mesh viewer, and export UI
-- `pipelines/`
-  segmentation handoff, metadata extraction, TRELLIS runtime orchestration, mesh cleanup, and material packaging
-- `workers/`
-  background job execution
-- `scripts/dev/`
-  local startup scripts
-- `docs/`
-  architecture and pipeline documents
+- Single-image upload flow for background prop generation
+- Text-guided object cutout before 3D generation
+- FastVLM-based semantic metadata extraction
+- TRELLIS.2-based reconstruction pipeline
+- Browser viewer with result view and mesh view
+- Material, metadata, and output package sidecars
+- Local dev stack startup from one script
 
-## Requirements
+## Repository Layout
 
-- Linux
-- Conda
-- Python environment from `environment.yml`
-- Node.js is optional
-  The default startup path serves the static frontend and does not require `npm run dev`.
-- GPU runtime is optional for mock mode, required for real TRELLIS/SAM/FastVLM execution
+```text
+ai-3d-service/
+├─ backend/      # FastAPI API service
+├─ frontend/     # upload flow, viewer, export UI
+├─ pipelines/    # segmentation, metadata, reconstruction, packaging
+├─ workers/      # background job execution
+├─ scripts/      # local startup and utility scripts
+├─ docs/         # architecture and pipeline documents
+├─ assets/       # lightweight demo/example assets
+├─ storage/      # runtime working directories
+├─ .env.example
+├─ environment.yml
+├─ pyproject.toml
+└─ README.md
+```
+
+## Runtime Modes
+
+| Mode | Purpose | Requirements |
+| --- | --- | --- |
+| `mock` | UI and pipeline shell validation | Python environment only |
+| `real` | actual segmentation, metadata extraction, and 3D generation | local SAM3, FastVLM, TRELLIS.2 runtime setup |
+
+The default `.env.example` uses:
+
+```env
+AI3D_MOCK_MODE=true
+```
+
+That makes it easy to bring the service up without first installing every external model runtime.
 
 ## Quick Start
 
-### 1. Clone and enter the repository
+### 1. Clone the repository
 
 ```bash
 git clone <your-repo-url>
@@ -57,7 +101,7 @@ conda activate ai3d-mvp
 pip install -e .
 ```
 
-### 3. Create local environment config
+### 3. Create a local config
 
 ```bash
 cp .env.example .env
@@ -75,40 +119,54 @@ Open:
 http://127.0.0.1:8080/prismscan-v2.html?mode=image
 ```
 
-The script starts:
+## One-Command Local Run
+
+The main local entrypoint is:
+
+```bash
+./scripts/dev/start_prismscan.sh
+```
+
+This script starts:
 
 - backend API
 - image worker
 - static frontend server
 
-Logs are written under `storage/logs/dev/`.
+Logs are written under:
 
-## Default Run Mode
-
-`.env.example` ships with:
-
-```env
-AI3D_MOCK_MODE=true
+```text
+storage/logs/dev/
 ```
 
-This lets the UI and pipeline shell run without requiring the full model stack.
+If something is already running:
 
-If you want real model execution, switch to:
-
-```env
-AI3D_MOCK_MODE=false
+```bash
+./scripts/dev/stop_image_stack.sh
 ```
 
-and configure the runtimes below.
+## Frontend Dev Mode
+
+If you want a Vite-based frontend workflow instead of the static server:
+
+```bash
+cd frontend
+npm install
+cd ..
+AI3D_FRONTEND_SERVER=vite ./scripts/dev/start_prismscan.sh
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5173
+```
 
 ## Real Runtime Setup
 
-This repository is portable by default.
+The repository is designed to avoid machine-specific hardcoded paths.
 
-Do not hardcode your machine path into the source code or `.env.example`.
-The service already resolves the repository root automatically and can discover runtimes under the local `.runtime/` directory.
-
-Recommended local layout:
+If your runtimes are placed under the local repository like this:
 
 ```text
 ai-3d-service/
@@ -118,14 +176,14 @@ ai-3d-service/
 └─ ...
 ```
 
-If `.runtime/sam3` and `.runtime/TRELLIS.2` exist, you can leave these values empty in `.env`:
+then these values may remain empty in `.env`:
 
 ```env
 SAM3_REPO_DIR=
 TRELLIS_REPO_DIR=
 ```
 
-The code will auto-detect them relative to the repository root.
+The service will auto-detect them relative to the repository root.
 
 Example real runtime settings:
 
@@ -150,38 +208,12 @@ TRELLIS_RESOLUTION=1024
 TRELLIS_LOW_VRAM_MODE=true
 ```
 
-## Optional Frontend Dev Mode
+## Outputs
 
-If you want the Vite dev server instead of the static frontend server:
+Generated job results are written under `storage/`.
 
-```bash
-cd frontend
-npm install
-cd ..
-AI3D_FRONTEND_SERVER=vite ./scripts/dev/start_prismscan.sh
-```
+Main output paths:
 
-Then open:
-
-```text
-http://127.0.0.1:5173
-```
-
-## Stop the Service
-
-If a previous stack is still running:
-
-```bash
-./scripts/dev/stop_image_stack.sh
-```
-
-## Output Layout
-
-Generated results are written under `storage/`.
-
-Important paths:
-
-- `storage/uploads/{job_id}/`
 - `storage/jobs/{job_id}/job.json`
 - `storage/outputs/{job_id}/object_mesh.glb`
 - `storage/outputs/{job_id}/metadata.json`
@@ -200,14 +232,23 @@ Important paths:
 - `POST /api/jobs/{job_id}/exports/{format}`
 - `POST /api/jobs/{job_id}/segmentation-text-prompt`
 
-## Important Notes
+## Current Scope
 
-- `start_prismscan.sh` already uses repository-relative path resolution.
-- The repository should not contain local absolute machine paths.
-- Runtime artifacts, uploads, outputs, previews, logs, model caches, and build outputs should stay out of Git.
-- The service is intended for background prop workflows, not facial likeness or hero character generation.
+This repository is best understood as:
 
-## Useful Documents
+- a graduation project
+- a service prototype
+- a workflow-oriented image-to-3D system
+
+It is strong at pipeline orchestration, packaging, and viewer integration.
+
+It is not intended to claim:
+
+- hero-grade close-up asset generation
+- robust face reconstruction
+- production-final character quality
+
+## Documentation
 
 - `docs/architecture.md`
 - `docs/pipelines.md`
@@ -215,3 +256,10 @@ Important paths:
 - `docs/result_contract.md`
 - `docs/quality_gate.md`
 - `docs/trellis2_runtime_lock.md`
+
+## Notes
+
+- `start_prismscan.sh` already uses repository-relative startup.
+- Runtime artifacts, uploads, outputs, previews, logs, caches, and build outputs are intentionally excluded from Git.
+- External model runtimes are expected to be installed by the user in their own local environment.
+
