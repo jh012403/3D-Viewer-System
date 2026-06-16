@@ -1,6 +1,6 @@
 # PRISM SCAN: Background Product and Prop 3D Asset Generation Service
 
-[![Project Page](https://img.shields.io/badge/Project%20Page-Coming%20Soon-87CEEB)](#)
+[![Project Page](https://img.shields.io/badge/Project%20Page-GitHub%20Pages-87CEEB)](https://jh012403.github.io/3D-Viewer-System/)
 [![Repository](https://img.shields.io/badge/GitHub-3D--Viewer--System-181717)](https://github.com/jh012403/3D-Viewer-System)
 [![Status](https://img.shields.io/badge/Status-Prototype-22C55E)](#)
 [![Runtime](https://img.shields.io/badge/Runtime-SAM3%20%7C%20FastVLM%20%7C%20TRELLIS.2-0EA5E9)](#)
