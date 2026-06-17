@@ -19,9 +19,20 @@ app.add_middleware(
         settings.frontend_origin,
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "http://0.0.0.0:5173",
         "http://localhost:8080",
         "http://127.0.0.1:8080",
+        "http://0.0.0.0:8080",
     ],
+    # Local dev runs through a static frontend on 8080, Vite on 5173,
+    # and sometimes via a LAN IP or 0.0.0.0 binding. Allow those browser
+    # origins so demo-example fetches and viewer asset loads do not fail.
+    allow_origin_regex=r"^https?://("
+    r"localhost|127\.0\.0\.1|0\.0\.0\.0|"
+    r"10(?:\.\d{1,3}){3}|"
+    r"172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2}|"
+    r"192\.168(?:\.\d{1,3}){2}"
+    r")(?::\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

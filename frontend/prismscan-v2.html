@@ -3462,7 +3462,7 @@ window.selectDemoExample=async(id)=>{
     S.busy=true;
     notifyInfo('예시 이미지를 선택하는 중입니다...');
     render();
-    const response=await fetch(item.url);
+    const response=await fetch(buildUrl(item.url));
     if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);
     const blob=await response.blob();
     const file=new File([blob],item.file_name,{type:blob.type||'image/webp'});
