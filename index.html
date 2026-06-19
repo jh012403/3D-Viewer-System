@@ -14,8 +14,9 @@
     <header class="hero">
       <h1>PRISM SCAN</h1>
       <p class="subtitle">Background Product and Prop 3D Asset Generation Service</p>
-      <div class="authors">Jonghyun Lee</div>
-      <div class="affiliations">Graduation Project · Department of AI · Dong-A University</div>
+      <div class="authors">Jong-hyun Lee · Ji-hwan Bae · Ji-wook Lee</div>
+      <div class="affiliations">Department of AI · Dong-A University</div>
+      <div class="advisor">Advisor: Suk-hwan Lee</div>
       <div class="btn-group">
         <a href="https://github.com/jh012403/3D-Viewer-System" class="btn"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://github.com/jh012403/3D-Viewer-System/blob/main/README.md" class="btn"><i class="fas fa-book"></i> README</a>
@@ -32,6 +33,82 @@
         Instead of targeting hero-quality close-up assets, the system is designed to
         help users isolate an object, generate a reusable 3D result, inspect it in a browser viewer,
         and package it for downstream workflows.
+      </p>
+    </section>
+
+    <section>
+      <h2>Production Pipeline</h2>
+      <div class="pipeline-figure">
+        <div class="pipeline-group">
+          <div class="pipeline-group-title">Input</div>
+          <div class="pipeline-card">
+            <div class="pipeline-step">Image Input</div>
+            <p>Start from a single image and a short target description.</p>
+            <div class="pipeline-tags">
+              <span>single image</span>
+              <span>text prompt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <div class="pipeline-group pipeline-group-wide">
+          <div class="pipeline-group-title">Object-centric 3D Asset Generation</div>
+          <div class="pipeline-grid">
+            <div class="pipeline-card">
+              <div class="pipeline-step">1. Text-guided Object Cutout</div>
+              <p>SAM3 identifies the target object and prepares a clean cutout candidate.</p>
+            </div>
+            <div class="pipeline-card">
+              <div class="pipeline-step">2. Object-only Image</div>
+              <p>The selected transparent object image becomes the canonical downstream input.</p>
+            </div>
+            <div class="pipeline-card">
+              <div class="pipeline-step">3A. FastVLM Metadata</div>
+              <p>Semantic metadata is extracted for category, attributes, material hints, and usage context.</p>
+            </div>
+            <div class="pipeline-card">
+              <div class="pipeline-step">3B. TRELLIS.2 3D Generation</div>
+              <p>The object-only image is passed to TRELLIS.2 to build the base 3D asset.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <div class="pipeline-group pipeline-group-wide">
+          <div class="pipeline-group-title">Editable 3D Viewer & Export UX</div>
+          <div class="pipeline-grid">
+            <div class="pipeline-card">
+              <div class="pipeline-step">Web Viewer</div>
+              <p>Inspect the generated object, rotate it freely, and review mesh-focused output in the browser.</p>
+            </div>
+            <div class="pipeline-card">
+              <div class="pipeline-step">Metadata & Material Controls</div>
+              <p>Review semantic summaries and adjust viewer-side appearance before export.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <div class="pipeline-group">
+          <div class="pipeline-group-title">DCC-ready Export</div>
+          <div class="pipeline-card">
+            <div class="pipeline-step">Package Output</div>
+            <p>Deliver the result in formats such as GLB, OBJ, FBX, and STL for downstream workflows.</p>
+            <div class="pipeline-tags">
+              <span>GLB</span>
+              <span>OBJ</span>
+              <span>FBX</span>
+              <span>STL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="section-note">
+        The page currently presents the production flow as a single structured figure. The final pipeline artwork can be swapped into this section directly when the source image file is added.
       </p>
     </section>
 
@@ -66,37 +143,6 @@
       <p class="section-note">
         These examples are selected from demo-ready assets used to validate the service flow and viewer pipeline.
       </p>
-    </section>
-
-    <section>
-      <h2>Pipeline</h2>
-      <div class="pipeline">
-        <div class="step">
-          <div class="step-index">1</div>
-          <h3>Image Input</h3>
-          <p>Upload a single image and either use it directly or isolate a target object first.</p>
-        </div>
-        <div class="step">
-          <div class="step-index">2</div>
-          <h3>SAM3 Segmentation</h3>
-          <p>Use text-guided segmentation to extract an object-only image with alpha support.</p>
-        </div>
-        <div class="step">
-          <div class="step-index">3</div>
-          <h3>FastVLM Metadata</h3>
-          <p>Generate semantic metadata from the cutout image for categorization and package context.</p>
-        </div>
-        <div class="step">
-          <div class="step-index">4</div>
-          <h3>TRELLIS.2 Generation</h3>
-          <p>Generate the 3D asset from the object-only input while preserving the core runtime flow.</p>
-        </div>
-        <div class="step">
-          <div class="step-index">5</div>
-          <h3>Viewer and Export</h3>
-          <p>Inspect the result in the browser, review mesh information, and export the output package.</p>
-        </div>
-      </div>
     </section>
 
     <section>
