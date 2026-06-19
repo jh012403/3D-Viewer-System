@@ -38,78 +38,9 @@
 
     <section>
       <h2>Production Pipeline</h2>
-      <div class="pipeline-figure">
-        <div class="pipeline-group">
-          <div class="pipeline-group-title">Input</div>
-          <div class="pipeline-card">
-            <div class="pipeline-step">Image Input</div>
-            <p>Start from a single image and a short target description.</p>
-            <div class="pipeline-tags">
-              <span>single image</span>
-              <span>text prompt</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pipeline-arrow">→</div>
-
-        <div class="pipeline-group pipeline-group-wide">
-          <div class="pipeline-group-title">Object-centric 3D Asset Generation</div>
-          <div class="pipeline-grid">
-            <div class="pipeline-card">
-              <div class="pipeline-step">1. Text-guided Object Cutout</div>
-              <p>SAM3 identifies the target object and prepares a clean cutout candidate.</p>
-            </div>
-            <div class="pipeline-card">
-              <div class="pipeline-step">2. Object-only Image</div>
-              <p>The selected transparent object image becomes the canonical downstream input.</p>
-            </div>
-            <div class="pipeline-card">
-              <div class="pipeline-step">3A. FastVLM Metadata</div>
-              <p>Semantic metadata is extracted for category, attributes, material hints, and usage context.</p>
-            </div>
-            <div class="pipeline-card">
-              <div class="pipeline-step">3B. TRELLIS.2 3D Generation</div>
-              <p>The object-only image is passed to TRELLIS.2 to build the base 3D asset.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pipeline-arrow">→</div>
-
-        <div class="pipeline-group pipeline-group-wide">
-          <div class="pipeline-group-title">Editable 3D Viewer & Export UX</div>
-          <div class="pipeline-grid">
-            <div class="pipeline-card">
-              <div class="pipeline-step">Web Viewer</div>
-              <p>Inspect the generated object, rotate it freely, and review mesh-focused output in the browser.</p>
-            </div>
-            <div class="pipeline-card">
-              <div class="pipeline-step">Metadata & Material Controls</div>
-              <p>Review semantic summaries and adjust viewer-side appearance before export.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pipeline-arrow">→</div>
-
-        <div class="pipeline-group">
-          <div class="pipeline-group-title">DCC-ready Export</div>
-          <div class="pipeline-card">
-            <div class="pipeline-step">Package Output</div>
-            <p>Deliver the result in formats such as GLB, OBJ, FBX, and STL for downstream workflows.</p>
-            <div class="pipeline-tags">
-              <span>GLB</span>
-              <span>OBJ</span>
-              <span>FBX</span>
-              <span>STL</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="section-note">
-        The page currently presents the production flow as a single structured figure. The final pipeline artwork can be swapped into this section directly when the source image file is added.
-      </p>
+      <figure class="pipeline-visual">
+        <img src="./assets/page/pipeline.png" alt="PRISM SCAN production pipeline diagram">
+      </figure>
     </section>
 
     <section>
