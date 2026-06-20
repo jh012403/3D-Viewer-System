@@ -14,15 +14,7 @@ For visual results, viewer captures, and curated examples, a separate project pa
 
 ## Pipeline
 
-```text
-Input Image
--> SAM3 Object Segmentation
--> Object-only Image
--> FastVLM Metadata Extraction
--> TRELLIS.2 3D Asset Generation
--> Web Viewer
--> Export
-```
+![Alt text](https://github.com/jh012403/3D-Viewer-System/edit/main/README.md#:~:text=trellis_demo_ready-,system_pipeline,-.png)
 
 ## Quick Start
 
