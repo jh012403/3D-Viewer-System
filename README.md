@@ -13,7 +13,9 @@ The service connects object cutout, metadata extraction, 3D generation, and view
 For visual results, viewer captures, and curated examples, a separate project page will be added later.
 
 ## Pipeline
-![System Pipeline](https://raw.githubusercontent.com/jh012403/3D-Viewer-System/main/asset/system_pipeline.png)
+<p align="center">
+  <img src="assets/system_pipeline.png" alt="PRISM SCAN system pipeline" width="100%">
+</p>
 
 ## Quick Start
 
