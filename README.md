@@ -14,7 +14,7 @@ For visual results, viewer captures, and curated examples, a separate project pa
 
 ## Pipeline
 
-![Alt text](https://github.com/jh012403/3D-Viewer-System/edit/main/README.md#:~:text=trellis_demo_ready-,system_pipeline,-.png)
+![System Pipeline](./asset/system_pipeline.png)
 
 ## Quick Start
 
