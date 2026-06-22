@@ -44,6 +44,94 @@
     </section>
 
     <section>
+      <h2>Real-world Inputs & Results</h2>
+      <p class="section-intro">
+        Three representative cases from the production workflow. Each study pairs a real capture or service-side source image with the generated viewer result produced by PRISM SCAN.
+      </p>
+
+      <div class="case-grid">
+        <article class="case-study case-study-featured">
+          <div class="case-header">
+            <div>
+              <div class="case-kicker">Featured case</div>
+              <h3>TV</h3>
+              <p class="case-note">Large indoor display captured in a cluttered real environment and reconstructed as a reusable background asset.</p>
+            </div>
+            <div class="case-tags">
+              <span>real capture</span>
+              <span>background prop</span>
+              <span>viewer result</span>
+            </div>
+          </div>
+          <div class="case-media">
+            <div class="case-panel">
+              <div class="case-label">Source Capture</div>
+              <img src="./assets/page/TV.jpeg" alt="TV source capture">
+            </div>
+            <div class="case-panel">
+              <div class="case-label">Generated Viewer Result</div>
+              <video controls autoplay muted playsinline loop preload="metadata">
+                <source src="./assets/page/TV_infer.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-study">
+          <div class="case-header">
+            <div>
+              <div class="case-kicker">Case study</div>
+              <h3>Chair</h3>
+              <p class="case-note">Office chair example showing the service-side capture and cutout flow against the final viewer result.</p>
+            </div>
+            <div class="case-tags">
+              <span>segmentation-ready</span>
+              <span>single object</span>
+            </div>
+          </div>
+          <div class="case-media">
+            <div class="case-panel">
+              <div class="case-label">Source Capture</div>
+              <img src="./assets/page/Chair.png" alt="Chair source capture and cutout preview">
+            </div>
+            <div class="case-panel">
+              <div class="case-label">Generated Viewer Result</div>
+              <video controls autoplay muted playsinline loop preload="metadata">
+                <source src="./assets/page/Chair_infer.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-study">
+          <div class="case-header">
+            <div>
+              <div class="case-kicker">Case study</div>
+              <h3>Vase</h3>
+              <p class="case-note">Plant vase capture from a real indoor scene paired with the generated 3D viewer result for prop-style usage.</p>
+            </div>
+            <div class="case-tags">
+              <span>real photo</span>
+              <span>decorative prop</span>
+            </div>
+          </div>
+          <div class="case-media">
+            <div class="case-panel">
+              <div class="case-label">Source Capture</div>
+              <img src="./assets/page/vase_input.png" alt="Vase source capture">
+            </div>
+            <div class="case-panel">
+              <div class="case-label">Generated Viewer Result</div>
+              <video controls autoplay muted playsinline loop preload="metadata">
+                <source src="./assets/page/vase_infer.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
       <h2>Demo-ready Input Examples</h2>
       <div class="demo-grid">
         <div class="demo-card">
@@ -73,64 +161,6 @@
       </div>
       <p class="section-note">
         These examples are selected from demo-ready assets used to validate the service flow and viewer pipeline.
-      </p>
-    </section>
-
-    <section>
-      <h2>Real-world Evaluation Examples</h2>
-    
-      <div class="result-grid">
-        <div class="result-card">
-          <h3>TV</h3>
-          <div class="result-pair">
-            <div>
-              <div class="label">Input Image</div>
-              <img src="./assets/page/TV.jpeg" alt="TV input image">
-            </div>
-            <div>
-              <div class="label">Generated Result</div>
-              <video controls muted playsinline loop>
-                <source src="./assets/page/TV_infer.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-    
-        <div class="result-card">
-          <h3>Chair</h3>
-          <div class="result-pair">
-            <div>
-              <div class="label">Input Image</div>
-              <img src="./assets/page/Chair.png" alt="Chair input image">
-            </div>
-            <div>
-              <div class="label">Generated Result</div>
-              <video controls muted playsinline loop>
-                <source src="./assets/page/Chair_infer.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-    
-        <div class="result-card">
-          <h3>Vase</h3>
-          <div class="result-pair">
-            <div>
-              <div class="label">Input Image</div>
-              <img src="./assets/page/vase_input.png" alt="Vase input image">
-            </div>
-            <div>
-              <div class="label">Generated Result</div>
-              <video controls muted playsinline loop>
-                <source src="./assets/page/vase_infer.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      <p class="section-note">
-        Each pair shows a real-world input image and the corresponding 3D asset generation result produced by the PRISM SCAN pipeline.
       </p>
     </section>
 
