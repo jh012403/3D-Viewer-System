@@ -2,6 +2,7 @@ import {chromium} from '@playwright/test';
 import {writeFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const phase=process.argv[2]||'demo-stage3';
+const spot=process.argv[3]||'spot-0';
 const browser=await chromium.launch({headless:true,args:['--enable-gpu','--use-angle=d3d11']});
 const rows=[],errors=[];
 try{
@@ -10,7 +11,7 @@ try{
   await page.goto('http://127.0.0.1:5173/scene.html?scene='+scene);
   await page.waitForFunction(()=>window.sceneWorkspace?.placement?.proxy,{},{timeout:120000});
   await page.locator('#demoProp').click();await page.waitForFunction(()=>window.sceneWorkspace.placement.pending);
-  await page.locator('[data-spot="spot-0"]').click();
+  await page.locator(`[data-spot="${spot}"]`).click();
   await page.waitForFunction(()=>window.sceneWorkspace.placement.items.length===1,{},{timeout:20000});
   await page.waitForTimeout(900);await page.evaluate(()=>window.sceneWorkspace.placement.controls.detach());
   const row=await page.evaluate(()=>{const p=window.sceneWorkspace.placement,i=p.items[0];return {scene:window.sceneWorkspace.manifest.id,nodes:p.graph.nodes.length,edges:p.graph.edges.length,overlap:p.overlaps(i),position:i.object.position.toArray(),support:i.supportTarget,settled:!i.landing};});

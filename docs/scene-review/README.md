@@ -1,3 +1,5 @@
+> ARCHIVED: accuracy evaluation and review are stopped by user instruction. Current demonstration graphs are manually curated. See ../scene-workspace.md.
+
 # 5장 사용자 검수표
 
 검수 보류 상태의 재생성 자료입니다. 노드 precision/recall 및 관계 정확도는 아직 계산하지 않습니다.

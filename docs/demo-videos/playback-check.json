@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "src": "sunroom.mp4",
+      "width": 1600,
+      "height": 1000,
+      "duration": 34,
+      "playing": true
+    },
+    {
+      "src": "ceramics.mp4",
+      "width": 1600,
+      "height": 1000,
+      "duration": 25.766667,
+      "playing": true
+    },
+    {
+      "src": "d4f646fcc79650d6.mp4",
+      "width": 1600,
+      "height": 1000,
+      "duration": 28.866667,
+      "playing": true
+    },
+    {
+      "src": "hall.mp4",
+      "width": 1600,
+      "height": 1000,
+      "duration": 27.333333,
+      "playing": true
+    }
+  ],
+  "external": []
+}

@@ -21,8 +21,8 @@
           "sha256": "1e75bc075d16f5887fc2ed7360142d20612f4483fb477389463267e96f36f4c2"
         },
         "graph.json": {
-          "bytes": 18397,
-          "sha256": "3ef9f10a46f46a9e10547290f5ebfe59ca93c88ad8b1cd1df9d10460b2752142"
+          "bytes": 130465,
+          "sha256": "f043d4dd769758eda7b3148683dc60e15523a73013144aea7faca531e6dd6549"
         },
         "masks/obj-000.png": {
           "bytes": 1887,
@@ -137,8 +137,8 @@
           "sha256": "07f15774fd3346a3f783cf732b7d7d68a46aa2c1016e26e1f808e774e319c087"
         },
         "scene.json": {
-          "bytes": 1159,
-          "sha256": "1fc9c474aa8cf8284bc790a6b6b76599e3defe85f6d5441dfefa9eb428e85926"
+          "bytes": 1110,
+          "sha256": "39877687ef82f7fc54fb72eca495497e94d656815b9756b3151e1a085286b2ce"
         },
         "source.jpg": {
           "bytes": 341300,
@@ -147,6 +147,42 @@
         "surface.json": {
           "bytes": 4275440,
           "sha256": "761cfd93347ea49282bbf994af0d42c333b0aa2c5ef4e01f36c8be3e3fd1ea3c"
+        },
+        "thumbs/obj-000.jpg": {
+          "bytes": 5207,
+          "sha256": "f5b4efdf45c29e166468a9ce3cd7e84d0959a7a1ae58362c8547dc4229f8ac89"
+        },
+        "thumbs/obj-001.jpg": {
+          "bytes": 7497,
+          "sha256": "458e273aaeadc4139500db184592424855c438d375dcad31378a0547cb5e6b04"
+        },
+        "thumbs/obj-005.jpg": {
+          "bytes": 10851,
+          "sha256": "efe1dd60db6b186886262cb5e7e8dd41ba78a853ae9f92bd68ce3d031d0d716a"
+        },
+        "thumbs/obj-006.jpg": {
+          "bytes": 10281,
+          "sha256": "4c4c71205cced3d39c8a9a55b5a510f7a431ba25eaca4a77b79ed7b0aa118b4d"
+        },
+        "thumbs/obj-009.jpg": {
+          "bytes": 10297,
+          "sha256": "f3b39a6608cd21fb8c122af771fe65445e7c12f1f2081bca93f307414d9627e0"
+        },
+        "thumbs/obj-011.jpg": {
+          "bytes": 8415,
+          "sha256": "3bd299e848a23319357edcce306cf0057e33e098c31b53732041f12a138f4bbe"
+        },
+        "thumbs/obj-015.jpg": {
+          "bytes": 3357,
+          "sha256": "c538b8680536bba3e8a332478eab180e1144c90c045ab966f427db88bfdc5c12"
+        },
+        "thumbs/obj-016.jpg": {
+          "bytes": 6678,
+          "sha256": "2970c43cdb8b4bba377a1dafc4d66fae04943d9d543a939a581e0f5f4028b4f6"
+        },
+        "thumbs/obj-017.jpg": {
+          "bytes": 5442,
+          "sha256": "8276c6b4365d6b93135ff73ceb05e948157a9dc11e11b2950aa9d9d291a03b7b"
         }
       }
     },
@@ -174,8 +210,8 @@
           "sha256": "8f64201c449f01e61331b95affe48c124fc61989a5774b5223f0ec69e14f6936"
         },
         "graph.json": {
-          "bytes": 11836,
-          "sha256": "edef20f42e23e817d2929820cf9f55199fd2293a05fe6fb6c0a52769b017408d"
+          "bytes": 52741,
+          "sha256": "cb7a2fbf67eed17d3bac1c02561242a42486cc112c3dc4c7543d0e11471e16a9"
         },
         "masks/obj-000.png": {
           "bytes": 940,
@@ -282,8 +318,8 @@
           "sha256": "989af2b3bee878e08c341f92ecbd4847326504070852c3e28b24f49494245dc3"
         },
         "scene.json": {
-          "bytes": 1172,
-          "sha256": "ea395debdc20cce5670e6f0874f8918e486bb510ef0e120d3e11b4264dd81f3f"
+          "bytes": 1123,
+          "sha256": "9dc1d8bf213d0db3cd45feba21b46c6e305ecd8a22e5f96eb9a8f4887f2bb939"
         },
         "source.jpg": {
           "bytes": 164357,
@@ -292,6 +328,38 @@
         "surface.json": {
           "bytes": 1608272,
           "sha256": "da0d3157a27b5065abe64199fc25d2314f00b2ea7c9ff5f5da4dc8c366f133ac"
+        },
+        "thumbs/obj-000.jpg": {
+          "bytes": 4318,
+          "sha256": "3367b9fefcc82aa2aa48837a1695a9b9997b7edd1839290950133553f334d4ae"
+        },
+        "thumbs/obj-001.jpg": {
+          "bytes": 4425,
+          "sha256": "0513fbd98d6c402b862e2f824ae04b37540be40ef1265609311aa450df815ca2"
+        },
+        "thumbs/obj-002.jpg": {
+          "bytes": 4043,
+          "sha256": "e6feecf2ad59fdf2150166a2ed150228ffe218181ea7c7b11026fe408b935906"
+        },
+        "thumbs/obj-003.jpg": {
+          "bytes": 3429,
+          "sha256": "e061414142d53151d07e983631443433bddf2de408f11c137a877e2a18b92478"
+        },
+        "thumbs/obj-014.jpg": {
+          "bytes": 7871,
+          "sha256": "10cb5654eb8ad7c9ea7fbe1eeb640e119319b14d0c893677c98e4ffaa8a6bdb4"
+        },
+        "thumbs/obj-015.jpg": {
+          "bytes": 7524,
+          "sha256": "c0cdeb6e7431cb5d914a61dd0ddea57f212ca2f68e6645a4fafa3dffd417e15b"
+        },
+        "thumbs/seats.jpg": {
+          "bytes": 6787,
+          "sha256": "747baa28dcbd7055a102ed07c7d3d5641edb059b23d7ca6a3f92ce5b730f04d0"
+        },
+        "thumbs/trunk.jpg": {
+          "bytes": 4323,
+          "sha256": "ee5b725b37dd5a328667046248e43d85a34e87fe762e1c505d6eef5b55166e66"
         }
       }
     },
@@ -327,8 +395,8 @@
           "sha256": "ab6e0be46b37c73f68544ac91673440ef3f72e827eb1e43c4b1a6ec485fdf987"
         },
         "graph.json": {
-          "bytes": 20229,
-          "sha256": "be0ad9c658e826af10615f5371a00c053f1e24ab29b1bffdf8a97b1a1711c397"
+          "bytes": 68031,
+          "sha256": "75424398b850e1a65741c0707b129921fb26bdc160ec7443d3d16abb0863413e"
         },
         "masks/obj-000.png": {
           "bytes": 2456,
@@ -507,8 +575,8 @@
           "sha256": "30290fed62338b36ed4f4130d5c1cda509bc71b92fa50f83f9fb9b65b433872b"
         },
         "scene.json": {
-          "bytes": 1161,
-          "sha256": "165c92e81563e62f46d0633cba7bbc3c831b59a400d279407ccedbfd571c8644"
+          "bytes": 1112,
+          "sha256": "39c1c30e9875b05b1eaa7c3671e4baa5bb27ed860eb77fc59757a502287be17f"
         },
         "source.jpg": {
           "bytes": 560601,
@@ -517,6 +585,46 @@
         "surface.json": {
           "bytes": 3911242,
           "sha256": "e81bc5ac7e77b77c5c4ae3d3f35bd08ca5ebc46dd73a650b59ac4cdd3bdccafd"
+        },
+        "thumbs/ceiling.jpg": {
+          "bytes": 6662,
+          "sha256": "49bb4629d091714bd298d3510a71a1133e8776c2a8bb3cc68da8c3c427cadedd"
+        },
+        "thumbs/landing.jpg": {
+          "bytes": 4202,
+          "sha256": "71314a5a8258ada8fdbe4e5f56177e978666a9e6e2adfa28415110426683cb83"
+        },
+        "thumbs/lower-floor.jpg": {
+          "bytes": 3569,
+          "sha256": "b0be7173046cfc1bbc7cd83b23d52de889dd7471eadc64e254946900c0dc2bd1"
+        },
+        "thumbs/obj-000.jpg": {
+          "bytes": 3028,
+          "sha256": "f41ce07869d57a2ea89dc9f71956d9c5f3179dd5107472aae5ad0cf1933647a9"
+        },
+        "thumbs/obj-004.jpg": {
+          "bytes": 2782,
+          "sha256": "0e49541f6353a5084155c6e3e4a061d2292736e3d8ec11109b46e86da302da54"
+        },
+        "thumbs/obj-007.jpg": {
+          "bytes": 8438,
+          "sha256": "6257c1d5118f0cbeab6ed9c97d48c9a4ad447a57cfa008f1a0dd30c5ab180d45"
+        },
+        "thumbs/obj-008.jpg": {
+          "bytes": 8883,
+          "sha256": "835cf4db6ef2ac33e28a5103cf94f6371f159c4c453d098d2c30316e9b7f2236"
+        },
+        "thumbs/obj-009.jpg": {
+          "bytes": 11337,
+          "sha256": "6ee8d80d75756c22434089d49f871d07c5c5141af65dfb903bc252910317e0ec"
+        },
+        "thumbs/obj-023.jpg": {
+          "bytes": 3916,
+          "sha256": "e59aab85395151a317fb95a5cab15cf4d34816f64e9998593ba98826a7c246bc"
+        },
+        "thumbs/obj-024.jpg": {
+          "bytes": 3233,
+          "sha256": "46f19df2026ea5484c1d1257f930c96a32d2e33abec4300a2d28d76d0261141c"
         }
       }
     },
@@ -544,8 +652,8 @@
           "sha256": "679c5172e94874ccb977ad88e45cc1edb678869308166d1b4c7a700adfd9e6c5"
         },
         "graph.json": {
-          "bytes": 13118,
-          "sha256": "779834937a5eb7c32521bfd58f0248ad9268560275bfed0b4734c4cc3da7b3b0"
+          "bytes": 80888,
+          "sha256": "79a91bcb32a8dfde965583507ab6aa92f97e49c71779e3439bdd923da37860e9"
         },
         "masks/obj-000.png": {
           "bytes": 2714,
@@ -636,8 +744,8 @@
           "sha256": "07bda73870e2918f091c8aa417785e86474a5dd3fe0bc7fa3055663d66bb4db5"
         },
         "scene.json": {
-          "bytes": 1164,
-          "sha256": "4cfde98374a4dbd0cb5cdce5ad459e0da1964f89ecf9cf03c6425e2f8424199e"
+          "bytes": 1115,
+          "sha256": "6294f5b0a937270d07774573a9316769cea9f89a617266dd18b40ab88397b5b6"
         },
         "source.jpg": {
           "bytes": 393757,
@@ -646,6 +754,38 @@
         "surface.json": {
           "bytes": 4197555,
           "sha256": "820d5df0027bd8cdf611e562ef62c1248e318f71b3ec04aa1192ea3a2c78eca8"
+        },
+        "thumbs/obj-000.jpg": {
+          "bytes": 7475,
+          "sha256": "2b2dfacd8ecb56889542508f51217eaccbc88ef1b442fd5d827f178282b19d86"
+        },
+        "thumbs/obj-002.jpg": {
+          "bytes": 6982,
+          "sha256": "e5281fd81ef48539aab92a428081131a2102cfc0276454862954d04d83e15abe"
+        },
+        "thumbs/obj-003.jpg": {
+          "bytes": 2879,
+          "sha256": "ed8e8680f67d6590c89364b2bdba606712f8c477246b452f5057b0bc39a53899"
+        },
+        "thumbs/obj-004.jpg": {
+          "bytes": 6621,
+          "sha256": "345c970a2d6270a1af20858cf95fa08ba30b6d058a482b6b13674ce8fca0c8e5"
+        },
+        "thumbs/obj-006.jpg": {
+          "bytes": 3937,
+          "sha256": "978983e5455fb3e9e52b7d2503156e3b0ec3ac461c760cf820c75be93aff34ce"
+        },
+        "thumbs/obj-008.jpg": {
+          "bytes": 10229,
+          "sha256": "8803940bca2333112aa326662711bf5f7a84fac8601a7859097e59242d5d24f0"
+        },
+        "thumbs/obj-013.jpg": {
+          "bytes": 3996,
+          "sha256": "30e79c74259082bd752f1f3e0943a97487714f2b688970c950b2cb2d7464a42a"
+        },
+        "thumbs/obj-019.jpg": {
+          "bytes": 3321,
+          "sha256": "4c1dfd76677061191c35d921a3b7242bed38d265bcddfc3aa48ae81c4b622394"
         }
       }
     }

@@ -1,3 +1,5 @@
+> ARCHIVED: accuracy evaluation and review are stopped by user instruction. Current demonstration graphs are manually curated. See scene-workspace.md.
+
 # Scene reference audit
 
 Historical pre-pruning baseline only. The current graph has confidence/size/duplicate/reflection filtering and sparse relations. Current precision/recall await the user's labels in [the five-photo review pack](scene-review/README.md).

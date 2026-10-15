@@ -1,5 +1,8 @@
 # Decisions — 2026-10-15
 
+- Deliver four actual browser recordings as H.264/yuv420p/30fps MP4 plus a dependency-free offline gallery. Record real PNG/JSON downloads, cache-only operation and authored prop provenance. Videos include step captions/cursor and no audio. Preserve raw WebM locally; commit portable MP4s and output artifacts. All evaluation/review plans below are historical and superseded by the demo pivot.
+
+
 - Processing animation follows worker events. Run depth before SHARP to match the displayed order, unloading each model between stages. Cached scene loading has separate wording; never simulate model execution during a cache-only stage presentation. Processing screenshots are labeled UI previews in the documentation.
 
 - Graph presentation uses actual photo crops for background nodes and a rendered GLB thumbnail for inserted props. Support hierarchy controls vertical layout; non-support edges are subdued until selection. Hover does not rebuild the graph and uses cached silhouette points. Technical geometry metrics stay out of the demo UI.

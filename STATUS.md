@@ -1,6 +1,9 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Demo stage 6 COMPLETE: four actual browser recordings exported as offline H.264 MP4: sunroom 34.00s, ceramics 25.76s, groceries 28.86s, hall 27.33s. Each includes scene selection, orbit, graph, placement, graph update and actual PNG/JSON downloads. Offline file:// gallery playback passed for all four at 1600x1000, with no external requests. Recording checks found no inference requests, browser errors or placement overlaps. See docs/demo-videos/index.html, docs/demo-recording-run.json and docs/screenshots/demo-stage6-*.png. All eight recommended positions passed collision/settling checks. Production build passes (bundle-size advisory only). Cache integrity manifest refreshed. No accuracy/review/RANSAC execution or reboot. Current scope is complete; mesh runtime remains separately pending the user's restart.
+
+The following checkpoints are chronological history; the demo direction supersedes old accuracy plans.
 Demo stage 5: animated processing panel connected to backend worker stages (depth -> SHARP -> objects -> relations). Cached scenes use distinct loading copy and no fake inference. Verified callback sequence and Python syntax; screenshots demo-stage5-processing-0..3.png are explicitly UI-state previews, not a new GPU inference run. Save confirmation toast added. Next: actual four-scene browser recordings and fallback MP4 delivery.
 
 Demo stage 4: thumbnail-card graph with vertical support hierarchy, animated new nodes/edges, photo-mask contours on hover/click, and authored Korean paragraph updated after placement. Sidebar expanded for readability and technical depth/alignment statistics removed from the product UI. Screenshots: docs/screenshots/demo-stage4-*-graph.png and *-outline.png. Next: processing presentation and MP4 rehearsals.
@@ -42,7 +45,7 @@ Original scene graph results (relations 9/10, object correspondence 14/36) are u
 
 ## Resume
 Read this file and DECISIONS.md. Check installed Node/Python and WSL completion without reading/changing power limits.
-Resume stage 2 validation in the separate scene entrypoint. Do not modify existing pipeline or external/prism-scan.
+For a presentation, launch scripts/start-scene.ps1 or open docs/demo-videos/index.html offline. Accuracy/review work is stopped. Do not modify original assets or external/prism-scan.
 Use .runtime/scene312-env and scripts/start-scene.ps1. Current cache/browser tests pass; no full accuracy claim. Read docs/scene-workspace.md and docs/scene-evaluation.md before further quality work.
 
 WSL components completed; restart required, not initiated. Native Windows scene environment is being prepared. Stage 0 screenshot: docs/screenshots/stage0-audit.png (audit report, not viewer).

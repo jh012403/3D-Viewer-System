@@ -1,0 +1,57 @@
+{
+  "rows": [
+    {
+      "scene": "sunroom",
+      "nodes": 9,
+      "edges": 11,
+      "overlap": false,
+      "position": [
+        0.12835593800721593,
+        -0.3329232142062163,
+        -1.0616661310195923
+      ],
+      "support": "obj-000",
+      "settled": true
+    },
+    {
+      "scene": "ceramics",
+      "nodes": 10,
+      "edges": 10,
+      "overlap": false,
+      "position": [
+        -0.3178972000288059,
+        -0.49748847536975466,
+        -2.185485601425171
+      ],
+      "support": "obj-017",
+      "settled": true
+    },
+    {
+      "scene": "d4f646fcc79650d6",
+      "nodes": 9,
+      "edges": 11,
+      "overlap": false,
+      "position": [
+        -0.20656892779917277,
+        -0.20193048721531298,
+        -1.8020700979232789
+      ],
+      "support": "trunk",
+      "settled": true
+    },
+    {
+      "scene": "hall",
+      "nodes": 11,
+      "edges": 11,
+      "overlap": false,
+      "position": [
+        3.2978170411750813,
+        -2.131354700959847,
+        -7.0441508293151855
+      ],
+      "support": "lower-floor",
+      "settled": true
+    }
+  ],
+  "errors": []
+}

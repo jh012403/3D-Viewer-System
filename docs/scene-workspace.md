@@ -1,31 +1,27 @@
 # Local scene workspace
 
-Latest: [revision 6 comparison and remaining failures](scene-revision6.md). Five-photo review is on hold with regenerated graph hashes. Labels now use image position; orbit is +/-5 degrees with a nearby pivot and preview crop. demo10's table/chair floor relations remain unresolved because the observed boxes omit hidden legs. Material tint/EV, transparent-mask occlusion exclusion, soft depth edges and collision resolution are enabled. Screenshots distinguish the 1m default from the 0.7m lounge-chair demonstration adjustment.
+## Presentation
 
-Run `powershell -ExecutionPolicy Bypass -File scripts/start-scene.ps1` from the repository. Open http://127.0.0.1:5173/scene.html?scene=sunroom . The script reports its process IDs for shutdown. The original mesh service is separate and unchanged.
+Run `powershell -ExecutionPolicy Bypass -File scripts/start-scene.ps1` from the repository, then open http://127.0.0.1:5173/scene.html . Default demonstration mode reads local caches only. Select a background, orbit slightly, inspect the graph, select the demo planter, click a recommended position, then Save. Existing GLB import and move/rotate/scale controls remain available.
 
-The default checked demonstration mode loads local PLY, geometry, photographs and graph JSON only. Four cached backgrounds are sunroom, ceramics, hall and groceries (d4f646fcc79650d6). Uncheck demonstration mode to generate a new background and graph. Select an existing GLB, click a visible horizontal surface, then use move/rotate/scale and Save. Export contains an original-camera PNG and graph JSON with model and geometry limitations.
+Four graphs were manually curated from automatic detections using the source photos: sunroom 8 nodes/10 edges, ceramics 9/9, groceries 8/10, hall 10/10. Each scene has two recommended placements, Korean labels, thumbnail nodes, contour highlights and a paragraph summary. Placement appends a node and support edge. The demo planter is an authored GLB, not a TRELLIS output.
 
-The library displays descriptive Korean names. Initial previews use a small edge crop; original-camera exports retain full framing. Orbit is limited per scene: sunroom 0.5°, ceramics 3°, hall and groceries 1.5° each side. GLB category defaults to filename-based automatic selection; chairs use the existing 1m normalization policy. Generated meshes can be selected directly from the scene's results list or opened with the result page's placement link. Mesh runtime recovery still requires a Windows restart; see [recovery checkpoint](mesh-runtime-recovery.md).
+Horizontal orbit is +/-5 degrees, vertical +/-0.5 degrees, pivot radius 0.12m and preview zoom 1.13. The preview crops edges; PNG export uses the original camera framing. Nearby clicks snap to recommendations and props settle over 650ms. Placement uses collision checks, transparent-surface occlusion exclusion, soft depth boundaries, color adjustment and contact shadows. All eight recommended positions passed browser collision/settling checks.
 
-## Environment
+## Offline fallback
 
-Python 3.12 is the supported combined environment: SAM3 requires NumPy <2, which conflicts with the original Python 3.13 environment. Install CUDA torch 2.11.0 / torchvision 0.26.0 from the official cu128 index, then `pip install -r pipelines/scene/requirements-windows.txt` in `.runtime/scene312-env`. Existing SHARP, DAV2 and SAM3 checkouts and local weights are required. SAM3 requires an authorized Hugging Face account for its initial download; never store a token in this repository.
+Open [the offline video gallery](demo-videos/index.html) directly in a browser without a server. [Video delivery notes](demo-videos/README.md) link all four MP4s and actual PNG/JSON exports. Videos record real browser interaction with step captions and cursor, without audio. Cache rehearsals made no external or inference requests. All four 1600x1000 videos passed offline playback checks.
 
-The legacy Python 3.13 environment produced the first 15-photo evaluation; its SAM3 NumPy requirement is unsatisfied despite successful inference. Retained for traceability, not the default launch environment. WSL setup still requires a Windows restart; native Windows inference does not require that restart. GPU power settings are user-managed.
+## Processing and preservation
 
-## Rebuilding caches and evaluating
+Disable demonstration mode to process a new background. Worker events drive depth estimation, 3D reconstruction, object recognition and relation analysis. This change verified callbacks and UI states; no new GPU inference run was performed. Cache loading has separate wording.
 
-Use `python -m pipelines.scene.build IMAGE --output storage/scene_cache/SCENE` for SHARP and metric depth. `python -m pipelines.scene.graph docs/scene-evaluation-set.json` generates names, masks, visible-surface boxes and geometric relations for the separate 15-photo set. Existing generated graphs are reused. `python -m pipelines.scene.evaluate` writes the reference audit table. Cache files are large local ignored assets; their hashes and provenance are recorded in `scene-cache-manifest.json`.
+Accuracy evaluation, five-photo review, precision calculations and RANSAC work are stopped at the user's request. Historical review documents are retained only as archives and do not measure these curated graphs. Live-path changes are limited to directed on, no under, structural direction exclusions and category/position labels instead of RGB colors. Automatic reprocessing skips curated caches.
 
-## Accuracy limits
+Reflection, occlusion, contact geometry, glass and hidden surfaces remain monocular reconstruction limitations. Contact shadows are a radial approximation replacing unavailable original code. JSON records authored provenance. Original cases and external/prism-scan remain untouched.
 
-The [15-photo reference audit](scene-evaluation.md) is the historical pre-pruning run: selected correspondence 33/36 and relation recovery 11/16. It does not describe the current pruned/cleaned graph. These were assistant-annotated provisional subsets, not full precision or independent ground truth. Previous user-reported 14/36 and 9/10 use unavailable different data; no valid improvement claim is possible.
+## Environment and resume
 
-Current predictions are frozen in the [five-photo human review pack](scene-review/README.md). Open `docs/scene-review/index.html` in a browser, classify every node/relation, add missed objects/relations, and export confirmed JSON. `python -m pipelines.scene.review_evaluate REVIEW.json` then reports precision, false-detection fraction and recall. Until the user confirms labels, current precision/recall remain unmeasured.
+Use Python 3.12 at `.runtime/scene312-env`, with local SHARP, DAV2, SAM3 checkouts and weights. Large caches are git-ignored; [cache hashes](scene-cache-manifest.json) record integrity. Curation sources are `pipelines/scene/curate_demo.py` and `assets/scene-demo/*/graph.json`.
 
-Remaining errors include reflected objects, object parts, missed support surfaces and contact relations lost to monocular depth/axis-aligned box uncertainty. A category's VLM attributes do not establish the appearance of each instance. Gravity is assumed from the camera vertical. Transparent glass and hidden surfaces cannot be reconstructed reliably. The radial shadow replaces unavailable original shadow code.
-
-If local naming quality remains insufficient, a hosted vision model can replace only the names/attributes provider after choosing a service and approving photo transmission. It must not produce spatial relations. A larger VLM alone will not fix depth/contact geometry errors. A full accuracy claim requires independent exhaustive object and relation annotations.
-
-Original generated cases, rm06_U01 and the original 15 backgrounds have no available backup. TRELLIS.2, FastVLM and the referenced decoder/DINOv3/RMBG weights are now downloaded. FastVLM selected-object inference passes on native Windows. TRELLIS Linux runtime installation and full mesh generation still await Windows restart/WSL activation; see the recovery checkpoint. Existing generation logic is unchanged.
+The original 23-24 cases, rm06_U01 and original 15 backgrounds have no backup. TRELLIS.2/FastVLM weights are downloaded, but the TRELLIS Linux runtime and full new-photo mesh generation still await Windows restart/WSL activation. See [mesh recovery checkpoint](mesh-runtime-recovery.md). The user controls reboot and GPU power settings; no reboot was performed for this presentation work.

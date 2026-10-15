@@ -1,0 +1,58 @@
+[
+  {
+    "scene": "sunroom",
+    "title": "햇살 드는 유리 테이블 방",
+    "curated": true,
+    "nodes": 9,
+    "edges": 11,
+    "overlap": false,
+    "settled": true,
+    "downloads": 2,
+    "errors": [],
+    "external": [],
+    "inference": [],
+    "raw": "storage/demo_recordings/sunroom.webm"
+  },
+  {
+    "scene": "ceramics",
+    "title": "도자기와 꽃 정물",
+    "curated": true,
+    "nodes": 10,
+    "edges": 10,
+    "overlap": false,
+    "settled": true,
+    "downloads": 2,
+    "errors": [],
+    "external": [],
+    "inference": [],
+    "raw": "storage/demo_recordings/ceramics.webm"
+  },
+  {
+    "scene": "d4f646fcc79650d6",
+    "title": "장바구니를 실은 자동차",
+    "curated": true,
+    "nodes": 9,
+    "edges": 11,
+    "overlap": false,
+    "settled": true,
+    "downloads": 2,
+    "errors": [],
+    "external": [],
+    "inference": [],
+    "raw": "storage/demo_recordings/d4f646fcc79650d6.webm"
+  },
+  {
+    "scene": "hall",
+    "title": "조각상이 있는 전시 홀",
+    "curated": true,
+    "nodes": 11,
+    "edges": 11,
+    "overlap": false,
+    "settled": true,
+    "downloads": 2,
+    "errors": [],
+    "external": [],
+    "inference": [],
+    "raw": "storage/demo_recordings/hall.webm"
+  }
+]
