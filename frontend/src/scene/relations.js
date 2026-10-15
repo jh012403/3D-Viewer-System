@@ -21,8 +21,6 @@ export function relationCandidates(nodes){
     if(supported&&Math.abs(B.min[1]-supportHeight(a,b))<(a.plane?.tolerance_m||t)&&validSupport(b,a))add(b,a,'on');
     for(const [object,cover] of [[a,b],[b,a]]){
       if(supported&&/light|lamp|chandelier|fan/.test(category(object))&&category(cover)==='ceiling'&&Math.abs(object.box.max[1]-cover.box.min[1])<.15&&object.box.min[1]<cover.box.min[1])add(object,cover,'attached to');
-      // A separate overhead cover, never the inverse of a contact relation.
-      if(supported&&!isStructure(object)&&/(^| )(table|shelf|desk)$/.test(category(cover))&&object.box.max[1]<cover.box.min[1]-.08)add(object,cover,'under');
     }
     if(isStructure(a)||isStructure(b))continue;
     if(A.max[0]<B.min[0]-t){add(a,b,'left of');add(b,a,'right of');}
@@ -36,7 +34,7 @@ export function relationCandidates(nodes){
   return edges;
 }
 
-export const RELATION_POLICY='directed-support-neighbors-v3';
+export const RELATION_POLICY='directed-support-no-under-v4';
 const priority=r=>({on:0,under:1,'next to':2,'left of':3,'right of':3,'in front of':3,behind:3}[r]??9);
 const distance=(a,b)=>Math.hypot(...[0,1,2].map(k=>Math.max(0,a.box.min[k]-b.box.max[k],b.box.min[k]-a.box.max[k])));
 const centerDistance=(a,b)=>Math.hypot(...[0,1,2].map(k=>(a.box.min[k]+a.box.max[k]-b.box.min[k]-b.box.max[k])/2));
@@ -45,7 +43,7 @@ const pairKey=e=>[e.source,e.target].sort().join('|');
 // facts about the same unordered pair and are not stored twice.
 export function pruneRelations(nodes,candidates){
   const byId=new Map(nodes.map(n=>[n.id,n])),support=new Map();
-  const valid=candidates.filter(e=>e.source!==e.target&&byId.get(e.source)?.box&&byId.get(e.target)?.box)
+  const valid=candidates.filter(e=>e.relation!=='under'&&e.source!==e.target&&byId.get(e.source)?.box&&byId.get(e.target)?.box)
     .filter(e=>e.relation!=='on'||validSupport(byId.get(e.source),byId.get(e.target)));
   const gap=e=>Math.abs(byId.get(e.source).box.min[1]-supportHeight(byId.get(e.target),byId.get(e.source)));
   const on=valid.filter(e=>e.relation==='on').sort((a,b)=>

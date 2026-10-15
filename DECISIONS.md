@@ -1,5 +1,7 @@
 # Decisions — 2026-10-15
 
+- Live path changes stop at obvious mistakes: no under, directed on, structural direction exclusions, no RGB labels. Remove the RANSAC invocation rather than continuing to tune it. Historical floor/evaluation tools remain archived but are not invoked. Reprocessing must skip curated demo caches.
+
 - New priority supersedes all accuracy plans below: curate four demo caches, polish interaction, record fallback videos. Stop review/precision/RANSAC work. Curated graphs are photo-guided authored content, not measured automatic predictions; preserve this provenance in JSON/docs while keeping the stage UI focused on the scene.
 - Four scenes have 6–10 selected objects, 8–12 obvious relations, natural Korean labels and two authored placement points each. Keep authored edges unchanged when displaying or adding a new object. Preserve automatic source graphs separately. No changes to original missing cases or external/prism-scan.
 

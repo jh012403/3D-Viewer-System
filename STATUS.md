@@ -1,6 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Demo stage 2: live graph generation no longer calls RANSAC; under generation is disabled entirely. Existing directed-on and structural direction exclusions retained; labels remain category/position only. Reprocessing skips authored caches. Shared JS smoke checks pass. Stage 2 screenshot reuses the unchanged stage-1 view (demo-stage2-live-rules.png); no inference/evaluation was run.
+
 Direction change: demo presentation is the goal. Accuracy evaluation, five-photo review, precision calculations and RANSAC work are STOPPED. Stage 1 authored four cached graphs from original automatic detections: sunroom 8/10, ceramics 9/9, groceries 8/10, hall 10/10 nodes/edges, two recommended placements each. Sources: pipelines/scene/curate_demo.py and assets/scene-demo/*/graph.json. Current demo graphs carry explicit editorial provenance; no automatic accuracy claims. Next: minimal live-path changes, placement/graph animation and four fallback MP4s. No reboot.
 
 2026-10-15 revision 6: five-photo review is ON HOLD. Fixed reversed support direction and support taxonomy, removed inverse under, added ceiling attachment, suppressed 017/020/022 glass reflections, replaced RGB colors with image-position labels. RANSAC floor/landing nodes and regenerated graphs/review hashes are recorded in docs/scene-revision6.md. Current five-photo totals: 116 nodes / 112 edges; pack ec9979c1060d1921. No user labels or precision claims.

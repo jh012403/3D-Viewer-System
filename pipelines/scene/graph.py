@@ -121,11 +121,9 @@ def segment_batch(entries):
         from .cleanup import clean_nodes
         write_json(out/'nodes-raw.json',nodes)
         nodes,cleanup=clean_nodes(nodes,out)
-        from .floor import augment_floor
-        nodes,floor_estimation=augment_floor(nodes,out,camera)
         edges=compute_relations(nodes)
         graph={"version":1,"status":"generated","nodes":nodes,"edges":edges,"camera":camera,
-            "relation_policy":"directed-support-neighbors-v3","floor_estimation":floor_estimation,
+            "relation_policy":"directed-support-no-under-v4",
             "cleanup":cleanup,
             "models":{"names":"Qwen/Qwen3-VL-4B-Instruct","masks":"facebook/sam3","depth":entry.get("depth_domain","hypersim")},
             "coordinate_system":"three-camera-x-right-y-up-z-back","units":"meters",

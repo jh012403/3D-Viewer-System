@@ -34,5 +34,5 @@ assert(sparse([ceiling,light]).some(e=>e.source==='light'&&e.relation==='attache
 assert(!sparse([ceiling,front]).length);
 assert(!sparse([{...table,name:'glass bottle'},cup]).some(e=>e.relation==='on'));
 const covered={id:'covered',name:'toy',box:{min:[0,-.4,-1.7],max:[.2,-.1,-1.5]}};
-assert(sparse([table,covered]).some(e=>e.source==='covered'&&e.relation==='under'));
+assert(!sparse([table,covered]).some(e=>e.relation==='under'));
 console.log('Support direction, structural exclusion and overhead-cover regression checks passed');
