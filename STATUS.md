@@ -1,7 +1,7 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
-Stages 0, 1 and 3 committed and pushed. Stage 2 implementation and 15-photo provisional audit complete; accuracy target NOT achieved. Final stage 2 commit in progress.
+Stages 0, 1 and 3 committed and pushed. Stage 2 implementation and 15-photo provisional audit committed and pushed as 15ca972; accuracy target NOT achieved.
 Node.js 24 and Python 3.13 installed. Python 3.12 compatibility environment installed; pip check clean, geometry tests pass and real SHARP/Qwen/SAM3 upload inference passes. WSL components installed, restart pending; no restart initiated.
 GPU RTX 3090 24576 MiB, driver 595.71. Power limit deliberately not queried or changed in this run.
 
