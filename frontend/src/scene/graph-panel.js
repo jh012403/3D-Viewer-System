@@ -5,7 +5,7 @@ export function drawGraph(root,graph,selected,onSelect){
   const note=document.createElement('p');note.className='muted';note.textContent='사진 기반 추정 · 반사·가림·접촉 관계는 확인이 필요합니다.';root.append(note);
   if(!graph.nodes.length){meta.textContent='그래프를 생성하면 물체와 관계가 표시됩니다.';return;}
   const focus=graph.nodes.find(n=>n.id===selected)||graph.nodes[0];
-  const names=Object.fromEntries(graph.nodes.map(n=>[n.id,n.name]));
+  const names=Object.fromEntries(graph.nodes.map(n=>[n.id,n.label||n.name]));
   const inverse={on:'under',under:'over','left of':'right of','right of':'left of','in front of':'behind',behind:'in front of','next to':'next to'};
   const edges=graph.edges.filter(e=>e.source===focus.id||e.target===focus.id).map(e=>e.source===focus.id?e:{...e,source:focus.id,target:e.source,relation:inverse[e.relation]}).sort((a,b)=>(['on','under','next to'].includes(b.relation)?1:0)-(['on','under','next to'].includes(a.relation)?1:0));
   const neighbors=[...new Set(edges.map(e=>e.target))].slice(0,6);
@@ -27,6 +27,6 @@ export function drawGraph(root,graph,selected,onSelect){
   const summary=document.createElement('p');summary.className='graph-summary';summary.textContent=edges.length?edges.slice(0,6).map(e=>names[e.source]+' '+e.relation+' '+names[e.target]).join(' · '):focus.name+'의 확인된 관계가 없습니다.';root.append(summary);
   const label=document.createElement('div');label.className='section-label';label.textContent='모든 물체 · 클릭하여 선택';root.append(label);
   const list=document.createElement('div');list.className='graph-nodes';
-  for(const node of graph.nodes){const b=document.createElement('button');b.className='node'+(node.id===focus.id?' active':'');b.textContent=node.name+' · '+node.id.replace('obj-','#').slice(0,8);b.setAttribute('aria-pressed',node.id===focus.id);b.onclick=()=>onSelect(node.id);list.append(b);}
+  for(const node of graph.nodes){const b=document.createElement('button');b.className='node'+(node.id===focus.id?' active':'');b.textContent=node.label||node.name+' · '+node.id.replace('obj-','#').slice(0,8);b.setAttribute('aria-pressed',node.id===focus.id);b.onclick=()=>onSelect(node.id);list.append(b);}
   root.append(list);
 }

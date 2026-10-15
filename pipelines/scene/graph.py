@@ -118,9 +118,13 @@ def segment_batch(entries):
                         "box":box,"source":"sam3-metric-depth","box_extent":"visible-surface-robust-aabb"})
                     accepted.append(mask)
                 print(entry["id"],obj["name"],"nodes",len(nodes),flush=True)
+        from .cleanup import clean_nodes
+        write_json(out/'nodes-raw.json',nodes)
+        nodes,cleanup=clean_nodes(nodes,out)
         edges=compute_relations(nodes)
         graph={"version":1,"status":"generated","nodes":nodes,"edges":edges,"camera":camera,
             "relation_policy":"nearest-support-neighbors-v2",
+            "cleanup":cleanup,
             "models":{"names":"Qwen/Qwen3-VL-4B-Instruct","masks":"facebook/sam3","depth":entry.get("depth_domain","hypersim")},
             "coordinate_system":"three-camera-x-right-y-up-z-back","units":"meters",
             "limitations":["Boxes bound visible surfaces, not hidden volume","Gravity assumed from photo vertical","Metric depth is estimated"]}

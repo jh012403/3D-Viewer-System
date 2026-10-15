@@ -1,6 +1,7 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Follow-up priority 2 complete: demo10 20 -> 17 nodes, one table (obj-000); obj-001 rejected at confidence 0.523 rather than unioning unrelated geometry. dav2-01 77 -> 24, dav2-14 63 -> 24. Post-cleanup demo10 18 edges / 17 nodes. Per-node masked color + stable ID labels; confidence/area budget, same-category overlap merging and reflective-mask containment suppression run before relations. Original raw predictions retained. Unit/browser checks pass. Screenshot docs/screenshots/revision2-sunroom.png. Next priority 3: restore TRELLIS/FastVLM.
 2026-10-15 follow-up priority 1 complete: persisted graph pruning, demo10 492 -> 27 edges / 20 nodes (1.35 edges/node; mean undirected degree 2.7). One immediate on target, mutual nearest three eligible neighbors, close-only same-category predicates, unordered-pair deduplication and same-predicate transitive reduction. Browser caches match persisted JSON; zero errors/external requests/inference. Screenshot docs/screenshots/revision1-sunroom.png. Next: priority 2 node cleanup, then runtime restoration, presentation and review pack.
 Stages 0, 1 and 3 committed and pushed. Stage 2 implementation and 15-photo provisional audit committed and pushed as 15ca972; accuracy target NOT achieved.
 Node.js 24 and Python 3.13 installed. Python 3.12 compatibility environment installed; pip check clean, geometry tests pass and real SHARP/Qwen/SAM3 upload inference passes. WSL components installed, restart pending; no restart initiated.
