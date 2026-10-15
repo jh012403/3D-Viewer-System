@@ -1,5 +1,7 @@
 # Scene reference audit
 
+Historical pre-pruning baseline only. The current graph has confidence/size/duplicate/reflection filtering and sparse relations. Current precision/recall await the user's labels in [the five-photo review pack](scene-review/README.md).
+
 Assistant visual reference annotations from source photographs. Approximate 2D boxes; 36 selected instances, not exhaustive labels. These are NOT independent human ground truth or 3D ground truth. Relation references are qualitative visible evidence. Match category aliases and IoU >= 0.30 one-to-one. Report anchored correspondence recall and end-to-end relation recovery; never call this full precision/accuracy.
 
 | Photograph | Nodes generated | Reference matches | Relations recovered |

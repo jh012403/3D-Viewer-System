@@ -18,10 +18,12 @@ Use `python -m pipelines.scene.build IMAGE --output storage/scene_cache/SCENE` f
 
 ## Accuracy limits
 
-See [the 15-photo reference audit](scene-evaluation.md). Selected correspondence is 33/36 and selected relation recovery 11/16. These are assistant-annotated provisional subsets, not full precision or independent ground truth. Previous user-reported 14/36 and 9/10 use unavailable different data; no valid improvement claim is possible.
+The [15-photo reference audit](scene-evaluation.md) is the historical pre-pruning run: selected correspondence 33/36 and relation recovery 11/16. It does not describe the current pruned/cleaned graph. These were assistant-annotated provisional subsets, not full precision or independent ground truth. Previous user-reported 14/36 and 9/10 use unavailable different data; no valid improvement claim is possible.
+
+Current predictions are frozen in the [five-photo human review pack](scene-review/README.md). Open `docs/scene-review/index.html` in a browser, classify every node/relation, add missed objects/relations, and export confirmed JSON. `python -m pipelines.scene.review_evaluate REVIEW.json` then reports precision, false-detection fraction and recall. Until the user confirms labels, current precision/recall remain unmeasured.
 
 Remaining errors include reflected objects, object parts, missed support surfaces and contact relations lost to monocular depth/axis-aligned box uncertainty. A category's VLM attributes do not establish the appearance of each instance. Gravity is assumed from the camera vertical. Transparent glass and hidden surfaces cannot be reconstructed reliably. The radial shadow replaces unavailable original shadow code.
 
 If local naming quality remains insufficient, a hosted vision model can replace only the names/attributes provider after choosing a service and approving photo transmission. It must not produce spatial relations. A larger VLM alone will not fix depth/contact geometry errors. A full accuracy claim requires independent exhaustive object and relation annotations.
 
-Original generated cases, rm06_U01 and the original 15 backgrounds have no available backup. TRELLIS.2 and FastVLM runtime weights are still absent; existing mesh generation has not been reinstalled or changed by this scene workspace.
+Original generated cases, rm06_U01 and the original 15 backgrounds have no available backup. TRELLIS.2, FastVLM and the referenced decoder/DINOv3/RMBG weights are now downloaded. FastVLM selected-object inference passes on native Windows. TRELLIS Linux runtime installation and full mesh generation still await Windows restart/WSL activation; see the recovery checkpoint. Existing generation logic is unchanged.
