@@ -4,6 +4,8 @@ Run `powershell -ExecutionPolicy Bypass -File scripts/start-scene.ps1` from the 
 
 The default checked demonstration mode loads local PLY, geometry, photographs and graph JSON only. Four cached backgrounds are sunroom, ceramics, hall and groceries (d4f646fcc79650d6). Uncheck demonstration mode to generate a new background and graph. Select an existing GLB, click a visible horizontal surface, then use move/rotate/scale and Save. Export contains an original-camera PNG and graph JSON with model and geometry limitations.
 
+The library displays descriptive Korean names. Initial previews use a small edge crop; original-camera exports retain full framing. Orbit is limited per scene: sunroom 0.5°, ceramics 3°, hall and groceries 1.5° each side. GLB category defaults to filename-based automatic selection; chairs use the existing 1m normalization policy. Generated meshes can be selected directly from the scene's results list or opened with the result page's placement link. Mesh runtime recovery still requires a Windows restart; see [recovery checkpoint](mesh-runtime-recovery.md).
+
 ## Environment
 
 Python 3.12 is the supported combined environment: SAM3 requires NumPy <2, which conflicts with the original Python 3.13 environment. Install CUDA torch 2.11.0 / torchvision 0.26.0 from the official cu128 index, then `pip install -r pipelines/scene/requirements-windows.txt` in `.runtime/scene312-env`. Existing SHARP, DAV2 and SAM3 checkouts and local weights are required. SAM3 requires an authorized Hugging Face account for its initial download; never store a token in this repository.

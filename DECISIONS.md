@@ -6,6 +6,8 @@
 - Instance labels use masked median RGB color + category + stable number. Do not repeat category-level wicker/white attributes for all chairs. Demo10 obj-001 is a low-confidence distant sliver, so suppress it rather than fabricate a geometric merge with obj-000.
 - Preserve the strict Linux TRELLIS runtime lock. Do not substitute the Windows scene environment or fake/mock a successful mesh. WSL activation requires a user restart; record resumable prerequisites and continue independent UI/review work.
 - The existing result view gains only a scene-placement link; upload/selection/generation logic is unchanged. The scene service reads completed object_mesh.glb files, verifies their full header length, and copies/normalizes into new asset storage. No source output mutation or arbitrary external URL fetching.
+- Presentation profiles crop 6-8% at initial preview and restrict orbit per scene; original-camera export is uncropped. Sunroom needs only +/-0.5 degrees because reflective table distortion remains visible at +/-2. These are presentation limits, not reconstructed hidden geometry.
+- Default GLB category is automatic filename classification using existing normalize_category; generated assets use existing metadata. Existing chair policy remains 1m, unknown 1m, small_prop 0.2m. Preserve GLB bytes and glTF materials/extensions; apply existing policy bounds/scale in a parent group instead of exporting via trimesh.
 
 - Follow stage order 0 → 1 → 3 → 2.
 - Preserve original upload/selection/mesh-generation implementation and original assets.

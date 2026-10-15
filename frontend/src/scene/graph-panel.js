@@ -2,7 +2,6 @@ export function drawGraph(root,graph,selected,onSelect){
   root.replaceChildren();
   const title=document.createElement('h2');title.textContent='Scene graph';root.append(title);
   const meta=document.createElement('p');meta.className='muted';meta.textContent=graph.nodes.length+'개 물체 · '+graph.edges.length+'개 방향 관계';root.append(meta);
-  const note=document.createElement('p');note.className='muted';note.textContent='사진 기반 추정 · 반사·가림·접촉 관계는 확인이 필요합니다.';root.append(note);
   if(!graph.nodes.length){meta.textContent='그래프를 생성하면 물체와 관계가 표시됩니다.';return;}
   const focus=graph.nodes.find(n=>n.id===selected)||graph.nodes[0];
   const names=Object.fromEntries(graph.nodes.map(n=>[n.id,n.label||n.name]));

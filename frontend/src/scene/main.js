@@ -9,6 +9,7 @@ async function load(url){
   try{
     const m=await viewer.load(url);
     $('#sceneTitle').textContent=m.title;
+    $('#viewHint').textContent='ORBIT ±'+m.orbit_degrees+'°';
     $('#source').src=new URL(m.source,viewer.base);$('#comparison').src=$('#source').src;
     $('.source-card').hidden=false;$('#comparison').hidden=true;
     $('#details').replaceChildren();

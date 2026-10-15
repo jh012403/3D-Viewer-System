@@ -44,18 +44,20 @@ export class SceneViewer {
     geometry.setIndex(surface.indices);geometry.computeVertexNormals();
     this.surface=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0xb8dfa4,wireframe:true,transparent:true,opacity:.16,side:THREE.DoubleSide,depthWrite:false}));
     this.surface.visible=false;this.scene.add(this.surface);
-    this.reset();this.resize();this.container.querySelector('.empty').hidden=true;
+    this.reset(false);this.resize();this.container.querySelector('.empty').hidden=true;
     this.container.dataset.loaded='true';return m;
   }
-  reset(){
+  reset(original=true){
     if(!this.manifest)return;
     const {camera:c,orbit_degrees:deg}=this.manifest;
     this.camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(c.height/(2*c.fy)));
+    this.camera.zoom=original?1:(this.manifest.presentation?.preview_zoom||1.04);
     this.camera.position.fromArray(c.position);this.camera.up.fromArray(c.up);
     this.controls.target.fromArray(c.target);
     const angle=THREE.MathUtils.degToRad(deg);
     this.controls.minAzimuthAngle=-angle;this.controls.maxAzimuthAngle=angle;
-    this.controls.minPolarAngle=Math.PI/2-angle*.45;this.controls.maxPolarAngle=Math.PI/2+angle*.45;
+    const vertical=THREE.MathUtils.degToRad(this.manifest.presentation?.vertical_degrees??deg*.3);
+    this.controls.minPolarAngle=Math.PI/2-vertical;this.controls.maxPolarAngle=Math.PI/2+vertical;
     this.controls.update();this.camera.updateProjectionMatrix();
   }
 }

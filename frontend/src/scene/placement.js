@@ -66,7 +66,7 @@ export class Placement {
   }
   ui(){
     $('#placement').innerHTML='<div class="section-label spaced">02 / OBJECTS</div><h2>물체 배치</h2><label>물체 종류<select id="category"></select></label><label class="upload">+ 생성된 GLB 선택<input id="glb" type="file" accept=".glb"></label><p class="muted" id="objectHint">GLB를 선택한 뒤 바닥 또는 상판을 클릭하세요.</p><div class="controls"><button data-mode="translate">이동</button><button data-mode="rotate">회전</button><button data-mode="scale">크기</button></div><div class="controls"><button id="snap">지지면 스냅</button><button id="remove">삭제</button></div><button id="export">결과 저장</button><div id="objects"></div>';
-    fetch('/scene-api/policies').then(r=>r.json()).then(p=>{for(const x of p){const o=document.createElement('option');o.value=x.category_id;o.textContent=x.category_id;$('#category').append(o);}$('#category').value='small_prop';}).catch(()=>this.status('크기 정책을 불러오지 못했습니다.',true));
+    fetch('/scene-api/policies').then(r=>r.json()).then(p=>{const auto=document.createElement('option');auto.value='auto';auto.textContent='자동 · 파일명으로 종류 선택';$('#category').append(auto);for(const x of p){const o=document.createElement('option');o.value=x.category_id;o.textContent=x.category_id+' · '+x.target_size_m+' m';$('#category').append(o);}$('#category').value='auto';}).catch(()=>this.status('크기 정책을 불러오지 못했습니다.',true));
     $('#glb').onchange=async(e)=>{
       const f=e.target.files[0];if(!f)return;
       if(!this.v.manifest){this.status('배경을 먼저 선택하세요.');e.target.value='';return;}
@@ -85,9 +85,16 @@ export class Placement {
   }
   async prepare(asset){
     const gltf=await new GLTFLoader().loadAsync(asset.url);
+    let object=gltf.scene;
+    if(asset.normalization_applied===false){
+      const n=asset.normalization,s=n.scale_applied||1,min=n.bbox_min_before,max=n.bbox_max_before;
+      if(min&&max){const normalized=new THREE.Group();normalized.add(object);normalized.scale.setScalar(s);
+        normalized.position.set(-(min[0]+max[0])/2*s,-min[1]*s,-(min[2]+max[2])/2*s);
+        object=new THREE.Group();object.add(normalized);}
+    }
     if(this.pending)dispose(this.pending.object);
-    this.pending={id:crypto.randomUUID(),name:asset.name,object:gltf.scene,asset,normal:new THREE.Vector3(0,1,0)};
-    $('#objectHint').textContent=asset.name+' · 배치할 바닥이나 상판을 클릭하세요.';
+    this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:new THREE.Vector3(0,1,0)};
+    $('#objectHint').textContent=asset.name+' · '+asset.category+' · 배치할 바닥이나 상판을 클릭하세요.';
     this.status('지지면을 클릭하여 물체를 배치하세요.');
   }
   generatedUI(){
@@ -214,7 +221,7 @@ export class Placement {
   }
   async export(){
     if(!this.v.manifest)throw Error('배경을 먼저 선택하세요.');
-    const v=this.v,pos=v.camera.position.clone(),target=v.controls.target.clone(),visible=this.helper.visible;
+    const v=this.v,pos=v.camera.position.clone(),target=v.controls.target.clone(),visible=this.helper.visible,zoom=v.camera.zoom;
     this.helper.visible=false;const highlight=this.boxHelper?.visible;if(this.boxHelper)this.boxHelper.visible=false;
     const surface=v.surface.visible;v.surface.visible=false;
     try{
@@ -223,6 +230,6 @@ export class Placement {
       const image=await new Promise(r=>v.renderer.domElement.toBlob(r,'image/png'));
       if(!image)throw Error('이미지 내보내기 실패');
       return {image,graph:{...this.graph,camera:v.manifest.camera,alignment:v.manifest.alignment}};
-    }finally{v.camera.position.copy(pos);v.controls.target.copy(target);v.controls.update();this.helper.visible=visible;v.surface.visible=surface;if(this.boxHelper)this.boxHelper.visible=highlight;}
+    }finally{v.camera.position.copy(pos);v.camera.zoom=zoom;v.camera.updateProjectionMatrix();v.controls.target.copy(target);v.controls.update();this.helper.visible=visible;v.surface.visible=surface;if(this.boxHelper)this.boxHelper.visible=highlight;}
   }
 }

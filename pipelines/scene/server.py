@@ -95,22 +95,24 @@ def policies():
     from pipelines.image_to_3d.semantic_metadata import POLICIES
     return [p.to_json() for p in POLICIES.values()]
 @app.post("/scene-api/assets")
-async def add_asset(file:UploadFile, category:str="small_prop"):
+async def add_asset(file:UploadFile, category:str="auto"):
     import io, trimesh
     from pipelines.image_to_3d.mesh_cleanup import _normalize_scene_transform
+    from pipelines.image_to_3d.semantic_metadata import normalize_category
+    if category=='auto':category=normalize_category(Path(file.filename or '').stem)['normalized_category_id']
     data=await file.read(100*1024*1024+1)
     if len(data)>100*1024*1024:raise HTTPException(413,"GLB exceeds 100 MB")
     if data[:4]!=b"glTF":raise HTTPException(400,"Only binary GLB is supported")
     try:
         scene=trimesh.load(io.BytesIO(data),file_type="glb",force="scene")
-        # Bake scene node transforms before reusing the existing normalization.
-        scene=trimesh.Scene(scene.to_geometry())
         normalization=_normalize_scene_transform(scene,category)
         aid=uuid.uuid4().hex
-        scene.export(asset_dir/f"{aid}.glb")
+        # Preserve original glTF UVs, materials and extensions byte-for-byte.
+        # The viewer applies the existing policy's transform to a parent group.
+        (asset_dir/f"{aid}.glb").write_bytes(data)
     except Exception as exc:raise HTTPException(400,f"Cannot prepare GLB: {exc}") from exc
     return {"id":aid,"url":f"/scene-api/asset-files/{aid}.glb","name":Path(file.filename or "object.glb").stem,
-        "category":category,"normalization":normalization}
+        "category":category,"normalization":normalization,"normalization_applied":False}
 
 
 @app.post("/scene-api/graphs/{scene_id}")

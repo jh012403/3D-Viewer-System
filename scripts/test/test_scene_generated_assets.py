@@ -17,6 +17,8 @@ class GeneratedAssetTest(unittest.TestCase):
                 result=asyncio.run(server.import_generated_asset('test-job'))
                 self.assertEqual(result['source_job'],'test-job')
                 self.assertTrue((assets/(result['id']+'.glb')).exists())
+                self.assertEqual((assets/(result['id']+'.glb')).read_bytes(),(out/'object_mesh.glb').read_bytes())
+                self.assertFalse(result['normalization_applied'])
                 self.assertEqual(result['category'],'chair')
                 with self.assertRaises(HTTPException):server.generated_asset('../escape')
                 (out/'object_mesh.glb').write_bytes(b'glTF')
