@@ -18,3 +18,7 @@
 - SHARP source aed6527499ef91cba3b54c18d49a870f25947190; DAV2 a561b849ebae10a6f5ef49e26c83cbbcd36c71bf.
 - First replacement photo is DAV2 official example demo10.jpg; not an original project asset. Transparent/reflective regions are not reliable support geometry.
 - Existing category_policy and bottom-center normalization are available; previous contact-shadow code is absent from inspected checkout. New shadow must be documented as replacement.
+
+- Stage 3 uses a depth-only pass after splat rendering for mesh occlusion. Support normals must have up component >=0.65; do not place through the nearest wall. Constrain fallback snap to measured local plane bounds.
+- Contact relation from placement is recorded as raycast-support-contact; unrecognized supports remain unnamed geometry until semantic masks exist.
+- Validation GLB: KhronosGroup/glTF-Sample-Assets Models/SheenChair/glTF-Binary/SheenChair.glb; original missing assets remain untouched.

@@ -1,0 +1,172 @@
+{
+  "graph": {
+    "version": 1,
+    "scene_id": "sunroom",
+    "coordinate_system": "three-camera-x-right-y-up-z-back",
+    "units": "meters",
+    "nodes": [
+      {
+        "id": "support-a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "name": "지지면",
+        "source": "depth-surface",
+        "box": {
+          "min": [
+            -0.6079987287521362,
+            -0.46678611636161804,
+            -5.119216442108154
+          ],
+          "max": [
+            0.0633591040968895,
+            0.10154085606336594,
+            -4.144685745239258
+          ]
+        }
+      },
+      {
+        "id": "a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "name": "validation-chair",
+        "box": {
+          "min": [
+            -0.35774936419601605,
+            -0.15967545656105686,
+            -4.703943106091779
+          ],
+          "max": [
+            -0.11685713318775849,
+            0.04032454343894312,
+            -4.537744814174912
+          ]
+        },
+        "source": "placed-glb",
+        "asset": {
+          "id": "b8b504df013744cda281c0a0b448fc95",
+          "url": "/scene-api/asset-files/b8b504df013744cda281c0a0b448fc95.glb",
+          "name": "validation-chair",
+          "category": "small_prop",
+          "normalization": {
+            "category_id": "small_prop",
+            "target_dimension": "height",
+            "target_size_m": 0.2,
+            "pivot_policy": "bottom_center",
+            "ground_aligned": true,
+            "scale_applied": 0.29144,
+            "bbox_min_before": [
+              -0.414022,
+              -0.00007,
+              -0.276725
+            ],
+            "bbox_max_before": [
+              0.412536,
+              0.686177,
+              0.29354
+            ],
+            "bbox_extents_before": [
+              0.826558,
+              0.686247,
+              0.570265
+            ],
+            "bbox_min_after": [
+              -0.120446,
+              0,
+              -0.083099
+            ],
+            "bbox_max_after": [
+              0.120446,
+              0.2,
+              0.083099
+            ],
+            "bbox_extents_after": [
+              0.240892,
+              0.2,
+              0.166198
+            ]
+          }
+        },
+        "transform": {
+          "position": [
+            -0.23730324869188726,
+            -0.15967545656105686,
+            -4.620843960133345
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "target": "support-a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "relation": "on",
+        "method": "raycast-support-contact"
+      }
+    ],
+    "geometry_status": "monocular-estimate",
+    "camera": {
+      "width": 1280,
+      "height": 832,
+      "fx": 1058.7220730128447,
+      "fy": 1058.7220730128447,
+      "cx": 640,
+      "cy": 416,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        -3.765148639678955
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ]
+    },
+    "alignment": {
+      "method": "foreground-zbuffer-median-ratio",
+      "samples": 616110,
+      "scale": 0.859914243221283,
+      "median_relative_residual": 0.1125805526971817,
+      "p90_relative_residual": 4.401520252227783,
+      "metric_ground_truth": false
+    }
+  },
+  "position": [
+    -0.23730324869188726,
+    -0.15967545656105686,
+    -4.620843960133345
+  ],
+  "mode": "translate",
+  "scale": [
+    1,
+    1,
+    1
+  ],
+  "initial": [
+    -0.3910634935668923,
+    -0.18156515992469816,
+    -4.620843960133345
+  ],
+  "errors": [],
+  "clicked": {
+    "x": 0.43000000000000016,
+    "y": 0.55,
+    "point": [
+      -0.3910635467010887,
+      -0.18156521811122037,
+      -4.62084384869568
+    ]
+  }
+}

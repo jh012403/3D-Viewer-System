@@ -47,3 +47,6 @@ $('#photo').onchange=async(e)=>{
 };
 refresh().then(s=>{status(s.length?'저장된 공간을 선택하세요':'배경 사진을 추가하여 첫 공간을 만드세요');const id=new URLSearchParams(location.search).get('scene');if(id){const item=s.find(x=>x.id===id);if(item)load(item.url);}}).catch(e=>status(e.message,true));
 export {viewer,status,load};
+
+import {Placement} from './placement.js';
+viewer.placement=new Placement(viewer,status);

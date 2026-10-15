@@ -29,3 +29,8 @@ WSL components completed; restart required, not initiated. Native Windows scene 
 Actual SHARP 1,179,648-splat PLY generated on RTX 3090. DAV2 metric Hypersim Large alignment scale 0.859914; median relative residual 11.26%, p90 440.15% (glass/outdoor disagreement; not ground-truth accuracy). Native Windows inference succeeds without WSL restart.
 Geometry tests: 3 passed. Browser: zero page errors, zero external requests; orbit clamped to 8 degrees. Screenshots docs/screenshots/stage1-original.png and stage1-orbit.png. Separate /scene.html and port 8001 service; existing pipeline unchanged.
 Next stage 3: GLB placement and gizmos. Cache count 1; demo set of 3-5 and graph validation still pending.
+
+## Stage 3 checkpoint
+GLB upload copies into new scene_assets storage and reuses _normalize_scene_transform/category_policy. Real browser test with Khronos SheenChair GLB: click placement, gizmo drag (x changed -0.3911 to -0.2373), support-plane snap, original-view PNG and graph JSON export passed; browser errors 0. Validation GLB is a public fixture, not recovered project output.
+Contact shadow is a replacement radial contact approximation because original implementation is absent. Surface geometry also provides object depth occlusion. Unknown support is labelled support surface, not guessed table/floor.
+Screenshots: docs/screenshots/stage3-placement.png and stage3-export.png. Next stage 2: Qwen3-VL + SAM3 graph and separate evaluation set. SAM3 login verified and checkpoint downloaded; Windows SAM3 imports succeed using triton-windows.

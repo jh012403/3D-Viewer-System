@@ -21,7 +21,7 @@ export class SceneViewer {
     this.scene.add(new THREE.HemisphereLight(0xffffff,0x75816b,2));
     const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(-2,5,2);this.scene.add(light);
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);
-    this.renderer.setAnimationLoop(()=>{this.controls.update();this.renderer.render(this.scene,this.camera);});
+    this.renderer.setAnimationLoop(()=>{this.controls.update();this.renderer.render(this.scene,this.camera);this.afterRender?.();});
   }
   resize(){
     const w=this.container.clientWidth,h=this.container.clientHeight;

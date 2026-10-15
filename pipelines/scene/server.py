@@ -46,3 +46,29 @@ async def create(file:UploadFile):
 def job(jid:str):
     if jid not in jobs: raise HTTPException(404,"Unknown job")
     return jobs[jid]
+
+# GLB assets are copied and normalized into NEW storage only.
+asset_dir=ROOT/"storage/scene_assets"; asset_dir.mkdir(parents=True,exist_ok=True)
+app.mount("/scene-api/asset-files",StaticFiles(directory=asset_dir),name="scene-assets")
+@app.get("/scene-api/policies")
+def policies():
+    from pipelines.image_to_3d.semantic_metadata import POLICIES
+    return [p.to_json() for p in POLICIES.values()]
+@app.post("/scene-api/assets")
+async def add_asset(file:UploadFile, category:str="small_prop"):
+    import io, trimesh
+    from pipelines.image_to_3d.mesh_cleanup import _normalize_scene_transform
+    data=await file.read(100*1024*1024+1)
+    if len(data)>100*1024*1024:raise HTTPException(413,"GLB exceeds 100 MB")
+    if data[:4]!=b"glTF":raise HTTPException(400,"Only binary GLB is supported")
+    try:
+        scene=trimesh.load(io.BytesIO(data),file_type="glb",force="scene")
+        # Bake scene node transforms before reusing the existing normalization.
+        scene=trimesh.Scene(scene.to_geometry())
+        normalization=_normalize_scene_transform(scene,category)
+        aid=uuid.uuid4().hex
+        scene.export(asset_dir/f"{aid}.glb")
+    except Exception as exc:raise HTTPException(400,f"Cannot prepare GLB: {exc}") from exc
+    return {"id":aid,"url":f"/scene-api/asset-files/{aid}.glb","name":Path(file.filename or "object.glb").stem,
+        "category":category,"normalization":normalization}
+

@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {relations} from '../src/scene/relations.js';
+const table={id:'table',box:{min:[-1,0,-2],max:[1,1,-1]}};
+const cup={id:'cup',box:{min:[0,1,-1.7],max:[.2,1.2,-1.5]}};
+const edges=relations([table,cup]);
+assert(edges.some(e=>e.source==='cup'&&e.target==='table'&&e.relation==='on'));
+assert(!edges.some(e=>e.relation==='next to'));
+const front={id:'front',box:{min:[2,0,0],max:[3,1,1]}};
+assert(relations([table,front]).some(e=>e.source==='front'&&e.relation==='in front of'));
+assert(relations([table,front]).some(e=>e.source==='table'&&e.relation==='left of'));
+console.log('Relation geometry checks passed');
