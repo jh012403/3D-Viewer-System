@@ -2374,6 +2374,7 @@ function renderViewer(){
             <div class="friendly-state ${q.needsReview?'warn':'ok'}"><span class="state-dot"></span>${q.headline}</div>
             <div class="friendly-copy">${q.desc}</div>
             ${meshUrl?renderDownloadPicker(meshUrl):''}
+            ${meshUrl&&isGlb&&job.job_id?`<a class="btn bg2 bfull" href="http://127.0.0.1:5173/scene.html?scene=sunroom&job=${encodeURIComponent(job.job_id)}" target="_blank" rel="noopener">3D 공간에 배치</a>`:''}
             <button class="btn bg2 bfull" onclick="reselectObjectFromResult()" ${S.busy?'disabled':''}>객체 선택 다시하기</button>
           </div>
           ${renderAssetInsightPanel(assetMetadata,assetMetadataUrl)}

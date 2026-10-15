@@ -3,6 +3,7 @@ process.chdir(fileURLToPath(new URL('..',import.meta.url)));
 import {chromium} from '@playwright/test';
 import {writeFile} from 'node:fs/promises';
 const browser=await chromium.launch({headless:true,args:['--enable-gpu','--use-angle=d3d11']});
+const phase=process.argv[2]||'stage3';
 try {
  const page=await browser.newPage({viewport:{width:1600,height:1000}});const errors=[];
  page.on('pageerror',e=>{errors.push(e.stack);console.log(e.stack);});page.on('console',msg=>{if(msg.type()==='error')console.log(msg.text());});
@@ -44,11 +45,11 @@ try {
    const out=await p.export();const bytes=Array.from(new Uint8Array(await out.image.arrayBuffer()));
    return {graph:out.graph,png:bytes,position:p.selected.object.position.toArray(),mode:p.controls.getMode(),scale:p.selected.object.scale.toArray()};
  });
- await writeFile('../docs/screenshots/stage3-export.png',Buffer.from(result.png));
+ await writeFile('../docs/screenshots/'+phase+'-export.png',Buffer.from(result.png));
  delete result.png;result.initial=initial;result.errors=errors;result.clicked=point;
  if(Math.abs(result.position[0]-initial[0])<.001)throw Error('Gizmo did not move object');
- await page.screenshot({path:'../docs/screenshots/stage3-placement.png',timeout:120000});
- await writeFile('../docs/scene-placement-check.json',JSON.stringify(result,null,2));
+ await page.screenshot({path:'../docs/screenshots/'+phase+'-placement.png',timeout:120000});
+ await writeFile('../docs/'+phase+'-placement-check.json',JSON.stringify(result,null,2));
  if(errors.length||result.graph.nodes.filter(x=>x.source==='placed-glb').length!==1)throw Error(JSON.stringify(errors));
  console.log(JSON.stringify({errors,position:result.position,initial,nodes:result.graph.nodes.length}));
 }finally{await browser.close();}

@@ -57,6 +57,39 @@ def job(jid:str):
 # GLB assets are copied and normalized into NEW storage only.
 asset_dir=ROOT/"storage/scene_assets"; asset_dir.mkdir(parents=True,exist_ok=True)
 app.mount("/scene-api/asset-files",StaticFiles(directory=asset_dir),name="scene-assets")
+
+def generated_asset(job_id):
+    import re,struct
+    if not re.fullmatch(r'[a-zA-Z0-9_-]{1,100}',job_id):raise HTTPException(400,'Invalid job id')
+    directory=(ROOT/'storage/outputs'/job_id).resolve()
+    if not directory.is_relative_to((ROOT/'storage/outputs').resolve()):raise HTTPException(400,'Invalid output path')
+    path=directory/'object_mesh.glb'
+    if not path.is_file():raise HTTPException(404,'Generated GLB is not ready')
+    with path.open('rb') as stream:header=stream.read(12)
+    if len(header)!=12 or header[:4]!=b'glTF' or struct.unpack('<I',header[8:12])[0]!=path.stat().st_size:
+        raise HTTPException(409,'GLB is still being written')
+    meta={}
+    try:meta=json.loads((directory/'metadata.json').read_text(encoding='utf-8'))
+    except (OSError,ValueError):pass
+    return path,{'job_id':job_id,'name':meta.get('asset_name') or meta.get('specific_type') or '생성 물체 '+job_id[:8],
+        'category':meta.get('normalized_category_id') or meta.get('object_category') or 'unknown'}
+
+@app.get('/scene-api/generated-assets')
+def generated_assets():
+    result=[]
+    for path in sorted((ROOT/'storage/outputs').glob('*/object_mesh.glb'),key=lambda p:p.stat().st_mtime,reverse=True):
+        try:result.append(generated_asset(path.parent.name)[1])
+        except HTTPException:continue
+    return result
+
+@app.post('/scene-api/generated-assets/{job_id}')
+async def import_generated_asset(job_id:str):
+    import io
+    path,meta=generated_asset(job_id)
+    if path.stat().st_size>100*1024*1024:raise HTTPException(413,'GLB exceeds 100 MB')
+    result=await add_asset(UploadFile(file=io.BytesIO(path.read_bytes()),filename=meta['name']+'.glb'),meta['category'])
+    return {**result,'source_job':job_id}
+
 @app.get("/scene-api/policies")
 def policies():
     from pipelines.image_to_3d.semantic_metadata import POLICIES

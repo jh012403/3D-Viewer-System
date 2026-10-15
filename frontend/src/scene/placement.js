@@ -31,8 +31,13 @@ export class Placement {
       else this.pickGraph(this.ray);
     });
     viewer.afterRender=()=>this.render();
-    window.addEventListener('scene-loaded',()=>this.loadGraph().catch(e=>this.status(e.message,true)));
+    window.addEventListener('scene-loaded',async()=>{try{
+      await this.loadGraph();
+      const job=new URLSearchParams(location.search).get('job');
+      if(job&&!this.importedJob){await this.importGenerated(job);this.importedJob=job;}
+    }catch(e){this.status(e.message,true);}});
     this.ui();
+    this.generatedUI();
   }
   async loadGraph(preserveItems=false){
     const base=this.v.base,manifest=this.v.manifest;
@@ -84,6 +89,28 @@ export class Placement {
     this.pending={id:crypto.randomUUID(),name:asset.name,object:gltf.scene,asset,normal:new THREE.Vector3(0,1,0)};
     $('#objectHint').textContent=asset.name+' · 배치할 바닥이나 상판을 클릭하세요.';
     this.status('지지면을 클릭하여 물체를 배치하세요.');
+  }
+  generatedUI(){
+    const row=document.createElement('div');row.className='generated-assets';
+    row.innerHTML='<label>생성된 물체<select id="generatedAsset"><option value="">생성 결과 없음</option></select></label><div class="controls"><button id="refreshGenerated">새로고침</button><button id="placeGenerated">씬에 가져오기</button></div>';
+    $('#placement').append(row);
+    const refresh=async()=>{
+      try{const r=await fetch('/scene-api/generated-assets');if(!r.ok)throw Error('생성 결과 조회 실패');
+      const items=await r.json();$('#generatedAsset').replaceChildren();
+      for(const item of items){const o=document.createElement('option');o.value=item.job_id;o.textContent=item.name;$('#generatedAsset').append(o);}
+      if(!items.length){const o=document.createElement('option');o.value='';o.textContent='생성 결과 없음';$('#generatedAsset').append(o);}
+      }catch(e){this.status(e.message,true);}
+    };
+    $('#refreshGenerated').onclick=refresh;
+    $('#placeGenerated').onclick=()=>this.importGenerated($('#generatedAsset').value).catch(e=>this.status(e.message,true));
+    refresh();
+  }
+  async importGenerated(job){
+    if(!job)return;
+    if(!this.v.manifest)throw Error('배경을 먼저 선택하세요.');
+    const r=await fetch('/scene-api/generated-assets/'+encodeURIComponent(job),{method:'POST'});
+    if(!r.ok)throw Error(await r.text());
+    await this.prepare(await r.json());
   }
   supportHit(ray){
     if(!this.v.surface)return null;

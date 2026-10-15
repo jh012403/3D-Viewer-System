@@ -1,0 +1,78 @@
+{
+  "models": {
+    "FastVLM-0.5B": {
+      "files": 15,
+      "bytes": 1529997227,
+      "weight_files": [
+        "model.safetensors",
+        "training_args.bin"
+      ]
+    },
+    "TRELLIS.2-4B": {
+      "files": 22,
+      "bytes": 16237485044,
+      "weight_files": [
+        "ckpts\\shape_dec_next_dc_f16c32_fp16.safetensors",
+        "ckpts\\shape_enc_next_dc_f16c32_fp16.safetensors",
+        "ckpts\\slat_flow_img2shape_dit_1_3B_1024_bf16.safetensors",
+        "ckpts\\slat_flow_img2shape_dit_1_3B_512_bf16.safetensors",
+        "ckpts\\slat_flow_imgshape2tex_dit_1_3B_1024_bf16.safetensors",
+        "ckpts\\slat_flow_imgshape2tex_dit_1_3B_512_bf16.safetensors",
+        "ckpts\\ss_flow_img_dit_1_3B_64_bf16.safetensors",
+        "ckpts\\tex_dec_next_dc_f16c32_fp16.safetensors",
+        "ckpts\\tex_enc_next_dc_f16c32_fp16.safetensors"
+      ]
+    },
+    "dinov3-vitl16": {
+      "files": 6,
+      "bytes": 1212584680,
+      "weight_files": [
+        "model.safetensors"
+      ]
+    },
+    "RMBG-2.0": {
+      "files": 8,
+      "bytes": 1770061659,
+      "weight_files": [
+        "model.safetensors",
+        "pytorch_model.bin"
+      ]
+    },
+    "TRELLIS-image-large": {
+      "files": 2,
+      "bytes": 147592217,
+      "weight_files": [
+        "ckpts\\ss_dec_conv3d_16l8_fp16.safetensors"
+      ]
+    }
+  },
+  "trellis_repo_commit": "75fbf0183001ed9876c8dbb35de6b68552ee08bd",
+  "fastvlm": {
+    "asset_name": "white chair",
+    "raw_category": "chair",
+    "object_category": "chair",
+    "category": "chair",
+    "subcategory": "chair",
+    "specific_type": "chair",
+    "description": "A transparent object cutout for a VFX/animation background prop asset. The object is a white chair with a wicker-like backrest and a patterned upholstery. The chair is designed to be used as a prop in a VFX or animation scene.",
+    "visual_features": [
+      "The chair has a transparent material with a wicker-like backrest and a patterned upholstery. The backrest has a series of circular cutouts, while the upholstery features a repeating pattern of green and white designs."
+    ],
+    "color_hints": [],
+    "material_hints": [],
+    "recommended_usage": "",
+    "dcc_tags": [],
+    "vlm_parse_status": "json",
+    "vlm_backend": "huggingface_transformers",
+    "vlm_model": ".runtime/weights/FastVLM-0.5B",
+    "vlm_device": "cuda",
+    "vlm_dtype": "float16",
+    "vlm_raw_text": "{\n  \"asset_name\": \"white chair\",\n  \"raw_category\": \"chair\",\n  \"object_category\": \"chair\",\n  \"category\": \"chair\",\n  \"subcategory\": \"chair\",\n  \"specific_type\": \"chair\",\n  \"description\": \"A transparent object cutout for a VFX/animation background prop asset. The object is a white chair with a wicker-like backrest and a patterned upholstery. The chair is designed to be used as a prop in a VFX or animation scene.\",\n  \"visual_features\": [\n    {\n      \"description\": \"The chair has a transparent material with a wicker-like backrest and a patterned upholstery. The backrest has a series of circular cutouts, while the upholstery features a repeating pattern of green and white designs.\",\n      \"color_hints\": [\n        \"The chair is transparent, allowing the background to show through. The backrest is made of a wicker-like material, which is white in color. The upholstery has a pattern of green and white designs.\"\n      ],\n      \"material_hints\": [\n        \"The chair is made of a transparent material, allowing the background to show through. The backrest is made of a wicker-like material, which is white in color. The upholstery has a pattern of green and white designs.\"\n      ]\n    }\n  ]\n}\nThis JSON object provides a detailed description of the VFX/animation background prop asset, including its category, subcategory, specific type, and visual features. The object is a transparent chair with a wicker-like backrest and a patterned upholstery, designed for use as a prop in a VFX or animation scene. The object is made of transparent material with a wicker-like backrest and a patterned upholstery, and has a specific type of chair. The description includes the visual features of the chair, such as the transparent material, wicker-like backrest, and patterned upholstery. The object is categorized as a chair, and the specific type is a chair.\nHere is the JSON object with the requested information:\n\n{\n  \"asset_name\": \"white chair\",\n  \"raw_category\": \"chair\",\n  \"object_category\": \"chair\",\n  \"category\": \"chair\",\n  \"subcategory\": \"chair\",\n  \"specific_type\": \"chair\",\n  \"description\": \"A transparent object cutout for a VFX/animation background prop asset. The object is a white chair with a wicker-like backrest and a patterned upholstery. The chair",
+    "fastvlm_demo_prompt": "Describe this image in detail.",
+    "fastvlm_demo_text": "The image depicts a single chair, specifically a wicker chair. The chair is designed with a classic, elegant aesthetic, featuring a curved backrest and armrests. The wicker material is prominently visible, showcasing a patterned design that adds to its decorative appeal. The chair's frame is constructed from a light-colored wicker, which appears to be made from a synthetic material, likely polypropylene or a similar type of wicker. The wicker is woven in a way that creates a series of small, evenly spaced holes, which not only adds to the chair's visual appeal but also allows for better air circulation and light penetration.\n\nThe chair's backrest is curved, providing ergonomic support to the user. The armrests are also curved, offering a comfortable resting place for the arms. The chair's legs are straight and sturdy, designed to support the weight of the user. The legs are attached to the frame with visible joints, ensuring stability and durability.\n\nThe chair's design suggests a blend of functionality and style, making it suitable for both indoor and outdoor settings. The wicker material is known for its durability and resistance to weather conditions, making it a practical choice for various environments. The light color of the wicker contrasts nicely with the white frame, enhancing the chair's overall aesthetic.\n\nIn summary, the image shows a wicker chair with a curved backrest and armrests, constructed from a synthetic wicker material. The chair features a light-colored frame with evenly spaced holes, providing both aesthetic appeal and functional support. The legs are straight and sturdy, ensuring stability. The chair's design combines practicality with elegance, making it suitable for various settings.\n---\n\n**Analysis and Description:**\n\n1. **Chair Design:**\n   - **Material:** The chair is made from synthetic wicker, which is known for its durability and resistance to weather conditions.\n   - **Backrest:** The backrest is curved, providing ergonomic support to the user.\n   - **Armrests:** The armrests are also curved, offering a comfortable resting place for the arms.\n   - **Frame:** The frame is constructed from a light-colored wicker material, which contrasts nicely with the white frame.\n\n2. **Color and Material:**\n   - The chair's frame is light-colored, likely white or a light beige, while the wicker material is synthetic, possibly polypropylene.\n   - The wicker material is designed to be durable and resistant to weather conditions, making it suitable for various environments.\n\n3. **"
+  },
+  "trellis_inference_verified": false,
+  "end_to_end_verified": false,
+  "blocker": "WSL install returned restart required; no Linux runtime available before restart",
+  "bridge_verified": "Generated asset resolver and normalization tested with isolated synthetic GLB; browser placement uses Khronos fixture, not TRELLIS output"
+}
