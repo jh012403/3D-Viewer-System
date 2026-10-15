@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "scene": "sunroom",
+      "nodes": 20,
+      "edges": 492,
+      "selected": "obj-001",
+      "highlight": true
+    },
+    {
+      "scene": "ceramics",
+      "nodes": 26,
+      "edges": 860,
+      "selected": "obj-001",
+      "highlight": true
+    },
+    {
+      "scene": "hall",
+      "nodes": 42,
+      "edges": 2565,
+      "selected": "obj-001",
+      "highlight": true
+    },
+    {
+      "scene": "d4f646fcc79650d6",
+      "nodes": 24,
+      "edges": 820,
+      "selected": "obj-001",
+      "highlight": true
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "inference": []
+}

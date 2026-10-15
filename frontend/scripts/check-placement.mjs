@@ -34,6 +34,11 @@ try {
  await page.mouse.move(rect.x+rect.width*origin[0]+35,rect.y+rect.height*origin[1]);await page.mouse.down();
  await page.mouse.move(rect.x+rect.width*origin[0]+65,rect.y+rect.height*origin[1],{steps:10});await page.mouse.up();
  await page.waitForTimeout(1000);
+ await page.evaluate(async()=>{
+   const p=window.sceneWorkspace.placement,id=p.items[0].id;
+   await p.loadGraph(true);
+   if(p.items.length!==1||p.items[0].id!==id)throw Error('Graph refresh lost placed object');
+ });
  const result=await page.evaluate(async()=>{
    const p=window.sceneWorkspace.placement;
    const out=await p.export();const bytes=Array.from(new Uint8Array(await out.image.arrayBuffer()));
@@ -41,6 +46,7 @@ try {
  });
  await writeFile('../docs/screenshots/stage3-export.png',Buffer.from(result.png));
  delete result.png;result.initial=initial;result.errors=errors;result.clicked=point;
+ if(Math.abs(result.position[0]-initial[0])<.001)throw Error('Gizmo did not move object');
  await page.screenshot({path:'../docs/screenshots/stage3-placement.png',timeout:120000});
  await writeFile('../docs/scene-placement-check.json',JSON.stringify(result,null,2));
  if(errors.length||result.graph.nodes.filter(x=>x.source==='placed-glb').length!==1)throw Error(JSON.stringify(errors));

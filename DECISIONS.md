@@ -22,3 +22,10 @@
 - Stage 3 uses a depth-only pass after splat rendering for mesh occlusion. Support normals must have up component >=0.65; do not place through the nearest wall. Constrain fallback snap to measured local plane bounds.
 - Contact relation from placement is recorded as raycast-support-contact; unrecognized supports remain unnamed geometry until semantic masks exist.
 - Validation GLB: KhronosGroup/glTF-Sample-Assets Models/SheenChair/glTF-Binary/SheenChair.glb; original missing assets remain untouched.
+
+- Combined inference uses Python 3.12, NumPy 1.26.4 and OpenCV 4.11 to satisfy SAM3 requirements. Retain the previous 3.13 environment as historical evidence; it is not the default launcher.
+- Cache mode never requests model generation. New upload generation runs SHARP, metric depth, Qwen and SAM3 sequentially on one GPU worker.
+- VLM attributes are category-level observations, not verified attributes of every SAM3 instance. Export labels them category_attributes.
+- The 15-photo audit measures selected correspondence and relation recovery only. Do not label 33/36 as node precision or 11/16 as exhaustive relation accuracy. No baseline improvement claim without original labels.
+- Local graph quality remains insufficient for an exact scene graph claim. Independent exhaustive labels and contact/reflective-surface handling remain next quality work. An API VLM alternative would provide only names/attributes and requires a separate choice about sending photographs.
+- Four new caches are local ignored assets with a tracked SHA256 manifest, not restored historical demos.

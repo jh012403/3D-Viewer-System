@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "id": "dav2-10",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo10.jpg",
+      "out": "storage/scene_cache/sunroom",
+      "depth_domain": "hypersim"
+    }
+  ]
+}

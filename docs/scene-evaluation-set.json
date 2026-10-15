@@ -1,0 +1,95 @@
+{
+  "description": "15 replacement photographs from official DAV2 and SAM3 repositories; not the missing original set.",
+  "images": [
+    {
+      "id": "dav2-01",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo01.jpg",
+      "out": "storage/scene_evaluation/dav2-01",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-02",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo02.jpg",
+      "out": "storage/scene_evaluation/dav2-02",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-04",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo04.jpg",
+      "out": "storage/scene_evaluation/dav2-04",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-06",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo06.jpg",
+      "out": "storage/scene_evaluation/dav2-06",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-07",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo07.jpg",
+      "out": "storage/scene_evaluation/dav2-07",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-08",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo08.jpg",
+      "out": "storage/scene_evaluation/dav2-08",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-10",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo10.jpg",
+      "out": "storage/scene_cache/sunroom",
+      "depth_domain": "hypersim"
+    },
+    {
+      "id": "dav2-11",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo11.jpg",
+      "out": "storage/scene_evaluation/dav2-11",
+      "depth_domain": "hypersim"
+    },
+    {
+      "id": "dav2-12",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo12.jpg",
+      "out": "storage/scene_evaluation/dav2-12",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "dav2-13",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo13.jpg",
+      "out": "storage/scene_cache/ceramics",
+      "depth_domain": "hypersim"
+    },
+    {
+      "id": "dav2-14",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo14.jpg",
+      "out": "storage/scene_evaluation/dav2-14",
+      "depth_domain": "hypersim"
+    },
+    {
+      "id": "dav2-15",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo15.jpg",
+      "out": "storage/scene_cache/hall",
+      "depth_domain": "hypersim"
+    },
+    {
+      "id": "dav2-16",
+      "image": ".runtime/Depth-Anything-V2/assets/examples/demo16.jpg",
+      "out": "storage/scene_evaluation/dav2-16",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "sam3-truck",
+      "image": ".runtime/sam3/assets/images/truck.jpg",
+      "out": "storage/scene_evaluation/sam3-truck",
+      "depth_domain": "vkitti"
+    },
+    {
+      "id": "sam3-groceries",
+      "image": ".runtime/sam3/assets/images/groceries.jpg",
+      "out": "storage/scene_evaluation/sam3-groceries",
+      "depth_domain": "hypersim"
+    }
+  ]
+}

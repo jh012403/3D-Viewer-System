@@ -4,6 +4,7 @@ const $=(s)=>document.querySelector(s);
 const viewer=new SceneViewer($('#viewport'));window.sceneWorkspace=viewer;
 function status(text,error=false){$('#status').textContent=text;$('#status').classList.toggle('error',error);}
 async function load(url){
+  if(viewer.loading)return;viewer.loading=true;
   status('공간을 불러오는 중…');
   try{
     const m=await viewer.load(url);
@@ -16,7 +17,7 @@ async function load(url){
     }
     status('캐시 로드 완료 · 드래그하여 둘러보세요');
     window.dispatchEvent(new CustomEvent('scene-loaded',{detail:m}));
-  }catch(e){status(e.message,true);}
+  }catch(e){status(e.message,true);}finally{viewer.loading=false;}
 }
 async function refresh(){
   const res=await fetch('/scene-api/scenes');if(!res.ok)throw new Error('씬 서버에 연결할 수 없습니다.');
@@ -50,3 +51,21 @@ export {viewer,status,load};
 
 import {Placement} from './placement.js';
 viewer.placement=new Placement(viewer,status);
+
+const tabs=document.createElement('div');tabs.className='inspector-tabs';
+tabs.innerHTML='<button id="tabEdit" class="active">배치</button><button id="tabGraph">그래프</button>';
+document.querySelector('.inspector').prepend(tabs);
+$('#tabEdit').onclick=()=>{document.querySelector('.inspector').classList.remove('graph-mode');$('#tabEdit').classList.add('active');$('#tabGraph').classList.remove('active');};
+$('#tabGraph').onclick=()=>{document.querySelector('.inspector').classList.add('graph-mode');$('#tabGraph').classList.add('active');$('#tabEdit').classList.remove('active');};
+const analyze=document.createElement('button');analyze.id='analyze';analyze.textContent='배경 그래프 생성';$('#placement').prepend(analyze);
+analyze.onclick=async()=>{
+ if(!viewer.manifest)return;
+ if($('#cacheOnly').checked){status('그래프를 새로 생성하려면 시연 모드를 꺼주세요.');return;}
+ analyze.disabled=true;
+ try{
+  const response=await fetch('/scene-api/graphs/'+encodeURIComponent(viewer.manifest.id),{method:'POST'});
+  if(!response.ok)throw Error(await response.text());
+  const {id}=await response.json();
+  for(;;){await new Promise(r=>setTimeout(r,1500));const r=await fetch('/scene-api/jobs/'+id);if(!r.ok)throw Error('작업 조회 실패');const job=await r.json();status(job.message);if(job.status==='failed')throw Error(job.message);if(job.status==='ready'){await viewer.placement.loadGraph(true);status('배경 그래프 생성 완료');break;}}
+ }catch(e){status(e.message,true);}finally{analyze.disabled=false;}
+};

@@ -1,8 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
-Stage 0 audit complete; environment installation in progress. Next: stage 1 background reconstruction and local viewer, then stage 3 placement, then stage 2 graph.
-Node.js 24 and Python 3.13 installed. WSL optional components installation running; no restart initiated.
+Stages 0, 1 and 3 committed and pushed. Stage 2 implementation and 15-photo provisional audit complete; accuracy target NOT achieved. Final stage 2 commit in progress.
+Node.js 24 and Python 3.13 installed. Python 3.12 compatibility environment installed; pip check clean, geometry tests pass and real SHARP/Qwen/SAM3 upload inference passes. WSL components installed, restart pending; no restart initiated.
 GPU RTX 3090 24576 MiB, driver 595.71. Power limit deliberately not queried or changed in this run.
 
 ## Missing assets
@@ -20,8 +20,8 @@ Original scene graph results (relations 9/10, object correspondence 14/36) are u
 
 ## Resume
 Read this file and DECISIONS.md. Check installed Node/Python and WSL completion without reading/changing power limits.
-Continue stage 1 in separate scene entrypoint. Do not modify existing pipeline or external/prism-scan.
-No implementation/visual/accuracy completion claimed. Stage screenshots pending local preview.
+Resume stage 2 validation in the separate scene entrypoint. Do not modify existing pipeline or external/prism-scan.
+Use .runtime/scene312-env and scripts/start-scene.ps1. Current cache/browser tests pass; no full accuracy claim. Read docs/scene-workspace.md and docs/scene-evaluation.md before further quality work.
 
 WSL components completed; restart required, not initiated. Native Windows scene environment is being prepared. Stage 0 screenshot: docs/screenshots/stage0-audit.png (audit report, not viewer).
 
@@ -34,3 +34,12 @@ Next stage 3: GLB placement and gizmos. Cache count 1; demo set of 3-5 and graph
 GLB upload copies into new scene_assets storage and reuses _normalize_scene_transform/category_policy. Real browser test with Khronos SheenChair GLB: click placement, gizmo drag (x changed -0.3911 to -0.2373), support-plane snap, original-view PNG and graph JSON export passed; browser errors 0. Validation GLB is a public fixture, not recovered project output.
 Contact shadow is a replacement radial contact approximation because original implementation is absent. Surface geometry also provides object depth occlusion. Unknown support is labelled support surface, not guessed table/floor.
 Screenshots: docs/screenshots/stage3-placement.png and stage3-export.png. Next stage 2: Qwen3-VL + SAM3 graph and separate evaluation set. SAM3 login verified and checkpoint downloaded; Windows SAM3 imports succeed using triton-windows.
+
+## Stage 2 checkpoint
+Qwen3-VL-4B supplies category names/attributes only; SAM3 text masks plus DAV2 metric depth produce visible-surface AABBs. All seven spatial predicates use shared JS geometry, never VLM spatial guesses. Graph panel selection highlights 3D boxes; 3D box picking selects graph nodes. Upload now generates both background and graph. Graph refresh preserves placed GLBs. Contact-derived on/under is omitted when the object is lifted away.
+
+15 replacement photos evaluated: selected correspondence 33/36 (91.7%), selected relation recovery 11/16 (68.8%). These are assistant-created partial reference labels, NOT full accuracy or independent human ground truth. Original 14/36 and 9/10 cannot be compared directly. Reflections/parts and support contacts remain unresolved. See docs/scene-evaluation.md for all rows.
+
+Four local caches: sunroom, ceramics, hall, groceries d4f646fcc79650d6. New Python 3.12 full upload smoke test produced 1,179,648 splats and 24 graph nodes with zero browser errors. Cache tests verify zero external requests and zero inference POSTs. Graph refresh preservation, actual gizmo translation and original-camera PNG/JSON export pass. Build passes (large bundle warning only). Cache hashes: docs/scene-cache-manifest.json.
+
+Screenshots: docs/screenshots/stage2-sunroom.png, stage2-ceramics.png, stage2-hall.png and stage2-upload.png. Native Windows runtime ready; WSL reboot still pending. Existing TRELLIS.2/FastVLM weights and original missing assets remain absent. No power settings queried or modified.

@@ -33,11 +33,18 @@ async def create(file:UploadFile):
         image.verify()
     except Exception as exc: raise HTTPException(400,"Invalid or oversized photograph") from exc
     path.write_bytes(data); jobs[jid]={"status":"queued","message":"Queued"}
+    title=Path(file.filename or "Uploaded photograph").stem[:80]
     def run():
         jobs[jid]["status"]="running"
         try:
             out=build(path,progress=lambda msg:jobs[jid].update(message=msg))
-            jobs[jid].update(status="ready",url=f"/scene-cache/{out.name}/scene.json")
+            manifest=json.loads((out/"scene.json").read_text(encoding="utf-8"))
+            manifest["title"]=title
+            (out/"scene.json").write_text(json.dumps(manifest,ensure_ascii=False),encoding="utf-8")
+            jobs[jid].update(message="Qwen names and SAM3 masks")
+            from .graph import run as graph_run
+            graph_run([{"id":out.name,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}])
+            jobs[jid].update(status="ready",message="Scene and graph ready",url=f"/scene-cache/{out.name}/scene.json")
         except Exception as exc:
             jobs[jid].update(status="failed",message=str(exc))
     executor.submit(run)
@@ -71,4 +78,23 @@ async def add_asset(file:UploadFile, category:str="small_prop"):
     except Exception as exc:raise HTTPException(400,f"Cannot prepare GLB: {exc}") from exc
     return {"id":aid,"url":f"/scene-api/asset-files/{aid}.glb","name":Path(file.filename or "object.glb").stem,
         "category":category,"normalization":normalization}
+
+
+@app.post("/scene-api/graphs/{scene_id}")
+def generate_graph(scene_id:str):
+    import re
+    if not re.fullmatch(r"[a-zA-Z0-9_-]+",scene_id):raise HTTPException(400,"Invalid scene id")
+    out=CACHE/scene_id
+    if not (out/"scene.json").exists():raise HTTPException(404,"Unknown scene")
+    if any(j["status"] in ("queued","running") for j in jobs.values()):raise HTTPException(409,"GPU worker is busy")
+    jid=uuid.uuid4().hex;jobs[jid]={"status":"queued","message":"Graph queued"}
+    def run_graph():
+        jobs[jid].update(status="running",message="Qwen names and SAM3 masks")
+        try:
+            from .graph import run
+            run([{"id":scene_id,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}])
+            jobs[jid].update(status="ready",message="Graph ready")
+        except Exception as exc:jobs[jid].update(status="failed",message=str(exc))
+    executor.submit(run_graph)
+    return {"id":jid}
 

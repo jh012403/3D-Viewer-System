@@ -1,12 +1,600 @@
 {
   "graph": {
     "version": 1,
-    "scene_id": "sunroom",
-    "coordinate_system": "three-camera-x-right-y-up-z-back",
-    "units": "meters",
+    "status": "generated",
     "nodes": [
       {
-        "id": "support-a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "id": "obj-000",
+        "name": "table",
+        "score": 0.9140625,
+        "mask": "masks/obj-000.png",
+        "bbox2d": [
+          4,
+          598,
+          1100,
+          830
+        ],
+        "box": {
+          "min": [
+            -0.6290205574320022,
+            -0.34438450425492767,
+            -1.6322051525115966
+          ],
+          "max": [
+            0.5235984379348081,
+            -0.32762774577092874,
+            -0.8860909271240234
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass"
+        ]
+      },
+      {
+        "id": "obj-001",
+        "name": "table",
+        "score": 0.5234375,
+        "mask": "masks/obj-001.png",
+        "bbox2d": [
+          1120,
+          562,
+          1144,
+          709
+        ],
+        "box": {
+          "min": [
+            1.6114053095557355,
+            -0.942485568942328,
+            -3.822009596824646
+          ],
+          "max": [
+            1.7472504749040834,
+            -0.5296815311836259,
+            -3.491901984214783
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass"
+        ]
+      },
+      {
+        "id": "obj-002",
+        "name": "chair",
+        "score": 0.9296875,
+        "mask": "masks/obj-002.png",
+        "bbox2d": [
+          886,
+          473,
+          1152,
+          734
+        ],
+        "box": {
+          "min": [
+            0.7412823893411844,
+            -0.7862936837196892,
+            -3.3568127155303955
+          ],
+          "max": [
+            1.4516587049059544,
+            -0.20518224008479483,
+            -2.836721658706665
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white",
+          "wicker"
+        ]
+      },
+      {
+        "id": "obj-003",
+        "name": "chair",
+        "score": 0.796875,
+        "mask": "masks/obj-003.png",
+        "bbox2d": [
+          643,
+          529,
+          885,
+          634
+        ],
+        "box": {
+          "min": [
+            0.018223195905994204,
+            -0.3524619613422117,
+            -1.9845926451683045
+          ],
+          "max": [
+            0.41558857490286805,
+            -0.21824957101658352,
+            -1.8542847847938537
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white",
+          "wicker"
+        ]
+      },
+      {
+        "id": "obj-004",
+        "name": "chair",
+        "score": 0.7890625,
+        "mask": "masks/obj-004.png",
+        "bbox2d": [
+          843,
+          450,
+          1022,
+          602
+        ],
+        "box": {
+          "min": [
+            0.9359715665594034,
+            -0.5889456410593917,
+            -4.7503991794586184
+          ],
+          "max": [
+            1.517324423837202,
+            -0.17597969040161585,
+            -3.9643503284454344
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white",
+          "wicker"
+        ]
+      },
+      {
+        "id": "obj-005",
+        "name": "chair",
+        "score": 0.640625,
+        "mask": "masks/obj-005.png",
+        "bbox2d": [
+          0,
+          631,
+          22,
+          715
+        ],
+        "box": {
+          "min": [
+            -0.8484333015132831,
+            -0.3703434611261778,
+            -1.4266051721572877
+          ],
+          "max": [
+            -0.7733980372219584,
+            -0.2781642388511919,
+            -1.3013783073425294
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white",
+          "wicker"
+        ]
+      },
+      {
+        "id": "obj-006",
+        "name": "cabinet",
+        "score": 0.94140625,
+        "mask": "masks/obj-006.png",
+        "bbox2d": [
+          532,
+          457,
+          733,
+          604
+        ],
+        "box": {
+          "min": [
+            -0.4371356798666223,
+            -0.732680264625149,
+            -5.12717435836792
+          ],
+          "max": [
+            0.38778320211251155,
+            -0.22035852083553936,
+            -4.268899421691895
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "wooden"
+        ]
+      },
+      {
+        "id": "obj-007",
+        "name": "window",
+        "score": 0.86328125,
+        "mask": "masks/obj-007.png",
+        "bbox2d": [
+          490,
+          161,
+          643,
+          446
+        ],
+        "box": {
+          "min": [
+            -0.6005533241302553,
+            -0.1000483597981709,
+            -5.435269832611084
+          ],
+          "max": [
+            -0.03595027005011639,
+            1.0315961112799272,
+            -4.463821649551392
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ]
+      },
+      {
+        "id": "obj-008",
+        "name": "window",
+        "score": 0.8515625,
+        "mask": "masks/obj-008.png",
+        "bbox2d": [
+          691,
+          187,
+          1135,
+          441
+        ],
+        "box": {
+          "min": [
+            0.40499498554972385,
+            -0.08304749667140068,
+            -5.575237350463867
+          ],
+          "max": [
+            2.2261507143355237,
+            1.0323615823280448,
+            -4.974803352355957
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ]
+      },
+      {
+        "id": "obj-009",
+        "name": "window",
+        "score": 0.7421875,
+        "mask": "masks/obj-009.png",
+        "bbox2d": [
+          685,
+          90,
+          1142,
+          190
+        ],
+        "box": {
+          "min": [
+            0.3428702781751755,
+            1.211390298251821,
+            -5.565490875244141
+          ],
+          "max": [
+            2.2911429717207956,
+            1.4735715132354799,
+            -4.961510410308838
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ]
+      },
+      {
+        "id": "obj-010",
+        "name": "window",
+        "score": 0.6484375,
+        "mask": "masks/obj-010.png",
+        "bbox2d": [
+          487,
+          31,
+          659,
+          178
+        ],
+        "box": {
+          "min": [
+            -0.6025079905468315,
+            1.241197826283305,
+            -5.381745100021362
+          ],
+          "max": [
+            -0.005092866969480079,
+            1.4756249907361603,
+            -4.2542926120758064
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ]
+      },
+      {
+        "id": "obj-011",
+        "name": "door",
+        "score": 0.78125,
+        "mask": "masks/obj-011.png",
+        "bbox2d": [
+          263,
+          73,
+          424,
+          637
+        ],
+        "box": {
+          "min": [
+            -1.1160676197313892,
+            -0.641098272344022,
+            -3.791401982307434
+          ],
+          "max": [
+            -0.8129697673989996,
+            1.016504174035077,
+            -3.181110758781433
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "wooden frame"
+        ]
+      },
+      {
+        "id": "obj-012",
+        "name": "door",
+        "score": 0.71875,
+        "mask": "masks/obj-012.png",
+        "bbox2d": [
+          1246,
+          30,
+          1280,
+          765
+        ],
+        "box": {
+          "min": [
+            1.6051416674760954,
+            -0.8512368118722783,
+            -2.7929195070266726
+          ],
+          "max": [
+            1.6646992243335457,
+            0.9654768013270991,
+            -2.7330586338043212
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "glass",
+          "wooden frame"
+        ]
+      },
+      {
+        "id": "obj-013",
+        "name": "floor",
+        "score": 0.83203125,
+        "mask": "masks/obj-013.png",
+        "bbox2d": [
+          1057,
+          650,
+          1280,
+          832
+        ],
+        "box": {
+          "min": [
+            1.0215588415911945,
+            -0.9602402762618085,
+            -3.3945638608932494
+          ],
+          "max": [
+            1.614266002897374,
+            -0.9032669756733656,
+            -2.4357937812805175
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "tile"
+        ]
+      },
+      {
+        "id": "obj-014",
+        "name": "ceiling",
+        "score": 0.94140625,
+        "mask": "masks/obj-014.png",
+        "bbox2d": [
+          561,
+          0,
+          1148,
+          84
+        ],
+        "box": {
+          "min": [
+            -0.16753946264537467,
+            1.719414374799488,
+            -5.238315029144287
+          ],
+          "max": [
+            2.1055908425914462,
+            1.7545410560357242,
+            -4.4298599815368656
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "wooden"
+        ]
+      },
+      {
+        "id": "obj-015",
+        "name": "light fixture",
+        "score": 0.796875,
+        "mask": "masks/obj-015.png",
+        "bbox2d": [
+          697,
+          4,
+          728,
+          18
+        ],
+        "box": {
+          "min": [
+            0.2514223304965017,
+            1.7089224900253723,
+            -4.524709415435791
+          ],
+          "max": [
+            0.36030645454590193,
+            1.715897483691898,
+            -4.4229718208312985
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "ceiling mounted"
+        ]
+      },
+      {
+        "id": "obj-016",
+        "name": "wall",
+        "score": 0.66796875,
+        "mask": "masks/obj-016.png",
+        "bbox2d": [
+          1155,
+          0,
+          1280,
+          771
+        ],
+        "box": {
+          "min": [
+            1.391557797174602,
+            -0.8941747499824237,
+            -2.8494182014465332
+          ],
+          "max": [
+            1.5841367734958092,
+            1.0422325150375904,
+            -2.7557101154327395
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white"
+        ]
+      },
+      {
+        "id": "obj-017",
+        "name": "wall",
+        "score": 0.59765625,
+        "mask": "masks/obj-017.png",
+        "bbox2d": [
+          673,
+          33,
+          1155,
+          622
+        ],
+        "box": {
+          "min": [
+            0.3713221324908009,
+            -0.5588329069204685,
+            -5.471551141738892
+          ],
+          "max": [
+            2.340226988149302,
+            1.7102902583980524,
+            -4.819482507705689
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white"
+        ]
+      },
+      {
+        "id": "obj-018",
+        "name": "wall",
+        "score": 0.5625,
+        "mask": "masks/obj-018.png",
+        "bbox2d": [
+          127,
+          0,
+          1280,
+          771
+        ],
+        "box": {
+          "min": [
+            -1.0114143300159353,
+            -0.8335903370031659,
+            -5.413930625915527
+          ],
+          "max": [
+            2.2769645302212975,
+            1.6926700407738073,
+            -2.764098424911499
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "white"
+        ]
+      },
+      {
+        "id": "obj-019",
+        "name": "bottle",
+        "score": 0.69140625,
+        "mask": "masks/obj-019.png",
+        "bbox2d": [
+          667,
+          410,
+          689,
+          457
+        ],
+        "box": {
+          "min": [
+            0.1430854437533212,
+            -0.1807082376690008,
+            -5.342040920257569
+          ],
+          "max": [
+            0.22105036472603729,
+            0.00998762648522258,
+            -5.037271928787232
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "category_attributes": [
+          "blue"
+        ]
+      },
+      {
+        "id": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
         "name": "지지면",
         "source": "depth-surface",
         "box": {
@@ -23,7 +611,7 @@
         }
       },
       {
-        "id": "a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "id": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
         "name": "validation-chair",
         "box": {
           "min": [
@@ -39,8 +627,8 @@
         },
         "source": "placed-glb",
         "asset": {
-          "id": "b8b504df013744cda281c0a0b448fc95",
-          "url": "/scene-api/asset-files/b8b504df013744cda281c0a0b448fc95.glb",
+          "id": "9405433c6b1248189aa00e389230e584",
+          "url": "/scene-api/asset-files/9405433c6b1248189aa00e389230e584.glb",
           "name": "validation-chair",
           "category": "small_prop",
           "normalization": {
@@ -104,13 +692,3630 @@
     ],
     "edges": [
       {
-        "source": "a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
-        "target": "support-a5ed262c-8679-4b45-9ab5-5b6fb01ed3c9",
+        "source": "obj-000",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-002",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-003",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-000",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-000",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-011",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-012",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-013",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-000",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-016",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-018",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-018",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-000",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-000",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-002",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-002",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-001",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-004",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-004",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-001",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-001",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-001",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-001",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-001",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-002",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-002",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-002",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-002",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-012",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-002",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-002",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-002",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-002",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-002",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-003",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-003",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-003",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-003",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-011",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-012",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-013",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-003",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-016",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-018",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-018",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-003",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-003",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-003",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-004",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-004",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-004",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-004",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-004",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-017",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-004",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-004",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-004",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-006",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-007",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-010",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-011",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-012",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-013",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-014",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-016",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-018",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-018",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-005",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-005",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-005",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-007",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-010",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-006",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-015",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-006",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-006",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-006",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-019",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-006",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-008",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-007",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-010",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-007",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-007",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-017",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-007",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-007",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-007",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-009",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-015",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-008",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-008",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-008",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-010",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-009",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-015",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-009",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-010",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-010",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-017",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-010",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-010",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-010",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-010",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-011",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-014",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-011",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-011",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-011",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-011",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-011",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-012",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-012",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-012",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-013",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-016",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-018",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-013",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-013",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-013",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-015",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-014",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-017",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-014",
+        "target": "obj-018",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-018",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-014",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-015",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-015",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-015",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-018",
+        "relation": "on",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-018",
+        "target": "obj-015",
+        "relation": "under",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-015",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-015",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-016",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-016",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-016",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-019",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-017",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-017",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-017",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-017",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-017",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "support-a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-019",
+        "relation": "left of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "right of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-019",
+        "relation": "in front of",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "behind",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "obj-019",
+        "target": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb"
+      },
+      {
+        "source": "a72b84f6-4615-4ae6-bd18-b0a316beaa1e",
+        "target": "obj-006",
         "relation": "on",
         "method": "raycast-support-contact"
       }
     ],
-    "geometry_status": "monocular-estimate",
     "camera": {
       "width": 1280,
       "height": 832,
@@ -134,6 +4339,20 @@
         0
       ]
     },
+    "models": {
+      "names": "Qwen/Qwen3-VL-4B-Instruct",
+      "masks": "facebook/sam3",
+      "depth": "hypersim"
+    },
+    "coordinate_system": "three-camera-x-right-y-up-z-back",
+    "units": "meters",
+    "limitations": [
+      "Boxes bound visible surfaces, not hidden volume",
+      "Gravity assumed from photo vertical",
+      "Metric depth is estimated"
+    ],
+    "scene_id": "sunroom",
+    "geometry_status": "monocular-estimate",
     "alignment": {
       "method": "foreground-zbuffer-median-ratio",
       "samples": 616110,

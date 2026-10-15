@@ -33,6 +33,7 @@ storage/**
 node_modules/
 frontend/node_modules/
 frontend/dist/
+frontend/debug.log
 .runtime/
 # Local environment directories
 .venv/

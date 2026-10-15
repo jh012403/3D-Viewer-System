@@ -1,3 +1,4 @@
+import {drawGraph} from './graph-panel.js';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {TransformControls} from 'three/addons/controls/TransformControls.js';
@@ -30,14 +31,24 @@ export class Placement {
       else this.pickGraph(this.ray);
     });
     viewer.afterRender=()=>this.render();
-    window.addEventListener('scene-loaded',()=>this.loadGraph());
+    window.addEventListener('scene-loaded',()=>this.loadGraph().catch(e=>this.status(e.message,true)));
     this.ui();
   }
-  async loadGraph(){
+  async loadGraph(preserveItems=false){
+    const base=this.v.base,manifest=this.v.manifest;
+    const r=await fetch(new URL(manifest.graph,base),{cache:'no-store'});
+    if(!r.ok)throw Error('그래프를 불러오지 못했습니다.');
+    const graph=await r.json();
+    if(this.v.manifest!==manifest)return;
+    if(!preserveItems){
     this.controls.detach();for(const item of this.items){this.objects.remove(item.object,item.shadow);dispose(item.object);dispose(item.shadow);}
     this.items=[];this.selected=null;if(this.pending){dispose(this.pending.object);this.pending=null;}
-    this.baseNodes=[];
-    try{const r=await fetch(new URL(this.v.manifest.graph,this.v.base));if(r.ok)this.baseNodes=(await r.json()).nodes||[];}catch{}
+    this.baseNodes=[];this.selectedGraphId=null;if(this.boxHelper){this.objects.remove(this.boxHelper);dispose(this.boxHelper);this.boxHelper=null;}
+    }
+    this.baseGraph=graph;this.baseNodes=(graph.nodes||[]).map(n=>{
+      if(n.source!=='sam3-metric-depth'||!n.attributes)return n;
+      const {attributes,...rest}=n;return {...rest,category_attributes:attributes};
+    });
     if(this.proxy)this.occlusion.remove(this.proxy);
     this.proxy=new THREE.Mesh(this.v.surface.geometry,this.depthMaterial);this.occlusion.add(this.proxy);
     this.update();
@@ -46,7 +57,7 @@ export class Placement {
     if(!this.v.manifest)return;
     const r=this.v.renderer;r.autoClear=false;r.clearDepth();
     if(this.proxy)r.render(this.occlusion,this.v.camera);
-    r.render(this.objects,this.v.camera);r.autoClear=true;
+    r.outputColorSpace=THREE.SRGBColorSpace;r.render(this.objects,this.v.camera);r.outputColorSpace=THREE.LinearSRGBColorSpace;r.autoClear=true;
   }
   ui(){
     $('#placement').innerHTML='<div class="section-label spaced">02 / OBJECTS</div><h2>물체 배치</h2><label>물체 종류<select id="category"></select></label><label class="upload">+ 생성된 GLB 선택<input id="glb" type="file" accept=".glb"></label><p class="muted" id="objectHint">GLB를 선택한 뒤 바닥 또는 상판을 클릭하세요.</p><div class="controls"><button data-mode="translate">이동</button><button data-mode="rotate">회전</button><button data-mode="scale">크기</button></div><div class="controls"><button id="snap">지지면 스냅</button><button id="remove">삭제</button></div><button id="export">결과 저장</button><div id="objects"></div>';
@@ -90,9 +101,7 @@ export class Placement {
     if(!h){this.status('평평한 지지면이 확인되지 않았습니다. 다른 위치를 선택하세요.');return false;}
     const item=this.pending;item.object.position.copy(h.point);item.normal.copy(h.normal);
     item.supportPoint=h.point.clone();item.supportId='support-'+item.id;item.lastPosition=item.object.position.clone();
-    const pos=this.v.surface.geometry.attributes.position, points=[];
-    for(let i=0;i<pos.count;i++){const v=new THREE.Vector3().fromBufferAttribute(pos,i),d=v.clone().sub(h.point);if(d.length()<.6&&Math.abs(d.dot(h.normal))<.04)points.push(v);}
-    item.supportBox=new THREE.Box3().setFromPoints(points.length?points:[h.point]);
+    this.measureSupport(item,h);
     item.shadow=this.shadow(item);
     this.objects.add(item.object,item.shadow);this.items.push(item);this.pending=null;
     $('#objectHint').textContent=item.name+' 선택됨';this.select(item);this.update();this.status('물체를 배치했습니다. 기즈모로 조절하세요.');return true;
@@ -104,6 +113,14 @@ export class Placement {
     ctx.fillStyle=g;ctx.fillRect(0,0,128,128);
     const plane=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}));
     plane.renderOrder=1;return plane;
+  }
+  measureSupport(item,hit){
+    const pos=this.v.surface.geometry.attributes.position,points=[];
+    for(let i=0;i<pos.count;i++){
+      const v=new THREE.Vector3().fromBufferAttribute(pos,i),d=v.clone().sub(hit.point);
+      if(d.length()<.6&&Math.abs(d.dot(hit.normal))<.04)points.push(v);
+    }
+    item.supportBox=new THREE.Box3().setFromPoints(points.length?points:[hit.point]);
   }
   snapSelected(){
     const item=this.selected;if(!item)return;
@@ -118,10 +135,12 @@ export class Placement {
       }
       item.object.position.copy(item.lastPosition);this.status('지지면 밖입니다. 마지막 배치 위치로 돌아갑니다.');return;}
     item.object.position.y+=hit.point.y-box.min.y;item.supportPoint=hit.point.clone();item.normal.copy(hit.normal);item.lastPosition=item.object.position.clone();
+    this.measureSupport(item,hit);
   }
-  select(item){this.selected=item;if(item)this.controls.attach(item.object);else this.controls.detach();this.update();}
+  select(item){this.selected=item;if(item)this.selectedGraphId=item.id;if(item)this.controls.attach(item.object);else this.controls.detach();this.update();}
   update(){
     for(const item of this.items){
+      item.object.scale.clampScalar(.05,20);
       item.object.updateMatrixWorld(true);
       const box=new THREE.Box3().setFromObject(item.object),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
       item.box={min:box.min.toArray(),max:box.max.toArray()};
@@ -132,25 +151,31 @@ export class Placement {
     }
     const supports=this.items.map(x=>({id:x.supportId,name:'지지면',source:'depth-surface',box:{min:x.supportBox.min.toArray(),max:x.supportBox.max.toArray()}}));
     const nodes=[...this.baseNodes,...supports,...this.items.map(x=>({id:x.id,name:x.name,box:x.box,source:'placed-glb',asset:x.asset,transform:{position:x.object.position.toArray(),quaternion:x.object.quaternion.toArray(),scale:x.object.scale.toArray()}}))];
-    this.graph={version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes),geometry_status:'monocular-estimate'};
+    this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes),geometry_status:'monocular-estimate'};
     for(const item of this.items){
+      const center=new THREE.Box3().setFromObject(item.object).getCenter(new THREE.Vector3());
+      const p=item.supportPoint,n=item.normal;
+      const supportY=p.y-(n.x*(center.x-p.x)+n.z*(center.z-p.z))/n.y;
+      if(Math.abs(item.box.min[1]-supportY)>.04)continue;
       const support=this.baseNodes.find(n=>n.box&&item.supportPoint.x>=n.box.min[0]-.05&&item.supportPoint.x<=n.box.max[0]+.05&&item.supportPoint.z>=n.box.min[2]-.05&&item.supportPoint.z<=n.box.max[2]+.05&&Math.abs(item.supportPoint.y-n.box.max[1])<.12);
       const target=support?.id||item.supportId;
       if(!this.graph.edges.some(e=>e.source===item.id&&e.target===target&&e.relation==='on'))this.graph.edges.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
+      if(!this.graph.edges.some(e=>e.source===target&&e.target===item.id&&e.relation==='under'))this.graph.edges.push({source:target,target:item.id,relation:'under',method:'raycast-support-contact'});
     }
     this.graphUI();
   }
   graphUI(){
     $('#objects').replaceChildren();
     for(const item of this.items){const b=document.createElement('button');b.className='node'+(item===this.selected?' active':'');b.textContent=item.name;b.onclick=()=>this.select(item);$('#objects').append(b);}
-    const root=$('#graph');root.replaceChildren();
-    const title=document.createElement('h2');title.textContent='Scene graph';root.append(title);
-    if(!this.graph.nodes.length){const p=document.createElement('p');p.className='muted';p.textContent='배경 그래프는 아직 생성되지 않았습니다.';root.append(p);return;}
-    for(const n of this.graph.nodes){const b=document.createElement('button');b.className='node';b.textContent=n.name;b.onclick=()=>{const item=this.items.find(x=>x.id===n.id);if(item)this.select(item);else this.highlight(n);};root.append(b);}
-    const names=Object.fromEntries(this.graph.nodes.map(x=>[x.id,x.name]));
-    for(const e of this.graph.edges){const p=document.createElement('div');p.className='edge';p.textContent=names[e.source]+' '+e.relation+' '+names[e.target];root.append(p);}
+    drawGraph($('#graph'),this.graph,this.selectedGraphId,id=>{
+      const item=this.items.find(x=>x.id===id);
+      if(item){this.selectedGraphId=id;this.select(item);}
+      else {const node=this.graph.nodes.find(x=>x.id===id);if(node)this.highlight(node);}
+    });
   }
+
   highlight(node){
+    this.selectedGraphId=node.id;this.graphUI();
     if(this.boxHelper){this.objects.remove(this.boxHelper);dispose(this.boxHelper);}
     if(node.box){this.boxHelper=new THREE.Box3Helper(new THREE.Box3(new THREE.Vector3(...node.box.min),new THREE.Vector3(...node.box.max)),0xb8dfa4);this.objects.add(this.boxHelper);}
     this.status(node.name+' 선택됨');

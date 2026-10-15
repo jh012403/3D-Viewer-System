@@ -1,0 +1,18 @@
+# Python 3.12. Install CUDA torch/torchvision first from the cu128 index.
+numpy==1.26.4
+opencv-python==4.11.0.86
+transformers==4.57.6
+accelerate
+triton-windows==3.8.0.post29
+fastapi
+uvicorn
+python-multipart
+trimesh
+python-dotenv
+einops
+pycocotools
+hydra-core
+submitit
+plyfile==1.1
+-e .runtime/ml-sharp
+-e .runtime/sam3

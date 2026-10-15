@@ -1,0 +1,658 @@
+{
+  "method": "Assistant visual reference annotations from source photographs. Approximate 2D boxes; 36 selected instances, not exhaustive labels. These are NOT independent human ground truth or 3D ground truth. Relation references are qualitative visible evidence. Match category aliases and IoU >= 0.30 one-to-one. Report anchored correspondence recall and end-to-end relation recovery; never call this full precision/accuracy.",
+  "images": [
+    {
+      "id": "dav2-01",
+      "objects": [
+        {
+          "id": "bus",
+          "name": "bus",
+          "bbox_normalized": [
+            0.73,
+            0.52,
+            0.93,
+            0.85
+          ],
+          "aliases": []
+        },
+        {
+          "id": "car",
+          "name": "car",
+          "bbox_normalized": [
+            0.7,
+            0.75,
+            0.88,
+            0.98
+          ],
+          "aliases": []
+        },
+        {
+          "id": "person",
+          "name": "person",
+          "bbox_normalized": [
+            0.135,
+            0.72,
+            0.171,
+            0.93
+          ],
+          "aliases": [
+            "pedestrian"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "person",
+          "left of",
+          "car"
+        ],
+        [
+          "car",
+          "in front of",
+          "bus"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-02",
+      "objects": [
+        {
+          "id": "flower-left",
+          "name": "sunflower",
+          "bbox_normalized": [
+            0.2,
+            0.17,
+            0.47,
+            0.76
+          ],
+          "aliases": [
+            "flower"
+          ]
+        },
+        {
+          "id": "flower-right",
+          "name": "sunflower",
+          "bbox_normalized": [
+            0.8,
+            0.36,
+            1,
+            0.84
+          ],
+          "aliases": [
+            "flower"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "flower-left",
+          "left of",
+          "flower-right"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-04",
+      "objects": [
+        {
+          "id": "sphere",
+          "name": "glass sphere",
+          "bbox_normalized": [
+            0.38,
+            0.19,
+            0.65,
+            0.76
+          ],
+          "aliases": [
+            "sphere",
+            "glass ball",
+            "crystal ball"
+          ]
+        },
+        {
+          "id": "moss",
+          "name": "moss",
+          "bbox_normalized": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "aliases": []
+        }
+      ],
+      "relations": [
+        [
+          "sphere",
+          "on",
+          "moss"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-06",
+      "objects": [
+        {
+          "id": "person",
+          "name": "person",
+          "bbox_normalized": [
+            0.38,
+            0.74,
+            0.44,
+            0.95
+          ],
+          "aliases": []
+        },
+        {
+          "id": "bridge",
+          "name": "bridge",
+          "bbox_normalized": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "aliases": []
+        },
+        {
+          "id": "railing",
+          "name": "railing",
+          "bbox_normalized": [
+            0,
+            0.46,
+            0.4,
+            1
+          ],
+          "aliases": [
+            "fence"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "person",
+          "on",
+          "bridge"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-07",
+      "objects": [
+        {
+          "id": "ball",
+          "name": "basketball",
+          "bbox_normalized": [
+            0.27,
+            0.15,
+            0.56,
+            0.56
+          ],
+          "aliases": [
+            "ball"
+          ]
+        },
+        {
+          "id": "net",
+          "name": "net",
+          "bbox_normalized": [
+            0.2,
+            0.19,
+            0.68,
+            0.99
+          ],
+          "aliases": [
+            "basketball net",
+            "basketball hoop",
+            "hoop"
+          ]
+        }
+      ],
+      "relations": [],
+      "note": "Ball is within the net; requested predicate set does not include inside. No unambiguous requested reference relation."
+    },
+    {
+      "id": "dav2-08",
+      "objects": [
+        {
+          "id": "bicycle",
+          "name": "bicycle",
+          "bbox_normalized": [
+            0.07,
+            0,
+            1,
+            0.98
+          ],
+          "aliases": [
+            "bike"
+          ]
+        },
+        {
+          "id": "ground",
+          "name": "ground",
+          "bbox_normalized": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "aliases": [
+            "road",
+            "pavement"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "bicycle",
+          "on",
+          "ground"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-10",
+      "objects": [
+        {
+          "id": "cabinet",
+          "name": "cabinet",
+          "bbox_normalized": [
+            0.4,
+            0.53,
+            0.58,
+            0.74
+          ],
+          "aliases": [
+            "sideboard"
+          ]
+        },
+        {
+          "id": "bottle",
+          "name": "bottle",
+          "bbox_normalized": [
+            0.51,
+            0.47,
+            0.54,
+            0.56
+          ],
+          "aliases": [
+            "vase"
+          ]
+        },
+        {
+          "id": "chair",
+          "name": "chair",
+          "bbox_normalized": [
+            0.5,
+            0.61,
+            0.7,
+            0.83
+          ],
+          "aliases": []
+        }
+      ],
+      "relations": [
+        [
+          "bottle",
+          "on",
+          "cabinet"
+        ],
+        [
+          "chair",
+          "in front of",
+          "cabinet"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-11",
+      "objects": [
+        {
+          "id": "cat-center",
+          "name": "cat",
+          "bbox_normalized": [
+            0.39,
+            0.52,
+            0.66,
+            1
+          ],
+          "aliases": []
+        },
+        {
+          "id": "cat-right",
+          "name": "cat",
+          "bbox_normalized": [
+            0.7,
+            0.35,
+            0.88,
+            0.77
+          ],
+          "aliases": []
+        }
+      ],
+      "relations": [
+        [
+          "cat-center",
+          "left of",
+          "cat-right"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-12",
+      "objects": [
+        {
+          "id": "flower-center",
+          "name": "flower",
+          "bbox_normalized": [
+            0.4,
+            0.16,
+            0.94,
+            0.91
+          ],
+          "aliases": []
+        },
+        {
+          "id": "flower-left",
+          "name": "flower",
+          "bbox_normalized": [
+            0,
+            0,
+            0.45,
+            0.43
+          ],
+          "aliases": []
+        }
+      ],
+      "relations": [
+        [
+          "flower-left",
+          "left of",
+          "flower-center"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-13",
+      "objects": [
+        {
+          "id": "jug",
+          "name": "jug",
+          "bbox_normalized": [
+            0.7,
+            0.05,
+            0.82,
+            0.25
+          ],
+          "aliases": [
+            "pitcher",
+            "vase"
+          ]
+        },
+        {
+          "id": "plate",
+          "name": "plate",
+          "bbox_normalized": [
+            0.52,
+            0.36,
+            0.68,
+            0.55
+          ],
+          "aliases": [
+            "bowl",
+            "dish"
+          ]
+        },
+        {
+          "id": "bowl",
+          "name": "bowl",
+          "bbox_normalized": [
+            0.08,
+            0.47,
+            0.23,
+            0.62
+          ],
+          "aliases": [
+            "plate",
+            "dish"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "bowl",
+          "left of",
+          "plate"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-14",
+      "objects": [
+        {
+          "id": "bottle-left",
+          "name": "bottle",
+          "bbox_normalized": [
+            0.1,
+            0.18,
+            0.22,
+            0.7
+          ],
+          "aliases": [
+            "glass bottle",
+            "decanter",
+            "vase"
+          ]
+        },
+        {
+          "id": "bottle-right",
+          "name": "bottle",
+          "bbox_normalized": [
+            0.69,
+            0.15,
+            0.86,
+            0.84
+          ],
+          "aliases": [
+            "glass bottle",
+            "decanter",
+            "vase"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "bottle-left",
+          "left of",
+          "bottle-right"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-15",
+      "objects": [
+        {
+          "id": "bust-left",
+          "name": "bust",
+          "bbox_normalized": [
+            0.35,
+            0.38,
+            0.38,
+            0.45
+          ],
+          "aliases": [
+            "statue",
+            "sculpture"
+          ]
+        },
+        {
+          "id": "bust-right",
+          "name": "bust",
+          "bbox_normalized": [
+            0.68,
+            0.38,
+            0.72,
+            0.45
+          ],
+          "aliases": [
+            "statue",
+            "sculpture"
+          ]
+        },
+        {
+          "id": "chandelier",
+          "name": "chandelier",
+          "bbox_normalized": [
+            0.14,
+            0,
+            0.25,
+            0.25
+          ],
+          "aliases": [
+            "light fixture"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "bust-left",
+          "left of",
+          "bust-right"
+        ]
+      ]
+    },
+    {
+      "id": "dav2-16",
+      "objects": [
+        {
+          "id": "person-left",
+          "name": "person",
+          "bbox_normalized": [
+            0.4,
+            0.28,
+            0.52,
+            0.8
+          ],
+          "aliases": [
+            "man"
+          ]
+        },
+        {
+          "id": "person-right",
+          "name": "person",
+          "bbox_normalized": [
+            0.55,
+            0.31,
+            0.7,
+            0.81
+          ],
+          "aliases": [
+            "man"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "person-left",
+          "left of",
+          "person-right"
+        ]
+      ]
+    },
+    {
+      "id": "sam3-truck",
+      "objects": [
+        {
+          "id": "truck",
+          "name": "truck",
+          "bbox_normalized": [
+            0.045,
+            0.22,
+            0.96,
+            0.72
+          ],
+          "aliases": [
+            "pickup truck",
+            "car"
+          ]
+        },
+        {
+          "id": "road",
+          "name": "road",
+          "bbox_normalized": [
+            0,
+            0.61,
+            1,
+            1
+          ],
+          "aliases": [
+            "ground",
+            "street",
+            "pavement"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "truck",
+          "on",
+          "road"
+        ]
+      ]
+    },
+    {
+      "id": "sam3-groceries",
+      "objects": [
+        {
+          "id": "bag-left",
+          "name": "paper bag",
+          "bbox_normalized": [
+            0.46,
+            0.34,
+            0.56,
+            0.64
+          ],
+          "aliases": [
+            "bag",
+            "grocery bag"
+          ]
+        },
+        {
+          "id": "bag-mid",
+          "name": "paper bag",
+          "bbox_normalized": [
+            0.54,
+            0.33,
+            0.64,
+            0.64
+          ],
+          "aliases": [
+            "bag",
+            "grocery bag"
+          ]
+        },
+        {
+          "id": "bag-right",
+          "name": "paper bag",
+          "bbox_normalized": [
+            0.63,
+            0.33,
+            0.74,
+            0.64
+          ],
+          "aliases": [
+            "bag",
+            "grocery bag"
+          ]
+        }
+      ],
+      "relations": [
+        [
+          "bag-left",
+          "left of",
+          "bag-right"
+        ]
+      ]
+    }
+  ]
+}
