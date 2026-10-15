@@ -9,10 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@sparkjsdev/spark": "0.1.10",
     "three": "^0.178.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "vite": "^5.4.8"
   }
 }
-

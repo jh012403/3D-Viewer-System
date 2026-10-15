@@ -13,3 +13,8 @@
 - Power limit is user-managed. Do not query or change it.
 - Restart checkpoint goes in STATUS.md. Do not initiate a restart while work can continue.
 - Local-only application; no Sites hosting. Git author email supplied by user: qowlghkss@naver.com.
+
+- Spark pinned to 0.1.10 to retain Three.js 0.178.0. Its embedded raycast WASM is served locally via Vite to avoid Chromium data-URL empty-body initialization failure.
+- SHARP source aed6527499ef91cba3b54c18d49a870f25947190; DAV2 a561b849ebae10a6f5ef49e26c83cbbcd36c71bf.
+- First replacement photo is DAV2 official example demo10.jpg; not an original project asset. Transparent/reflective regions are not reliable support geometry.
+- Existing category_policy and bottom-center normalization are available; previous contact-shadow code is absent from inspected checkout. New shadow must be documented as replacement.

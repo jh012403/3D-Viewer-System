@@ -1,0 +1,12 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PRISM · Scene workspace</title></head><body>
+<header><a class="brand" href="/prismscan-v2.html">PRISM <span>/ SCENE</span></a><span class="eyebrow">사진에서 공간으로</span><span class="local">LOCAL WORKSPACE</span></header>
+<main><aside class="library"><div class="section-label">01 / BACKGROUND</div><h1>공간을<br>불러오세요.</h1><p class="muted">사진 한 장에서 시작하는<br>입체적인 씬 편집.</p>
+<label class="upload">+ 배경 사진 추가<input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></label>
+<label class="demo-toggle"><input id="cacheOnly" type="checkbox" checked> 시연 모드 · 캐시만 사용</label>
+<div class="section-label spaced">저장된 공간</div><div id="scenes"></div>
+<div class="source-card" hidden><img id="source" alt="원본 배경 사진"><span>원본 사진</span></div>
+<div class="library-bottom">SHARP · METRIC DEPTH<br><small>원본 시점 주변에서 살짝 둘러보세요.</small></div></aside>
+<section class="workspace"><div class="toolbar"><div><span class="dot"></span> <strong id="sceneTitle">Scene workspace</strong></div><div><button id="reset">원본 시점</button><button id="compare">원본 비교</button><button id="surface">표면 확인</button></div></div>
+<div id="viewport"><div class="empty"><span class="cross">＋</span><h2>사진 속 공간에 들어가기</h2><p>왼쪽에서 저장된 공간을 선택하거나<br>시연 모드를 끄고 배경 사진을 추가하세요.</p></div><img id="comparison" alt="원본 비교" hidden></div>
+<div class="statusbar"><span id="status" role="status">준비 중</span><span id="viewHint">ORBIT ±8°</span></div></section>
+<aside class="inspector"><div class="section-label">SCENE DETAILS</div><h2>공간 정보</h2><dl id="details"><dt>배경</dt><dd>선택 전</dd></dl><div class="note">가려진 영역은 단일 사진으로 확인할 수 없습니다. 원본 시점에 가까운 범위에서 편집하세요.</div><div id="placement"></div><div id="graph"></div></aside></main><script type="module" src="/src/scene/main.js"></script></body></html>

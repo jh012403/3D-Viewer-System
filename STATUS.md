@@ -24,3 +24,8 @@ Continue stage 1 in separate scene entrypoint. Do not modify existing pipeline o
 No implementation/visual/accuracy completion claimed. Stage screenshots pending local preview.
 
 WSL components completed; restart required, not initiated. Native Windows scene environment is being prepared. Stage 0 screenshot: docs/screenshots/stage0-audit.png (audit report, not viewer).
+
+## Stage 1 checkpoint
+Actual SHARP 1,179,648-splat PLY generated on RTX 3090. DAV2 metric Hypersim Large alignment scale 0.859914; median relative residual 11.26%, p90 440.15% (glass/outdoor disagreement; not ground-truth accuracy). Native Windows inference succeeds without WSL restart.
+Geometry tests: 3 passed. Browser: zero page errors, zero external requests; orbit clamped to 8 degrees. Screenshots docs/screenshots/stage1-original.png and stage1-orbit.png. Separate /scene.html and port 8001 service; existing pipeline unchanged.
+Next stage 3: GLB placement and gizmos. Cache count 1; demo set of 3-5 and graph validation still pending.
