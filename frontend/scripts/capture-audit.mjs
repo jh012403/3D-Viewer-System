@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { mkdir } from 'node:fs/promises';
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1400,height:900}});
+await page.goto(pathToFileURL(resolve('../docs/scene-stage0.html')).href);
+await mkdir('../docs/screenshots',{recursive:true});
+await page.screenshot({path:'../docs/screenshots/stage0-audit.png',fullPage:true});
+await browser.close();
