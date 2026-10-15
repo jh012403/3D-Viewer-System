@@ -10,9 +10,9 @@ def run():
     destination=ROOT/'docs/scene-review';destination.mkdir(exist_ok=True)
     photos=[]
     index=['# 5장 사용자 검수표','',
-      '검수 전 자료입니다. 노드 precision/recall 및 관계 정확도는 아직 계산하지 않습니다.',
+      '검수 보류 상태의 재생성 자료입니다. 노드 precision/recall 및 관계 정확도는 아직 계산하지 않습니다.',
       '','[이미지와 번호를 보며 검수하기](index.html)','',
-      '범위: 독립된 물체와 주요 지지면. 반사상·물체의 부품·중복 검출은 별도 정답 물체로 세지 않습니다. 색상은 참고 속성이며 노드 판정은 개체 존재·카테고리·중복 여부를 기준으로 합니다.',
+      '범위: 독립된 물체와 주요 지지면. 반사상·물체의 부품·중복 검출은 별도 정답 물체로 세지 않습니다. 라벨은 원본 사진의 좌우 위치이며 RGB 색 추정은 제거했습니다. RANSAC 바닥은 분류 신뢰도가 없는 기하 추정입니다.',
       '','맞음=TP, 과검출/잘못된 카테고리/중복=FP. 사진에서 빠진 물체는 한 개체당 한 줄로 추가합니다. 관계도 맞음/틀림과 누락 관계를 기록합니다. 관계는 같은 쌍의 역방향을 중복 정답으로 세지 않습니다.',
       '','| 사진 | 노드 | 관계 | 전체 표 |','|---|---:|---:|---|']
     for entry in manifest['images']:
@@ -24,7 +24,9 @@ def run():
         names={n['id']:n.get('label',n['name']) for n in graph['nodes']}
         rows=[f"# {entry['id']} 검수표",'',f"![원본]({entry['id']}.jpg)",'','## 노드','',
             '| ID | 라벨 | 신뢰도 | 2D 박스 (x1,y1,x2,y2) | 판정 / 수정 |','|---|---|---:|---|---|']
-        for n in graph['nodes']:rows.append(f"| {n['id']} | {names[n['id']]} | {n['score']:.3f} | {n['bbox2d']} | 미검수 |")
+        for n in graph['nodes']:
+            score=f"{n['score']:.3f}" if n.get('score') is not None else 'RANSAC (분류 신뢰도 아님)'
+            rows.append(f"| {n['id']} | {names[n['id']]} | {score} | {n['bbox2d']} | 미검수 |")
         rows+=['','## 관계','','| 번호 | 주체 | 관계 | 대상 | 판정 / 수정 |','|---:|---|---|---|---|']
         for i,e in enumerate(graph['edges']):rows.append(f"| {i} | {names[e['source']]} | {e['relation']} | {names[e['target']]} | 미검수 |")
         rows+=['','## 누락 항목','','물체는 개체별 한 줄, 관계는 주체 / 관계 / 대상으로 추가해 주세요.','']

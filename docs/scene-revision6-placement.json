@@ -1,0 +1,20 @@
+{
+  "placement": {
+    "defaultHeight": 0.9999999280900977,
+    "demonstrationScale": 0.7,
+    "height": 0.6999999496630686,
+    "position": [
+      1.1672587816531734,
+      -0.958380894409974,
+      -2.5407126584175477
+    ],
+    "overlap": false,
+    "occlusion": {
+      "trianglesBefore": 77532,
+      "trianglesAfter": 37803,
+      "antialias": true
+    },
+    "shadow": true
+  },
+  "errors": []
+}

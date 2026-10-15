@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import {relationCandidates as relations,relations as sparse,pruneRelations} from '../src/scene/relations.js';
-const table={id:'table',box:{min:[-1,0,-2],max:[1,1,-1]}};
+const table={id:'table',name:'table',box:{min:[-1,0,-2],max:[1,1,-1]}};
 const cup={id:'cup',box:{min:[0,1,-1.7],max:[.2,1.2,-1.5]}};
 const edges=relations([table,cup]);
 assert(edges.some(e=>e.source==='cup'&&e.target==='table'&&e.relation==='on'));
 assert(!edges.some(e=>e.relation==='next to'));
-assert(edges.some(e=>e.source==='table'&&e.target==='cup'&&e.relation==='under'));
+assert(!edges.some(e=>e.relation==='under'));
 const front={id:'front',box:{min:[2,0,0],max:[3,1,1]}};
 assert(relations([table,front]).some(e=>e.source==='front'&&e.relation==='in front of'));
 assert(relations([table,front]).some(e=>e.source==='table'&&e.relation==='left of'));
@@ -27,3 +27,12 @@ const transitive=pruneRelations(chain.slice(0,3),[{source:'0',target:'1',relatio
 assert(!transitive.some(e=>e.source==='0'&&e.target==='2'));
 assert(!sparse([{...chain[0]},{...chain[1],box:{min:[10,0,0],max:[11,1,1]}}]).length);
 console.log('Stored graph pruning checks passed');
+const ceiling={id:'ceiling',name:'ceiling',box:{min:[-1,2,-2],max:[1,2.02,-1]}};
+const light={id:'light',name:'light fixture',box:{min:[0,1.97,-1.7],max:[.2,1.995,-1.5]}};
+assert(!sparse([ceiling,light]).some(e=>e.relation==='on'));
+assert(sparse([ceiling,light]).some(e=>e.source==='light'&&e.relation==='attached to'));
+assert(!sparse([ceiling,front]).length);
+assert(!sparse([{...table,name:'glass bottle'},cup]).some(e=>e.relation==='on'));
+const covered={id:'covered',name:'toy',box:{min:[0,-.4,-1.7],max:[.2,-.1,-1.5]}};
+assert(sparse([table,covered]).some(e=>e.source==='covered'&&e.relation==='under'));
+console.log('Support direction, structural exclusion and overhead-cover regression checks passed');

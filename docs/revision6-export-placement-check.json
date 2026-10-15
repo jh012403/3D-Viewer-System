@@ -1,0 +1,998 @@
+{
+  "graph": {
+    "version": 1,
+    "status": "generated",
+    "nodes": [
+      {
+        "id": "obj-000",
+        "name": "table",
+        "score": 0.9140625,
+        "mask": "masks/obj-000.png",
+        "bbox2d": [
+          4,
+          598,
+          1100,
+          830
+        ],
+        "box": {
+          "min": [
+            -0.6290205574320022,
+            -0.34438450425492767,
+            -1.6322051525115966
+          ],
+          "max": [
+            0.5235984379348081,
+            -0.32762774577092874,
+            -0.8860909271240234
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 205415,
+        "category_attributes": [
+          "glass"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 테이블 #000"
+      },
+      {
+        "id": "obj-002",
+        "name": "chair",
+        "score": 0.9296875,
+        "mask": "masks/obj-002.png",
+        "bbox2d": [
+          886,
+          473,
+          1152,
+          734
+        ],
+        "box": {
+          "min": [
+            0.7412823893411844,
+            -0.7862936837196892,
+            -3.3568127155303955
+          ],
+          "max": [
+            1.4516587049059544,
+            -0.20518224008479483,
+            -2.836721658706665
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 21227,
+        "category_attributes": [
+          "white",
+          "wicker"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 의자 #002"
+      },
+      {
+        "id": "obj-003",
+        "name": "chair",
+        "score": 0.796875,
+        "mask": "masks/obj-003.png",
+        "bbox2d": [
+          643,
+          529,
+          885,
+          634
+        ],
+        "box": {
+          "min": [
+            0.018223195905994204,
+            -0.3524619613422117,
+            -1.9845926451683045
+          ],
+          "max": [
+            0.41558857490286805,
+            -0.21824957101658352,
+            -1.8542847847938537
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 19812,
+        "category_attributes": [
+          "white",
+          "wicker"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 의자 #003"
+      },
+      {
+        "id": "obj-004",
+        "name": "chair",
+        "score": 0.7890625,
+        "mask": "masks/obj-004.png",
+        "bbox2d": [
+          843,
+          450,
+          1022,
+          602
+        ],
+        "box": {
+          "min": [
+            0.9359715665594034,
+            -0.5889456410593917,
+            -4.7503991794586184
+          ],
+          "max": [
+            1.517324423837202,
+            -0.17597969040161585,
+            -3.9643503284454344
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 12326,
+        "category_attributes": [
+          "white",
+          "wicker"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 의자 #004"
+      },
+      {
+        "id": "obj-005",
+        "name": "chair",
+        "score": 0.640625,
+        "mask": "masks/obj-005.png",
+        "bbox2d": [
+          0,
+          631,
+          22,
+          715
+        ],
+        "box": {
+          "min": [
+            -0.8484333015132831,
+            -0.3703434611261778,
+            -1.4266051721572877
+          ],
+          "max": [
+            -0.7733980372219584,
+            -0.2781642388511919,
+            -1.3013783073425294
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 1113,
+        "category_attributes": [
+          "white",
+          "wicker"
+        ],
+        "instance_attributes": [
+          "왼쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "왼쪽 의자 #005"
+      },
+      {
+        "id": "obj-006",
+        "name": "cabinet",
+        "score": 0.94140625,
+        "mask": "masks/obj-006.png",
+        "bbox2d": [
+          532,
+          457,
+          733,
+          604
+        ],
+        "box": {
+          "min": [
+            -0.4371356798666223,
+            -0.732680264625149,
+            -5.12717435836792
+          ],
+          "max": [
+            0.38778320211251155,
+            -0.22035852083553936,
+            -4.268899421691895
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 20829,
+        "category_attributes": [
+          "wooden"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 수납장 #006"
+      },
+      {
+        "id": "obj-007",
+        "name": "window",
+        "score": 0.86328125,
+        "mask": "masks/obj-007.png",
+        "bbox2d": [
+          490,
+          161,
+          643,
+          446
+        ],
+        "box": {
+          "min": [
+            -0.6005533241302553,
+            -0.1000483597981709,
+            -5.435269832611084
+          ],
+          "max": [
+            -0.03595027005011639,
+            1.0315961112799272,
+            -4.463821649551392
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 38410,
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 창문 #007"
+      },
+      {
+        "id": "obj-008",
+        "name": "window",
+        "score": 0.8515625,
+        "mask": "masks/obj-008.png",
+        "bbox2d": [
+          691,
+          187,
+          1135,
+          441
+        ],
+        "box": {
+          "min": [
+            0.40499498554972385,
+            -0.08304749667140068,
+            -5.575237350463867
+          ],
+          "max": [
+            2.2261507143355237,
+            1.0323615823280448,
+            -4.974803352355957
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 102687,
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 창문 #008"
+      },
+      {
+        "id": "obj-009",
+        "name": "window",
+        "score": 0.7421875,
+        "mask": "masks/obj-009.png",
+        "bbox2d": [
+          685,
+          90,
+          1142,
+          190
+        ],
+        "box": {
+          "min": [
+            0.3428702781751755,
+            1.211390298251821,
+            -5.565490875244141
+          ],
+          "max": [
+            2.2911429717207956,
+            1.4735715132354799,
+            -4.961510410308838
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 26946,
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 창문 #009"
+      },
+      {
+        "id": "obj-010",
+        "name": "window",
+        "score": 0.6484375,
+        "mask": "masks/obj-010.png",
+        "bbox2d": [
+          487,
+          31,
+          659,
+          178
+        ],
+        "box": {
+          "min": [
+            -0.6025079905468315,
+            1.241197826283305,
+            -5.381745100021362
+          ],
+          "max": [
+            -0.005092866969480079,
+            1.4756249907361603,
+            -4.2542926120758064
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 11033,
+        "category_attributes": [
+          "glass",
+          "metal frame"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 창문 #010"
+      },
+      {
+        "id": "obj-011",
+        "name": "door",
+        "score": 0.78125,
+        "mask": "masks/obj-011.png",
+        "bbox2d": [
+          263,
+          73,
+          424,
+          637
+        ],
+        "box": {
+          "min": [
+            -1.1160676197313892,
+            -0.641098272344022,
+            -3.791401982307434
+          ],
+          "max": [
+            -0.8129697673989996,
+            1.016504174035077,
+            -3.181110758781433
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 80543,
+        "category_attributes": [
+          "glass",
+          "wooden frame"
+        ],
+        "instance_attributes": [
+          "왼쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "왼쪽 문 #011"
+      },
+      {
+        "id": "obj-012",
+        "name": "door",
+        "score": 0.71875,
+        "mask": "masks/obj-012.png",
+        "bbox2d": [
+          1246,
+          30,
+          1280,
+          765
+        ],
+        "box": {
+          "min": [
+            1.6051416674760954,
+            -0.8512368118722783,
+            -2.7929195070266726
+          ],
+          "max": [
+            1.6646992243335457,
+            0.9654768013270991,
+            -2.7330586338043212
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 21418,
+        "category_attributes": [
+          "glass",
+          "wooden frame"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 문 #012"
+      },
+      {
+        "id": "obj-013",
+        "name": "floor",
+        "score": 0.83203125,
+        "mask": "floor-ransac.png",
+        "bbox2d": [
+          24,
+          462,
+          1279,
+          829
+        ],
+        "box": {
+          "min": [
+            -2.7667385665535855,
+            -0.9605895685246945,
+            -6.440011911392212
+          ],
+          "max": [
+            1.657296908731043,
+            -0.45005078608977034,
+            -2.4341877603530886
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "ransac-observed-floor-inliers",
+        "mask_pixels": 32773,
+        "category_attributes": [
+          "tile"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 바닥 #013",
+        "plane": {
+          "normal": [
+            0.08902630376219421,
+            0.9954186846882684,
+            0.034870609571950394
+          ],
+          "offset": 0.9137417264632974,
+          "height_coefficients": [
+            -0.08943603845458682,
+            -0.03503109807796173,
+            -0.9179471317131751
+          ],
+          "inliers": 487,
+          "tolerance_m": 0.05
+        },
+        "previous_visible_box": {
+          "min": [
+            1.0215588415911945,
+            -0.9602402762618085,
+            -3.3945638608932494
+          ],
+          "max": [
+            1.614266002897374,
+            -0.9032669756733656,
+            -2.4357937812805175
+          ]
+        },
+        "sam_mask": "masks/obj-013.png"
+      },
+      {
+        "id": "obj-014",
+        "name": "ceiling",
+        "score": 0.94140625,
+        "mask": "masks/obj-014.png",
+        "bbox2d": [
+          561,
+          0,
+          1148,
+          84
+        ],
+        "box": {
+          "min": [
+            -0.16753946264537467,
+            1.719414374799488,
+            -5.238315029144287
+          ],
+          "max": [
+            2.1055908425914462,
+            1.7545410560357242,
+            -4.4298599815368656
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 31350,
+        "category_attributes": [
+          "wooden"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 천장 #014"
+      },
+      {
+        "id": "obj-015",
+        "name": "light fixture",
+        "score": 0.796875,
+        "mask": "masks/obj-015.png",
+        "bbox2d": [
+          697,
+          4,
+          728,
+          18
+        ],
+        "box": {
+          "min": [
+            0.2514223304965017,
+            1.7089224900253723,
+            -4.524709415435791
+          ],
+          "max": [
+            0.36030645454590193,
+            1.715897483691898,
+            -4.4229718208312985
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 339,
+        "category_attributes": [
+          "ceiling mounted"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 조명 #015"
+      },
+      {
+        "id": "obj-016",
+        "name": "wall",
+        "score": 0.66796875,
+        "mask": "masks/obj-016.png",
+        "bbox2d": [
+          1155,
+          0,
+          1280,
+          771
+        ],
+        "box": {
+          "min": [
+            1.391557797174602,
+            -0.8941747499824237,
+            -2.8494182014465332
+          ],
+          "max": [
+            1.5841367734958092,
+            1.0422325150375904,
+            -2.7557101154327395
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 64571,
+        "category_attributes": [
+          "white"
+        ],
+        "instance_attributes": [
+          "오른쪽"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "오른쪽 벽 #016"
+      },
+      {
+        "id": "obj-019",
+        "name": "bottle",
+        "score": 0.69140625,
+        "mask": "masks/obj-019.png",
+        "bbox2d": [
+          667,
+          410,
+          689,
+          457
+        ],
+        "box": {
+          "min": [
+            0.1430854437533212,
+            -0.1807082376690008,
+            -5.342040920257569
+          ],
+          "max": [
+            0.22105036472603729,
+            0.00998762648522258,
+            -5.037271928787232
+          ]
+        },
+        "source": "sam3-metric-depth",
+        "box_extent": "visible-surface-robust-aabb",
+        "mask_pixels": 694,
+        "category_attributes": [
+          "blue"
+        ],
+        "instance_attributes": [
+          "가운데"
+        ],
+        "attribute_method": "original-image-horizontal-position",
+        "label": "가운데 병 #019"
+      },
+      {
+        "id": "support-a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "name": "지지면",
+        "source": "depth-surface",
+        "plane": {
+          "height_coefficients": [
+            -0.2207827096399393,
+            -0.10292241142782761,
+            -0.7450416816493111
+          ],
+          "tolerance_m": 0.04
+        },
+        "box": {
+          "min": [
+            -0.7968077659606934,
+            -0.32836732268333435,
+            -4.8982648849487305
+          ],
+          "max": [
+            0.04187284782528877,
+            -0.12147095054388046,
+            -3.832322835922241
+          ]
+        }
+      },
+      {
+        "id": "a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "name": "validation-chair",
+        "box": {
+          "min": [
+            -0.5441553836386971,
+            -0.2011202305515152,
+            -4.45895605430586
+          ],
+          "max": [
+            -0.30326332653037713,
+            -0.001120382182911217,
+            -4.292757888934901
+          ]
+        },
+        "source": "placed-glb",
+        "asset": {
+          "id": "a135795c6b4a452aaf75fe81f91b27c8",
+          "url": "/scene-api/asset-files/a135795c6b4a452aaf75fe81f91b27c8.glb",
+          "name": "validation-chair",
+          "category": "small_prop",
+          "normalization": {
+            "category_id": "small_prop",
+            "target_dimension": "height",
+            "target_size_m": 0.2,
+            "pivot_policy": "bottom_center",
+            "ground_aligned": true,
+            "scale_applied": 0.29144,
+            "bbox_min_before": [
+              -0.414022,
+              -0.00007,
+              -0.276725
+            ],
+            "bbox_max_before": [
+              0.412536,
+              0.686177,
+              0.29354
+            ],
+            "bbox_extents_before": [
+              0.826558,
+              0.686247,
+              0.570265
+            ],
+            "bbox_min_after": [
+              -0.120446,
+              0,
+              -0.083099
+            ],
+            "bbox_max_after": [
+              0.120446,
+              0.2,
+              0.083099
+            ],
+            "bbox_extents_after": [
+              0.240892,
+              0.2,
+              0.166198
+            ]
+          },
+          "normalization_applied": false
+        },
+        "transform": {
+          "position": [
+            -0.4237092353026971,
+            -0.20112029529491118,
+            -4.3758570093618605
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "target": "support-a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "relation": "on",
+        "method": "raycast-support-contact",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-013",
+        "relation": "on",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-019",
+        "target": "obj-006",
+        "relation": "on",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-011",
+        "target": "support-a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-002",
+        "target": "obj-012",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-019",
+        "target": "support-a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-008",
+        "target": "obj-019",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-009",
+        "target": "obj-010",
+        "relation": "next to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-005",
+        "target": "obj-000",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-000",
+        "target": "obj-003",
+        "relation": "in front of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-004",
+        "target": "obj-008",
+        "relation": "in front of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-010",
+        "target": "obj-015",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "support-a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "target": "obj-008",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-007",
+        "target": "obj-009",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-009",
+        "relation": "in front of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-006",
+        "target": "obj-004",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-011",
+        "target": "a3e42927-9d2a-435c-81c7-3274554bcb5a",
+        "relation": "left of",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      },
+      {
+        "source": "obj-015",
+        "target": "obj-014",
+        "relation": "attached to",
+        "method": "3d-aabb",
+        "pruning_policy": "directed-support-neighbors-v3"
+      }
+    ],
+    "camera": {
+      "width": 1280,
+      "height": 832,
+      "fx": 1058.7220730128447,
+      "fy": 1058.7220730128447,
+      "cx": 640,
+      "cy": 416,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        -3.765148639678955
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ]
+    },
+    "models": {
+      "names": "Qwen/Qwen3-VL-4B-Instruct",
+      "masks": "facebook/sam3",
+      "depth": "hypersim"
+    },
+    "coordinate_system": "three-camera-x-right-y-up-z-back",
+    "units": "meters",
+    "limitations": [
+      "Boxes bound visible surfaces, not hidden volume",
+      "Gravity assumed from photo vertical",
+      "Metric depth is estimated"
+    ],
+    "relation_policy": "directed-support-neighbors-v3",
+    "cleanup": {
+      "policy": "mask-box-cleanup-v3",
+      "input_nodes": 20,
+      "output_nodes": 17,
+      "removed": [
+        {
+          "id": "obj-017",
+          "name": "wall",
+          "reason": "confidence-below-0.60"
+        },
+        {
+          "id": "obj-018",
+          "name": "wall",
+          "reason": "confidence-below-0.60"
+        },
+        {
+          "id": "obj-001",
+          "name": "table",
+          "reason": "confidence-below-0.60"
+        }
+      ],
+      "merged": [],
+      "max_nodes": 24
+    },
+    "floor_estimation": {
+      "status": "estimated",
+      "node": "obj-013",
+      "inliers": 487,
+      "plane": {
+        "normal": [
+          0.08902630376219421,
+          0.9954186846882684,
+          0.034870609571950394
+        ],
+        "offset": 0.9137417264632974,
+        "height_coefficients": [
+          -0.08943603845458682,
+          -0.03503109807796173,
+          -0.9179471317131751
+        ],
+        "inliers": 487,
+        "tolerance_m": 0.05
+      },
+      "hidden_supports_completed": false
+    },
+    "scene_id": "sunroom",
+    "geometry_status": "monocular-estimate",
+    "alignment": {
+      "method": "foreground-zbuffer-median-ratio",
+      "samples": 616110,
+      "scale": 0.859914243221283,
+      "median_relative_residual": 0.1125805526971817,
+      "p90_relative_residual": 4.401520252227783,
+      "metric_ground_truth": false
+    }
+  },
+  "position": [
+    -0.4237092353026971,
+    -0.20112029529491118,
+    -4.3758570093618605
+  ],
+  "mode": "translate",
+  "scale": [
+    1,
+    1,
+    1
+  ],
+  "initial": [
+    -0.5450494152799485,
+    -0.1743304815713357,
+    -4.3758570093618605
+  ],
+  "errors": [],
+  "clicked": {
+    "x": 0.40000000000000013,
+    "y": 0.55,
+    "point": [
+      -0.4650493992499212,
+      -0.15114105475622494,
+      -4.6158568502555175
+    ]
+  }
+}

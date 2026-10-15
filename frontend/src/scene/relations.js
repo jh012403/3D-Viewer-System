@@ -1,4 +1,13 @@
 // All axes are in the fixed original camera frame, in meters.
+const category=n=>(n.name||'').toLowerCase().trim();
+export const isStructure=n=>/^(sky|road|pavement|ground|floor|wall|ceiling|building)$/.test(category(n));
+export const isSupport=n=>n.source==='depth-surface'||/^(floor|ground|road|pavement|(?:.* )?(?:table|shelf|cabinet|counter|desk|bench|stand|pedestal)|shelves|countertop)$/.test(category(n));
+export function validSupport(a,b){
+  if(!isSupport(b)||isStructure(a))return false;
+  const A=a.box,B=b.box,y=supportHeight(b,a);
+  return A.min[1]>=y-(b.plane?.tolerance_m||.04) && (A.min[1]+A.max[1])/2>y+.005;
+}
+export const supportHeight=(b,a)=>b.plane?b.plane.height_coefficients[0]*(a.box.min[0]+a.box.max[0])/2+b.plane.height_coefficients[1]*(a.box.min[2]+a.box.max[2])/2+b.plane.height_coefficients[2]:b.box.max[1];
 export function relationCandidates(nodes){
   const edges=[], add=(a,b,relation)=>edges.push({source:a.id,target:b.id,relation,method:'3d-aabb'});
   const overlap=(a,b,k)=>Math.max(0,Math.min(a.max[k],b.max[k])-Math.max(a.min[k],b.min[k]));
@@ -8,10 +17,14 @@ export function relationCandidates(nodes){
     const footprint=overlap(A,B,0)*overlap(A,B,2);
     const minArea=Math.min((A.max[0]-A.min[0])*(A.max[2]-A.min[2]),(B.max[0]-B.min[0])*(B.max[2]-B.min[2]));
     const supported=footprint/Math.max(minArea,1e-6)>.25;
-    if(supported&&Math.abs(A.min[1]-B.max[1])<t){add(a,b,'on');add(b,a,'under');}
-    else if(supported&&Math.abs(B.min[1]-A.max[1])<t){add(b,a,'on');add(a,b,'under');}
-    else if(supported&&A.max[1]<B.min[1]-t)add(a,b,'under');
-    else if(supported&&B.max[1]<A.min[1]-t)add(b,a,'under');
+    if(supported&&Math.abs(A.min[1]-supportHeight(b,a))<(b.plane?.tolerance_m||t)&&validSupport(a,b))add(a,b,'on');
+    if(supported&&Math.abs(B.min[1]-supportHeight(a,b))<(a.plane?.tolerance_m||t)&&validSupport(b,a))add(b,a,'on');
+    for(const [object,cover] of [[a,b],[b,a]]){
+      if(supported&&/light|lamp|chandelier|fan/.test(category(object))&&category(cover)==='ceiling'&&Math.abs(object.box.max[1]-cover.box.min[1])<.15&&object.box.min[1]<cover.box.min[1])add(object,cover,'attached to');
+      // A separate overhead cover, never the inverse of a contact relation.
+      if(supported&&!isStructure(object)&&/(^| )(table|shelf|desk)$/.test(category(cover))&&object.box.max[1]<cover.box.min[1]-.08)add(object,cover,'under');
+    }
+    if(isStructure(a)||isStructure(b))continue;
     if(A.max[0]<B.min[0]-t){add(a,b,'left of');add(b,a,'right of');}
     else if(B.max[0]<A.min[0]-t){add(b,a,'left of');add(a,b,'right of');}
     if(A.min[2]>B.max[2]+t){add(a,b,'in front of');add(b,a,'behind');}
@@ -23,7 +36,7 @@ export function relationCandidates(nodes){
   return edges;
 }
 
-export const RELATION_POLICY='nearest-support-neighbors-v2';
+export const RELATION_POLICY='directed-support-neighbors-v3';
 const priority=r=>({on:0,under:1,'next to':2,'left of':3,'right of':3,'in front of':3,behind:3}[r]??9);
 const distance=(a,b)=>Math.hypot(...[0,1,2].map(k=>Math.max(0,a.box.min[k]-b.box.max[k],b.box.min[k]-a.box.max[k])));
 const centerDistance=(a,b)=>Math.hypot(...[0,1,2].map(k=>(a.box.min[k]+a.box.max[k]-b.box.min[k]-b.box.max[k])/2));
@@ -32,8 +45,9 @@ const pairKey=e=>[e.source,e.target].sort().join('|');
 // facts about the same unordered pair and are not stored twice.
 export function pruneRelations(nodes,candidates){
   const byId=new Map(nodes.map(n=>[n.id,n])),support=new Map();
-  const valid=candidates.filter(e=>e.source!==e.target&&byId.get(e.source)?.box&&byId.get(e.target)?.box);
-  const gap=e=>Math.abs(byId.get(e.source).box.min[1]-byId.get(e.target).box.max[1]);
+  const valid=candidates.filter(e=>e.source!==e.target&&byId.get(e.source)?.box&&byId.get(e.target)?.box)
+    .filter(e=>e.relation!=='on'||validSupport(byId.get(e.source),byId.get(e.target)));
+  const gap=e=>Math.abs(byId.get(e.source).box.min[1]-supportHeight(byId.get(e.target),byId.get(e.source)));
   const on=valid.filter(e=>e.relation==='on').sort((a,b)=>
     (a.method==='raycast-support-contact'?0:1)-(b.method==='raycast-support-contact'?0:1)||gap(a)-gap(b)||
     centerDistance(byId.get(a.source),byId.get(a.target))-centerDistance(byId.get(b.source),byId.get(b.target))||a.target.localeCompare(b.target));

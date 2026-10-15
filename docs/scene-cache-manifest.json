@@ -12,13 +12,17 @@
           "bytes": 4259968,
           "sha256": "bd5470186e9f07701641295f912c30bd075fb8f09d372d2c77c91540c168c3ab"
         },
+        "graph-before-v3.json": {
+          "bytes": 17892,
+          "sha256": "8915611765d9f7664ab618cc95564d7a1da20b7853f44ccebea0e5fcc973f977"
+        },
         "graph-unpruned-v1.json": {
           "bytes": 87357,
           "sha256": "1e75bc075d16f5887fc2ed7360142d20612f4483fb477389463267e96f36f4c2"
         },
         "graph.json": {
-          "bytes": 17892,
-          "sha256": "8915611765d9f7664ab618cc95564d7a1da20b7853f44ccebea0e5fcc973f977"
+          "bytes": 18397,
+          "sha256": "3ef9f10a46f46a9e10547290f5ebfe59ca93c88ad8b1cd1df9d10460b2752142"
         },
         "masks/obj-000.png": {
           "bytes": 1887,
@@ -133,8 +137,8 @@
           "sha256": "07f15774fd3346a3f783cf732b7d7d68a46aa2c1016e26e1f808e774e319c087"
         },
         "scene.json": {
-          "bytes": 1139,
-          "sha256": "0973804cd8c175250bf9a5a5acb28a5680870dcd62e4eff2abf0a8eb6b9c7d2f"
+          "bytes": 1159,
+          "sha256": "1fc9c474aa8cf8284bc790a6b6b76599e3defe85f6d5441dfefa9eb428e85926"
         },
         "source.jpg": {
           "bytes": 341300,
@@ -157,13 +161,21 @@
           "bytes": 1708928,
           "sha256": "4beb65308b19916414e75116e1b45eafd186fc4ac5b907702ba53f710a5c2821"
         },
+        "floor-ransac.png": {
+          "bytes": 1990,
+          "sha256": "91eb7bd93e99b7456a3b4f5e7063875ee22de4b04b4d80cb22b78b18a0442015"
+        },
+        "graph-before-v3.json": {
+          "bytes": 10603,
+          "sha256": "5f65a9c624004166ce9300ba5e0c524ec25b4568aaeb5e9b0f51e471bdfe28ad"
+        },
         "graph-unpruned-v1.json": {
           "bytes": 82609,
           "sha256": "8f64201c449f01e61331b95affe48c124fc61989a5774b5223f0ec69e14f6936"
         },
         "graph.json": {
-          "bytes": 10603,
-          "sha256": "5f65a9c624004166ce9300ba5e0c524ec25b4568aaeb5e9b0f51e471bdfe28ad"
+          "bytes": 11836,
+          "sha256": "edef20f42e23e817d2929820cf9f55199fd2293a05fe6fb6c0a52769b017408d"
         },
         "masks/obj-000.png": {
           "bytes": 940,
@@ -270,8 +282,8 @@
           "sha256": "989af2b3bee878e08c341f92ecbd4847326504070852c3e28b24f49494245dc3"
         },
         "scene.json": {
-          "bytes": 1152,
-          "sha256": "f3fa8937208017a7de68ca1314629f7a1ed50bc4297fe485aaa0fcd9cb0b6389"
+          "bytes": 1172,
+          "sha256": "ea395debdc20cce5670e6f0874f8918e486bb510ef0e120d3e11b4264dd81f3f"
         },
         "source.jpg": {
           "bytes": 164357,
@@ -294,13 +306,29 @@
           "bytes": 4357248,
           "sha256": "e10de209f398bd01bb234f64df6a154988abdf4349e997b068abfd80f9b2327b"
         },
+        "floor-landing-0.png": {
+          "bytes": 7512,
+          "sha256": "122a819449b3e131329cacb3dd62325ee3803dcecda8d3a9cc7972d0f431f016"
+        },
+        "floor-landing-1.png": {
+          "bytes": 12815,
+          "sha256": "2faef1c8f3b9874161a722de58d1685610dfcef22f408877e4b39fa475f52ba8"
+        },
+        "floor-ransac.png": {
+          "bytes": 8087,
+          "sha256": "1108073db25be904ec09175b191683c0c71e69167e508f10459aad349d421d6e"
+        },
+        "graph-before-v3.json": {
+          "bytes": 17490,
+          "sha256": "4a77de7ac3721df3dfaccff75ad84c0ff153e9d2552f94f37ab673386e87ed60"
+        },
         "graph-unpruned-v1.json": {
           "bytes": 244541,
           "sha256": "ab6e0be46b37c73f68544ac91673440ef3f72e827eb1e43c4b1a6ec485fdf987"
         },
         "graph.json": {
-          "bytes": 17490,
-          "sha256": "4a77de7ac3721df3dfaccff75ad84c0ff153e9d2552f94f37ab673386e87ed60"
+          "bytes": 20229,
+          "sha256": "be0ad9c658e826af10615f5371a00c053f1e24ab29b1bffdf8a97b1a1711c397"
         },
         "masks/obj-000.png": {
           "bytes": 2456,
@@ -479,8 +507,8 @@
           "sha256": "30290fed62338b36ed4f4130d5c1cda509bc71b92fa50f83f9fb9b65b433872b"
         },
         "scene.json": {
-          "bytes": 1141,
-          "sha256": "6d7973d3fb53582aa00577dcc1eb4a8e3d739b92d662c7f2b520d3d47b69ae73"
+          "bytes": 1161,
+          "sha256": "165c92e81563e62f46d0633cba7bbc3c831b59a400d279407ccedbfd571c8644"
         },
         "source.jpg": {
           "bytes": 560601,
@@ -503,13 +531,21 @@
           "bytes": 4259968,
           "sha256": "d2dd9f336792588711e0ff4744f1189d7834b1653102ce6151116085840547dc"
         },
+        "floor-ransac.png": {
+          "bytes": 3881,
+          "sha256": "58e42fd8594083363fe88edd20a4440237390c7f9a0d64d20f1ac2c2b3b315e2"
+        },
+        "graph-before-v3.json": {
+          "bytes": 12179,
+          "sha256": "50180e935735dbc05ffa43b3a55e2be28d8d9023bb223839982eada9ecda141d"
+        },
         "graph-unpruned-v1.json": {
           "bytes": 51782,
           "sha256": "679c5172e94874ccb977ad88e45cc1edb678869308166d1b4c7a700adfd9e6c5"
         },
         "graph.json": {
-          "bytes": 12179,
-          "sha256": "50180e935735dbc05ffa43b3a55e2be28d8d9023bb223839982eada9ecda141d"
+          "bytes": 13118,
+          "sha256": "779834937a5eb7c32521bfd58f0248ad9268560275bfed0b4734c4cc3da7b3b0"
         },
         "masks/obj-000.png": {
           "bytes": 2714,
@@ -600,8 +636,8 @@
           "sha256": "07bda73870e2918f091c8aa417785e86474a5dd3fe0bc7fa3055663d66bb4db5"
         },
         "scene.json": {
-          "bytes": 1144,
-          "sha256": "9c9e8df9d6dc6adb47b8a1098a2491b9ce331d76e1dc83135fab078e0615a851"
+          "bytes": 1164,
+          "sha256": "4cfde98374a4dbd0cb5cdce5ad459e0da1964f89ecf9cf03c6425e2f8424199e"
         },
         "source.jpg": {
           "bytes": 393757,

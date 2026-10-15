@@ -88,7 +88,10 @@ async def import_generated_asset(job_id:str):
     path,meta=generated_asset(job_id)
     if path.stat().st_size>100*1024*1024:raise HTTPException(413,'GLB exceeds 100 MB')
     result=await add_asset(UploadFile(file=io.BytesIO(path.read_bytes()),filename=meta['name']+'.glb'),meta['category'])
-    return {**result,'source_job':job_id}
+    material={}
+    try:material=json.loads((path.parent/'material.json').read_text(encoding='utf-8'))
+    except (OSError,ValueError):pass
+    return {**result,'source_job':job_id,'material_settings':{k:material[k] for k in ('viewerBaseTint','viewerExposureEV') if k in material}}
 
 @app.get("/scene-api/policies")
 def policies():

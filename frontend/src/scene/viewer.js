@@ -8,7 +8,7 @@ export class SceneViewer {
     this.scene=new THREE.Scene();
     this.scene.background=new THREE.Color('#080c0a');
     this.camera=new THREE.PerspectiveCamera(50,1,.02,200);
-    this.renderer=new THREE.WebGLRenderer({antialias:false,preserveDrawingBuffer:true});
+    this.renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
     // SHARP's exported coefficients already contain sRGB values.
     this.renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
@@ -54,6 +54,9 @@ export class SceneViewer {
     this.camera.zoom=original?1:(this.manifest.presentation?.preview_zoom||1.04);
     this.camera.position.fromArray(c.position);this.camera.up.fromArray(c.up);
     this.controls.target.fromArray(c.target);
+    if(this.manifest.presentation?.orbit_radius_m){
+      this.controls.target.sub(this.camera.position).normalize().multiplyScalar(this.manifest.presentation.orbit_radius_m).add(this.camera.position);
+    }
     const angle=THREE.MathUtils.degToRad(deg);
     this.controls.minAzimuthAngle=-angle;this.controls.maxAzimuthAngle=angle;
     const vertical=THREE.MathUtils.degToRad(this.manifest.presentation?.vertical_degrees??deg*.3);

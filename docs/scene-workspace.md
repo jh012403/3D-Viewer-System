@@ -1,5 +1,7 @@
 # Local scene workspace
 
+Latest: [revision 6 comparison and remaining failures](scene-revision6.md). Five-photo review is on hold with regenerated graph hashes. Labels now use image position; orbit is +/-5 degrees with a nearby pivot and preview crop. demo10's table/chair floor relations remain unresolved because the observed boxes omit hidden legs. Material tint/EV, transparent-mask occlusion exclusion, soft depth edges and collision resolution are enabled. Screenshots distinguish the 1m default from the 0.7m lounge-chair demonstration adjustment.
+
 Run `powershell -ExecutionPolicy Bypass -File scripts/start-scene.ps1` from the repository. Open http://127.0.0.1:5173/scene.html?scene=sunroom . The script reports its process IDs for shutdown. The original mesh service is separate and unchanged.
 
 The default checked demonstration mode loads local PLY, geometry, photographs and graph JSON only. Four cached backgrounds are sunroom, ceramics, hall and groceries (d4f646fcc79650d6). Uncheck demonstration mode to generate a new background and graph. Select an existing GLB, click a visible horizontal surface, then use move/rotate/scale and Save. Export contains an original-camera PNG and graph JSON with model and geometry limitations.

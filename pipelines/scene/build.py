@@ -111,7 +111,7 @@ def build(image_path, output=None, progress=print):
     manifest={"version":1,"id":out.name,"title":image_path.stem,"source":"source.jpg","splat":"background.ply",
         "surface":"surface.json","graph":"graph.json","camera":{"width":w,"height":h,"fx":focal,"fy":focal,"cx":w/2,"cy":h/2,
         "position":[0,0,0],"target":[0,0,-float(np.median(depth))],"up":[0,1,0]},
-        "alignment":diagnostics,"orbit_degrees":2,"presentation":{"vertical_degrees":.5,"preview_zoom":1.06},"coordinate_system":"three-camera-x-right-y-up-z-back",
+        "alignment":diagnostics,"orbit_degrees":5,"presentation":{"vertical_degrees":.5,"preview_zoom":1.2,"orbit_radius_m":.4},"coordinate_system":"three-camera-x-right-y-up-z-back",
         "splat_coordinate_system":"opencv-x-right-y-down-z-forward",
         "models":{"background":"apple/ml-sharp","depth":"Depth-Anything-V2-Metric-Hypersim-Large"},
         "limitations":["Monocular inferred geometry; hidden surfaces unknown","Camera up assumed from image; support planes require verification"]}

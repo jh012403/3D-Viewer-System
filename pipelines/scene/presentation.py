@@ -11,6 +11,6 @@ for scene,(title,horizontal,vertical,zoom) in PROFILES.items():
     path=CACHE/scene/'scene.json'
     if not path.exists():continue
     data=json.loads(path.read_text(encoding='utf-8'))
-    data['title']=title;data['orbit_degrees']=horizontal
-    data['presentation']={'vertical_degrees':vertical,'preview_zoom':zoom,'initial_view':'original-camera-with-edge-crop','export_view':'uncropped-original-camera'}
+    data['title']=title;data['orbit_degrees']=5
+    data['presentation']={'vertical_degrees':vertical,'preview_zoom':1.2,'orbit_radius_m':.4,'initial_view':'original-camera-with-edge-crop','export_view':'uncropped-original-camera'}
     write_json(path,data)

@@ -12,10 +12,12 @@ class GeneratedAssetTest(unittest.TestCase):
             assets=root/'scene-assets';assets.mkdir()
             mesh=trimesh.creation.box(extents=[2,3,2]);mesh.export(out/'object_mesh.glb')
             (out/'metadata.json').write_text(json.dumps({'asset_name':'fixture chair','object_category':'chair'}))
+            (out/'material.json').write_text(json.dumps({'viewerBaseTint':'#eeeeee','viewerExposureEV':-.25}))
             with patch.object(server,'ROOT',root),patch.object(server,'asset_dir',assets):
                 self.assertEqual(server.generated_assets()[0]['category'],'chair')
                 result=asyncio.run(server.import_generated_asset('test-job'))
                 self.assertEqual(result['source_job'],'test-job')
+                self.assertEqual(result['material_settings'],{'viewerBaseTint':'#eeeeee','viewerExposureEV':-.25})
                 self.assertTrue((assets/(result['id']+'.glb')).exists())
                 self.assertEqual((assets/(result['id']+'.glb')).read_bytes(),(out/'object_mesh.glb').read_bytes())
                 self.assertFalse(result['normalization_applied'])

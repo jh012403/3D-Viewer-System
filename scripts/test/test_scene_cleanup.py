@@ -23,5 +23,21 @@ class CleanupTest(unittest.TestCase):
             self.assertTrue(any(x['reason']=='inside-reflective-region' for x in audit['removed']))
             self.assertEqual(audit['merged'][0]['into'],'real')
             self.assertTrue(all('label' in n for n in kept))
+            self.assertTrue(all(n['attribute_method']=='original-image-horizontal-position' for n in kept))
+
+    def test_compressed_reflection_below_glass_shelf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);Image.new('RGB',(100,100),'brown').save(root/'source.jpg')
+            nodes=[]
+            for nid,name,rect,box in [
+                ('shelf','glass shelf',[0,55,100,100],{'min':[-1,-1.1,-2],'max':[1,-1,-1]}),
+                ('real','bottle',[30,10,60,60],{'min':[0,-.98,-1.7],'max':[.2,-.5,-1.5]}),
+                ('reflection','bottle',[30,60,60,90],{'min':[0,-1.13,-1.7],'max':[.2,-1.06,-1.5]})]:
+                mask=np.zeros((100,100),np.uint8);x1,y1,x2,y2=rect;mask[y1:y2,x1:x2]=255
+                Image.fromarray(mask).save(root/(nid+'.png'))
+                nodes.append(dict(id=nid,name=name,mask=nid+'.png',bbox2d=rect,box=box,score=.9))
+            kept,audit=clean_nodes(nodes,root)
+            self.assertEqual({n['id'] for n in kept},{'shelf','real'})
+            self.assertTrue(any(r['reason']=='reflection-below-horizontal-surface' for r in audit['removed']))
 
 if __name__=='__main__':unittest.main()

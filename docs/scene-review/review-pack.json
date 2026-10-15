@@ -5,7 +5,7 @@
     {
       "id": "dav2-01",
       "source": ".runtime/Depth-Anything-V2/assets/examples/demo01.jpg",
-      "graph_sha256": "c4243805cfd2610c09a5eded614ac9d7345c0136963fac38de93bd3477617f93",
+      "graph_sha256": "36119d02992e475c534a5e09ab756ebc1026c6ba7db2cb5920c68790f273d436",
       "width": 1280,
       "height": 851,
       "nodes": [
@@ -41,10 +41,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 building #000"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 building #000"
         },
         {
           "id": "obj-001",
@@ -78,10 +78,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 building #001"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 building #001"
         },
         {
           "id": "obj-002",
@@ -115,10 +115,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 building #002"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 building #002"
         },
         {
           "id": "obj-003",
@@ -152,10 +152,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "흰색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "흰색 building #003"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 building #003"
         },
         {
           "id": "obj-004",
@@ -189,10 +189,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 building #004"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 building #004"
         },
         {
           "id": "obj-008",
@@ -224,10 +224,10 @@
             "green"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 나무 #008"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 나무 #008"
         },
         {
           "id": "obj-012",
@@ -261,10 +261,10 @@
             "silver"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 자동차 #012"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 자동차 #012"
         },
         {
           "id": "obj-013",
@@ -298,10 +298,10 @@
             "silver"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 자동차 #013"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 자동차 #013"
         },
         {
           "id": "obj-014",
@@ -335,10 +335,10 @@
             "silver"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 자동차 #014"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 자동차 #014"
         },
         {
           "id": "obj-017",
@@ -370,10 +370,10 @@
             "red"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 버스 #017"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 버스 #017"
         },
         {
           "id": "obj-018",
@@ -405,10 +405,10 @@
             "red"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 버스 #018"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 버스 #018"
         },
         {
           "id": "obj-019",
@@ -442,10 +442,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #019"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #019"
         },
         {
           "id": "obj-020",
@@ -479,10 +479,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #020"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #020"
         },
         {
           "id": "obj-021",
@@ -516,10 +516,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #021"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #021"
         },
         {
           "id": "obj-022",
@@ -553,10 +553,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #022"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #022"
         },
         {
           "id": "obj-023",
@@ -590,10 +590,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #023"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #023"
         },
         {
           "id": "obj-024",
@@ -627,10 +627,10 @@
             "standing"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #024"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 사람 #024"
         },
         {
           "id": "obj-034",
@@ -662,10 +662,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 streetlight #034"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 streetlight #034"
         },
         {
           "id": "obj-035",
@@ -697,10 +697,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 streetlight #035"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 streetlight #035"
         },
         {
           "id": "obj-043",
@@ -732,10 +732,10 @@
             "asphalt"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 road #043"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 road #043"
         },
         {
           "id": "obj-047",
@@ -767,10 +767,10 @@
             "white"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 van #047"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 van #047"
         },
         {
           "id": "obj-051",
@@ -802,10 +802,10 @@
             "concrete"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 pavement #051"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 pavement #051"
         },
         {
           "id": "obj-052",
@@ -838,10 +838,10 @@
             "cloudy"
           ],
           "instance_attributes": [
-            "흰색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "흰색 sky #052"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 sky #052"
         },
         {
           "id": "obj-068",
@@ -874,10 +874,10 @@
             "metal"
           ],
           "instance_attributes": [
-            "회색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 roof #068"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 roof #068"
         }
       ],
       "edges": [
@@ -886,161 +886,112 @@
           "target": "obj-043",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-001",
-          "target": "obj-004",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-035",
-          "target": "obj-052",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-018",
-          "target": "obj-002",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-021",
           "target": "obj-023",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-021",
           "target": "obj-022",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-051",
-          "target": "obj-012",
-          "relation": "left of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-023",
-          "target": "obj-043",
-          "relation": "left of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-043",
-          "target": "obj-047",
-          "relation": "in front of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-008",
-          "target": "obj-003",
-          "relation": "left of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-020",
-          "target": "obj-043",
-          "relation": "left of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-034",
           "target": "obj-014",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-014",
           "target": "obj-047",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-020",
           "target": "obj-034",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-035",
           "target": "obj-008",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-022",
           "target": "obj-047",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-013",
-          "target": "obj-051",
-          "relation": "in front of",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-008",
           "target": "obj-068",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-024",
-          "target": "obj-051",
+          "source": "obj-021",
+          "target": "obj-034",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-002",
-          "target": "obj-035",
+          "source": "obj-023",
+          "target": "obj-014",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-024",
           "target": "obj-012",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-018",
+          "target": "obj-035",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-012",
+          "target": "obj-017",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-017",
-          "target": "obj-052",
-          "relation": "in front of",
+          "target": "obj-008",
+          "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         }
       ]
     },
     {
       "id": "dav2-10",
       "source": ".runtime/Depth-Anything-V2/assets/examples/demo10.jpg",
-      "graph_sha256": "50180e935735dbc05ffa43b3a55e2be28d8d9023bb223839982eada9ecda141d",
+      "graph_sha256": "779834937a5eb7c32521bfd58f0248ad9268560275bfed0b4734c4cc3da7b3b0",
       "width": 1280,
       "height": 832,
       "nodes": [
@@ -1074,10 +1025,10 @@
             "glass"
           ],
           "instance_attributes": [
-            "회색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 테이블 #000"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 테이블 #000"
         },
         {
           "id": "obj-002",
@@ -1110,10 +1061,10 @@
             "wicker"
           ],
           "instance_attributes": [
-            "갈색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 의자 #002"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 의자 #002"
         },
         {
           "id": "obj-003",
@@ -1146,10 +1097,10 @@
             "wicker"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 의자 #003"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 의자 #003"
         },
         {
           "id": "obj-004",
@@ -1182,10 +1133,10 @@
             "wicker"
           ],
           "instance_attributes": [
-            "갈색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 의자 #004"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 의자 #004"
         },
         {
           "id": "obj-005",
@@ -1218,10 +1169,10 @@
             "wicker"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 의자 #005"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 의자 #005"
         },
         {
           "id": "obj-006",
@@ -1253,10 +1204,10 @@
             "wooden"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 수납장 #006"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 수납장 #006"
         },
         {
           "id": "obj-007",
@@ -1289,10 +1240,10 @@
             "metal frame"
           ],
           "instance_attributes": [
-            "흰색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "흰색 창문 #007"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 창문 #007"
         },
         {
           "id": "obj-008",
@@ -1325,10 +1276,10 @@
             "metal frame"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 창문 #008"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 창문 #008"
         },
         {
           "id": "obj-009",
@@ -1361,10 +1312,10 @@
             "metal frame"
           ],
           "instance_attributes": [
-            "흰색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "흰색 창문 #009"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 창문 #009"
         },
         {
           "id": "obj-010",
@@ -1397,10 +1348,10 @@
             "metal frame"
           ],
           "instance_attributes": [
-            "회색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 창문 #010"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 창문 #010"
         },
         {
           "id": "obj-011",
@@ -1433,10 +1384,10 @@
             "wooden frame"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 문 #011"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 문 #011"
         },
         {
           "id": "obj-012",
@@ -1469,23 +1420,61 @@
             "wooden frame"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 문 #012"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 문 #012"
         },
         {
           "id": "obj-013",
           "name": "floor",
           "score": 0.83203125,
-          "mask": "masks/obj-013.png",
+          "mask": "floor-ransac.png",
           "bbox2d": [
-            1057,
-            650,
-            1280,
-            832
+            24,
+            462,
+            1279,
+            829
           ],
           "box": {
+            "min": [
+              -2.7667385665535855,
+              -0.9605895685246945,
+              -6.440011911392212
+            ],
+            "max": [
+              1.657296908731043,
+              -0.45005078608977034,
+              -2.4341877603530886
+            ]
+          },
+          "source": "sam3-metric-depth",
+          "box_extent": "ransac-observed-floor-inliers",
+          "mask_pixels": 32773,
+          "category_attributes": [
+            "tile"
+          ],
+          "instance_attributes": [
+            "오른쪽"
+          ],
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 바닥 #013",
+          "plane": {
+            "normal": [
+              0.08902630376219421,
+              0.9954186846882684,
+              0.034870609571950394
+            ],
+            "offset": 0.9137417264632974,
+            "height_coefficients": [
+              -0.08943603845458682,
+              -0.03503109807796173,
+              -0.9179471317131751
+            ],
+            "inliers": 487,
+            "tolerance_m": 0.05
+          },
+          "previous_visible_box": {
             "min": [
               1.0215588415911945,
               -0.9602402762618085,
@@ -1497,17 +1486,7 @@
               -2.4357937812805175
             ]
           },
-          "source": "sam3-metric-depth",
-          "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 18176,
-          "category_attributes": [
-            "tile"
-          ],
-          "instance_attributes": [
-            "갈색"
-          ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 바닥 #013"
+          "sam_mask": "masks/obj-013.png"
         },
         {
           "id": "obj-014",
@@ -1539,10 +1518,10 @@
             "wooden"
           ],
           "instance_attributes": [
-            "갈색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 천장 #014"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 천장 #014"
         },
         {
           "id": "obj-015",
@@ -1574,10 +1553,10 @@
             "ceiling mounted"
           ],
           "instance_attributes": [
-            "베이지"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 조명 #015"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 조명 #015"
         },
         {
           "id": "obj-016",
@@ -1609,10 +1588,10 @@
             "white"
           ],
           "instance_attributes": [
-            "회색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 벽 #016"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 벽 #016"
         },
         {
           "id": "obj-019",
@@ -1644,145 +1623,131 @@
             "blue"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 병 #019"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 병 #019"
         }
       ],
       "edges": [
         {
-          "source": "obj-014",
-          "target": "obj-015",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-016",
+          "source": "obj-006",
           "target": "obj-013",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-019",
           "target": "obj-006",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-013",
-          "target": "obj-002",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-006",
-          "target": "obj-007",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-008",
-          "target": "obj-009",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-007",
-          "target": "obj-010",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-009",
-          "target": "obj-014",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-002",
           "target": "obj-012",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-007",
           "target": "obj-019",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-008",
           "target": "obj-019",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-009",
           "target": "obj-010",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-007",
+          "target": "obj-008",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-005",
           "target": "obj-000",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-000",
           "target": "obj-003",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-008",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-010",
           "target": "obj-015",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-007",
+          "target": "obj-009",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-015",
+          "target": "obj-009",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-006",
           "target": "obj-004",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-011",
           "target": "obj-006",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-015",
+          "target": "obj-014",
+          "relation": "attached to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         }
       ]
     },
     {
       "id": "dav2-13",
       "source": ".runtime/Depth-Anything-V2/assets/examples/demo13.jpg",
-      "graph_sha256": "8915611765d9f7664ab618cc95564d7a1da20b7853f44ccebea0e5fcc973f977",
+      "graph_sha256": "3ef9f10a46f46a9e10547290f5ebfe59ca93c88ad8b1cd1df9d10460b2752142",
       "width": 1280,
       "height": 832,
       "nodes": [
@@ -1820,10 +1785,10 @@
             "black"
           ],
           "instance_attributes": [
-            "초록"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 ceramic bowl #000"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 ceramic bowl #000"
         },
         {
           "id": "obj-001",
@@ -1859,10 +1824,10 @@
             "black"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 ceramic bowl #001"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 ceramic bowl #001"
         },
         {
           "id": "obj-002",
@@ -1898,10 +1863,10 @@
             "black"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 ceramic bowl #002"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic bowl #002"
         },
         {
           "id": "obj-003",
@@ -1937,10 +1902,10 @@
             "black"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 ceramic bowl #003"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 ceramic bowl #003"
         },
         {
           "id": "obj-004",
@@ -1976,10 +1941,10 @@
             "black"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 ceramic bowl #004"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic bowl #004"
         },
         {
           "id": "obj-005",
@@ -2015,49 +1980,10 @@
             "black"
           ],
           "instance_attributes": [
-            "갈색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 ceramic bowl #005"
-        },
-        {
-          "id": "obj-006",
-          "name": "ceramic bowl",
-          "score": 0.94921875,
-          "mask": "masks/obj-006.png",
-          "bbox2d": [
-            672,
-            307,
-            856,
-            448
-          ],
-          "box": {
-            "min": [
-              0.08023983774447181,
-              -0.04276392462712657,
-              -1.9350902318954468
-            ],
-            "max": [
-              0.3525978568692877,
-              0.182592942241618,
-              -1.869128670692444
-            ]
-          },
-          "source": "sam3-metric-depth",
-          "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 20517,
-          "category_attributes": [
-            "blue",
-            "brown",
-            "white",
-            "yellow",
-            "black"
-          ],
-          "instance_attributes": [
-            "갈색"
-          ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 ceramic bowl #006"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic bowl #005"
         },
         {
           "id": "obj-007",
@@ -2093,10 +2019,10 @@
             "black"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 ceramic bowl #007"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 ceramic bowl #007"
         },
         {
           "id": "obj-008",
@@ -2132,10 +2058,10 @@
             "black"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 ceramic bowl #008"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic bowl #008"
         },
         {
           "id": "obj-009",
@@ -2171,10 +2097,10 @@
             "black"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 ceramic bowl #009"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 ceramic bowl #009"
         },
         {
           "id": "obj-010",
@@ -2210,10 +2136,10 @@
             "black"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 ceramic bowl #010"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 ceramic bowl #010"
         },
         {
           "id": "obj-011",
@@ -2246,10 +2172,10 @@
             "decorative"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 ceramic jug #011"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 ceramic jug #011"
         },
         {
           "id": "obj-012",
@@ -2282,10 +2208,10 @@
             "decorative"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 ceramic jug #012"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 ceramic jug #012"
         },
         {
           "id": "obj-013",
@@ -2318,10 +2244,10 @@
             "decorative"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 ceramic jug #013"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic jug #013"
         },
         {
           "id": "obj-014",
@@ -2354,10 +2280,10 @@
             "decorative"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 ceramic jug #014"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 ceramic jug #014"
         },
         {
           "id": "obj-015",
@@ -2390,10 +2316,10 @@
             "curved"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 glass shelf #015"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 glass shelf #015"
         },
         {
           "id": "obj-016",
@@ -2426,10 +2352,10 @@
             "curved"
           ],
           "instance_attributes": [
-            "초록"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 glass shelf #016"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 glass shelf #016"
         },
         {
           "id": "obj-018",
@@ -2463,10 +2389,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #018"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 label #018"
         },
         {
           "id": "obj-019",
@@ -2500,10 +2426,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #019"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 label #019"
         },
         {
           "id": "obj-020",
@@ -2537,10 +2463,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #020"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 label #020"
         },
         {
           "id": "obj-021",
@@ -2574,10 +2500,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #021"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 label #021"
         },
         {
           "id": "obj-022",
@@ -2611,10 +2537,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #022"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 label #022"
         },
         {
           "id": "obj-023",
@@ -2648,10 +2574,10 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #023"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 label #023"
         },
         {
           "id": "obj-024",
@@ -2685,10 +2611,47 @@
             "printed"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 label #024"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 label #024"
+        },
+        {
+          "id": "obj-025",
+          "name": "label",
+          "score": 0.796875,
+          "mask": "masks/obj-025.png",
+          "bbox2d": [
+            245,
+            812,
+            295,
+            832
+          ],
+          "box": {
+            "min": [
+              -0.6506255656635858,
+              -0.6919943187430092,
+              -1.7879717350006104
+            ],
+            "max": [
+              -0.5840853893586281,
+              -0.6732110797226842,
+              -1.7455856800079346
+            ]
+          },
+          "source": "sam3-metric-depth",
+          "box_extent": "visible-surface-robust-aabb",
+          "mask_pixels": 559,
+          "category_attributes": [
+            "white",
+            "textured",
+            "printed"
+          ],
+          "instance_attributes": [
+            "왼쪽"
+          ],
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 label #025"
         }
       ],
       "edges": [
@@ -2697,210 +2660,203 @@
           "target": "obj-015",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-022",
           "target": "obj-015",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-005",
           "target": "obj-016",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-006",
-          "target": "obj-016",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-011",
           "target": "obj-015",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-014",
           "target": "obj-015",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-016",
-          "target": "obj-021",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-018",
-          "target": "obj-016",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-019",
-          "target": "obj-016",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-018",
-          "target": "obj-002",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-019",
-          "target": "obj-001",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-010",
           "target": "obj-016",
           "relation": "under",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-021",
-          "target": "obj-000",
+          "source": "obj-025",
+          "target": "obj-016",
           "relation": "under",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-000",
-          "target": "obj-020",
+          "source": "obj-016",
+          "target": "obj-015",
           "relation": "under",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-004",
-          "target": "obj-024",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-009",
           "target": "obj-023",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-011",
           "target": "obj-022",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-011",
           "target": "obj-012",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-014",
           "target": "obj-023",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-000",
           "target": "obj-001",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-000",
+          "target": "obj-002",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-009",
+          "target": "obj-011",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-013",
           "target": "obj-023",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-012",
           "target": "obj-022",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-005",
           "target": "obj-020",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-002",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-010",
           "target": "obj-019",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-004",
+          "target": "obj-025",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-018",
           "target": "obj-010",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-024",
           "target": "obj-008",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-003",
+          "target": "obj-019",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-015",
           "target": "obj-008",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-000",
+          "target": "obj-019",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-015",
           "target": "obj-007",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-012",
+          "target": "obj-007",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         }
       ]
     },
     {
       "id": "dav2-14",
       "source": ".runtime/Depth-Anything-V2/assets/examples/demo14.jpg",
-      "graph_sha256": "efe33dd52331bc4f8afd409ec63669c4c316ae1c7823c69863faf547edbef66c",
+      "graph_sha256": "3166ac40d0db907075dcc6751c38b953d4149a4e1199866f3aed95e56a9a5da6",
       "width": 1280,
       "height": 832,
       "nodes": [
@@ -2935,10 +2891,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #000"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #000"
         },
         {
           "id": "obj-001",
@@ -2971,10 +2927,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #001"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #001"
         },
         {
           "id": "obj-002",
@@ -3007,10 +2963,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 유리병 #002"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #002"
         },
         {
           "id": "obj-003",
@@ -3043,10 +2999,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #003"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 유리병 #003"
         },
         {
           "id": "obj-004",
@@ -3079,10 +3035,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "회색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 유리병 #004"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #004"
         },
         {
           "id": "obj-005",
@@ -3118,10 +3074,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "초록"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "초록 유리병 #005"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #005"
         },
         {
           "id": "obj-006",
@@ -3154,10 +3110,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #006"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #006"
         },
         {
           "id": "obj-007",
@@ -3190,10 +3146,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #007"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #007"
         },
         {
           "id": "obj-008",
@@ -3226,10 +3182,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #008"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 유리병 #008"
         },
         {
           "id": "obj-009",
@@ -3262,10 +3218,46 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #009"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #009"
+        },
+        {
+          "id": "obj-010",
+          "name": "glass bottle",
+          "score": 0.73828125,
+          "mask": "masks/obj-010.png",
+          "bbox2d": [
+            29,
+            303,
+            78,
+            438
+          ],
+          "box": {
+            "min": [
+              -0.8731817154521224,
+              -0.015634810332206255,
+              -1.5356401681900025
+            ],
+            "max": [
+              -0.749965447115785,
+              0.14916978377897666,
+              -1.3951767730712892
+            ]
+          },
+          "source": "sam3-metric-depth",
+          "box_extent": "visible-surface-robust-aabb",
+          "mask_pixels": 4657,
+          "category_attributes": [
+            "transparent",
+            "refractive"
+          ],
+          "instance_attributes": [
+            "왼쪽"
+          ],
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #010"
         },
         {
           "id": "obj-011",
@@ -3298,46 +3290,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #011"
-        },
-        {
-          "id": "obj-012",
-          "name": "glass bottle",
-          "score": 0.7109375,
-          "mask": "masks/obj-012.png",
-          "bbox2d": [
-            486,
-            604,
-            643,
-            800
-          ],
-          "box": {
-            "min": [
-              -0.1087956651197253,
-              -0.21501957020004903,
-              -0.8857931053638458
-            ],
-            "max": [
-              -0.005120985041906518,
-              -0.16777211967644462,
-              -0.6345982825756072
-            ]
-          },
-          "source": "sam3-metric-depth",
-          "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 22334,
-          "category_attributes": [
-            "transparent",
-            "refractive"
-          ],
-          "instance_attributes": [
-            "회색"
-          ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 유리병 #012"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 유리병 #011"
         },
         {
           "id": "obj-015",
@@ -3370,10 +3326,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #015"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #015"
         },
         {
           "id": "obj-016",
@@ -3406,46 +3362,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #016"
-        },
-        {
-          "id": "obj-017",
-          "name": "glass bottle",
-          "score": 0.6484375,
-          "mask": "masks/obj-017.png",
-          "bbox2d": [
-            908,
-            669,
-            1072,
-            823
-          ],
-          "box": {
-            "min": [
-              0.16091676971205493,
-              -0.21814538495881872,
-              -0.74507164478302
-            ],
-            "max": [
-              0.2860844851110896,
-              -0.19098365161525657,
-              -0.5787527465820312
-            ]
-          },
-          "source": "sam3-metric-depth",
-          "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 21587,
-          "category_attributes": [
-            "transparent",
-            "refractive"
-          ],
-          "instance_attributes": [
-            "파랑"
-          ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #017"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #016"
         },
         {
           "id": "obj-019",
@@ -3478,46 +3398,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #019"
-        },
-        {
-          "id": "obj-020",
-          "name": "glass bottle",
-          "score": 0.62109375,
-          "mask": "masks/obj-020.png",
-          "bbox2d": [
-            0,
-            620,
-            109,
-            768
-          ],
-          "box": {
-            "min": [
-              -0.5528843293453445,
-              -0.22282952120491065,
-              -0.9381341576576233
-            ],
-            "max": [
-              -0.36078335033893905,
-              -0.1943596739649163,
-              -0.683238525390625
-            ]
-          },
-          "source": "sam3-metric-depth",
-          "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 13418,
-          "category_attributes": [
-            "transparent",
-            "refractive"
-          ],
-          "instance_attributes": [
-            "회색"
-          ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 유리병 #020"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 유리병 #019"
         },
         {
           "id": "obj-021",
@@ -3550,46 +3434,46 @@
             "refractive"
           ],
           "instance_attributes": [
-            "회색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 유리병 #021"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #021"
         },
         {
-          "id": "obj-022",
+          "id": "obj-023",
           "name": "glass bottle",
-          "score": 0.61328125,
-          "mask": "masks/obj-022.png",
+          "score": 0.609375,
+          "mask": "masks/obj-023.png",
           "bbox2d": [
-            658,
-            625,
-            868,
-            780
+            602,
+            507,
+            692,
+            759
           ],
           "box": {
             "min": [
-              0.02278093068411673,
-              -0.20832530762170257,
-              -0.8040852451324463
+              -0.02455186474108784,
+              -0.20692581543255836,
+              -1.216274654865265
             ],
             "max": [
-              0.16067459164580755,
-              -0.1796686437433717,
-              -0.6496982574462891
+              0.04477592549003635,
+              -0.11678548324269372,
+              -0.6718160963058472
             ]
           },
           "source": "sam3-metric-depth",
           "box_extent": "visible-surface-robust-aabb",
-          "mask_pixels": 14672,
+          "mask_pixels": 7764,
           "category_attributes": [
             "transparent",
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #022"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #023"
         },
         {
           "id": "obj-024",
@@ -3622,10 +3506,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #024"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 유리병 #024"
         },
         {
           "id": "obj-025",
@@ -3658,10 +3542,10 @@
             "refractive"
           ],
           "instance_attributes": [
-            "회색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 유리병 #025"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 유리병 #025"
         },
         {
           "id": "obj-026",
@@ -3694,10 +3578,82 @@
             "refractive"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 유리병 #026"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 유리병 #026"
+        },
+        {
+          "id": "obj-039",
+          "name": "glass stopper",
+          "score": 0.828125,
+          "mask": "masks/obj-039.png",
+          "bbox2d": [
+            137,
+            151,
+            211,
+            233
+          ],
+          "box": {
+            "min": [
+              -0.432968776146266,
+              0.16909271180604957,
+              -0.9576230585575104
+            ],
+            "max": [
+              -0.37383390496962865,
+              0.22360909116164868,
+              -0.8901809811592102
+            ]
+          },
+          "source": "sam3-metric-depth",
+          "box_extent": "visible-surface-robust-aabb",
+          "mask_pixels": 4584,
+          "category_attributes": [
+            "transparent",
+            "spherical"
+          ],
+          "instance_attributes": [
+            "왼쪽"
+          ],
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 glass stopper #039"
+        },
+        {
+          "id": "obj-040",
+          "name": "glass stopper",
+          "score": 0.828125,
+          "mask": "masks/obj-040.png",
+          "bbox2d": [
+            312,
+            167,
+            372,
+            227
+          ],
+          "box": {
+            "min": [
+              -0.3759573319420723,
+              0.22488026579248988,
+              -1.2340204238891601
+            ],
+            "max": [
+              -0.3076902888721577,
+              0.2783077829489513,
+              -1.1830729246139526
+            ]
+          },
+          "source": "sam3-metric-depth",
+          "box_extent": "visible-surface-robust-aabb",
+          "mask_pixels": 2769,
+          "category_attributes": [
+            "transparent",
+            "spherical"
+          ],
+          "instance_attributes": [
+            "왼쪽"
+          ],
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 glass stopper #040"
         },
         {
           "id": "obj-043",
@@ -3730,10 +3686,10 @@
             "spherical"
           ],
           "instance_attributes": [
-            "파랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 glass stopper #043"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 glass stopper #043"
         },
         {
           "id": "obj-061",
@@ -3766,10 +3722,10 @@
             "reflective"
           ],
           "instance_attributes": [
-            "파랑"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "파랑 glass shelf #061"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 glass shelf #061"
         }
       ],
       "edges": [
@@ -3778,231 +3734,217 @@
           "target": "obj-061",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-024",
-          "target": "obj-022",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-000",
           "target": "obj-061",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-003",
-          "target": "obj-017",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-021",
-          "target": "obj-020",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-002",
-          "target": "obj-025",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-006",
-          "target": "obj-016",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-008",
           "target": "obj-061",
           "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-061",
-          "target": "obj-020",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-043",
-          "target": "obj-003",
-          "relation": "on",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-017",
+          "source": "obj-024",
           "target": "obj-061",
-          "relation": "under",
+          "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-061",
-          "target": "obj-003",
-          "relation": "under",
+          "source": "obj-003",
+          "target": "obj-061",
+          "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-061",
-          "target": "obj-024",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-012",
-          "target": "obj-000",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-020",
-          "target": "obj-005",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
-        },
-        {
-          "source": "obj-016",
-          "target": "obj-015",
-          "relation": "under",
-          "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-005",
           "target": "obj-016",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-002",
           "target": "obj-004",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-001",
           "target": "obj-019",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-002",
           "target": "obj-015",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-016",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-005",
           "target": "obj-021",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-015",
+          "target": "obj-040",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-003",
           "target": "obj-011",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-001",
           "target": "obj-015",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-002",
+          "target": "obj-005",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-007",
           "target": "obj-009",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-023",
+          "target": "obj-025",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-006",
           "target": "obj-009",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-003",
+          "target": "obj-023",
+          "relation": "next to",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-061",
+          "target": "obj-019",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-043",
           "target": "obj-008",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-023",
+          "target": "obj-019",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-025",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-061",
+          "target": "obj-026",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-025",
           "target": "obj-001",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-021",
+          "target": "obj-061",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-043",
           "target": "obj-011",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-011",
-          "target": "obj-019",
-          "relation": "in front of",
+          "source": "obj-016",
+          "target": "obj-009",
+          "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
-          "source": "obj-025",
+          "source": "obj-040",
           "target": "obj-006",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-021",
+          "target": "obj-039",
+          "relation": "left of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         }
       ]
     },
     {
       "id": "dav2-15",
       "source": ".runtime/Depth-Anything-V2/assets/examples/demo15.jpg",
-      "graph_sha256": "4a77de7ac3721df3dfaccff75ad84c0ff153e9d2552f94f37ab673386e87ed60",
+      "graph_sha256": "be0ad9c658e826af10615f5371a00c053f1e24ab29b1bffdf8a97b1a1711c397",
       "width": 1280,
       "height": 851,
       "nodes": [
@@ -4036,10 +3978,10 @@
             "white"
           ],
           "instance_attributes": [
-            "베이지"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 column #000"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 column #000"
         },
         {
           "id": "obj-001",
@@ -4071,10 +4013,10 @@
             "white"
           ],
           "instance_attributes": [
-            "베이지"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 column #001"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 column #001"
         },
         {
           "id": "obj-002",
@@ -4106,10 +4048,10 @@
             "white"
           ],
           "instance_attributes": [
-            "베이지"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 column #002"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 column #002"
         },
         {
           "id": "obj-003",
@@ -4141,10 +4083,10 @@
             "white"
           ],
           "instance_attributes": [
-            "회색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "회색 column #003"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 column #003"
         },
         {
           "id": "obj-004",
@@ -4176,10 +4118,10 @@
             "white"
           ],
           "instance_attributes": [
-            "베이지"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 column #004"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 column #004"
         },
         {
           "id": "obj-007",
@@ -4212,10 +4154,10 @@
             "ornate"
           ],
           "instance_attributes": [
-            "베이지"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 chandelier #007"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 chandelier #007"
         },
         {
           "id": "obj-008",
@@ -4248,10 +4190,10 @@
             "ornate"
           ],
           "instance_attributes": [
-            "베이지"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "베이지 chandelier #008"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 chandelier #008"
         },
         {
           "id": "obj-010",
@@ -4284,10 +4226,10 @@
             "gold accents"
           ],
           "instance_attributes": [
-            "갈색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 balustrade #010"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 balustrade #010"
         },
         {
           "id": "obj-017",
@@ -4320,10 +4262,10 @@
             "brown"
           ],
           "instance_attributes": [
-            "갈색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 문 #017"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 문 #017"
         },
         {
           "id": "obj-018",
@@ -4356,10 +4298,10 @@
             "brown"
           ],
           "instance_attributes": [
-            "검정"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 문 #018"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 문 #018"
         },
         {
           "id": "obj-021",
@@ -4392,10 +4334,10 @@
             "fabric"
           ],
           "instance_attributes": [
-            "노랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "노랑 curtain #021"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 curtain #021"
         },
         {
           "id": "obj-022",
@@ -4428,10 +4370,10 @@
             "fabric"
           ],
           "instance_attributes": [
-            "노랑"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "노랑 curtain #022"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 curtain #022"
         },
         {
           "id": "obj-023",
@@ -4464,10 +4406,10 @@
             "bronze"
           ],
           "instance_attributes": [
-            "검정"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 statue #023"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 statue #023"
         },
         {
           "id": "obj-024",
@@ -4500,10 +4442,10 @@
             "bronze"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 statue #024"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 statue #024"
         },
         {
           "id": "obj-025",
@@ -4536,10 +4478,10 @@
             "ornate"
           ],
           "instance_attributes": [
-            "갈색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 벽 #025"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 벽 #025"
         },
         {
           "id": "obj-029",
@@ -4571,10 +4513,10 @@
             "human"
           ],
           "instance_attributes": [
-            "갈색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 사람 #029"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 사람 #029"
         },
         {
           "id": "obj-030",
@@ -4606,10 +4548,10 @@
             "human"
           ],
           "instance_attributes": [
-            "검정"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "검정 사람 #030"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 사람 #030"
         },
         {
           "id": "obj-032",
@@ -4642,10 +4584,10 @@
             "gold"
           ],
           "instance_attributes": [
-            "갈색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 handrail #032"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 handrail #032"
         },
         {
           "id": "obj-033",
@@ -4681,10 +4623,10 @@
             "gold"
           ],
           "instance_attributes": [
-            "갈색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 handrail #033"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 handrail #033"
         },
         {
           "id": "obj-034",
@@ -4717,10 +4659,10 @@
             "gold"
           ],
           "instance_attributes": [
-            "갈색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 handrail #034"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 handrail #034"
         },
         {
           "id": "obj-035",
@@ -4753,10 +4695,10 @@
             "gold"
           ],
           "instance_attributes": [
-            "갈색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 handrail #035"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 handrail #035"
         },
         {
           "id": "obj-037",
@@ -4789,10 +4731,10 @@
             "gold"
           ],
           "instance_attributes": [
-            "갈색"
+            "가운데"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 handrail #037"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "가운데 handrail #037"
         },
         {
           "id": "obj-039",
@@ -4825,10 +4767,10 @@
             "curtained"
           ],
           "instance_attributes": [
-            "흰색"
+            "오른쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "흰색 창문 #039"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "오른쪽 창문 #039"
         },
         {
           "id": "obj-040",
@@ -4861,169 +4803,295 @@
             "paper"
           ],
           "instance_attributes": [
-            "갈색"
+            "왼쪽"
           ],
-          "attribute_method": "masked-median-rgb",
-          "label": "갈색 sign #040"
+          "attribute_method": "original-image-horizontal-position",
+          "label": "왼쪽 sign #040"
+        },
+        {
+          "id": "floor-ransac",
+          "name": "floor",
+          "label": "바닥 #RANSAC",
+          "source": "depth-ransac",
+          "score": null,
+          "box": {
+            "min": [
+              -1.7640994427939367,
+              -2.1994927681353404,
+              -8.720340881347656
+            ],
+            "max": [
+              3.818477884266632,
+              -1.8711195460475392,
+              -5.443171157836915
+            ]
+          },
+          "bbox2d": [
+            198,
+            672,
+            1273,
+            847
+          ],
+          "plane": {
+            "normal": [
+              0.06282309463560169,
+              0.9955562364796625,
+              0.07015011608583846
+            ],
+            "offset": 2.4110310326772666,
+            "height_coefficients": [
+              -0.0631035117189837,
+              -0.07046323805262156,
+              -2.421792907654112
+            ],
+            "inliers": 773,
+            "tolerance_m": 0.05
+          },
+          "previous_visible_box": null,
+          "box_extent": "ransac-observed-floor-inliers",
+          "sam_mask": null,
+          "mask": "floor-ransac.png",
+          "mask_pixels": 40762
+        },
+        {
+          "id": "floor-landing-0",
+          "name": "floor",
+          "label": "층계참 바닥 #1",
+          "source": "depth-ransac",
+          "score": null,
+          "mask": "floor-landing-0.png",
+          "mask_pixels": 42214,
+          "bbox2d": [
+            0,
+            450,
+            1279,
+            721
+          ],
+          "box": {
+            "min": [
+              -3.6444799540722723,
+              -0.9395083173883414,
+              -9.94428563117981
+            ],
+            "max": [
+              4.211021933136797,
+              -0.2827491053526252,
+              -3.3851339292526244
+            ]
+          },
+          "plane": {
+            "height_coefficients": [
+              -0.006385698875018356,
+              -0.09651111934027654,
+              -1.266301912249454
+            ],
+            "inliers": 444,
+            "tolerance_m": 0.05
+          },
+          "box_extent": "ransac-observed-landing-inliers"
+        },
+        {
+          "id": "floor-landing-1",
+          "name": "floor",
+          "label": "층계참 바닥 #2",
+          "source": "depth-ransac",
+          "score": null,
+          "mask": "floor-landing-1.png",
+          "mask_pixels": 39961,
+          "bbox2d": [
+            6,
+            606,
+            895,
+            835
+          ],
+          "box": {
+            "min": [
+              -3.32836706453802,
+              -1.5122347147459057,
+              -8.598514986038207
+            ],
+            "max": [
+              1.9296668604653664,
+              -1.056206037521499,
+              -3.325587282180786
+            ]
+          },
+          "plane": {
+            "height_coefficients": [
+              -0.06912264329562398,
+              0.0339512059190773,
+              -1.1127362479979561
+            ],
+            "inliers": 168,
+            "tolerance_m": 0.05
+          },
+          "box_extent": "ransac-observed-landing-inliers"
         }
       ],
       "edges": [
         {
-          "source": "obj-035",
-          "target": "obj-040",
-          "relation": "under",
+          "source": "obj-004",
+          "target": "floor-landing-0",
+          "relation": "on",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-002",
           "target": "obj-008",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-022",
           "target": "obj-039",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-000",
           "target": "obj-035",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-003",
           "target": "obj-033",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-021",
           "target": "obj-022",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-003",
           "target": "obj-008",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-017",
           "target": "obj-035",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-021",
           "target": "obj-039",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-010",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-000",
           "target": "obj-010",
           "relation": "next to",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-010",
           "target": "obj-002",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-034",
           "target": "obj-022",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
+        },
+        {
+          "source": "obj-035",
+          "target": "obj-024",
+          "relation": "in front of",
+          "method": "3d-aabb",
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-034",
           "target": "obj-039",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-034",
           "target": "obj-021",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-033",
           "target": "obj-002",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-033",
           "target": "obj-004",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-004",
           "target": "obj-007",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-018",
           "target": "obj-029",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-030",
           "target": "obj-017",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-017",
           "target": "obj-024",
           "relation": "left of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         },
         {
           "source": "obj-007",
           "target": "obj-023",
           "relation": "in front of",
           "method": "3d-aabb",
-          "pruning_policy": "nearest-support-neighbors-v2"
+          "pruning_policy": "directed-support-neighbors-v3"
         }
       ]
     }
   ],
-  "pack_id": "2f13a6091723430f"
+  "pack_id": "ec9979c1060d1921"
 }
