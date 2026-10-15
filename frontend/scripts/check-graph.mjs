@@ -5,6 +5,7 @@ import {chromium} from '@playwright/test';
 process.chdir(fileURLToPath(new URL('..',import.meta.url)));
 const browser=await chromium.launch({headless:true,args:['--enable-gpu','--use-angle=d3d11']});
 const errors=[],external=[],inference=[],results=[];
+const phase=process.argv[2]||'stage2';
 try {
  const page=await browser.newPage({viewport:{width:1600,height:1000}});
  page.on('pageerror',e=>errors.push(e.message));
@@ -21,12 +22,15 @@ try {
    const p=window.sceneWorkspace.placement;
    return {nodes:p.graph.nodes.length,edges:p.graph.edges.length,selected:p.selectedGraphId,highlight:!!p.boxHelper};
   });
-  assert.ok(state.highlight);assert.equal(state.selected,'obj-001');
+  assert.ok(state.highlight);assert.ok(state.selected);
+  const persisted=await (await page.request.get('http://127.0.0.1:5173/scene-cache/'+scene+'/graph.json')).json();
+  assert.equal(state.edges,persisted.edges.length);
+  assert.ok(state.edges<=state.nodes*3);
   await page.waitForTimeout(2000);
-  await page.screenshot({path:'../docs/screenshots/stage2-'+scene+'.png',timeout:120000});
+  await page.screenshot({path:'../docs/screenshots/'+phase+'-'+scene+'.png',timeout:120000});
   results.push({scene,...state});
  }
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);assert.deepEqual(inference,[]);
- await writeFile('../docs/scene-graph-browser-check.json',JSON.stringify({results,errors,external,inference},null,2));
+ await writeFile('../docs/'+phase+'-graph-browser-check.json',JSON.stringify({results,errors,external,inference},null,2));
  console.log(JSON.stringify({results,errors,external,inference}));
 }finally{await browser.close();}

@@ -151,7 +151,7 @@ export class Placement {
     }
     const supports=this.items.map(x=>({id:x.supportId,name:'지지면',source:'depth-surface',box:{min:x.supportBox.min.toArray(),max:x.supportBox.max.toArray()}}));
     const nodes=[...this.baseNodes,...supports,...this.items.map(x=>({id:x.id,name:x.name,box:x.box,source:'placed-glb',asset:x.asset,transform:{position:x.object.position.toArray(),quaternion:x.object.quaternion.toArray(),scale:x.object.scale.toArray()}}))];
-    this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes),geometry_status:'monocular-estimate'};
+    const contacts=[];
     for(const item of this.items){
       const center=new THREE.Box3().setFromObject(item.object).getCenter(new THREE.Vector3());
       const p=item.supportPoint,n=item.normal;
@@ -159,9 +159,9 @@ export class Placement {
       if(Math.abs(item.box.min[1]-supportY)>.04)continue;
       const support=this.baseNodes.find(n=>n.box&&item.supportPoint.x>=n.box.min[0]-.05&&item.supportPoint.x<=n.box.max[0]+.05&&item.supportPoint.z>=n.box.min[2]-.05&&item.supportPoint.z<=n.box.max[2]+.05&&Math.abs(item.supportPoint.y-n.box.max[1])<.12);
       const target=support?.id||item.supportId;
-      if(!this.graph.edges.some(e=>e.source===item.id&&e.target===target&&e.relation==='on'))this.graph.edges.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
-      if(!this.graph.edges.some(e=>e.source===target&&e.target===item.id&&e.relation==='under'))this.graph.edges.push({source:target,target:item.id,relation:'under',method:'raycast-support-contact'});
+      contacts.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
     }
+    this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes,contacts),geometry_status:'monocular-estimate'};
     this.graphUI();
   }
   graphUI(){

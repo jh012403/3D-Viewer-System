@@ -12,9 +12,13 @@
           "bytes": 4259968,
           "sha256": "bd5470186e9f07701641295f912c30bd075fb8f09d372d2c77c91540c168c3ab"
         },
-        "graph.json": {
+        "graph-unpruned-v1.json": {
           "bytes": 87357,
           "sha256": "1e75bc075d16f5887fc2ed7360142d20612f4483fb477389463267e96f36f4c2"
+        },
+        "graph.json": {
+          "bytes": 15412,
+          "sha256": "b3f526d68ef625c65d6923bda75b529ed113f2f987e8b97584f82945b8444458"
         },
         "masks/obj-000.png": {
           "bytes": 1887,
@@ -153,9 +157,13 @@
           "bytes": 1708928,
           "sha256": "4beb65308b19916414e75116e1b45eafd186fc4ac5b907702ba53f710a5c2821"
         },
-        "graph.json": {
+        "graph-unpruned-v1.json": {
           "bytes": 82609,
           "sha256": "8f64201c449f01e61331b95affe48c124fc61989a5774b5223f0ec69e14f6936"
+        },
+        "graph.json": {
+          "bytes": 12351,
+          "sha256": "aee0556bb9212fe8694d0d81908b7374ea93497fff32dddfd614e4788f99f400"
         },
         "masks/obj-000.png": {
           "bytes": 940,
@@ -286,9 +294,13 @@
           "bytes": 4357248,
           "sha256": "e10de209f398bd01bb234f64df6a154988abdf4349e997b068abfd80f9b2327b"
         },
-        "graph.json": {
+        "graph-unpruned-v1.json": {
           "bytes": 244541,
           "sha256": "ab6e0be46b37c73f68544ac91673440ef3f72e827eb1e43c4b1a6ec485fdf987"
+        },
+        "graph.json": {
+          "bytes": 22580,
+          "sha256": "6d897f1c38782dc580c9ebceadedd8955f243cd4757a602fe21a5f3b358ac7bd"
         },
         "masks/obj-000.png": {
           "bytes": 2456,
@@ -491,9 +503,13 @@
           "bytes": 4259968,
           "sha256": "d2dd9f336792588711e0ff4744f1189d7834b1653102ce6151116085840547dc"
         },
-        "graph.json": {
+        "graph-unpruned-v1.json": {
           "bytes": 51782,
           "sha256": "679c5172e94874ccb977ad88e45cc1edb678869308166d1b4c7a700adfd9e6c5"
+        },
+        "graph.json": {
+          "bytes": 11830,
+          "sha256": "8909faeef8424a7719ef93a98180505bd8afba3f83c67d5877cb7e0c1ab2819c"
         },
         "masks/obj-000.png": {
           "bytes": 2714,

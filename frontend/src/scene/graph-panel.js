@@ -6,7 +6,8 @@ export function drawGraph(root,graph,selected,onSelect){
   if(!graph.nodes.length){meta.textContent='그래프를 생성하면 물체와 관계가 표시됩니다.';return;}
   const focus=graph.nodes.find(n=>n.id===selected)||graph.nodes[0];
   const names=Object.fromEntries(graph.nodes.map(n=>[n.id,n.name]));
-  const edges=graph.edges.filter(e=>e.source===focus.id).sort((a,b)=>(['on','under','next to'].includes(b.relation)?1:0)-(['on','under','next to'].includes(a.relation)?1:0));
+  const inverse={on:'under',under:'over','left of':'right of','right of':'left of','in front of':'behind',behind:'in front of','next to':'next to'};
+  const edges=graph.edges.filter(e=>e.source===focus.id||e.target===focus.id).map(e=>e.source===focus.id?e:{...e,source:focus.id,target:e.source,relation:inverse[e.relation]}).sort((a,b)=>(['on','under','next to'].includes(b.relation)?1:0)-(['on','under','next to'].includes(a.relation)?1:0));
   const neighbors=[...new Set(edges.map(e=>e.target))].slice(0,6);
   const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 300 300');svg.setAttribute('aria-label','선택 물체의 관계 그래프');svg.classList.add('graph-svg');
   const points=new Map([[focus.id,[150,150]]]);

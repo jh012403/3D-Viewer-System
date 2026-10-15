@@ -1,5 +1,8 @@
 # Decisions — 2026-10-15
 
+- Follow-up priority order is pruning -> node cleanup -> mesh runtime recovery -> presentation -> five-photo human review.
+- Sparse relations are stored, not hidden by the UI. One fact per unordered node pair; inverse facts are displayed from either selected endpoint without duplicating JSON. Direction neighbors require mutual nearest-three eligibility; same-category pairs additionally require a size-relative gap <=0.75m. on prioritizes raycast evidence, then smallest vertical gap. Preserve pre-pruning graphs as graph-unpruned-v1.json in new local caches.
+
 - Follow stage order 0 → 1 → 3 → 2.
 - Preserve original upload/selection/mesh-generation implementation and original assets.
 - New scene viewer uses locally installed npm dependencies, no CDN.
