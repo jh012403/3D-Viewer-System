@@ -75,6 +75,18 @@ def build(image_path, output=None, progress=print):
     h,w=image.shape[:2]
     Image.fromarray(image).save(out/"source.jpg",quality=95)
     device="cuda" if torch.cuda.is_available() else "cpu"
+    progress("Depth Anything V2 metric indoor depth")
+    sys.path.insert(0,str(ROOT/".runtime/Depth-Anything-V2/metric_depth"))
+    from depth_anything_v2.dpt import DepthAnythingV2
+    depth_model=DepthAnythingV2(encoder="vitl",features=256,out_channels=[256,512,1024,1024],max_depth=20)
+    depth_model.load_state_dict(torch.load(ROOT/".runtime/weights/depth_anything_v2_metric_hypersim_vitl.pth",map_location="cpu",weights_only=True))
+    depth_model.eval().to(device)
+    with torch.inference_mode():
+        depth=depth_model.infer_image(cv2.cvtColor(image,cv2.COLOR_RGB2BGR))
+    del depth_model
+    gc.collect()
+    if device=="cuda": torch.cuda.empty_cache()
+    np.save(out/"depth.npy",depth)
     progress("SHARP Gaussian prediction")
     predictor=create_predictor(PredictorParams())
     predictor.load_state_dict(torch.load(ROOT/".runtime/weights/sharp_2572gikvuh.pt",map_location="cpu",weights_only=True))
@@ -90,18 +102,6 @@ def build(image_path, output=None, progress=print):
     del predictor,ndc,inp
     gc.collect()
     if device=="cuda": torch.cuda.empty_cache()
-    progress("Depth Anything V2 metric indoor depth")
-    sys.path.insert(0,str(ROOT/".runtime/Depth-Anything-V2/metric_depth"))
-    from depth_anything_v2.dpt import DepthAnythingV2
-    depth_model=DepthAnythingV2(encoder="vitl",features=256,out_channels=[256,512,1024,1024],max_depth=20)
-    depth_model.load_state_dict(torch.load(ROOT/".runtime/weights/depth_anything_v2_metric_hypersim_vitl.pth",map_location="cpu",weights_only=True))
-    depth_model.eval().to(device)
-    with torch.inference_mode():
-        depth=depth_model.infer_image(cv2.cvtColor(image,cv2.COLOR_RGB2BGR))
-    del depth_model
-    gc.collect()
-    if device=="cuda": torch.cuda.empty_cache()
-    np.save(out/"depth.npy",depth)
     progress("Metric alignment and surface cache")
     scale,diagnostics=align_scale(gaussians.mean_vectors.numpy(),gaussians.opacities.numpy(),depth,focal)
     gaussians=gaussians._replace(mean_vectors=gaussians.mean_vectors*scale,singular_values=gaussians.singular_values*scale)

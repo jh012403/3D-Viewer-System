@@ -35,6 +35,7 @@ export class SceneViewer {
     const abs=(p)=>new URL(p,base).href;
     const mesh=new SplatMesh({url:abs(m.splat)});
     try{await mesh.initialized;}catch(e){mesh.dispose();throw e;}
+    this.onLoadProgress?.(1);
     if(this.splat){this.scene.remove(this.splat);this.splat.dispose();}
     if(this.surface){this.scene.remove(this.surface);this.surface.geometry.dispose();this.surface.material.dispose();}
     this.manifest=m;this.base=base;this.splat=mesh;mesh.rotation.x=Math.PI;this.scene.add(mesh);

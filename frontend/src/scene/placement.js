@@ -33,11 +33,12 @@ export class Placement {
       else this.pickGraph(this.ray);
     });
     viewer.afterRender=()=>this.render();
-    window.addEventListener('scene-loaded',async()=>{try{
+    window.addEventListener('scene-loaded',async event=>{try{
       await this.loadGraph();
       const job=new URLSearchParams(location.search).get('job');
       if(job&&!this.importedJob){await this.importGenerated(job);this.importedJob=job;}
-    }catch(e){this.status(e.message,true);}});
+      event.detail?.resolve?.();
+    }catch(e){this.status(e.message,true);event.detail?.reject?.(e);}});
     this.ui();
     this.generatedUI();
   }
@@ -138,7 +139,7 @@ export class Placement {
     document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>this.controls.setMode(b.dataset.mode));
     $('#snap').onclick=()=>{this.snapSelected();this.update();};
     $('#remove').onclick=()=>{if(!this.selected)return;const item=this.selected;this.controls.detach();this.objects.remove(item.object,item.shadow);dispose(item.object);dispose(item.shadow);this.items=this.items.filter(x=>x!==item);this.selected=null;this.update();};
-    $('#export').onclick=async()=>{try{const result=await this.export();download(result.image,'scene-original.png');download(new Blob([JSON.stringify(result.graph,null,2)],{type:'application/json'}),'scene-graph.json');this.status('원본 시점 이미지와 scene graph를 저장했습니다.');}catch(e){this.status(e.message,true);}};
+    $('#export').onclick=async()=>{try{const result=await this.export();download(result.image,'scene-original.png');download(new Blob([JSON.stringify(result.graph,null,2)],{type:'application/json'}),'scene-graph.json');this.status('원본 시점 이미지와 scene graph를 저장했습니다.');const toast=document.createElement('div');toast.className='save-toast';toast.textContent='✓ 원본 이미지와 그래프를 저장했어요';this.v.container.append(toast);setTimeout(()=>toast.remove(),3500);}catch(e){this.status(e.message,true);}};
     const demo=document.createElement('button');demo.id='demoProp';demo.className='demo-prop';demo.textContent='＋ 시연 화분 선택';demo.onclick=()=>this.prepareDemo().catch(e=>this.status(e.message,true));$('#placement').prepend(demo);
   }
   async prepare(asset){
@@ -172,6 +173,7 @@ export class Placement {
     const refresh=async()=>{
       try{const r=await fetch('/scene-api/generated-assets');if(!r.ok)throw Error('생성 결과 조회 실패');
       const items=await r.json();$('#generatedAsset').replaceChildren();
+      row.hidden=!items.length;
       for(const item of items){const o=document.createElement('option');o.value=item.job_id;o.textContent=item.name;$('#generatedAsset').append(o);}
       if(!items.length){const o=document.createElement('option');o.value='';o.textContent='생성 결과 없음';$('#generatedAsset').append(o);}
       }catch(e){this.status(e.message,true);}

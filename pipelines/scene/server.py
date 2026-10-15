@@ -12,6 +12,14 @@ uploads=ROOT/"storage/scene_uploads"; uploads.mkdir(parents=True,exist_ok=True)
 app=FastAPI(title="Scene workspace")
 app.mount("/scene-cache",StaticFiles(directory=CACHE),name="scene-cache")
 jobs={}; executor=ThreadPoolExecutor(max_workers=1)
+def progress_job(jid,message):
+    stage=jobs[jid].get('stage',0)
+    if 'Depth Anything' in message:stage=0
+    elif 'SHARP' in message or 'Metric alignment' in message:stage=1
+    elif 'Object recognition' in message:stage=2
+    elif 'Relationship analysis' in message:stage=3
+    labels=['깊이 추정','3D 공간 복원','물체 인식','관계 분석']
+    jobs[jid].update(stage=stage,message=labels[stage])
 @app.get("/scene-api/health")
 def health():
     return {"status":"ok","cache_count":len(list(CACHE.glob("*/scene.json")))}
@@ -37,13 +45,13 @@ async def create(file:UploadFile):
     def run():
         jobs[jid]["status"]="running"
         try:
-            out=build(path,progress=lambda msg:jobs[jid].update(message=msg))
+            out=build(path,progress=lambda msg:progress_job(jid,msg))
             manifest=json.loads((out/"scene.json").read_text(encoding="utf-8"))
             manifest["title"]=title
             (out/"scene.json").write_text(json.dumps(manifest,ensure_ascii=False),encoding="utf-8")
-            jobs[jid].update(message="Qwen names and SAM3 masks")
+            progress_job(jid,'Object recognition')
             from .graph import run as graph_run
-            graph_run([{"id":out.name,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}])
+            graph_run([{"id":out.name,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}],progress=lambda msg:progress_job(jid,msg))
             jobs[jid].update(status="ready",message="Scene and graph ready",url=f"/scene-cache/{out.name}/scene.json")
         except Exception as exc:
             jobs[jid].update(status="failed",message=str(exc))
@@ -130,7 +138,7 @@ def generate_graph(scene_id:str):
         jobs[jid].update(status="running",message="Qwen names and SAM3 masks")
         try:
             from .graph import run
-            run([{"id":scene_id,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}])
+            run([{"id":scene_id,"image":str(out/"source.jpg"),"out":str(out),"depth_domain":"hypersim"}],progress=lambda msg:progress_job(jid,msg))
             jobs[jid].update(status="ready",message="Graph ready")
         except Exception as exc:jobs[jid].update(status="failed",message=str(exc))
     executor.submit(run_graph)

@@ -1,6 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Demo stage 5: animated processing panel connected to backend worker stages (depth -> SHARP -> objects -> relations). Cached scenes use distinct loading copy and no fake inference. Verified callback sequence and Python syntax; screenshots demo-stage5-processing-0..3.png are explicitly UI-state previews, not a new GPU inference run. Save confirmation toast added. Next: actual four-scene browser recordings and fallback MP4 delivery.
+
 Demo stage 4: thumbnail-card graph with vertical support hierarchy, animated new nodes/edges, photo-mask contours on hover/click, and authored Korean paragraph updated after placement. Sidebar expanded for readability and technical depth/alignment statistics removed from the product UI. Screenshots: docs/screenshots/demo-stage4-*-graph.png and *-outline.png. Next: processing presentation and MP4 rehearsals.
 
 Demo stage 3: authored planter GLB, two clickable recommendations per scene, nearby click snap, collision-safe placement, 650ms settling animation, transparent-surface exclusion, soft depth boundaries, scene tint and contact shadows. Curated base edges survive placement; new support edge and summary sentence are appended. Four-scene browser rehearsal passes without JS/WebGL errors. Screenshots: docs/screenshots/demo-stage3-*.png. Demo planter is explicitly an authored prop, not a TRELLIS result. Next: thumbnail graph/contours, processing stages, recordings.

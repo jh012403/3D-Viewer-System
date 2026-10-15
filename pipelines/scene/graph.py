@@ -78,7 +78,7 @@ def compute_relations(nodes):
     result=subprocess.run([node,str(script)],input=json.dumps(nodes),text=True,capture_output=True,check=True)
     return json.loads(result.stdout)
 
-def segment_batch(entries):
+def segment_batch(entries,progress=print):
     import torch
     # No torch.compile or optional perflib kernels needed for image grounding.
     os.environ["USE_PERFLIB"]="0"
@@ -121,6 +121,7 @@ def segment_batch(entries):
         from .cleanup import clean_nodes
         write_json(out/'nodes-raw.json',nodes)
         nodes,cleanup=clean_nodes(nodes,out)
+        progress('Relationship analysis')
         edges=compute_relations(nodes)
         graph={"version":1,"status":"generated","nodes":nodes,"edges":edges,"camera":camera,
             "relation_policy":"directed-support-no-under-v4",
@@ -132,15 +133,16 @@ def segment_batch(entries):
         del state;gc.collect();torch.cuda.empty_cache()
         print(entry["id"],"graph ready",len(nodes),len(edges),flush=True)
 
-def run(entries):
+def run(entries,progress=print):
     for entry in entries:entry["out"]=str(ROOT/entry["out"]);entry["image"]=str(ROOT/entry["image"])
     entries=[e for e in entries if not (Path(e["out"])/"graph.json").exists() or json.loads((Path(e["out"])/"graph.json").read_text(encoding="utf-8")).get("status")!="generated"]
     if not entries:return
+    progress('Object recognition')
     name_batch(entries)
     for entry in entries:
         print(entry["id"],"metric depth",flush=True)
         entry["camera"]=prepare_depth(entry)
-    segment_batch(entries)
+    segment_batch(entries,progress)
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser();parser.add_argument("manifest");args=parser.parse_args()
