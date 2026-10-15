@@ -18,7 +18,7 @@ PROFILES={
   'nodes':{'obj-015':'윗단 유리 선반','obj-016':'가운데 유리 선반','obj-017':'아랫단 유리 선반','obj-011':'파란 주전자','obj-009':'무늬 접시','obj-005':'왼쪽 장식 접시','obj-006':'오른쪽 장식 접시','obj-000':'가운데 도자기 그릇','obj-001':'오른쪽 도자기 그릇'},
   'edges':[('011','on','015'),('009','on','015'),('005','on','016'),('006','on','016'),('000','on','017'),('001','on','017'),('009','left of','011'),('005','left of','006'),('000','left of','001')],
   'summary':'유리 선반 위에 도자기들이 층층이 전시되어 있습니다. 맨 위에는 무늬 접시와 파란 주전자가 있고, 가운데 장식 접시 아래로 도자기 그릇들이 이어집니다.',
-  'slots':[('가운데 선반 여백',.28,.57,'obj-016',.12),('아랫단 선반 여백',.38,.79,'obj-017',.12)],
+  'slots':[('가운데 선반 여백',.28,.57,'obj-016',.18),('아랫단 선반 여백',.38,.79,'obj-017',.16)],
  },
  'd4f646fcc79650d6':{
   'nodes':{'trunk':'트렁크 바닥','obj-000':'왼쪽 장바구니','obj-001':'가운데 왼쪽 장바구니','obj-002':'가운데 오른쪽 장바구니','obj-003':'오른쪽 장바구니','obj-014':'왼쪽 후미등','obj-015':'오른쪽 후미등','seats':'뒷좌석'},
@@ -32,7 +32,7 @@ PROFILES={
   'manual':{'landing':('floor',[380,460,1100,489]),'lower-floor':('floor',[970,684,1210,790]),'ceiling':('ceiling',[180,0,1150,60])},
   'edges':[('obj-000','on','landing'),('obj-004','on','landing'),('obj-008','attached to','ceiling'),('obj-007','attached to','ceiling'),('024','next to','000'),('023','next to','004'),('009','in front of','000'),('009','in front of','004'),('000','left of','004'),('024','left of','023')],
   'summary':'대리석 기둥과 두 조각상이 위층 공간을 장식하고 있습니다. 천장에는 샹들리에 두 개가 매달려 있고, 앞쪽의 계단이 아래층으로 이어집니다.',
-  'slots':[('아래층 안쪽',.82,.85,'lower-floor',.65),('아래층 오른쪽',.89,.88,'lower-floor',.60)],
+  'slots':[('아래층 안쪽',.82,.85,'lower-floor',.90),('아래층 오른쪽',.89,.88,'lower-floor',.75)],
  }
 }
 
@@ -71,7 +71,7 @@ def run():
         tracked=ROOT/'assets/scene-demo'/scene;tracked.mkdir(parents=True,exist_ok=True)
         write_json(tracked/'graph.json',graph)
         manifest=json.loads((out/'scene.json').read_text(encoding='utf-8'));manifest['curated']=True;manifest['orbit_degrees']=5
-        manifest['presentation']={'vertical_degrees':.5,'preview_zoom':1.13,'orbit_radius_m':.12}
+        manifest['presentation']={'vertical_degrees':.5,'preview_zoom':1.13,'orbit_radius_m':.12,'object_tint':{'ceramics':'#dce4cd','hall':'#fff3da'}.get(scene,'#ffffff')}
         write_json(out/'scene.json',manifest)
         summaries.append({'scene':scene,'title':manifest['title'],'nodes':len(nodes),'edges':len(edges),'placements':slots})
     write_json(ROOT/'docs/demo-curation.json',summaries)

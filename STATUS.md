@@ -1,6 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Demo stage 3: authored planter GLB, two clickable recommendations per scene, nearby click snap, collision-safe placement, 650ms settling animation, transparent-surface exclusion, soft depth boundaries, scene tint and contact shadows. Curated base edges survive placement; new support edge and summary sentence are appended. Four-scene browser rehearsal passes without JS/WebGL errors. Screenshots: docs/screenshots/demo-stage3-*.png. Demo planter is explicitly an authored prop, not a TRELLIS result. Next: thumbnail graph/contours, processing stages, recordings.
+
 Demo stage 2: live graph generation no longer calls RANSAC; under generation is disabled entirely. Existing directed-on and structural direction exclusions retained; labels remain category/position only. Reprocessing skips authored caches. Shared JS smoke checks pass. Stage 2 screenshot reuses the unchanged stage-1 view (demo-stage2-live-rules.png); no inference/evaluation was run.
 
 Direction change: demo presentation is the goal. Accuracy evaluation, five-photo review, precision calculations and RANSAC work are STOPPED. Stage 1 authored four cached graphs from original automatic detections: sunroom 8/10, ceramics 9/9, groceries 8/10, hall 10/10 nodes/edges, two recommended placements each. Sources: pipelines/scene/curate_demo.py and assets/scene-demo/*/graph.json. Current demo graphs carry explicit editorial provenance; no automatic accuracy claims. Next: minimal live-path changes, placement/graph animation and four fallback MP4s. No reboot.

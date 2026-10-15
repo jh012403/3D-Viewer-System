@@ -1,5 +1,7 @@
 # Decisions — 2026-10-15
 
+- Placement recommendations use photo-chosen cached points and scene-specific prop sizes/tint. Use a compact authored planter GLB for rehearsal so every scene has a visually appropriate prop; do not label it as an AI mesh-generation result. Preserve existing GLB imports. Snap within 85 screen pixels, ease down over 650ms, and retain authored background relationships.
+
 - Live path changes stop at obvious mistakes: no under, directed on, structural direction exclusions, no RGB labels. Remove the RANSAC invocation rather than continuing to tune it. Historical floor/evaluation tools remain archived but are not invoked. Reprocessing must skip curated demo caches.
 
 - New priority supersedes all accuracy plans below: curate four demo caches, polish interaction, record fallback videos. Stop review/precision/RANSAC work. Curated graphs are photo-guided authored content, not measured automatic predictions; preserve this provenance in JSON/docs while keeping the stage UI focused on the scene.

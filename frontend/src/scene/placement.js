@@ -27,7 +27,7 @@ export class Placement {
       if(!this.down||Math.hypot(e.clientX-this.down[0],e.clientY-this.down[1])>5||this.dragging)return;
       const rect=canvas.getBoundingClientRect();
       this.ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),viewer.camera);
-      if(this.pending){this.placeFromRay(this.ray);return;}
+      if(this.pending){const spot=this.nearestSpot(e.clientX,e.clientY);if(spot)this.placeAtSpot(spot);else this.placeFromRay(this.ray);return;}
       const hits=this.ray.intersectObjects(this.items.map(x=>x.object),true);
       if(hits[0]){const item=this.items.find(x=>{let found=false;x.object.traverse(n=>{if(n===hits[0].object)found=true;});return found;});this.select(item);}
       else this.pickGraph(this.ray);
@@ -56,6 +56,7 @@ export class Placement {
       if(n.source!=='sam3-metric-depth'||!n.attributes)return n;
       const {attributes,...rest}=n;return {...rest,category_attributes:attributes};
     });
+    this.spots=graph.recommended_placements||[];this.spotUI();
     if(this.proxy){this.occlusion.remove(this.proxy);this.proxy.geometry.dispose();}
     const geometry=this.v.surface.geometry.clone(),transparent=new Uint8Array(graph.camera.width*graph.camera.height);
     const canvas=document.createElement('canvas');canvas.width=graph.camera.width;canvas.height=graph.camera.height;
@@ -76,12 +77,33 @@ export class Placement {
   }
   render(){
     if(!this.v.manifest)return;
+    this.animate();this.positionSpots();
     const r=this.v.renderer,size=r.getDrawingBufferSize(new THREE.Vector2());
     if(this.depthTarget.width!==size.x||this.depthTarget.height!==size.y)this.depthTarget.setSize(size.x,size.y);
     this.occlusionUniforms.depthSize.value.copy(size);
     r.setRenderTarget(this.depthTarget);r.clear();if(this.proxy)r.render(this.occlusion,this.v.camera);r.setRenderTarget(null);
     r.autoClear=false;r.clearDepth();
     r.outputColorSpace=THREE.SRGBColorSpace;r.render(this.objects,this.v.camera);r.outputColorSpace=THREE.LinearSRGBColorSpace;r.autoClear=true;
+  }
+  async prepareDemo(){return this.prepare({name:'새 화분',category:'small_prop',url:'/demo/planter.glb',normalization_applied:true,demo:true,provenance:'authored presentation prop'});}
+  spotUI(){
+    if(!this.spotLayer){this.spotLayer=document.createElement('div');this.spotLayer.className='spot-layer';this.v.container.append(this.spotLayer);}
+    this.spotLayer.replaceChildren();
+    for(const spot of this.spots){const b=document.createElement('button');b.className='placement-spot';b.dataset.spot=spot.id;b.innerHTML='<span>＋</span>';b.append(document.createTextNode(spot.label));
+      b.onclick=async()=>{try{if(!this.pending)await this.prepareDemo();this.placeAtSpot(spot);}catch(e){this.status(e.message,true);}};this.spotLayer.append(b);}
+  }
+  spotScreen(spot){const p=new THREE.Vector3(...spot.position).project(this.v.camera),r=this.v.renderer.domElement.getBoundingClientRect();return {x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2,visible:p.z>-1&&p.z<1&&Math.abs(p.x)<.95&&Math.abs(p.y)<.95};}
+  positionSpots(){if(!this.spotLayer)return;const rect=this.v.container.getBoundingClientRect();for(const spot of this.spots||[]){const b=this.spotLayer.querySelector(`[data-spot="${spot.id}"]`),p=this.spotScreen(spot);b.hidden=!p.visible||this.items.some(i=>i.spotId===spot.id);b.style.left=(p.x-rect.left)+'px';b.style.top=(p.y-rect.top)+'px';}}
+  nearestSpot(x,y){return (this.spots||[]).filter(s=>!this.items.some(i=>i.spotId===s.id)).map(s=>({s,p:this.spotScreen(s)})).filter(({s,p})=>p.visible&&Math.hypot(x-p.x,y-p.y)<s.radius_px).sort((a,b)=>Math.hypot(x-a.p.x,y-a.p.y)-Math.hypot(x-b.p.x,y-b.p.y))[0]?.s;}
+  placeAtSpot(spot){
+    if(!this.pending)return false;
+    if(this.pending.asset.demo){const size=new THREE.Box3().setFromObject(this.pending.object).getSize(new THREE.Vector3());this.pending.object.scale.multiplyScalar(spot.height_m/size.y);}
+    return this.commitPlacement({point:new THREE.Vector3(...spot.position),normal:new THREE.Vector3(...spot.normal)},spot);
+  }
+  animate(){
+    const now=performance.now();for(const item of this.items){if(!item.landing)continue;const t=Math.min(1,(now-item.landing.start)/650),ease=1-(1-t)**3;
+      item.object.position.lerpVectors(item.landing.from,item.landing.to,ease);item.object.position.y+=Math.sin(t*Math.PI)*.035;
+      item.shadow.material.opacity=.3+.7*ease;if(t===1){item.object.position.copy(item.landing.to);item.landing=null;}}
   }
   softenOcclusion(material){
     material.transparent=true;
@@ -117,6 +139,7 @@ export class Placement {
     $('#snap').onclick=()=>{this.snapSelected();this.update();};
     $('#remove').onclick=()=>{if(!this.selected)return;const item=this.selected;this.controls.detach();this.objects.remove(item.object,item.shadow);dispose(item.object);dispose(item.shadow);this.items=this.items.filter(x=>x!==item);this.selected=null;this.update();};
     $('#export').onclick=async()=>{try{const result=await this.export();download(result.image,'scene-original.png');download(new Blob([JSON.stringify(result.graph,null,2)],{type:'application/json'}),'scene-graph.json');this.status('원본 시점 이미지와 scene graph를 저장했습니다.');}catch(e){this.status(e.message,true);}};
+    const demo=document.createElement('button');demo.id='demoProp';demo.className='demo-prop';demo.textContent='＋ 시연 화분 선택';demo.onclick=()=>this.prepareDemo().catch(e=>this.status(e.message,true));$('#placement').prepend(demo);
   }
   async prepare(asset){
     const gltf=await new GLTFLoader().loadAsync(asset.url);
@@ -132,10 +155,12 @@ export class Placement {
     object.traverse(n=>{for(const material of Array.isArray(n.material)?n.material:[n.material])if(material?.color){
       if(settings.viewerBaseTint)material.color.set(settings.viewerBaseTint);
       material.color.multiplyScalar(gain);material.needsUpdate=true;
+      material.color.multiply(new THREE.Color(this.v.manifest.presentation?.object_tint||'#ffffff'));
       this.softenOcclusion(material);
     }});
     if(this.pending)dispose(this.pending.object);
     this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:new THREE.Vector3(0,1,0)};
+    if(asset.demo)this.pending.name='새 화분';
     $('#objectHint').textContent=asset.name+' · '+asset.category+' · 배치할 바닥이나 상판을 클릭하세요.';
     this.status('지지면을 클릭하여 물체를 배치하세요.');
   }
@@ -175,12 +200,16 @@ export class Placement {
   placeFromRay(ray){
     const h=this.supportHit(ray);
     if(!h){this.status('평평한 지지면이 확인되지 않았습니다. 다른 위치를 선택하세요.');return false;}
-    const item=this.pending;item.object.position.copy(h.point);item.normal.copy(h.normal);
+    return this.commitPlacement(h);
+  }
+  commitPlacement(h,spot=null){
+    const item=this.pending;item.object.position.copy(h.point);item.normal.copy(h.normal);item.supportTarget=spot?.support;item.spotId=spot?.id;
     item.supportPoint=h.point.clone();item.supportId='support-'+item.id;item.lastPosition=item.object.position.clone();
     this.measureSupport(item,h);
     if(!this.resolveCollision(item)){this.status('물체가 들어갈 빈 지지면을 찾지 못했습니다. 다른 위치를 선택하세요.');return false;}
     item.shadow=this.shadow(item);
     this.objects.add(item.object,item.shadow);this.items.push(item);this.pending=null;
+    item.landing={start:performance.now(),from:item.object.position.clone().add(new THREE.Vector3(-.035,.10,.02)),to:item.object.position.clone()};
     $('#objectHint').textContent=item.name+' 선택됨';this.select(item);this.update();this.status('물체를 배치했습니다. 기즈모로 조절하세요.');return true;
   }
   shadow(item){
@@ -196,7 +225,7 @@ export class Placement {
     const box=new THREE.Box3().setFromObject(item.object);box.min.y+=.035;box.max.y-=.01;
     // A wall mask can wrap several room walls; its AABB encloses empty room.
     // Structural surfaces are constrained by the depth support ray instead.
-    const obstacles=[...this.baseNodes.filter(n=>n.box&&!isStructure(n)),...this.items.filter(n=>n!==item)];
+    const obstacles=[...this.baseNodes.filter(n=>n.box&&!isStructure(n)&&n.id!==item.supportTarget&&!(item.spotId&&/shelf/.test(n.name))),...this.items.filter(n=>n!==item)];
     return obstacles.some(n=>{const b=n.object?new THREE.Box3().setFromObject(n.object):new THREE.Box3(new THREE.Vector3(...n.box.min),new THREE.Vector3(...n.box.max));return box.intersectsBox(b);});
   }
   resolveCollision(item){
@@ -267,11 +296,15 @@ export class Placement {
       const supportY=p.y-(n.x*(center.x-p.x)+n.z*(center.z-p.z))/n.y;
       if(Math.abs(item.box.min[1]-supportY)>.04)continue;
       const support=this.baseNodes.find(n=>isSupport(n)&&n.box&&item.supportPoint.x>=n.box.min[0]-.05&&item.supportPoint.x<=n.box.max[0]+.05&&item.supportPoint.z>=n.box.min[2]-.05&&item.supportPoint.z<=n.box.max[2]+.05&&Math.abs(item.supportPoint.y-supportHeight(n,item))<.05);
-      const target=support?.id||item.supportId;
+      const target=item.supportTarget||support?.id||item.supportId;
       contacts.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
     }
     this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes,contacts),geometry_status:'monocular-estimate'};
     if(this.baseGraph?.curated)this.graph.edges=[...this.baseGraph.edges,...contacts];
+    if(this.baseGraph?.curated){
+      this.graph.nodes=this.graph.nodes.filter(n=>n.source!=='depth-surface'||this.graph.edges.some(e=>e.target===n.id));
+      this.graph.summary=this.baseGraph.summary+this.items.map(i=>{const support=this.baseNodes.find(n=>n.id===i.supportTarget);return ' '+i.name+'은 '+(support?.label||'선택한 지지면')+' 위에 놓여 있습니다.';}).join('');
+    }
     this.graphUI();
   }
   graphUI(){
@@ -298,6 +331,7 @@ export class Placement {
   async export(){
     if(!this.v.manifest)throw Error('배경을 먼저 선택하세요.');
     const v=this.v,pos=v.camera.position.clone(),target=v.controls.target.clone(),visible=this.helper.visible,zoom=v.camera.zoom;
+    for(const item of this.items)if(item.landing){item.object.position.copy(item.landing.to);item.landing=null;}
     this.helper.visible=false;const highlight=this.boxHelper?.visible;if(this.boxHelper)this.boxHelper.visible=false;
     const surface=v.surface.visible;v.surface.visible=false;
     try{
