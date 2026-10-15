@@ -271,6 +271,7 @@ export class Placement {
       contacts.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
     }
     this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes,contacts),geometry_status:'monocular-estimate'};
+    if(this.baseGraph?.curated)this.graph.edges=[...this.baseGraph.edges,...contacts];
     this.graphUI();
   }
   graphUI(){

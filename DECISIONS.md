@@ -1,5 +1,8 @@
 # Decisions — 2026-10-15
 
+- New priority supersedes all accuracy plans below: curate four demo caches, polish interaction, record fallback videos. Stop review/precision/RANSAC work. Curated graphs are photo-guided authored content, not measured automatic predictions; preserve this provenance in JSON/docs while keeping the stage UI focused on the scene.
+- Four scenes have 6–10 selected objects, 8–12 obvious relations, natural Korean labels and two authored placement points each. Keep authored edges unchanged when displaying or adding a new object. Preserve automatic source graphs separately. No changes to original missing cases or external/prism-scan.
+
 - Follow-up priority order is pruning -> node cleanup -> mesh runtime recovery -> presentation -> five-photo human review.
 - Sparse relations are stored, not hidden by the UI. One fact per unordered node pair; inverse facts are displayed from either selected endpoint without duplicating JSON. Direction neighbors require mutual nearest-three eligibility; same-category pairs additionally require a size-relative gap <=0.75m. on prioritizes raycast evidence, then smallest vertical gap. Preserve pre-pruning graphs as graph-unpruned-v1.json in new local caches.
 - Node cleanup uses confidence >=0.60, >=max(150 pixels,0.02% image area), same-category 3D IoU >0.45 / containment >0.8 or mask IoU >0.65, and confidence*sqrt(area) ranking with 24-node budget. Overlap merging keeps the higher-confidence geometry and records aliases; it does not inflate noisy box unions. Mask containment >80% behind a glass/mirror region is suppressed and logged. This is a heuristic subject to human review, not confirmed reflection ground truth.
