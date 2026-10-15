@@ -13,7 +13,7 @@ async function load(url){
     $('#source').src=new URL(m.source,viewer.base);$('#comparison').src=$('#source').src;
     $('.source-card').hidden=false;$('#comparison').hidden=true;
     $('#details').replaceChildren();
-    for(const [name,value] of [['크기',m.camera.width+' × '+m.camera.height],['뷰 범위','±'+m.orbit_degrees+'°'],['단위','m (추정)'],['스케일 정렬',m.alignment.scale.toFixed(3)],['깊이 잔차',(m.alignment.median_relative_residual*100).toFixed(1)+'%']]){
+    for(const [name,value] of [['둘러보기','좌우로 드래그'],['물체 놓기','추천 위치 클릭'],['결과 저장','이미지 + 그래프']]){
       const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;$('#details').append(dt,dd);
     }
     status('캐시 로드 완료 · 드래그하여 둘러보세요');
@@ -23,7 +23,7 @@ async function load(url){
 async function refresh(){
   const res=await fetch('/scene-api/scenes');if(!res.ok)throw new Error('씬 서버에 연결할 수 없습니다.');
   const scenes=await res.json();$('#scenes').replaceChildren();
-  scenes.forEach(m=>{const b=document.createElement('button');b.className='scene-card';b.textContent=m.title;b.onclick=()=>load(m.url);$('#scenes').append(b);});
+  scenes.forEach(m=>{const b=document.createElement('button');b.className='scene-card';b.dataset.scene=m.id;b.textContent=m.title;b.onclick=()=>load(m.url);$('#scenes').append(b);});
   return scenes;
 }
 $('#reset').onclick=()=>viewer.reset();

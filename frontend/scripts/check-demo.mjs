@@ -17,6 +17,12 @@ try{
   assert(!row.overlap);assert(row.settled);rows.push(row);
   await page.screenshot({path:`../docs/screenshots/${phase}-${scene}-placement.png`});
   await page.locator('#tabGraph').click();await page.screenshot({path:`../docs/screenshots/${phase}-${scene}-graph.png`});
+  if(phase==='demo-stage4'){
+    const label=await page.evaluate(()=>window.sceneWorkspace.placement.baseNodes.find(n=>n.outline)?.label);
+    await page.getByRole('button',{name:label,exact:true}).hover();
+    assert.equal(await page.evaluate(()=>window.sceneWorkspace.placement.boxHelper?.type),'LineLoop');
+    await page.screenshot({path:`../docs/screenshots/${phase}-${scene}-outline.png`});
+  }
  }
  assert.deepEqual(errors,[]);await writeFile(`../docs/${phase}-browser.json`,JSON.stringify({rows,errors},null,2));console.log(JSON.stringify({rows,errors}));
 }finally{await browser.close();}

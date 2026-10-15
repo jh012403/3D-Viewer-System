@@ -1,5 +1,7 @@
 # Decisions — 2026-10-15
 
+- Graph presentation uses actual photo crops for background nodes and a rendered GLB thumbnail for inserted props. Support hierarchy controls vertical layout; non-support edges are subdued until selection. Hover does not rebuild the graph and uses cached silhouette points. Technical geometry metrics stay out of the demo UI.
+
 - Placement recommendations use photo-chosen cached points and scene-specific prop sizes/tint. Use a compact authored planter GLB for rehearsal so every scene has a visually appropriate prop; do not label it as an AI mesh-generation result. Preserve existing GLB imports. Snap within 85 screen pixels, ease down over 650ms, and retain authored background relationships.
 
 - Live path changes stop at obvious mistakes: no under, directed on, structural direction exclusions, no RGB labels. Remove the RANSAC invocation rather than continuing to tune it. Historical floor/evaluation tools remain archived but are not invoked. Reprocessing must skip curated demo caches.

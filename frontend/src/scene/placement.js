@@ -1,4 +1,4 @@
-import {drawGraph} from './graph-panel.js';
+import {drawGraph} from './graph-presentation.js';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {TransformControls} from 'three/addons/controls/TransformControls.js';
@@ -160,6 +160,7 @@ export class Placement {
     }});
     if(this.pending)dispose(this.pending.object);
     this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:new THREE.Vector3(0,1,0)};
+    asset.thumbnail=this.objectThumbnail(object);
     if(asset.demo)this.pending.name='새 화분';
     $('#objectHint').textContent=asset.name+' · '+asset.category+' · 배치할 바닥이나 상판을 클릭하세요.';
     this.status('지지면을 클릭하여 물체를 배치하세요.');
@@ -178,6 +179,16 @@ export class Placement {
     $('#refreshGenerated').onclick=refresh;
     $('#placeGenerated').onclick=()=>this.importGenerated($('#generatedAsset').value).catch(e=>this.status(e.message,true));
     refresh();
+  }
+  objectThumbnail(object){
+    const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(160,120);renderer.outputColorSpace=THREE.SRGBColorSpace;
+    const scene=new THREE.Scene(),copy=object.clone(true);scene.add(copy,new THREE.HemisphereLight(0xffffff,0x69755e,2));
+    const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(2,3,4);scene.add(light);
+    // Clone unmodified materials: the placement depth shader needs the main view.
+    copy.traverse(n=>{if(n.material)n.material=Array.isArray(n.material)?n.material.map(m=>m.clone()):n.material.clone();});
+    const box=new THREE.Box3().setFromObject(copy),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),d=Math.max(size.x,size.y,size.z);
+    const camera=new THREE.PerspectiveCamera(35,4/3,.001,100);camera.position.copy(center).add(new THREE.Vector3(d*1.1,d*.65,d*1.6));camera.lookAt(center);renderer.render(scene,camera);
+    const url=renderer.domElement.toDataURL('image/png');copy.traverse(n=>{for(const m of Array.isArray(n.material)?n.material:[n.material])m?.dispose();});renderer.dispose();renderer.forceContextLoss();return url;
   }
   async importGenerated(job){
     if(!job)return;
@@ -288,7 +299,7 @@ export class Placement {
       item.shadow.visible=Math.abs(box.min.y-item.supportPoint.y)<.1;
     }
     const supports=this.items.map(x=>({id:x.supportId,name:'지지면',source:'depth-surface',plane:{height_coefficients:[-x.normal.x/x.normal.y,-x.normal.z/x.normal.y,x.supportPoint.dot(x.normal)/x.normal.y],tolerance_m:.04},box:{min:x.supportBox.min.toArray(),max:x.supportBox.max.toArray()}}));
-    const nodes=[...this.baseNodes,...supports,...this.items.map(x=>({id:x.id,name:x.name,box:x.box,source:'placed-glb',asset:x.asset,transform:{position:x.object.position.toArray(),quaternion:x.object.quaternion.toArray(),scale:x.object.scale.toArray()}}))];
+    const nodes=[...this.baseNodes,...supports,...this.items.map(x=>({id:x.id,name:x.name,thumbnail:x.asset.thumbnail,box:x.box,source:'placed-glb',asset:x.asset,transform:{position:x.object.position.toArray(),quaternion:x.object.quaternion.toArray(),scale:x.object.scale.toArray()}}))];
     const contacts=[];
     for(const item of this.items){
       const center=new THREE.Box3().setFromObject(item.object).getCenter(new THREE.Vector3());
@@ -314,13 +325,19 @@ export class Placement {
       const item=this.items.find(x=>x.id===id);
       if(item){this.selectedGraphId=id;this.select(item);}
       else {const node=this.graph.nodes.find(x=>x.id===id);if(node)this.highlight(node);}
-    });
+    },{base:this.v.base,onHover:id=>this.outline(this.graph.nodes.find(n=>n.id===(id||this.selectedGraphId)))});
   }
 
+  outline(node){
+    if(this.boxHelper){this.objects.remove(this.boxHelper);dispose(this.boxHelper);this.boxHelper=null;}
+    if(!node)return;
+    if(node.outline?.length>2){const points=node.outline.map(p=>new THREE.Vector3(...p));const geometry=new THREE.BufferGeometry().setFromPoints(points);this.boxHelper=new THREE.LineLoop(geometry,new THREE.LineBasicMaterial({color:0xc9ffaf,depthTest:false,transparent:true,opacity:.95}));this.boxHelper.renderOrder=10;}
+    else if(node.box)this.boxHelper=new THREE.Box3Helper(new THREE.Box3(new THREE.Vector3(...node.box.min),new THREE.Vector3(...node.box.max)),0xb8dfa4);
+    if(this.boxHelper)this.objects.add(this.boxHelper);
+  }
   highlight(node){
     this.selectedGraphId=node.id;this.graphUI();
-    if(this.boxHelper){this.objects.remove(this.boxHelper);dispose(this.boxHelper);}
-    if(node.box){this.boxHelper=new THREE.Box3Helper(new THREE.Box3(new THREE.Vector3(...node.box.min),new THREE.Vector3(...node.box.max)),0xb8dfa4);this.objects.add(this.boxHelper);}
+    this.outline(node);
     this.status(node.name+' 선택됨');
   }
   pickGraph(ray){

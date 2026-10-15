@@ -1,6 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+Demo stage 4: thumbnail-card graph with vertical support hierarchy, animated new nodes/edges, photo-mask contours on hover/click, and authored Korean paragraph updated after placement. Sidebar expanded for readability and technical depth/alignment statistics removed from the product UI. Screenshots: docs/screenshots/demo-stage4-*-graph.png and *-outline.png. Next: processing presentation and MP4 rehearsals.
+
 Demo stage 3: authored planter GLB, two clickable recommendations per scene, nearby click snap, collision-safe placement, 650ms settling animation, transparent-surface exclusion, soft depth boundaries, scene tint and contact shadows. Curated base edges survive placement; new support edge and summary sentence are appended. Four-scene browser rehearsal passes without JS/WebGL errors. Screenshots: docs/screenshots/demo-stage3-*.png. Demo planter is explicitly an authored prop, not a TRELLIS result. Next: thumbnail graph/contours, processing stages, recordings.
 
 Demo stage 2: live graph generation no longer calls RANSAC; under generation is disabled entirely. Existing directed-on and structural direction exclusions retained; labels remain category/position only. Reprocessing skips authored caches. Shared JS smoke checks pass. Stage 2 screenshot reuses the unchanged stage-1 view (demo-stage2-live-rules.png); no inference/evaluation was run.
