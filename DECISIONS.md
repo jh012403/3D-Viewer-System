@@ -71,3 +71,7 @@
 - Export only asset boxes and inserted GLBs to glTF; background Gaussian splats remain excluded. JSON uses AAS-inspired identification/technicalData/operations submodels without conformance claims. Reports show the chosen clearance and current checks; PDF is produced through browser print. Exports hide manipulation/zone/safety overlays and use the original camera.
 
 - Process animation follows actual worker stages. The requested metric alignment title is accompanied by an explicit model-estimate explanation; no measured-scale claim. Cached loading remains distinct. Generic standalone mesh routes and APIs are unchanged; progress names and specification presentation are additive.
+
+- Generic mesh service uses native SAM3/FastVLM with the unchanged official TRELLIS implementation in WSL. Required runtime probes must pass; failed jobs remain failed even if an intermediate mesh exists. Accept the explicit shared output destination when a successful subprocess reports a path in a different OS namespace. Use portable file locking on Windows.
+- Vendor the generic model viewer and its decoders through an isolated pinned npm package, preserving the scene viewer's Three.js version. Do not fetch CDN modules at runtime.
+- Four final films may reuse one actual photo-to-mesh generation recording, explicitly disclosed in video captions and delivery notes. Edit long waiting intervals, never replace inference results with a fixture. Show height/clearance adjustments on screen before confirmation.

@@ -31,5 +31,6 @@ export default defineConfig({
     "/scene-cache":"http://127.0.0.1:8001",
     "/api":"http://localhost:8000",
     "/storage":"http://localhost:8000"
+    ,"/assets/trellis_demo_ready":"http://127.0.0.1:8000"
   }}
 });

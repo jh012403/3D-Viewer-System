@@ -1,0 +1,20 @@
+{
+  "selection": {
+    "id": "sam3_text_0000",
+    "error": null,
+    "job": "job_000002"
+  },
+  "job": "job_000002",
+  "errors": [
+    "Unexpected token 'export'"
+  ],
+  "external": [],
+  "standalone_download": {
+    "bytes": 17123724,
+    "glb_header": true,
+    "errors": [],
+    "external": []
+  },
+  "selection_video_seconds": 16.57080712890625,
+  "source_recording": "page@6d227f55eb23759bc9183ed52b7063b9.webm"
+}

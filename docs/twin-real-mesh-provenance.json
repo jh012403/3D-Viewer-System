@@ -1,0 +1,93 @@
+{
+  "job": "job_000002",
+  "input": "storage/twin_sources/intake-box.jpg",
+  "input_sha256": "2990061a3b955087f55fe425adc9fe3fac616560ec3f830833fb45ef8a1b36b7",
+  "trellis": {
+    "status": "completed",
+    "input_image": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000002/sam2_candidates/candidates/sam3_text_0000/segmented.png",
+    "processed_input_image": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000002/reconstruction/trellis/trellis_processed_input.png",
+    "output_mesh": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000002/reconstruction/trellis/trellis_raw.glb",
+    "model_path": "microsoft/TRELLIS.2-4B",
+    "device": "cuda",
+    "resolution": "1024",
+    "pipeline_type": "1024_cascade",
+    "runtime_lock_profile": "trellis2_official_lock_2026_04_22_v1",
+    "seed": 363987120,
+    "decimation_target": 500000,
+    "texture_size": 2048,
+    "official_app_parity": true,
+    "runtime_sec": 323.729,
+    "mesh_stats": {
+      "vertex_count": 343517,
+      "face_count": 479601,
+      "bbox_valid": true,
+      "bbox_size": [
+        0.9804157018661499,
+        0.6379685401916504,
+        0.9270503520965576
+      ]
+    }
+  },
+  "fastvlm": {
+    "vlm_status": "fastvlm_completed",
+    "vlm_parse_status": "invalid_json_fallback",
+    "normalized_category_id": "box",
+    "material_hints": [
+      "cardboard",
+      "paper"
+    ]
+  },
+  "stages": [
+    {
+      "stage": "asset_metadata",
+      "status": "completed",
+      "duration_sec": 43.415,
+      "mode": null,
+      "reason": null
+    },
+    {
+      "stage": "image_preprocess",
+      "status": "completed",
+      "duration_sec": 0.028,
+      "mode": "real",
+      "reason": null
+    },
+    {
+      "stage": "material_package",
+      "status": "completed",
+      "duration_sec": 3.245,
+      "mode": null,
+      "reason": null
+    },
+    {
+      "stage": "mesh_cleanup",
+      "status": "completed",
+      "duration_sec": 4.927,
+      "mode": "real",
+      "reason": null
+    },
+    {
+      "stage": "multiview_prior",
+      "status": "completed",
+      "duration_sec": 0.0,
+      "mode": "real",
+      "reason": null
+    },
+    {
+      "stage": "object_mesh",
+      "status": "completed",
+      "duration_sec": 362.44,
+      "mode": "real",
+      "reason": null
+    },
+    {
+      "stage": "quality_gate",
+      "status": "completed",
+      "duration_sec": 0.001,
+      "mode": null,
+      "reason": null
+    }
+  ],
+  "glb_sha256": "fdc4c5881550aa46d0f0e39bb24a2edc2ccd3ba725900ad6af3d41975d9263e0",
+  "glb_bytes": 17123724
+}

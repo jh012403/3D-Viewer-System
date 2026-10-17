@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterator
 
-import fcntl
+import portalocker
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 from backend.app.core.config import Settings, get_settings
@@ -22,12 +22,14 @@ def utcnow() -> datetime:
 def locked_file(path: Path) -> Iterator[Any]:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+", encoding="utf-8") as handle:
-        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
-        handle.seek(0)
-        yield handle
-        handle.flush()
-        os.fsync(handle.fileno())
-        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        portalocker.lock(handle, portalocker.LOCK_EX)
+        try:
+            handle.seek(0)
+            yield handle
+            handle.flush()
+            os.fsync(handle.fileno())
+        finally:
+            portalocker.unlock(handle)
 
 
 class JobStore:

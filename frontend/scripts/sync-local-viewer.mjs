@@ -1,0 +1,12 @@
+import {mkdir,copyFile,cp,readFile,writeFile} from 'node:fs/promises';
+const out=new URL('../public/vendor/',import.meta.url),modules=new URL('../vendor-package/node_modules/',import.meta.url);
+await mkdir(out,{recursive:true});
+await copyFile(new URL('@google/model-viewer/dist/model-viewer.min.js',modules),new URL('model-viewer.min.js',out));
+await copyFile(new URL('@google/model-viewer/LICENSE',modules),new URL('model-viewer-LICENSE',out));
+await cp(new URL('three/examples/jsm/libs/draco/gltf/',modules),new URL('draco/',out),{recursive:true});
+await cp(new URL('three/examples/jsm/libs/basis/',modules),new URL('basis/',out),{recursive:true});
+await copyFile(new URL('three/examples/jsm/libs/meshopt_decoder.module.js',modules),new URL('meshopt_decoder.module.js',out));
+const meshopt=await readFile(new URL('three/examples/jsm/libs/meshopt_decoder.module.js',modules),'utf8');
+await writeFile(new URL('meshopt_decoder.js',out),meshopt.replace(/export\s*\{\s*MeshoptDecoder\s*\};?/, 'self.MeshoptDecoder = MeshoptDecoder;'));
+await copyFile(new URL('three/LICENSE',modules),new URL('three-LICENSE',out));
+console.log('Local mesh viewer and compressed-model decoders synchronized');

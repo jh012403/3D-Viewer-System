@@ -1,5 +1,7 @@
 # Local scene workspace
 
+The current entry point is the [digital-twin control room](digital-twin.md), with four industrial scenes above the original four scenes. The original presentation workflow below remains available. The separate mesh service now uses a native Windows SAM3/FastVLM environment and a WSL TRELLIS runtime; see [runtime recovery](mesh-runtime-recovery.md) for the current verification checkpoint.
+
 ## Presentation
 
 Run `powershell -ExecutionPolicy Bypass -File scripts/start-scene.ps1` from the repository, then open http://127.0.0.1:5173/scene.html . Default demonstration mode reads local caches only. Select a background, orbit slightly, inspect the graph, select the demo planter, click a recommended position, then Save. Existing GLB import and move/rotate/scale controls remain available.
@@ -24,4 +26,4 @@ Reflection, occlusion, contact geometry, glass and hidden surfaces remain monocu
 
 Use Python 3.12 at `.runtime/scene312-env`, with local SHARP, DAV2, SAM3 checkouts and weights. Large caches are git-ignored; [cache hashes](scene-cache-manifest.json) record integrity. Curation sources are `pipelines/scene/curate_demo.py` and `assets/scene-demo/*/graph.json`.
 
-The original 23-24 cases, rm06_U01 and original 15 backgrounds have no backup. TRELLIS.2/FastVLM weights are downloaded, but the TRELLIS Linux runtime and full new-photo mesh generation still await Windows restart/WSL activation. See [mesh recovery checkpoint](mesh-runtime-recovery.md). The user controls reboot and GPU power settings; no reboot was performed for this presentation work.
+The original 23-24 cases, rm06_U01 and original 15 backgrounds have no backup. TRELLIS.2 now runs in WSL and FastVLM/SAM3 run natively; a fresh generic photo-to-GLB job and standalone download passed. See [mesh recovery checkpoint](mesh-runtime-recovery.md) for actual-run evidence and remaining model limitations. The user controls reboot and GPU power settings; no reboot was performed for this presentation work.

@@ -13,6 +13,8 @@ export class PlacementSimulation{
   this.panel=document.createElement('div');this.panel.id='simulation';this.panel.hidden=true;
   this.panel.innerHTML='<h3>신규 자산 반입 시뮬레이션</h3><p class="muted">위치를 검토한 뒤 반입을 확정하세요.</p><label>최소 이격 거리 (m)<input id="clearance" type="number" min="0" max="5" step="0.1" value="0.5"></label><div id="simulationResult" role="status">GLB를 선택하고 지지면을 클릭하세요.</div><div class="controls"><button id="findSafe">빈 위치 찾기</button><button id="confirmAsset" disabled>반입 확정</button><button id="cancelAsset">취소</button></div>';
   $('#placement').prepend(this.panel);
+  const sizeLabel=document.createElement('label');sizeLabel.textContent='반입 자산 높이 (m)';const sizeInput=document.createElement('input');sizeInput.id='assetHeight';sizeInput.type='number';sizeInput.min='.02';sizeInput.max='20';sizeInput.step='.01';sizeInput.value='1';sizeLabel.append(sizeInput);$('#simulationResult').before(sizeLabel);
+  sizeInput.onchange=()=>{const item=this.draft;if(!item)return;const target=Math.max(.02,Math.min(20,Number(sizeInput.value)||1)),box=new THREE.Box3().setFromObject(item.object),height=box.max.y-box.min.y;item.object.scale.multiplyScalar(target/height);item.object.updateMatrixWorld(true);const after=new THREE.Box3().setFromObject(item.object);item.object.position.y+=item.supportPoint.y-after.min.y;this.inspect();};
   $('#clearance').onchange=()=>{this.clearance=Math.max(0,Math.min(5,Number($('#clearance').value)||0));this.inspect();};
   $('#findSafe').onclick=()=>this.findSafe();$('#confirmAsset').onclick=()=>this.confirm();$('#cancelAsset').onclick=()=>this.cancel();
  }
@@ -20,6 +22,7 @@ export class PlacementSimulation{
   this.cancel();const p=this.p,item=p.pending;if(!item)return false;
   item.object.position.copy(hit.point);item.normal.copy(hit.normal);item.supportTarget=spot?.support;item.spotId=spot?.id;item.supportPoint=hit.point.clone();item.supportId='support-'+item.id;item.lastPosition=hit.point.clone();
   p.measureSupport(item,hit);item.shadow=p.shadow(item);p.objects.add(item.object,item.shadow);p.pending=null;this.draft=item;p.selected=item;p.selectedGraphId=null;p.controls.attach(item.object);
+  const size=new THREE.Box3().setFromObject(item.object).getSize(new THREE.Vector3());$('#assetHeight').value=size.y.toFixed(2);
   this.inspect();p.status('반입 미리보기입니다. 간섭과 이격 거리를 확인한 뒤 확정하세요.');return true;
  }
  obstacles(item){return [...this.p.baseNodes.filter(n=>n.box&&n.id!==item.supportTarget&&!/^(floor|wall|ceiling|table)$/.test(n.name)),...this.p.items.filter(i=>i!==item).map(i=>({id:i.id,name:i.name,box:this.box(i)}))];}
@@ -40,6 +43,10 @@ export class PlacementSimulation{
   $('#simulationResult').className='simulation-result '+state;
   $('#simulationResult').textContent=state==='collision'?`간섭 ${collisions.length}건 · ${collisions.map(n=>n.name).join(', ')}`:state==='clearance'?`이격 부족 ${near.length}건 · 최소 ${Math.min(...near.map(n=>n.distance_m)).toFixed(2)}m / 기준 ${this.clearance.toFixed(2)}m`:`간섭 없음 · 이격 ${this.clearance.toFixed(2)}m 기준 충족`;
   $('#confirmAsset').disabled=!this.draft||state!=='clear';
+  if(this.draft&&item.object.position.clone().sub(item.supportPoint).setY(0).length()>.04){
+   const hit=this.p.supportHit(new THREE.Raycaster(item.object.position.clone().add(new THREE.Vector3(0,.25,0)),new THREE.Vector3(0,-1,0),0,.5));
+   if(!hit){this.result.state='unsupported';$('#simulationResult').className='simulation-result clearance';$('#simulationResult').textContent='지지면 밖입니다. 추천 위치 또는 확인된 지지면으로 이동하세요.';$('#confirmAsset').disabled=true;}
+  }
   this.visuals();
  }
  visuals(){

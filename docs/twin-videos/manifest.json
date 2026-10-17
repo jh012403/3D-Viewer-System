@@ -1,0 +1,42 @@
+[
+  {
+    "scene": "twin-logistics",
+    "video": "twin-logistics.mp4",
+    "seconds": 81.1,
+    "frames": 2433,
+    "bytes": 5718467,
+    "sha256": "9de88812d7c71890d2a0ac65211bae1c715e565c690449defb87ffdcd3e1805e",
+    "generation_job": "job_000002",
+    "editing": "One actual generation reused in four videos; waiting intervals cut/accelerated."
+  },
+  {
+    "scene": "twin-laboratory",
+    "video": "twin-laboratory.mp4",
+    "seconds": 90.7,
+    "frames": 2721,
+    "bytes": 5352988,
+    "sha256": "b47907127dfd50f832aa0149be7d28f1219c66cc26c98a6b5ce54e5049389f61",
+    "generation_job": "job_000002",
+    "editing": "One actual generation reused in four videos; waiting intervals cut/accelerated."
+  },
+  {
+    "scene": "twin-workbench",
+    "video": "twin-workbench.mp4",
+    "seconds": 93.03,
+    "frames": 2791,
+    "bytes": 5317141,
+    "sha256": "da61b6b79f397f2a4b5899bd484762d3c22748135943774ddef4c287e69ab0d5",
+    "generation_job": "job_000002",
+    "editing": "One actual generation reused in four videos; waiting intervals cut/accelerated."
+  },
+  {
+    "scene": "twin-factory",
+    "video": "twin-factory.mp4",
+    "seconds": 79.33,
+    "frames": 2380,
+    "bytes": 5840487,
+    "sha256": "186ffa297023d8988af136139744677ac6bf9d8bf2ef2bf56055fd1acf398f1b",
+    "generation_job": "job_000002",
+    "editing": "One actual generation reused in four videos; waiting intervals cut/accelerated."
+  }
+]

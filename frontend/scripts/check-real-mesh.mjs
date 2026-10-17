@@ -1,0 +1,12 @@
+import {chromium} from '@playwright/test';import {writeFile,mkdir} from 'node:fs/promises';import assert from 'node:assert/strict';
+const b=await chromium.launch({headless:true,args:['--enable-gpu','--use-angle=d3d11']});await mkdir('../storage/twin_recordings',{recursive:true});
+const context=await b.newContext({viewport:{width:1800,height:1100},recordVideo:{dir:'../storage/twin_recordings',size:{width:1800,height:1100}}}),p=await context.newPage(),errors=[],external=[];
+p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url())&&!/127\.0\.0\.1|localhost/.test(r.url()))external.push(r.url());});
+try{
+await p.goto('http://127.0.0.1:5173/prismscan-v2.html');await p.evaluate(()=>nav('upload'));await p.locator('#fi').setInputFiles('../storage/twin_sources/intake-box.jpg');await p.locator('.seg-text-input').fill('cardboard box');await p.getByRole('button',{name:'객체 선택 후 생성',exact:true}).click();
+await p.waitForFunction(()=>S.seg?.selectedId||S.seg?.text?.error,{},{timeout:240000});const selection=await p.evaluate(()=>({id:S.seg.selectedId,error:S.seg.text?.error,job:S.pendingUpload?.job_id}));console.log('SELECTION',JSON.stringify(selection));assert(selection.id,selection.error);
+await p.screenshot({path:'../docs/screenshots/twin-real-mesh-selection.png'});await p.locator('#seg-start-selected').click();
+let last;for(let i=0;i<180;i++){await p.waitForTimeout(10000);const job=await p.evaluate(()=>({id:S.sid,status:S.job?.status,stage:S.job?.stage,error:S.job?.error,page:S.page}));if(JSON.stringify(job)!==last){console.log(JSON.stringify(job));last=JSON.stringify(job);}if(job.status==='failed')throw Error(job.error);if(job.status==='completed'&&job.page==='viewer')break;if(i===179)throw Error('Generation timed out');}
+await p.waitForFunction(()=>document.querySelector('model-viewer.result-model')?.loaded,{},{timeout:120000});await p.waitForTimeout(1500);await p.screenshot({path:'../docs/screenshots/twin-real-mesh-result.png'});
+const result=await p.evaluate(()=>({job:S.sid,result:S.result}));await writeFile('../docs/twin-real-mesh-run.json',JSON.stringify({selection,job:result.job,errors,external},null,2));console.log('READY',result.job);assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
+}finally{const video=p.video();await context.close();await video.saveAs('../storage/twin_recordings/real-mesh-validation.webm');await b.close();}

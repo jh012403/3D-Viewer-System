@@ -25,7 +25,7 @@ export class TwinDashboard{
   const oldLoad=this.p.loadGraph.bind(this.p);this.p.loadGraph=async(...args)=>{await oldLoad(...args);this.buildZones();this.render();$('#assetSpec')?.remove();};
   window.addEventListener('asset-register-changed',()=>this.render());
  }
- tab(panel){const inspector=$('.inspector');inspector.dataset.panel=panel;inspector.classList.toggle('graph-mode',panel==='graph');for(const id of ['tabAssets','tabGraph','tabEdit'])$('#'+id).classList.toggle('active',id===({assets:'tabAssets',graph:'tabGraph',edit:'tabEdit'}[panel]));this.v.resize?.();}
+ tab(panel){const inspector=$('.inspector');inspector.dataset.panel=panel;inspector.scrollTop=0;inspector.classList.toggle('graph-mode',panel==='graph');for(const id of ['tabAssets','tabGraph','tabEdit'])$('#'+id).classList.toggle('active',id===({assets:'tabAssets',graph:'tabGraph',edit:'tabEdit'}[panel]));this.v.resize?.();}
  render(){
   const graph=this.p.graph;if(!graph?.nodes)return;const nodes=graph.nodes.filter(n=>n.asset_id);
   $('#kpiTotal').textContent=String(nodes.length).padStart(2,'0');$('#kpiZones').textContent=(graph.zones||[]).map(z=>z.id.replace('Zone ','')+' '+occupancy(nodes,z)+'%').join(' / ')||'미지정';$('#kpiTime').textContent=new Date().toLocaleTimeString('ko-KR',{hour12:false});this.warningKpi();

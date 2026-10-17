@@ -576,9 +576,10 @@ function versionedViewerUrl(path){
 function ensureModelViewerLoaded(){
   if(window.customElements?.get('model-viewer')||modelViewerRequested)return;
   modelViewerRequested=true;
+  window.ModelViewerElement={dracoDecoderLocation:'/vendor/draco/',ktx2TranscoderLocation:'/vendor/basis/',meshoptDecoderLocation:'/vendor/meshopt_decoder.js'};
   const script=document.createElement('script');
   script.type='module';
-  script.src='https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+  script.src='/vendor/model-viewer.min.js';
   script.async=true;
   document.head.appendChild(script);
 }
@@ -2094,7 +2095,8 @@ function curatedInsight(assetMetadata,kind){
       usage:'Store shelf, desk clutter, kitchen set dressing.'
     }
   };
-  return defaults[category]?.[kind]||defaults.dinosaur[kind];
+  const generic={visual:assetMetadata.display_visual_summary||titleCaseWords(assetMetadata.specific_type||assetMetadata.asset_name||'Generated object'),material:assetMetadata.display_material_summary||'Material not specified',usage:assetMetadata.display_usage_summary||'Scene placement and asset layout.'};
+  return defaults[category]?.[kind]||generic[kind];
 }
 function insightText(assetMetadata,key,fallbackKind){
   const direct=firstText(assetMetadata[key]||assetMetadata[`display_${key}`]);

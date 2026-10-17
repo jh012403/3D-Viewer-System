@@ -509,6 +509,10 @@ def run_trellis(
             summary_payload = {"status": "invalid_summary_json"}
 
     mesh_path = Path(str(summary_payload.get("output_mesh") or output_mesh_path)).expanduser().resolve()
+    # A subprocess may run in WSL and report its /mnt/... path. The explicit
+    # output destination is shared with the host and remains authoritative.
+    if not mesh_path.is_file() and output_mesh_path.is_file():
+        mesh_path = output_mesh_path.resolve()
     if not mesh_path.exists():
         raise RuntimeError(f"TRELLIS finished without exporting a mesh under {work_dir}.")
 

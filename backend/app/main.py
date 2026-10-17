@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(router)
 app.mount("/storage", StaticFiles(directory=settings.storage_root), name="storage")
 app.mount("/assets", StaticFiles(directory=settings.project_root / "assets"), name="assets")
+app.mount("/vendor", StaticFiles(directory=settings.project_root / "frontend/public/vendor",check_dir=False), name="local-viewer-vendor")
 
 
 def _prismscan_html() -> FileResponse:

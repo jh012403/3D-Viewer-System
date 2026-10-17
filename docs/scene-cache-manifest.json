@@ -788,6 +788,258 @@
           "sha256": "4c1dfd76677061191c35d921a3b7242bed38d265bcddfc3aa48ae81c4b622394"
         }
       }
+    },
+    {
+      "id": "twin-factory",
+      "files": {
+        "background.ply": {
+          "bytes": 66061086,
+          "sha256": "41ea352603c00753404bd996807eb9747d646e2206d874eeb826f33166891bf5"
+        },
+        "depth.npy": {
+          "bytes": 4377728,
+          "sha256": "a41acd31340de72fcac0e53330cd4b7ed9d7ac67b6b278881cdce980e4d16a23"
+        },
+        "graph.json": {
+          "bytes": 10936,
+          "sha256": "e139da9ff8275e031d3de7f90177abd3049837db7440c44a804a100b501a540b"
+        },
+        "scene.json": {
+          "bytes": 1162,
+          "sha256": "39467066f97fbbd757e9bfe7dc02d0914e44d04811dee8af85fb10ced6dbe844"
+        },
+        "source.jpg": {
+          "bytes": 407026,
+          "sha256": "e094e824d86e4a18e78851dc3656a46e44a4d3d1775c78beee4994ed1a9ba63e"
+        },
+        "surface.json": {
+          "bytes": 4010058,
+          "sha256": "a37c8b29596f22937ce3b2113f51b85fcae810266b3be673107ca7f782a5ae66"
+        },
+        "thumbs/catwalk.jpg": {
+          "bytes": 5391,
+          "sha256": "d288e0f672099e010bf2a964969f7fd2709db56fb20d9cc46bdec01b687d94f7"
+        },
+        "thumbs/column.jpg": {
+          "bytes": 3157,
+          "sha256": "88f0daa6920b92fb869755315bc1c469182e0729c729a0569089ba4284b80e88"
+        },
+        "thumbs/door.jpg": {
+          "bytes": 5798,
+          "sha256": "f29f045b590ec0b8b8c3efd254b4a69b24819388adb5539cd7551ad8990aaab7"
+        },
+        "thumbs/duct.jpg": {
+          "bytes": 5050,
+          "sha256": "638c308c5b51d8260c10e0240044f66d57212463ab5de0848de3a4a3a53f31f2"
+        },
+        "thumbs/floor.jpg": {
+          "bytes": 2933,
+          "sha256": "6fe489653330411b5b0bb0175627212c0708e99cbafe58438c9e9f3edce08476"
+        },
+        "thumbs/guard1.jpg": {
+          "bytes": 3999,
+          "sha256": "2bcd84bb441874cde6c21826072324983986f1d01997381d76374454f84bd6ad"
+        },
+        "thumbs/guard2.jpg": {
+          "bytes": 3241,
+          "sha256": "2cca426214e06f3b7d19c0fe0b4e864392a3c2c649b7d4b5fe3c5e88e0dfee6c"
+        },
+        "thumbs/truck.jpg": {
+          "bytes": 5557,
+          "sha256": "d2ac65663fce7a91787d673813cb36c4eb5b9d57833af9b3c25213b6aeb5b6b4"
+        }
+      }
+    },
+    {
+      "id": "twin-laboratory",
+      "files": {
+        "background.ply": {
+          "bytes": 66061086,
+          "sha256": "572e2823e093035d32dfcb9c111b2f5389f5757d23d63e630e8b4e6645144a26"
+        },
+        "depth.npy": {
+          "bytes": 4372608,
+          "sha256": "b0f534902929a5f3987277e13707e7cd0d65228b8822e5a5ff11b310bbe61132"
+        },
+        "graph.json": {
+          "bytes": 11168,
+          "sha256": "190e47b310ab6fd217966521eaba1f3d6ab1edf93f6e8a359e7645fa04a5aede"
+        },
+        "masks/beaker.png": {
+          "bytes": 1670,
+          "sha256": "9fdf5dbdf32cabac955e87f14f83414b1ea4c7db0be69adb3a855b345c9da60f"
+        },
+        "masks/dish.png": {
+          "bytes": 1367,
+          "sha256": "c8c303942aabe204ff56be4c9a9c8ec8ed1d3c7a20911ec753e6ce7218344a38"
+        },
+        "masks/flask.png": {
+          "bytes": 1755,
+          "sha256": "5b34a69b72daaf783c482bfb6c9019b6c708c873259be4cc895b54003953b577"
+        },
+        "masks/small.png": {
+          "bytes": 1466,
+          "sha256": "99f9f36ad37024ab1d402d8e5e7c31627bdbd1c26f3ddfea8456943efdc3e3b1"
+        },
+        "scene.json": {
+          "bytes": 1165,
+          "sha256": "8a81f419030387f3730c5675af4fccf841f36c99a5e84f55724bb34ec805cce3"
+        },
+        "source.jpg": {
+          "bytes": 150640,
+          "sha256": "805be76495fa73284b5aef3f6877f47fe5ec198af82dc8be0ed678175dd014b4"
+        },
+        "surface.json": {
+          "bytes": 4341051,
+          "sha256": "3d7de3d1c5e26ea7a363a49d57ce2baac3b9c576deed371d5f1d445e1f43ba8e"
+        },
+        "thumbs/beaker.jpg": {
+          "bytes": 2739,
+          "sha256": "54779b97afcd4084e2eb2b29d95310999b47d962a1ef3315d85fc8283498550f"
+        },
+        "thumbs/bench.jpg": {
+          "bytes": 2864,
+          "sha256": "e8139bd6aba749ab1d2852e1a288ffc8690b22a2ca3f700f3269f609e3cdcbb8"
+        },
+        "thumbs/dish.jpg": {
+          "bytes": 3243,
+          "sha256": "41a7521a5a3a57a8e4d61dacc872eda5962cc6eafb831328f8759b9ec797e034"
+        },
+        "thumbs/flask.jpg": {
+          "bytes": 2131,
+          "sha256": "5923d16d0679b72bb00c2445b68ced1725d72ac6eb95e38b183948a27a4c7498"
+        },
+        "thumbs/microscope.jpg": {
+          "bytes": 3616,
+          "sha256": "2468c52c50f1cb3accfa4c6147207e5a453be9f6a3df4b73867d02e88d73a29e"
+        },
+        "thumbs/small.jpg": {
+          "bytes": 3416,
+          "sha256": "04a30de2bd85d2a469a726e0ec48831612461b0ba433a3629e7c3aea6480660b"
+        },
+        "thumbs/tubes.jpg": {
+          "bytes": 2197,
+          "sha256": "aded5106c95d4230ab81ce129e020b80f7878f12e105b8da9ff3a67a513038d4"
+        },
+        "thumbs/tweezers.jpg": {
+          "bytes": 2643,
+          "sha256": "49863daae61d8ced60c7cdf1186da039b097f29f968cc813ea19ca1c3ef1bd90"
+        }
+      }
+    },
+    {
+      "id": "twin-logistics",
+      "files": {
+        "background.ply": {
+          "bytes": 66061086,
+          "sha256": "84548f2db006d0b11e1d239e157eb73fc911a6f6ff87fd56828b786e9a90f94d"
+        },
+        "depth.npy": {
+          "bytes": 4367488,
+          "sha256": "0a1ad1d2e36b222e7ad2a4a4a4077b63c7bb407c5776a196adb932cf218e893c"
+        },
+        "graph.json": {
+          "bytes": 9766,
+          "sha256": "818f0eb2e9f46bc6ee5756a1bec2c3fbb12ef6500b417cc6779f4f5e3c72d0fd"
+        },
+        "scene.json": {
+          "bytes": 1160,
+          "sha256": "e2a9fbbace522ed17641d3d0e99b6866d487d82fcd2e651ada774b65eeb6c1b7"
+        },
+        "source.jpg": {
+          "bytes": 311680,
+          "sha256": "9ed91bbfc2fa842164eed60b036bbaffd300f6773895da9836c3eb199931eb7f"
+        },
+        "surface.json": {
+          "bytes": 4276734,
+          "sha256": "8149f4c6c942ded18917bc832aca79264c3b7f6fdd151f8495cf5f3ecd80cbcd"
+        },
+        "thumbs/cartons.jpg": {
+          "bytes": 3819,
+          "sha256": "cd732e4175530e43f15b19dfce245f73ad1ddf1a6d8e2c3b94cd55d625d9f8bf"
+        },
+        "thumbs/containers.jpg": {
+          "bytes": 5751,
+          "sha256": "cba4cad10ab555c748b312b89c7d6e21789d9f9cad3350a9bafba0605e4756d2"
+        },
+        "thumbs/floor.jpg": {
+          "bytes": 2711,
+          "sha256": "b33986a9ea105808dfd3e8b6087681b5d7f70514b0bec1ce2e491d944f1218cb"
+        },
+        "thumbs/jack.jpg": {
+          "bytes": 4419,
+          "sha256": "f999f029e76475cb90296473061f412a8f7de084d1e99d63e06f0b0759c55f82"
+        },
+        "thumbs/pallet.jpg": {
+          "bytes": 4641,
+          "sha256": "b815c68dc30c15aeab77bb862fa07697d533c6298f93f006550bd1c0fb14d207"
+        },
+        "thumbs/rack.jpg": {
+          "bytes": 6275,
+          "sha256": "a35745559da485b270af72c566ad189c92c2ba925274f34d098e492fe901b477"
+        },
+        "thumbs/upper.jpg": {
+          "bytes": 4322,
+          "sha256": "ba213f1c06f336ac4764d0eea487596bdd816a0e901404bbe99b6b2324257678"
+        }
+      }
+    },
+    {
+      "id": "twin-workbench",
+      "files": {
+        "background.ply": {
+          "bytes": 66061086,
+          "sha256": "89dd26178c231f1d562852a86048e0d6c33ebc973f1152ea3499f84a0184483b"
+        },
+        "depth.npy": {
+          "bytes": 4367488,
+          "sha256": "19ef7dd5d424798ea21b8bc4d0a525c20246fa9b1e05fe745a4d0668938595ae"
+        },
+        "graph.json": {
+          "bytes": 9845,
+          "sha256": "49e87db254a8b377d78ea3b4fe7f7379351d130085e710e6c06388629cf9e6bf"
+        },
+        "scene.json": {
+          "bytes": 1160,
+          "sha256": "c98e523a13e049a17a85aa132b53120e3da43ddf120d28344f034f8ea868e246"
+        },
+        "source.jpg": {
+          "bytes": 163325,
+          "sha256": "eabdae22110d5a503ac5beed393fd3f5df2a7dbf639199e403d389d7a623c652"
+        },
+        "surface.json": {
+          "bytes": 4324044,
+          "sha256": "9dc9ccd572e8af7a59926d78ea9ee60e720583adf0ef2939e81b0f43014fae10"
+        },
+        "thumbs/bench.jpg": {
+          "bytes": 2885,
+          "sha256": "02237359bb5ad33907fd379bd44d7f32237daa9944fc523043cf926e1c96b377"
+        },
+        "thumbs/instrument.jpg": {
+          "bytes": 2158,
+          "sha256": "61cfa08453a1eb85d49adf5dd85773ab3342d0c6b6b316d4541c9f2c568e2b91"
+        },
+        "thumbs/mount.jpg": {
+          "bytes": 3404,
+          "sha256": "633f697587d4c90405c90675d32c6b2efdc01a859b031443f5daada6ddf2655a"
+        },
+        "thumbs/pad.jpg": {
+          "bytes": 4051,
+          "sha256": "3110c5181ef3bcf62571040b7001058d806efff68a29cbafdd8106196a835b57"
+        },
+        "thumbs/scope.jpg": {
+          "bytes": 3184,
+          "sha256": "ddfae68520feb0d14b9ba83530c44747f312f1090417fe18b5addb18f926b78a"
+        },
+        "thumbs/stand.jpg": {
+          "bytes": 4663,
+          "sha256": "517d7c6d97ebda259f06b7ef30ba43f3797c2eba9ad1128f4794e52bad552c0b"
+        },
+        "thumbs/tray.jpg": {
+          "bytes": 2237,
+          "sha256": "c2dec3bf81965fca5daf721b3eb13b7cc8c58db992d89b2fd8d8121f96782cf3"
+        }
+      }
     }
   ]
 }

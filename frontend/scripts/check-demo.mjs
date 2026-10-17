@@ -10,6 +10,7 @@ try{
  for(const scene of ['sunroom','ceramics','d4f646fcc79650d6','hall']){
   await page.goto('http://127.0.0.1:5173/scene.html?scene='+scene);
   await page.waitForFunction(()=>window.sceneWorkspace?.placement?.proxy,{},{timeout:120000});
+  if(await page.locator('#tabAssets').count())await page.locator('#tabEdit').click();
   await page.locator('#demoProp').click();await page.waitForFunction(()=>window.sceneWorkspace.placement.pending);
   await page.locator(`[data-spot="${spot}"]`).click();
   await page.waitForFunction(()=>window.sceneWorkspace.placement.items.length===1,{},{timeout:20000});

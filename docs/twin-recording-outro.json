@@ -1,0 +1,357 @@
+{
+  "phase": "outro",
+  "job": "job_000002",
+  "rows": [
+    {
+      "scene": "twin-logistics",
+      "assets": 8,
+      "placed": 1,
+      "job": "job_000002",
+      "checks": [
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:13.624Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "collision",
+            "collisions": [
+              {
+                "id": "rack",
+                "name": "보관 랙",
+                "distance_m": 0
+              },
+              {
+                "id": "jack",
+                "name": "핸드 팔레트 트럭",
+                "distance_m": 0
+              }
+            ],
+            "near": [
+              {
+                "id": "pallet",
+                "name": "이송 팔레트",
+                "distance_m": 0.19184405455951858
+              },
+              {
+                "id": "cartons",
+                "name": "출고 상자 묶음",
+                "distance_m": 0.4136274212936903
+              },
+              {
+                "id": "containers",
+                "name": "보관 용기 묶음",
+                "distance_m": 0.02306469651181109
+              }
+            ],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:13.642Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:16.217Z"
+          }
+        },
+        {
+          "event": "asset-confirmed",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:17.910Z"
+          }
+        }
+      ]
+    },
+    {
+      "scene": "twin-laboratory",
+      "assets": 9,
+      "placed": 1,
+      "job": "job_000002",
+      "checks": [
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "collision",
+            "collisions": [
+              {
+                "id": "flask",
+                "name": "오른쪽 삼각 플라스크",
+                "distance_m": 0
+              },
+              {
+                "id": "small",
+                "name": "오른쪽 비커",
+                "distance_m": 0
+              },
+              {
+                "id": "tubes",
+                "name": "시험관 보관대",
+                "distance_m": 0
+              }
+            ],
+            "near": [
+              {
+                "id": "microscope",
+                "name": "광학 현미경",
+                "distance_m": 0.19613597466013022
+              },
+              {
+                "id": "beaker",
+                "name": "중앙 비커",
+                "distance_m": 0.18126184503047543
+              },
+              {
+                "id": "dish",
+                "name": "배양 접시",
+                "distance_m": 0.3820619127755688
+              }
+            ],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:36.492Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clearance",
+            "collisions": [],
+            "near": [
+              {
+                "id": "microscope",
+                "name": "광학 현미경",
+                "distance_m": 0.36350362766405586
+              },
+              {
+                "id": "beaker",
+                "name": "중앙 비커",
+                "distance_m": 0.36991587541708887
+              },
+              {
+                "id": "flask",
+                "name": "오른쪽 삼각 플라스크",
+                "distance_m": 0
+              },
+              {
+                "id": "small",
+                "name": "오른쪽 비커",
+                "distance_m": 0.13561109760047496
+              },
+              {
+                "id": "tubes",
+                "name": "시험관 보관대",
+                "distance_m": 0.009211512169249758
+              }
+            ],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:39.330Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.1,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:40.841Z"
+          }
+        },
+        {
+          "event": "asset-confirmed",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.1,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:35:42.551Z"
+          }
+        }
+      ]
+    },
+    {
+      "scene": "twin-workbench",
+      "assets": 8,
+      "placed": 1,
+      "job": "job_000002",
+      "checks": [
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "collision",
+            "collisions": [
+              {
+                "id": "stand",
+                "name": "고정 지그",
+                "distance_m": 0
+              },
+              {
+                "id": "pad",
+                "name": "작업 받침",
+                "distance_m": 0
+              }
+            ],
+            "near": [
+              {
+                "id": "instrument",
+                "name": "정밀 측정 장치",
+                "distance_m": 0.12516297507586516
+              },
+              {
+                "id": "scope",
+                "name": "작업용 광학 장치",
+                "distance_m": 0.08298679042162926
+              },
+              {
+                "id": "mount",
+                "name": "광학 장치 지지대",
+                "distance_m": 0.3176483689906396
+              }
+            ],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:01.773Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clearance",
+            "collisions": [],
+            "near": [
+              {
+                "id": "instrument",
+                "name": "정밀 측정 장치",
+                "distance_m": 0.2670059068290692
+              },
+              {
+                "id": "scope",
+                "name": "작업용 광학 장치",
+                "distance_m": 0.2718268013164625
+              },
+              {
+                "id": "stand",
+                "name": "고정 지그",
+                "distance_m": 0.03547580595136657
+              },
+              {
+                "id": "pad",
+                "name": "작업 받침",
+                "distance_m": 0.10312699194074637
+              }
+            ],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:04.463Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.1,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:14.486Z"
+          }
+        },
+        {
+          "event": "asset-confirmed",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.1,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:16.043Z"
+          }
+        }
+      ]
+    },
+    {
+      "scene": "twin-factory",
+      "assets": 9,
+      "placed": 1,
+      "job": "job_000002",
+      "checks": [
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "collision",
+            "collisions": [
+              {
+                "id": "guard1",
+                "name": "전면 안전 가드",
+                "distance_m": 0
+              }
+            ],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:34.107Z"
+          }
+        },
+        {
+          "event": "placement-check",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:36.854Z"
+          }
+        },
+        {
+          "event": "asset-confirmed",
+          "name": "cardboard_box",
+          "result": {
+            "state": "clear",
+            "collisions": [],
+            "near": [],
+            "required_clearance_m": 0.5,
+            "geometry": "estimated AABB",
+            "checked_at": "2026-10-17T07:36:38.362Z"
+          }
+        }
+      ]
+    }
+  ]
+}
