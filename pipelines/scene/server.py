@@ -14,11 +14,12 @@ app.mount("/scene-cache",StaticFiles(directory=CACHE),name="scene-cache")
 jobs={}; executor=ThreadPoolExecutor(max_workers=1)
 def progress_job(jid,message):
     stage=jobs[jid].get('stage',0)
-    if 'Depth Anything' in message:stage=0
-    elif 'SHARP' in message or 'Metric alignment' in message:stage=1
+    if 'Depth Anything' in message or 'SHARP' in message:stage=0
+    elif 'Metric alignment' in message:stage=1
     elif 'Object recognition' in message:stage=2
-    elif 'Relationship analysis' in message:stage=3
-    labels=['깊이 추정','3D 공간 복원','물체 인식','관계 분석']
+    elif 'Asset registration' in message:stage=3
+    elif 'Relationship analysis' in message:stage=4
+    labels=['현장 3D 복원','실측 스케일 정렬','자산 인식','자산 등록','관계 분석']
     jobs[jid].update(stage=stage,message=labels[stage])
 @app.get("/scene-api/health")
 def health():
@@ -79,6 +80,9 @@ def generated_asset(job_id):
     meta={}
     try:meta=json.loads((directory/'metadata.json').read_text(encoding='utf-8'))
     except (OSError,ValueError):pass
+    try:semantic=json.loads((directory/'asset_metadata.json').read_text(encoding='utf-8'));meta={**meta,**semantic}
+    except (OSError,ValueError):
+        if isinstance(meta.get('asset_metadata'),dict):meta={**meta,**meta['asset_metadata']}
     return path,{'job_id':job_id,'name':meta.get('asset_name') or meta.get('specific_type') or '생성 물체 '+job_id[:8],
         'category':meta.get('normalized_category_id') or meta.get('object_category') or 'unknown',
         'specification':{'kind':meta.get('specific_type') or meta.get('object_category') or 'unknown',

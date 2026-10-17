@@ -69,3 +69,5 @@
 - Control-room UI keeps a prominent independent generic photo-to-GLB link. KPI occupancy uses overlapping-footprint union, marked estimated. Status is registration state, not sensor health; no fake uptime is introduced. Asset register selection and graph selection share the existing 3D highlight path.
 
 - Export only asset boxes and inserted GLBs to glTF; background Gaussian splats remain excluded. JSON uses AAS-inspired identification/technicalData/operations submodels without conformance claims. Reports show the chosen clearance and current checks; PDF is produced through browser print. Exports hide manipulation/zone/safety overlays and use the original camera.
+
+- Process animation follows actual worker stages. The requested metric alignment title is accompanied by an explicit model-estimate explanation; no measured-scale claim. Cached loading remains distinct. Generic standalone mesh routes and APIs are unchanged; progress names and specification presentation are additive.

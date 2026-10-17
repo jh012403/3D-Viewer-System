@@ -121,6 +121,9 @@ def segment_batch(entries,progress=print):
         from .cleanup import clean_nodes
         write_json(out/'nodes-raw.json',nodes)
         nodes,cleanup=clean_nodes(nodes,out)
+        progress('Asset registration')
+        from .asset_registration import register
+        nodes=register(nodes)
         progress('Relationship analysis')
         edges=compute_relations(nodes)
         graph={"version":1,"status":"generated","nodes":nodes,"edges":edges,"camera":camera,

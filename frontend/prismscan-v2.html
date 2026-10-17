@@ -1168,10 +1168,10 @@ const SR=[
 ];
 const PS=[{l:'이미지 검증',s:'해상도·노출·품질 분석',i:'🔍'},{l:'특징점 추출',s:'SIFT/ORB 키포인트 검출',i:'📍'},{l:'카메라 교정',s:'SfM 포즈 추정 및 번들 조정',i:'📷'},{l:'포인트 클라우드',s:'밀집 재구성 (MVS)',i:'✦'},{l:'메쉬 생성',s:'Poisson Surface Reconstruction',i:'◈'},{l:'텍스처 매핑',s:'UV 언래핑 및 고해상도 베이킹',i:'🎨'},{l:'품질 검사',s:'공차 분석 · GD&T 자동 측정',i:'✅'}];
 const IMG_STEPS=[
-  {l:'업로드',s:'입력 이미지를 저장합니다',i:'📤'},
-  {l:'입력 준비',s:'원본 이미지를 3D 생성 엔진에 전달합니다',i:'🖼️'},
-  {l:'3D 생성',s:'이미지 기반 3D 메시를 생성합니다',i:'⚙️'},
-  {l:'메쉬 정리',s:'뷰어/다운로드 가능한 형태로 정리합니다',i:'🧩'},
+  {l:'물체 분리',s:'업로드한 사진에서 생성할 물체를 준비합니다',i:'📤'},
+  {l:'물체 이해',s:'선택한 물체의 종류·재질을 이해합니다',i:'🖼️'},
+  {l:'3D 메시 생성',s:'이미지 기반 3D 메시를 생성합니다',i:'⚙️'},
+  {l:'자산 사양 등록',s:'메시를 정리하고 사양·다운로드 결과를 등록합니다',i:'🧩'},
   {l:'결과 로드',s:'결과 메시를 브라우저에 로드합니다',i:'🧊'},
   {l:'완료',s:'결과를 확인할 수 있습니다',i:'✅'}
 ];
@@ -1191,7 +1191,9 @@ function resolveProgress(job){
   if(job.status==='queued')return{pct:18,si:0,label:'작업 대기열',desc:'앞 작업이 끝나면 워커가 자동으로 시작합니다.',failed:false,queued:true};
   if(job.status==='running'){
     if(job.type==='image_to_3d'){
-      if(job.stage==='image_preprocess_running'||job.stage==='image_preprocess_completed')return{pct:32,si:1,label:'입력 준비',desc:'원본 이미지를 3D 생성 엔진 입력으로 준비합니다.',failed:false};
+      if(job.stage==='image_preprocess_running'||job.stage==='image_preprocess_completed')return{pct:28,si:0,label:'물체 분리',desc:'선택 물체 또는 원본 입력을 생성 엔진에 준비합니다.',failed:false};
+      if(job.stage==='asset_metadata_running'||job.stage==='asset_metadata_completed')return{pct:42,si:1,label:'물체 이해',desc:'물체의 종류와 재질 정보를 분석합니다.',failed:false};
+      if(job.stage==='material_package_running'||job.stage==='material_package_completed')return{pct:93,si:3,label:'자산 사양 등록',desc:'메시와 재질 정보를 정리해 자산 사양을 등록합니다.',failed:false};
       if(job.stage==='multiview_prior_running')return{pct:52,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성하고 있습니다.',failed:false};
       if(job.stage==='object_mesh_running'||job.stage==='object_mesh_completed')return{pct:68,si:2,label:'3D 생성',desc:'이미지 기반 3D 메시를 생성하고 있습니다.',failed:false};
       if(job.stage==='mesh_cleanup_running')return{pct:86,si:3,label:'메쉬 후처리',desc:'아티팩트를 정리하고 결과를 저장합니다.',failed:false};
@@ -2110,6 +2112,9 @@ function shortInfo(value,max=120){
   return text.length>max?`${text.slice(0,max-1)}…`:text;
 }
 function renderAssetInsightPanel(assetMetadata,metadataUrl=''){
+  const normalization=S.result?.metadata?.mesh_cleanup?.scale_normalization||S.result?.material?.scale_normalization||{};
+  const extents=normalization.bbox_extents_after;
+  const dimensionText=Array.isArray(extents)&&extents.length===3?[extents[0],extents[2],extents[1]].map(v=>Number(v).toFixed(2)).join(' × ')+' m':'씬 가져오기 시 정규화';
   const category=displayCategory(assetMetadata);
   const type=displayAssetType(assetMetadata);
   const visual=shortInfo(insightText(assetMetadata,'visual_features','visual'));
@@ -2120,7 +2125,7 @@ function renderAssetInsightPanel(assetMetadata,metadataUrl=''){
     ?`<a class="asset-insight-link" href="${escAttr(resultUrl)}">FastVLM 이미지 설명 보기</a>`
     :'';
   return`
-    <div class="isec">에셋 정보</div>
+    <div class="isec">자산 사양 카드 · 모든 물체 지원</div>
     <div class="asset-insight">
       <div class="asset-insight-head">
         <div class="asset-insight-title">분류</div>
@@ -2137,6 +2142,7 @@ function renderAssetInsightPanel(assetMetadata,metadataUrl=''){
         <div class="asset-insight-item"><div class="asset-insight-label">쓰임</div><div class="asset-insight-value">${escAttr(usage)}</div></div>
       </div>
       ${fullMetadataLink}
+      <div class="asset-insight-item"><div class="asset-insight-label">추정 크기 W×D×H</div><div class="asset-insight-value">${escAttr(dimensionText)}</div></div>
     </div>`;
 }
 function fastVlmResultUrl(assetMetadata={},metadataUrl=''){
