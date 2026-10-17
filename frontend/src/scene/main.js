@@ -1,5 +1,6 @@
 import './style.css';
 import './twin.css';
+import './dashboard.css';
 import {SceneViewer} from './viewer.js';
 import {showProgress,finishProgress} from './progress.js';
 const $=(s)=>document.querySelector(s);
@@ -80,3 +81,5 @@ analyze.onclick=async()=>{
   for(;;){await new Promise(r=>setTimeout(r,1500));const r=await fetch('/scene-api/jobs/'+id);if(!r.ok)throw Error('작업 조회 실패');const job=await r.json();status(job.message);if(job.status==='failed')throw Error(job.message);if(job.status==='ready'){await viewer.placement.loadGraph(true);status('배경 그래프 생성 완료');break;}}
  }catch(e){status(e.message,true);}finally{analyze.disabled=false;}
 };
+import {TwinDashboard} from './dashboard.js';
+viewer.dashboard=new TwinDashboard(viewer);

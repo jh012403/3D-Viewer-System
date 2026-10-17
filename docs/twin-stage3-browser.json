@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "scene": "twin-logistics",
+      "nodes": 7,
+      "edges": 8,
+      "zones": 2,
+      "spots": 2
+    },
+    {
+      "scene": "twin-laboratory",
+      "nodes": 8,
+      "edges": 9,
+      "zones": 2,
+      "spots": 2
+    },
+    {
+      "scene": "twin-workbench",
+      "nodes": 7,
+      "edges": 8,
+      "zones": 2,
+      "spots": 2
+    },
+    {
+      "scene": "twin-factory",
+      "nodes": 8,
+      "edges": 9,
+      "zones": 2,
+      "spots": 2
+    }
+  ],
+  "errors": []
+}

@@ -74,3 +74,5 @@ Qwen3-VL-4B supplies category names/attributes only; SAM3 text masks plus DAV2 m
 Four local caches: sunroom, ceramics, hall, groceries d4f646fcc79650d6. New Python 3.12 full upload smoke test produced 1,179,648 splats and 24 graph nodes with zero browser errors. Cache tests verify zero external requests and zero inference POSTs. Graph refresh preservation, actual gizmo translation and original-camera PNG/JSON export pass. Build passes (large bundle warning only). Cache hashes: docs/scene-cache-manifest.json.
 
 Screenshots: docs/screenshots/stage2-sunroom.png, stage2-ceramics.png, stage2-hall.png and stage2-upload.png. Native Windows runtime ready; WSL reboot still pending. Existing TRELLIS.2/FastVLM weights and original missing assets remain absent. No power settings queried or modified.
+
+Digital-twin stage 3: operations shell with four KPIs, asset register/graph/placement tabs, clickable specification cards, projected ID toggle and floor zone lines. Occupancy is union of estimated asset footprints inside zone bounds; no sensor uptime/health data is fabricated. Four-scene ledger/selection/group-box/ID-toggle browser checks pass; screenshots twin-stage3-*.png.

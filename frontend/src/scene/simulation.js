@@ -83,6 +83,7 @@ export class PlacementSimulation{
   item.landing={start:performance.now(),from:item.object.position.clone().add(new THREE.Vector3(0,.08,0)),to:item.object.position.clone()};this.p.update();this.p.status('신규 자산 반입 확정 · 자산 대장과 관계 그래프를 갱신했습니다.');return true;
  }
  cancel(){
+  this.result=null;this.lastState=null;
   if(this.draft){this.p.controls.detach();this.p.objects.remove(this.draft.object,this.draft.shadow);this.p.selected=null;this.draft=null;}
   if(this.helper)this.helper.visible=false;if(this.safety)this.safety.visible=false;
   if($('#confirmAsset'))$('#confirmAsset').disabled=true;

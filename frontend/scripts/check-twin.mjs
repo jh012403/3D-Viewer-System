@@ -20,6 +20,13 @@ for(const scene of scenes){
  const row=await page.evaluate(()=>{const v=window.sceneWorkspace;return {scene:v.manifest.id,nodes:v.placement.graph.nodes.length,edges:v.placement.graph.edges.length,zones:v.placement.baseGraph.zones.length,spots:v.placement.spots.length};});
  assert(row.nodes>=6&&row.nodes<=10);assert(row.edges>=8&&row.edges<=12);rows.push(row);
  await page.screenshot({path:`../docs/screenshots/${stage}-${scene}.png`});
+ if(stage==='twin-stage3'){
+  assert.equal(await page.locator('#assetLedger tbody tr').count(),row.nodes);
+  await page.locator('#assetLedger tbody tr').nth(1).click();assert(await page.locator('#assetSpec').isVisible());
+  await page.locator('#tabGraph').click();assert(await page.locator('.zone-group').count()>=2);
+  await page.screenshot({path:`../docs/screenshots/${stage}-${scene}-graph.png`});
+  await page.locator('#toggleIds').click();assert(await page.locator('.asset-id-layer').isHidden());
+ }
 }
 assert.deepEqual(errors,[]);await writeFile(`../docs/${stage}-browser.json`,JSON.stringify({rows,errors},null,2));console.log(JSON.stringify({rows,errors}));
 }finally{await browser.close();}

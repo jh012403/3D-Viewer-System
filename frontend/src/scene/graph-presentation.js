@@ -1,8 +1,10 @@
+import {drawTwinGraph} from './twin-graph.js';
 const RELATIONS={on:'위에', 'attached to':'부착','next to':'옆에','left of':'왼쪽','right of':'오른쪽','in front of':'앞에',behind:'뒤에'};
 const NS='http://www.w3.org/2000/svg';
 function svgElement(tag,attributes={}){const node=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attributes))node.setAttribute(k,v);return node;}
 
 export function drawGraph(root,graph,selected,onSelect,{base,onHover}={}){
+ if(graph.digital_twin)return drawTwinGraph(root,graph,selected,onSelect,{base,onHover});
  const oldIds=root._nodeIds||new Set(),newIds=new Set(graph.nodes.map(n=>n.id));root._nodeIds=newIds;root.replaceChildren();
  const title=document.createElement('h2');title.textContent='공간의 이야기';root.append(title);
  const meta=document.createElement('p');meta.className='graph-meta';meta.textContent=`${graph.nodes.length}개의 물체가 ${graph.edges.length}개의 관계로 이어져 있습니다`;root.append(meta);

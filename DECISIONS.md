@@ -65,3 +65,5 @@
 - Asset IDs are stable within a scene and never recycled during a session. Status is registration workflow, not simulated sensor health. Coordinates and dimensions are estimates. FastVLM metadata augments any imported generated GLB without restricting categories. AAS-inspired exports do not claim AAS standard conformance.
 
 - Twin placement is a draft until explicit confirmation; collisions and insufficient clearance block confirmation. Default clearance is 0.5m, editable by the operator and recorded in reports. Small tabletop rehearsals visibly select 0.1m. Never silently shrink imported meshes or lower the threshold. The equipment-case fixture is authored, not an AI generation result. Search only visible horizontal depth surfaces inside the selected support's photo rectangle.
+
+- Control-room UI keeps a prominent independent generic photo-to-GLB link. KPI occupancy uses overlapping-footprint union, marked estimated. Status is registration state, not sensor health; no fake uptime is introduced. Asset register selection and graph selection share the existing 3D highlight path.
