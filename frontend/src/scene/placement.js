@@ -1,4 +1,5 @@
 import {drawGraph} from './graph-presentation.js';
+import {enrichAssets} from './asset-model.js';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {TransformControls} from 'three/addons/controls/TransformControls.js';
@@ -57,6 +58,7 @@ export class Placement {
       if(n.source!=='sam3-metric-depth'||!n.attributes)return n;
       const {attributes,...rest}=n;return {...rest,category_attributes:attributes};
     });
+    if(!preserveItems)this.assetRegistry={ids:new Map(),next:1};
     this.spots=graph.recommended_placements||[];this.spotUI();
     if(this.proxy){this.occlusion.remove(this.proxy);this.proxy.geometry.dispose();}
     const geometry=this.v.surface.geometry.clone(),transparent=new Uint8Array(graph.camera.width*graph.camera.height);
@@ -318,6 +320,7 @@ export class Placement {
       this.graph.nodes=this.graph.nodes.filter(n=>n.source!=='depth-surface'||this.graph.edges.some(e=>e.target===n.id));
       this.graph.summary=this.baseGraph.summary+this.items.map(i=>{const support=this.baseNodes.find(n=>n.id===i.supportTarget);return ' '+i.name+'은 '+(support?.label||'선택한 지지면')+' 위에 놓여 있습니다.';}).join('');
     }
+    enrichAssets(this.graph,this.assetRegistry||{ids:new Map(),next:1});
     this.graphUI();
   }
   graphUI(){
@@ -341,6 +344,13 @@ export class Placement {
     this.selectedGraphId=node.id;this.graphUI();
     this.outline(node);
     this.status(node.name+' 선택됨');
+    this.showAssetCard(node);
+  }
+  showAssetCard(node){
+    let card=document.querySelector('#assetSpec');if(!card){card=document.createElement('div');card.id='assetSpec';document.querySelector('#graph').after(card);}
+    card.replaceChildren();const title=document.createElement('h3');title.textContent=(node.asset_id||'신규 자산')+' · '+(node.asset_name||node.label||node.name);card.append(title);
+    const d=node.dimensions_m||{},rows=[['분류',node.classification],['구역',node.zone],['크기 W×D×H',`${d.width??0} × ${d.depth??0} × ${d.height??0} m (추정)`],['등록 출처',node.registration_source],['종류',node.specification?.kind],['재질',node.specification?.materials?.join(', ')||'미확인'],['상태',node.status]];
+    for(const [key,value]of rows){const p=document.createElement('p');p.textContent=key+' · '+(value||'미확인');card.append(p);}
   }
   pickGraph(ray){
     let closest=null,distance=Infinity;

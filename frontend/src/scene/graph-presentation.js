@@ -20,12 +20,13 @@ export function drawGraph(root,graph,selected,onSelect,{base,onHover}={}){
  const svg=svgElement('svg',{viewBox:`0 0 360 ${row*112+20}`,'aria-label':'물체 썸네일과 공간 관계 그래프',class:'graph-story'});
  const defs=svgElement('defs');svg.append(defs);
  for(const [i,e]of graph.edges.entries()){
+  const relationLabel=graph.digital_twin?(e.operational_label||RELATIONS[e.relation]||e.relation)+(e.distance_m!=null?` · ${e.distance_m.toFixed(2)}m`:''):(RELATIONS[e.relation]||e.relation);
   if(!points.has(e.source)||!points.has(e.target))continue;
   const [ax,ay]=points.get(e.source),[bx,by]=points.get(e.target),support=e.relation==='on'||e.relation==='attached to';
   const y1=ay+(by>=ay?39:-39),y2=by+(by>=ay?-39:39),bend=(y1+y2)/2;
   const path=svgElement('path',{d:support?`M${ax},${y1} C${ax},${bend} ${bx},${bend} ${bx},${y2}`:`M${ax},${ay} Q${(ax+bx)/2},${Math.min(ay,by)-66} ${bx},${by}`,class:'story-edge'+(e.source===selected||e.target===selected?' selected':'')+(!oldIds.has(e.source)&&oldIds.size?' arriving':''),'data-source':e.source,'data-target':e.target});
   const tip=svgElement('title');tip.textContent=`${byId.get(e.source)?.label||byId.get(e.source)?.name} · ${RELATIONS[e.relation]||e.relation} · ${byId.get(e.target)?.label||byId.get(e.target)?.name}`;path.append(tip);svg.append(path);
-  if(support||e.source===selected||e.target===selected){const label=svgElement('text',{x:(ax+bx)/2+5,y:support?bend:Math.min(ay,by)-34,class:'story-relation'});label.textContent=RELATIONS[e.relation]||e.relation;svg.append(label);}
+  if(support||e.source===selected||e.target===selected||graph.digital_twin){const label=svgElement('text',{x:(ax+bx)/2+5,y:support?bend:Math.min(ay,by)-34,class:'story-relation'});label.textContent=relationLabel;svg.append(label);}
  }
  for(const [i,n]of graph.nodes.entries()){
   const [x,y]=points.get(n.id),g=svgElement('g',{transform:`translate(${x} ${y})`,role:'button',tabindex:0,'aria-label':n.label||n.name,class:'story-node'+(n.id===selected?' selected':'')+(!oldIds.has(n.id)&&oldIds.size?' arriving':'')});

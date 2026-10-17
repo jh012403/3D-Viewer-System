@@ -10,6 +10,13 @@ for(const scene of scenes){
  await page.waitForFunction(()=>window.sceneWorkspace?.placement?.proxy&&!window.sceneWorkspace.loading,{},{timeout:120000});
  await page.waitForTimeout(500);
  if(stage==='twin-stage1')await page.locator('#tabGraph').click();
+ if(stage==='twin-stage2'){
+  await page.locator('#tabGraph').click();
+  await page.evaluate(()=>{const p=window.sceneWorkspace.placement;p.highlight(p.graph.nodes.find(n=>n.classification!=='구조물'));});
+  assert(await page.locator('#assetSpec').isVisible());
+  const assets=await page.evaluate(()=>window.sceneWorkspace.placement.graph.nodes.filter(n=>n.asset_id));
+  assert.equal(new Set(assets.map(n=>n.asset_id)).size,assets.length);assert(assets.every(n=>n.dimensions_m.width>0&&n.dimensions_m.height>0));
+ }
  const row=await page.evaluate(()=>{const v=window.sceneWorkspace;return {scene:v.manifest.id,nodes:v.placement.graph.nodes.length,edges:v.placement.graph.edges.length,zones:v.placement.baseGraph.zones.length,spots:v.placement.spots.length};});
  assert(row.nodes>=6&&row.nodes<=10);assert(row.edges>=8&&row.edges<=12);rows.push(row);
  await page.screenshot({path:`../docs/screenshots/${stage}-${scene}.png`});

@@ -80,7 +80,10 @@ def generated_asset(job_id):
     try:meta=json.loads((directory/'metadata.json').read_text(encoding='utf-8'))
     except (OSError,ValueError):pass
     return path,{'job_id':job_id,'name':meta.get('asset_name') or meta.get('specific_type') or '생성 물체 '+job_id[:8],
-        'category':meta.get('normalized_category_id') or meta.get('object_category') or 'unknown'}
+        'category':meta.get('normalized_category_id') or meta.get('object_category') or 'unknown',
+        'specification':{'kind':meta.get('specific_type') or meta.get('object_category') or 'unknown',
+          'materials':meta.get('material_hints') or [],'provider':meta.get('vlm_model') or meta.get('vlm_backend') or 'metadata',
+          'size_source':'existing mesh normalization policy; estimated, not measured'}}
 
 @app.get('/scene-api/generated-assets')
 def generated_assets():
@@ -99,7 +102,7 @@ async def import_generated_asset(job_id:str):
     material={}
     try:material=json.loads((path.parent/'material.json').read_text(encoding='utf-8'))
     except (OSError,ValueError):pass
-    return {**result,'source_job':job_id,'material_settings':{k:material[k] for k in ('viewerBaseTint','viewerExposureEV') if k in material}}
+    return {**result,'source_job':job_id,'specification':meta['specification'],'material_settings':{k:material[k] for k in ('viewerBaseTint','viewerExposureEV') if k in material}}
 
 @app.get("/scene-api/policies")
 def policies():

@@ -1,4 +1,5 @@
 import './style.css';
+import './twin.css';
 import {SceneViewer} from './viewer.js';
 import {showProgress,finishProgress} from './progress.js';
 const $=(s)=>document.querySelector(s);
