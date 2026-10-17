@@ -59,6 +59,8 @@ export {viewer,status,load};
 
 import {Placement} from './placement.js';
 viewer.placement=new Placement(viewer,status);
+import {PlacementSimulation} from './simulation.js';
+viewer.simulation=new PlacementSimulation(viewer.placement);
 
 const tabs=document.createElement('div');tabs.className='inspector-tabs';
 tabs.innerHTML='<button id="tabEdit" class="active">배치</button><button id="tabGraph">그래프</button>';

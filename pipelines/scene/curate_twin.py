@@ -16,7 +16,7 @@ PROFILES={
  ('containers','보관 용기 묶음','container',[658,154,1057,370],'적재물','A'),
  ('upper','상단 보관 상자','carton',[677,0,1085,162],'적재물','A')],
  edges=[('rack','on','floor'),('pallet','on','floor'),('cartons','on','pallet'),('jack','on','floor'),('containers','on','rack'),('upper','on','rack'),('pallet','next to','rack'),('jack','next to','pallet')],
- slots=[('입출고 대기 위치',.66,.84,'floor',.55),('통로 우측 대기 위치',.83,.78,'floor',.5)],
+ slots=[('입출고 대기 위치',.66,.90,'floor',.35),('통로 우측 대기 위치',.83,.88,'floor',.35)],
  summary='Zone A에는 보관 랙과 용기·상자가 정리되어 있고, Zone B에는 출고 팔레트와 핸드 팔레트 트럭이 있습니다. 전면 여유 공간에서 신규 자산 반입을 검토합니다.'),
 'twin-laboratory':dict(title='분석 실험실 · 시료 작업대',nodes=[
  ('bench','실험 작업대','table',[300,705,1275,850],'구조물','B'),
@@ -28,7 +28,7 @@ PROFILES={
  ('tweezers','핀셋','tweezers',[296,752,583,846],'공구','B'),
  ('tubes','시험관 보관대','test tube rack',[1082,265,1278,597],'설비','A')],
  edges=[('microscope','on','bench'),('beaker','on','bench'),('flask','on','bench'),('small','on','bench'),('dish','on','bench'),('tweezers','on','bench'),('tubes','on','bench'),('beaker','next to','small'),('dish','next to','tweezers')],
- slots=[('작업대 우측 여유 공간',.96,.76,'bench',.16),('작업대 앞쪽 여유 공간',.18,.94,'bench',.16)],
+ slots=[('작업대 우측 여유 공간',.94,.76,'bench',.10),('작업대 앞쪽 여유 공간',.12,.92,'bench',.10)],
  summary='현미경과 시험관 보관대를 Zone A로, 비커·플라스크·배양 접시가 놓인 시료 작업 영역을 Zone B로 구분했습니다. 신규 공구를 작업대 여유 공간에 배치할 수 있습니다.'),
 'twin-workbench':dict(title='정밀 작업대 · 조립 셀',nodes=[
  ('bench','목재 작업대','table',[15,697,740,850],'구조물','B'),
@@ -39,7 +39,7 @@ PROFILES={
  ('pad','작업 받침','work pad',[310,632,592,727],'공구','B'),
  ('mount','광학 장치 지지대','mount',[0,299,286,581],'구조물','A')],
  edges=[('instrument','on','bench'),('stand','on','bench'),('tray','on','bench'),('pad','on','bench'),('mount','on','bench'),('scope','attached to','mount'),('tray','next to','instrument'),('stand','next to','pad')],
- slots=[('전면 작업대 왼쪽',.16,.91,'bench',.20),('전면 작업대 중앙',.48,.94,'bench',.18)],
+ slots=[('전면 작업대 왼쪽',.16,.91,'bench',.12),('전면 작업대 중앙',.48,.94,'bench',.12)],
  summary='Zone A의 광학 장치와 정밀 측정 장치 옆에 부품 트레이가 있습니다. Zone B의 고정 지그와 작업 받침 앞쪽은 신규 공구 반입을 검토할 수 있는 영역입니다.'),
 'twin-factory':dict(title='산업 현장 · 차량 반입 홀',nodes=[
  ('floor','반입 홀 바닥','floor',[100,779,1278,852],'구조물','B'),
@@ -82,7 +82,7 @@ def run():
    zones.append(dict(id='Zone '+key,name='시설·보관' if key=='A' else '작업·반입',color=color,bounds={'min':[float(lo[0]),floor_y,float(lo[2])],'max':[float(hi[0]),floor_y,float(hi[2])]}))
   graph=dict(version=3,status='generated',curated=True,digital_twin=True,provenance='Photo-guided authored assets and relationships; monocular estimated dimensions, not surveyed measurements',nodes=nodes,edges=[dict(source=a,relation=r,target=b,method='editorial-demo') for a,r,b in p['edges']],camera=c,zones=zones,summary=p['summary'],recommended_placements=slots)
   write_json(out/'graph.json',graph)
-  m.update(title=p['title'],curated=True,digital_twin=True,sort_order=order,orbit_degrees=5,presentation={'vertical_degrees':.5,'preview_zoom':1.13,'orbit_radius_m':.12,'object_tint':'#ffffff'})
+  m.update(title=p['title'],curated=True,digital_twin=True,sort_order=order,orbit_degrees=5,presentation={'vertical_degrees':.5,'preview_zoom':1.06 if scene in ('twin-laboratory','twin-workbench') else 1.13,'orbit_radius_m':.12,'object_tint':'#ffffff'})
   write_json(out/'scene.json',m)
   tracked=ROOT/'assets/twin-demo'/scene;tracked.mkdir(parents=True,exist_ok=True);write_json(tracked/'graph.json',graph);write_json(tracked/'scene.json',m)
   rows.append(dict(scene=scene,title=p['title'],nodes=len(nodes),edges=len(graph['edges']),placements=slots))

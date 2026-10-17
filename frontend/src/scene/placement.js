@@ -88,7 +88,7 @@ export class Placement {
     r.autoClear=false;r.clearDepth();
     r.outputColorSpace=THREE.SRGBColorSpace;r.render(this.objects,this.v.camera);r.outputColorSpace=THREE.LinearSRGBColorSpace;r.autoClear=true;
   }
-  async prepareDemo(){return this.prepare({name:'새 화분',category:'small_prop',url:'/demo/planter.glb',normalization_applied:true,demo:true,provenance:'authored presentation prop'});}
+  async prepareDemo(){const twin=this.v.manifest?.digital_twin;return this.prepare({name:twin?'신규 장비 케이스':'새 화분',category:twin?'container':'small_prop',url:twin?'/demo/equipment-case.glb':'/demo/planter.glb',normalization_applied:true,demo:true,provenance:'authored presentation prop'});}
   spotUI(){
     if(!this.spotLayer){this.spotLayer=document.createElement('div');this.spotLayer.className='spot-layer';this.v.container.append(this.spotLayer);}
     this.spotLayer.replaceChildren();
@@ -164,7 +164,7 @@ export class Placement {
     if(this.pending)dispose(this.pending.object);
     this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:new THREE.Vector3(0,1,0)};
     asset.thumbnail=this.objectThumbnail(object);
-    if(asset.demo)this.pending.name='새 화분';
+    if(asset.demo)this.pending.name=asset.name;
     $('#objectHint').textContent=asset.name+' · '+asset.category+' · 배치할 바닥이나 상판을 클릭하세요.';
     this.status('지지면을 클릭하여 물체를 배치하세요.');
   }
