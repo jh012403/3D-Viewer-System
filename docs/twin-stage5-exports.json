@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "scene": "twin-logistics",
+      "files": [
+        "asset-register.json",
+        "asset-relations.json",
+        "asset-scene.gltf"
+      ],
+      "pages": 1,
+      "count": 8,
+      "assets": 8,
+      "background": true
+    },
+    {
+      "scene": "twin-laboratory",
+      "files": [
+        "asset-register.json",
+        "asset-relations.json",
+        "asset-scene.gltf"
+      ],
+      "pages": 1,
+      "count": 9,
+      "assets": 9,
+      "background": true
+    },
+    {
+      "scene": "twin-workbench",
+      "files": [
+        "asset-register.json",
+        "asset-relations.json",
+        "asset-scene.gltf"
+      ],
+      "pages": 1,
+      "count": 8,
+      "assets": 8,
+      "background": true
+    },
+    {
+      "scene": "twin-factory",
+      "files": [
+        "asset-register.json",
+        "asset-relations.json",
+        "asset-scene.gltf"
+      ],
+      "pages": 1,
+      "count": 9,
+      "assets": 9,
+      "background": true
+    }
+  ],
+  "errors": []
+}

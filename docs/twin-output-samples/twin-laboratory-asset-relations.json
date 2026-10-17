@@ -1,0 +1,867 @@
+{
+  "version": 1,
+  "status": "generated",
+  "curated": true,
+  "digital_twin": true,
+  "provenance": "Photo-guided authored assets and relationships; monocular estimated dimensions, not surveyed measurements",
+  "nodes": [
+    {
+      "id": "bench",
+      "label": "실험 작업대",
+      "name": "table",
+      "box": {
+        "min": [
+          -0.31635922357820506,
+          -0.4021837956102529,
+          -1.2510360050201417
+        ],
+        "max": [
+          0.5985752753402986,
+          -0.2561266915814937,
+          -0.8355795741081238
+        ]
+      },
+      "bbox2d": [
+        300,
+        705,
+        1275,
+        850
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/bench.jpg",
+      "outline": [
+        [
+          -0.38060633125976645,
+          -0.311201647324162,
+          -1.1943461894989014
+        ],
+        [
+          0.7204386437073598,
+          -0.3154046345679465,
+          -1.2104766368865967
+        ],
+        [
+          0.5767993384834367,
+          -0.38423011051731293,
+          -0.9691347479820251
+        ],
+        [
+          -0.32794052143929137,
+          -0.4079965899082949,
+          -1.0290803909301758
+        ]
+      ],
+      "asset_id": "EQ-0001",
+      "asset_name": "실험 작업대",
+      "classification": "구조물",
+      "center_m": [
+        0.141,
+        -0.329,
+        -1.043
+      ],
+      "dimensions_m": {
+        "width": 0.915,
+        "depth": 0.415,
+        "height": 0.146
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "table",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.915,
+          "depth": 0.415,
+          "height": 0.146
+        }
+      }
+    },
+    {
+      "id": "microscope",
+      "label": "광학 현미경",
+      "name": "microscope",
+      "box": {
+        "min": [
+          -0.9143633791981514,
+          -0.08154763638188997,
+          -3.737062120437622
+        ],
+        "max": [
+          0.28436796320722435,
+          1.1332045967764608,
+          -0.9522946286201477
+        ]
+      },
+      "bbox2d": [
+        329,
+        0,
+        837,
+        521
+      ],
+      "source": "editorial-photo-depth",
+      "category": "설비",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/microscope.jpg",
+      "outline": [
+        [
+          -1.0065215074566398,
+          1.3754715134053759,
+          -3.452993869781494
+        ],
+        [
+          0.6853078809593495,
+          1.4784560883640787,
+          -3.711527109146118
+        ],
+        [
+          0.32396691676431405,
+          -0.15458319886216002,
+          -1.7545573711395264
+        ],
+        [
+          -0.39521264773079606,
+          -0.11945334047168757,
+          -1.3558248281478882
+        ]
+      ],
+      "asset_id": "EQ-0002",
+      "asset_name": "광학 현미경",
+      "classification": "설비",
+      "center_m": [
+        -0.315,
+        0.526,
+        -2.345
+      ],
+      "dimensions_m": {
+        "width": 1.199,
+        "depth": 2.785,
+        "height": 1.215
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "microscope",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.199,
+          "depth": 2.785,
+          "height": 1.215
+        }
+      }
+    },
+    {
+      "id": "beaker",
+      "label": "중앙 비커",
+      "name": "glass beaker",
+      "box": {
+        "min": [
+          0.15497862235089546,
+          -0.38355655761529545,
+          -1.1168246746063233
+        ],
+        "max": [
+          0.29968321792312985,
+          -0.1846943104057901,
+          -0.6744010853767395
+        ]
+      },
+      "bbox2d": [
+        791,
+        595,
+        963,
+        850
+      ],
+      "source": "editorial-photo-depth",
+      "category": "공구",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/beaker.jpg",
+      "outline": [
+        [
+          0.214179259489649,
+          -0.23829215625338432,
+          -1.5133298635482788
+        ],
+        [
+          0.41317391111420504,
+          -0.2149016008272026,
+          -1.364782691001892
+        ],
+        [
+          0.30942021247178897,
+          -0.4052159438872035,
+          -1.0220668315887451
+        ],
+        [
+          0.12971885238111291,
+          -0.36338459971662757,
+          -0.9165565967559814
+        ]
+      ],
+      "mask": "masks/beaker.png",
+      "asset_id": "EQ-0003",
+      "asset_name": "중앙 비커",
+      "classification": "공구",
+      "center_m": [
+        0.227,
+        -0.284,
+        -0.896
+      ],
+      "dimensions_m": {
+        "width": 0.145,
+        "depth": 0.442,
+        "height": 0.199
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "glass beaker",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.145,
+          "depth": 0.442,
+          "height": 0.199
+        }
+      }
+    },
+    {
+      "id": "flask",
+      "label": "오른쪽 삼각 플라스크",
+      "name": "glass flask",
+      "box": {
+        "min": [
+          0.3637332456435609,
+          -0.2802049468414733,
+          -1.542616834640503
+        ],
+        "max": [
+          0.6460303938991467,
+          0.005137380642960231,
+          -0.9000037503242493
+        ]
+      },
+      "bbox2d": [
+        979,
+        411,
+        1104,
+        707
+      ],
+      "source": "editorial-photo-depth",
+      "category": "공구",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/flask.jpg",
+      "outline": [
+        [
+          0.4689844155574963,
+          0.022134957666430505,
+          -1.4760186672210693
+        ],
+        [
+          0.6387672820612184,
+          0.022026458002110977,
+          -1.4687836170196533
+        ],
+        [
+          0.48905553122197803,
+          -0.29511971711671087,
+          -1.1245359182357788
+        ],
+        [
+          0.36551612384117893,
+          -0.3019012232316522,
+          -1.1503764390945435
+        ]
+      ],
+      "mask": "masks/flask.png",
+      "asset_id": "EQ-0004",
+      "asset_name": "오른쪽 삼각 플라스크",
+      "classification": "공구",
+      "center_m": [
+        0.505,
+        -0.138,
+        -1.221
+      ],
+      "dimensions_m": {
+        "width": 0.282,
+        "depth": 0.643,
+        "height": 0.285
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "glass flask",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.282,
+          "depth": 0.643,
+          "height": 0.285
+        }
+      }
+    },
+    {
+      "id": "small",
+      "label": "오른쪽 비커",
+      "name": "glass beaker",
+      "box": {
+        "min": [
+          0.29752121899871475,
+          -0.3745642586029727,
+          -1.1809175634384155
+        ],
+        "max": [
+          0.5362990112968559,
+          -0.2438931824629873,
+          -0.8315691494941712
+        ]
+      },
+      "bbox2d": [
+        995,
+        698,
+        1152,
+        850
+      ],
+      "source": "editorial-photo-depth",
+      "category": "공구",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/small.jpg",
+      "outline": [
+        [
+          0.38082468153812016,
+          -0.29071405266712835,
+          -1.144537091255188
+        ],
+        [
+          0.5951991392391872,
+          -0.31503704440199165,
+          -1.2402963638305664
+        ],
+        [
+          0.4710658553247296,
+          -0.3891813609421106,
+          -0.9816231727600098
+        ],
+        [
+          0.33647701078661224,
+          -0.4009289452471464,
+          -1.011253833770752
+        ]
+      ],
+      "mask": "masks/small.png",
+      "asset_id": "EQ-0005",
+      "asset_name": "오른쪽 비커",
+      "classification": "공구",
+      "center_m": [
+        0.417,
+        -0.309,
+        -1.006
+      ],
+      "dimensions_m": {
+        "width": 0.239,
+        "depth": 0.349,
+        "height": 0.131
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "glass beaker",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.239,
+          "depth": 0.349,
+          "height": 0.131
+        }
+      }
+    },
+    {
+      "id": "dish",
+      "label": "배양 접시",
+      "name": "glass petri dish",
+      "box": {
+        "min": [
+          -0.07478917244338196,
+          -0.3944718345184647,
+          -1.2709744024276732
+        ],
+        "max": [
+          0.10513268005748175,
+          -0.35155484775162377,
+          -1.052827000617981
+        ]
+      },
+      "bbox2d": [
+        563,
+        727,
+        746,
+        830
+      ],
+      "source": "editorial-photo-depth",
+      "category": "공구",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/dish.jpg",
+      "outline": [
+        [
+          -0.0949005466149463,
+          -0.3697423894088817,
+          -1.314955711364746
+        ],
+        [
+          0.12683753865097425,
+          -0.3589741659933233,
+          -1.2766594886779785
+        ],
+        [
+          0.10392225741261242,
+          -0.39510065789889437,
+          -1.0460100173950195
+        ],
+        [
+          -0.074552234191927,
+          -0.39018896596554004,
+          -1.0330065488815308
+        ]
+      ],
+      "mask": "masks/dish.png",
+      "asset_id": "EQ-0006",
+      "asset_name": "배양 접시",
+      "classification": "공구",
+      "center_m": [
+        0.015,
+        -0.373,
+        -1.162
+      ],
+      "dimensions_m": {
+        "width": 0.18,
+        "depth": 0.218,
+        "height": 0.043
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "glass petri dish",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.18,
+          "depth": 0.218,
+          "height": 0.043
+        }
+      }
+    },
+    {
+      "id": "tweezers",
+      "label": "핀셋",
+      "name": "tweezers",
+      "box": {
+        "min": [
+          -0.3557143857173902,
+          -0.41389777401599764,
+          -1.2437228775024414
+        ],
+        "max": [
+          -0.07020192392310261,
+          -0.37985495226871135,
+          -1.0424062061309813
+        ]
+      },
+      "bbox2d": [
+        296,
+        752,
+        583,
+        846
+      ],
+      "source": "editorial-photo-depth",
+      "category": "공구",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/tweezers.jpg",
+      "outline": [
+        [
+          -0.40305338277955066,
+          -0.3807917133818429,
+          -1.2500784397125244
+        ],
+        [
+          -0.0628007273170763,
+          -0.3580743224219262,
+          -1.1755008697509766
+        ],
+        [
+          -0.052722187976647655,
+          -0.38755432916167315,
+          -0.9868512749671936
+        ],
+        [
+          -0.3336364507993082,
+          -0.4063769560607853,
+          -1.0347803831100464
+        ]
+      ],
+      "asset_id": "EQ-0007",
+      "asset_name": "핀셋",
+      "classification": "공구",
+      "center_m": [
+        -0.213,
+        -0.397,
+        -1.143
+      ],
+      "dimensions_m": {
+        "width": 0.286,
+        "depth": 0.201,
+        "height": 0.034
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "tweezers",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.286,
+          "depth": 0.201,
+          "height": 0.034
+        }
+      }
+    },
+    {
+      "id": "tubes",
+      "label": "시험관 보관대",
+      "name": "test tube rack",
+      "box": {
+        "min": [
+          0.6388213170732673,
+          -0.21762892116361618,
+          -3.1332771492004396
+        ],
+        "max": [
+          1.5024680983930696,
+          0.4360982675480572,
+          -1.4293000745773314
+        ]
+      },
+      "bbox2d": [
+        1082,
+        265,
+        1278,
+        597
+      ],
+      "source": "editorial-photo-depth",
+      "category": "설비",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/tubes.jpg",
+      "outline": [
+        [
+          1.3449962156644908,
+          0.49296241388608036,
+          -3.2466235160827637
+        ],
+        [
+          1.8591577288971624,
+          0.4728156233616017,
+          -3.1139378547668457
+        ],
+        [
+          0.8743489006730861,
+          -0.23334272074477966,
+          -1.464463233947754
+        ],
+        [
+          0.6012757591002957,
+          -0.2312599073462676,
+          -1.4513914585113525
+        ]
+      ],
+      "asset_id": "EQ-0008",
+      "asset_name": "시험관 보관대",
+      "classification": "설비",
+      "center_m": [
+        1.071,
+        0.109,
+        -2.281
+      ],
+      "dimensions_m": {
+        "width": 0.864,
+        "depth": 1.704,
+        "height": 0.654
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "test tube rack",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.864,
+          "depth": 1.704,
+          "height": 0.654
+        }
+      }
+    },
+    {
+      "id": "01e5e36d-2f36-478d-bf38-7d307a7f859d",
+      "name": "신규 장비 케이스",
+      "thumbnail": "data:image/png;base64,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",
+      "box": {
+        "min": [
+          -0.5995474960952442,
+          -0.3933084782421001,
+          -1.2161388846195638
+        ],
+        "max": [
+          -0.4705152352114751,
+          -0.29330847824210005,
+          -1.1242033976474177
+        ]
+      },
+      "source": "placed-glb",
+      "asset": {
+        "name": "신규 장비 케이스",
+        "category": "container",
+        "url": "/demo/equipment-case.glb",
+        "normalization_applied": true,
+        "demo": true,
+        "provenance": "authored presentation prop",
+        "thumbnail": "data:image/png;base64,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"
+      },
+      "transform": {
+        "position": [
+          -0.5350313656533596,
+          -0.3933084782421001,
+          -1.1721506118774414
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          0.29325513996123603,
+          0.29325513996123603,
+          0.29325513996123603
+        ]
+      },
+      "asset_id": "EQ-0009",
+      "asset_name": "신규 장비 케이스",
+      "classification": "적재물",
+      "center_m": [
+        -0.535,
+        -0.343,
+        -1.17
+      ],
+      "dimensions_m": {
+        "width": 0.129,
+        "depth": 0.092,
+        "height": 0.1
+      },
+      "zone": "Zone B",
+      "status": "등록됨",
+      "registration_source": "신규 반입",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "신규 장비 케이스",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.129,
+          "depth": 0.092,
+          "height": 0.1
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "microscope",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "beaker",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "flask",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "small",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "dish",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "tweezers",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "tubes",
+      "relation": "on",
+      "target": "bench",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "beaker",
+      "relation": "next to",
+      "target": "small",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0
+    },
+    {
+      "source": "dish",
+      "relation": "next to",
+      "target": "tweezers",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0
+    },
+    {
+      "source": "01e5e36d-2f36-478d-bf38-7d307a7f859d",
+      "target": "bench",
+      "relation": "on",
+      "method": "raycast-support-contact",
+      "operational_label": "적재",
+      "distance_m": null
+    }
+  ],
+  "camera": {
+    "width": 1280,
+    "height": 854,
+    "fx": 1066.923146248126,
+    "fy": 1066.923146248126,
+    "cx": 640,
+    "cy": 427,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "target": [
+      0,
+      0,
+      -1.5002293586730957
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ]
+  },
+  "zones": [
+    {
+      "id": "Zone A",
+      "name": "시설·보관",
+      "color": "#51c9db",
+      "bounds": {
+        "min": [
+          -0.9143633791981514,
+          -0.2803668993055539,
+          -3.737062120437622
+        ],
+        "max": [
+          1.5024680983930696,
+          -0.2803668993055539,
+          -0.9522946286201477
+        ]
+      }
+    },
+    {
+      "id": "Zone B",
+      "name": "작업·반입",
+      "color": "#f0bb64",
+      "bounds": {
+        "min": [
+          -0.9350313656533596,
+          -0.2803668993055539,
+          -1.7474321365356444
+        ],
+        "max": [
+          1.1110205599505714,
+          -0.2803668993055539,
+          -0.6744010853767395
+        ]
+      }
+    }
+  ],
+  "summary": "현미경과 시험관 보관대를 Zone A로, 비커·플라스크·배양 접시가 놓인 시료 작업 영역을 Zone B로 구분했습니다. 신규 공구를 작업대 여유 공간에 배치할 수 있습니다. 신규 장비 케이스은 실험 작업대 위에 놓여 있습니다.",
+  "recommended_placements": [
+    {
+      "id": "spot-0",
+      "label": "작업대 우측 여유 공간",
+      "position": [
+        0.7110205599505713,
+        -0.2803668993055539,
+        -1.3474321365356445
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "bench",
+      "height_m": 0.1,
+      "radius_px": 85
+    },
+    {
+      "id": "spot-1",
+      "label": "작업대 앞쪽 여유 공간",
+      "position": [
+        -0.5350313656533596,
+        -0.3933084782421001,
+        -1.1721506118774414
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "bench",
+      "height_m": 0.1,
+      "radius_px": 85
+    }
+  ],
+  "scene_id": "twin-laboratory",
+  "coordinate_system": "three-camera-x-right-y-up-z-back",
+  "units": "meters",
+  "geometry_status": "monocular-estimate"
+}

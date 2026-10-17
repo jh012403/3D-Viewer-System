@@ -1,0 +1,863 @@
+{
+  "version": 1,
+  "status": "generated",
+  "curated": true,
+  "digital_twin": true,
+  "provenance": "Photo-guided authored assets and relationships; monocular estimated dimensions, not surveyed measurements",
+  "nodes": [
+    {
+      "id": "floor",
+      "label": "반입 홀 바닥",
+      "name": "floor",
+      "box": {
+        "min": [
+          -2.4722578989881887,
+          -2.2136265078695945,
+          -6.643666439056396
+        ],
+        "max": [
+          2.691835378692843,
+          -1.713340552323657,
+          -4.377071514129638
+        ]
+      },
+      "bbox2d": [
+        100,
+        779,
+        1278,
+        852
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/floor.jpg",
+      "outline": [
+        [
+          -2.7740338094699517,
+          -1.8056905259790519,
+          -5.482868194580078
+        ],
+        [
+          3.979195811487086,
+          -2.1957414878143027,
+          -6.667233943939209
+        ],
+        [
+          2.5368598707399586,
+          -1.6905761618981356,
+          -4.2505669593811035
+        ],
+        [
+          -2.2515908975883336,
+          -1.7700006222708289,
+          -4.45026159286499
+        ]
+      ],
+      "asset_id": "EQ-0001",
+      "asset_name": "반입 홀 바닥",
+      "classification": "구조물",
+      "center_m": [
+        0.11,
+        -1.963,
+        -5.51
+      ],
+      "dimensions_m": {
+        "width": 5.164,
+        "depth": 2.267,
+        "height": 0.5
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "floor",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 5.164,
+          "depth": 2.267,
+          "height": 0.5
+        }
+      }
+    },
+    {
+      "id": "truck",
+      "label": "화물 차량",
+      "name": "truck",
+      "box": {
+        "min": [
+          7.230588395691779,
+          -4.606284136913403,
+          -19.95899353027344
+        ],
+        "max": [
+          11.480901532444049,
+          -2.527942578258731,
+          -19.14803871154785
+        ]
+      },
+      "bbox2d": [
+        1020,
+        558,
+        1279,
+        692
+      ],
+      "source": "editorial-photo-depth",
+      "category": "설비",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/truck.jpg",
+      "outline": [
+        [
+          7.103344131390055,
+          -2.4394379188063215,
+          -19.951202392578125
+        ],
+        [
+          11.621234576702623,
+          -2.380802374034054,
+          -19.47164535522461
+        ],
+        [
+          11.086093728700787,
+          -4.603252419531175,
+          -18.57500457763672
+        ],
+        [
+          7.1093744023804035,
+          -4.948498761656887,
+          -19.9681396484375
+        ]
+      ],
+      "asset_id": "EQ-0002",
+      "asset_name": "화물 차량",
+      "classification": "설비",
+      "center_m": [
+        9.356,
+        -3.567,
+        -19.554
+      ],
+      "dimensions_m": {
+        "width": 4.25,
+        "depth": 0.811,
+        "height": 2.078
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "truck",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 4.25,
+          "depth": 0.811,
+          "height": 2.078
+        }
+      }
+    },
+    {
+      "id": "guard1",
+      "label": "전면 안전 가드",
+      "name": "guard rail",
+      "box": {
+        "min": [
+          -0.742631139930491,
+          -3.4208551136973897,
+          -12.308622283935547
+        ],
+        "max": [
+          1.5008572993788136,
+          -1.9713595527141263,
+          -6.267680339813232
+        ]
+      },
+      "bbox2d": [
+        525,
+        698,
+        809,
+        790
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/guard1.jpg",
+      "outline": [
+        [
+          -0.9983062514473297,
+          -2.348189921882632,
+          -9.265220642089844
+        ],
+        [
+          2.623964352289106,
+          -4.199895605291142,
+          -16.571470260620117
+        ],
+        [
+          1.0144832812366447,
+          -2.176036623954341,
+          -6.406900882720947
+        ],
+        [
+          -0.6311338800100622,
+          -1.9894437522056307,
+          -5.857515811920166
+        ]
+      ],
+      "asset_id": "EQ-0003",
+      "asset_name": "전면 안전 가드",
+      "classification": "구조물",
+      "center_m": [
+        0.379,
+        -2.696,
+        -9.288
+      ],
+      "dimensions_m": {
+        "width": 2.243,
+        "depth": 6.041,
+        "height": 1.449
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "guard rail",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 2.243,
+          "depth": 6.041,
+          "height": 1.449
+        }
+      }
+    },
+    {
+      "id": "guard2",
+      "label": "안쪽 안전 가드",
+      "name": "guard rail",
+      "box": {
+        "min": [
+          3.3224647645949013,
+          -4.806086063145878,
+          -19.530213394165038
+        ],
+        "max": [
+          5.0218818551011415,
+          -3.9510335914057064,
+          -15.646592483520507
+        ]
+      },
+      "bbox2d": [
+        862,
+        679,
+        925,
+        714
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/guard2.jpg",
+      "outline": [
+        [
+          4.0093911036573395,
+          -4.54217055211631,
+          -19.27592658996582
+        ],
+        [
+          5.286778812999702,
+          -4.6653504262085095,
+          -19.798673629760742
+        ],
+        [
+          4.155311019928374,
+          -4.177181077927997,
+          -15.561393737792969
+        ],
+        [
+          3.267115724338961,
+          -4.216345292896902,
+          -15.707293510437012
+        ]
+      ],
+      "asset_id": "EQ-0004",
+      "asset_name": "안쪽 안전 가드",
+      "classification": "구조물",
+      "center_m": [
+        4.172,
+        -4.379,
+        -17.588
+      ],
+      "dimensions_m": {
+        "width": 1.699,
+        "depth": 3.884,
+        "height": 0.855
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "guard rail",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.699,
+          "depth": 3.884,
+          "height": 0.855
+        }
+      }
+    },
+    {
+      "id": "column",
+      "label": "전면 구조 기둥",
+      "name": "column",
+      "box": {
+        "min": [
+          -1.9645706363996995,
+          -2.2489007765615887,
+          -8.507043685913086
+        ],
+        "max": [
+          -1.2265761676876978,
+          2.692718518080494,
+          -6.975397033691406
+        ]
+      },
+      "bbox2d": [
+        350,
+        26,
+        480,
+        778
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/column.jpg",
+      "outline": [
+        [
+          -1.9539360361654152,
+          2.7051907535186697,
+          -7.191213130950928
+        ],
+        [
+          -1.4406909271759052,
+          3.6152337953820366,
+          -9.610382080078125
+        ],
+        [
+          -1.0576906603043805,
+          -2.3170036027292835,
+          -7.055511474609375
+        ],
+        [
+          -1.8788850658378253,
+          -2.2708593640557164,
+          -6.914997577667236
+        ]
+      ],
+      "asset_id": "EQ-0005",
+      "asset_name": "전면 구조 기둥",
+      "classification": "구조물",
+      "center_m": [
+        -1.596,
+        0.222,
+        -7.741
+      ],
+      "dimensions_m": {
+        "width": 0.738,
+        "depth": 1.532,
+        "height": 4.942
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "column",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.738,
+          "depth": 1.532,
+          "height": 4.942
+        }
+      }
+    },
+    {
+      "id": "door",
+      "label": "반입 셔터",
+      "name": "door",
+      "box": {
+        "min": [
+          -3.1699272092992166,
+          -1.9271903395261165,
+          -7.156345958709717
+        ],
+        "max": [
+          -2.1583056880720464,
+          2.234785193310902,
+          -5.321422920227051
+        ]
+      },
+      "bbox2d": [
+        0,
+        8,
+        329,
+        814
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/door.jpg",
+      "outline": [
+        [
+          -3.3273481668599993,
+          2.1878096488993255,
+          -5.566309928894043
+        ],
+        [
+          -2.0957571150187184,
+          2.8269135361747666,
+          -7.192342758178711
+        ],
+        [
+          -1.599052026179426,
+          -1.9872463283548172,
+          -5.487720966339111
+        ],
+        [
+          -3.0264633066901143,
+          -1.8334295737237134,
+          -5.062960624694824
+        ]
+      ],
+      "asset_id": "EQ-0006",
+      "asset_name": "반입 셔터",
+      "classification": "구조물",
+      "center_m": [
+        -2.664,
+        0.154,
+        -6.239
+      ],
+      "dimensions_m": {
+        "width": 1.012,
+        "depth": 1.835,
+        "height": 4.162
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "door",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.012,
+          "depth": 1.835,
+          "height": 4.162
+        }
+      }
+    },
+    {
+      "id": "duct",
+      "label": "환기 덕트",
+      "name": "duct",
+      "box": {
+        "min": [
+          -1.8775284058719606,
+          0.851392036095677,
+          -13.516521835327149
+        ],
+        "max": [
+          1.4125004341768508,
+          3.6564568636532346,
+          -7.552317428588867
+        ]
+      },
+      "bbox2d": [
+        355,
+        0,
+        791,
+        351
+      ],
+      "source": "editorial-photo-depth",
+      "category": "설비",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/duct.jpg",
+      "outline": [
+        [
+          -2.1055947893687326,
+          3.1436160802680555,
+          -7.8853278160095215
+        ],
+        [
+          1.4532206183065974,
+          4.0950024707911075,
+          -10.271749496459961
+        ],
+        [
+          2.0525405660754434,
+          1.039863266919016,
+          -14.507902145385742
+        ],
+        [
+          -1.995319519170011,
+          0.5355857656719504,
+          -7.472353458404541
+        ]
+      ],
+      "asset_id": "EQ-0007",
+      "asset_name": "환기 덕트",
+      "classification": "설비",
+      "center_m": [
+        -0.233,
+        2.254,
+        -10.534
+      ],
+      "dimensions_m": {
+        "width": 3.29,
+        "depth": 5.964,
+        "height": 2.805
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "duct",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 3.29,
+          "depth": 5.964,
+          "height": 2.805
+        }
+      }
+    },
+    {
+      "id": "catwalk",
+      "label": "상부 점검 통로",
+      "name": "platform",
+      "box": {
+        "min": [
+          2.61288257879637,
+          -1.1002179723265928,
+          -19.869644775390626
+        ],
+        "max": [
+          10.3387194123581,
+          1.622460004594422,
+          -13.364309272766114
+        ]
+      },
+      "bbox2d": [
+        800,
+        313,
+        1278,
+        502
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/catwalk.jpg",
+      "outline": [
+        [
+          2.1818809988941292,
+          1.5614085898336112,
+          -14.554620742797852
+        ],
+        [
+          10.218029198263013,
+          1.8366787177411539,
+          -17.120542526245117
+        ],
+        [
+          11.500295190251894,
+          -1.3450109759399782,
+          -19.26900863647461
+        ],
+        [
+          2.437410944289293,
+          -1.134919470934702,
+          -16.259178161621094
+        ]
+      ],
+      "asset_id": "EQ-0008",
+      "asset_name": "상부 점검 통로",
+      "classification": "구조물",
+      "center_m": [
+        6.476,
+        0.261,
+        -16.617
+      ],
+      "dimensions_m": {
+        "width": 7.726,
+        "depth": 6.505,
+        "height": 2.723
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "platform",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 7.726,
+          "depth": 6.505,
+          "height": 2.723
+        }
+      }
+    },
+    {
+      "id": "5a90632e-6f4b-4cd2-ae73-9ca68c997a69",
+      "name": "신규 장비 케이스",
+      "thumbnail": "data:image/png;base64,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",
+      "box": {
+        "min": [
+          3.566978484014481,
+          -2.998755734068552,
+          -10.782343769235773
+        ],
+        "max": [
+          4.663752701526518,
+          -2.1487557340685517,
+          -10.000892129972533
+        ]
+      },
+      "source": "placed-glb",
+      "asset": {
+        "name": "신규 장비 케이스",
+        "category": "container",
+        "url": "/demo/equipment-case.glb",
+        "normalization_applied": true,
+        "demo": true,
+        "provenance": "authored presentation prop",
+        "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAB4CAYAAAB1ovlvAAANGElEQVR4AeydTYwcRxXHX886++GsHa+99q5tEcAGYpMYJ1hBIFnyLMSSIxzbSMEhig8sHyc7kFtsCWl3EeIMnJ0LhByAo0GGyy5SuHAI5MDNkSIu3shgbK931/PRM7x/z9a4p2emu3qmu6q6u0bz3+ruqq569eq3VdVVvXaJ7Md6QKMHLIAanW+LJrIAWgq0esACqNX9tnALoGVAqwcsgFrdbwsvLoC27Y3wgAXQiGYorhEWwOK2vRE1twAa0QzFNcICWNy2N6LmFkAjmqG4RlgAi9f2RtXYAmhUcxTPGAtg8drcqBpbAI1qjuIZYwEsXpsbVWMLoFHNUTxjLIDFa3OjaqwUQKNqbo0xwgMWQCOaobhGWACL2/ZG1NwCyM1w5sKri2dffX35lW+/3oTOXXyjCZ1/7Y1loXMXLy1CF75zqSzEt9rvkB6wALYceKper5VrtRpB1WqFoEqlgmue6vXqguvWF2q1+rLrup4srC3nDfPTAhjhvUajQUKuWycIkAoBVIjPPVARerA26gxsC1SXgQ2D9eRLZ8oRZuQ22gKYUNM2mgyqTy7DWqtzj+qpFVZrFYJqtRrDWi8/eHC/fPfunQWi5kJCZmQuGwtgUk3WlM9IwMogyt+U05SFBfDslatl1iLkb1vXdXmYbcl/Xeo4BoQu95BSeeY8USEAZMjasJ29/PYyq0nN5jJrAXLGJjrmYJubGwQ9fLhG2w4eXhnZM7tS2rl7CXImJleIyC/q+MSAsOO+gp7kDsAo2LidO2Dj86hv2Rl/slzaMbUAjeyeKTOUQh6gfN4J6XgEpFElFig+0wCmAFvcpgfMnrogPXC4vK0l4nBlZPcses24+ec+fWYANAC2QWHwAKVSCWHPPLZtnyzztGCZ6+jNSTnElMFTzxsydDHK1FJUAh3xWw3Qaowecza2qW9jclzsL88BA/domciVMR/d0jKHnhjM5pYwd+2CNGB45k61A6gaNhNbiHtAGbPwS9cF6RacgLQFKH5hr1xt/fK2nvRxn0z+WtIoBdBU2JzRceInXEJP6IyN0/j0ftYs7XrmeS2NMmChAK2lZnOBe1Cody/6GFJvmEe7kKZPqgByxVq/iajw5bc7lj64vnAWB/q/ztgE8RMujUwfoNGZp2l8z6wn/ZYlbgF83lILUg9QhhW9J3pRCMcttXrSVCFNDcAzP3irXN3cWKhXHi3Uq5WyW69Tk/dVocTdmoUMtUwrB3JMC1AiMdwvP3r4wBOl8EkNQGFreyMfe6LVCtVY1UebxFB6KjqYmP9tm5gU7jIqfLS+RtAmh1AaxqUG4M3rv1gJMzh1MMMK1xCHYZ7XA71hHkP9yJ4D3hxz8lOfI0CowaS+RQI6CNBBfRMmEJEagIPalncwndEJgkyDDu0F6CBAB+GaT6Edii9drENlAJ768nM0f+40/fzKPP3wWy97OnRwliAZiyPB5M19zC8hmfxsmsceAHQQoIMex6R/lCqADjnt35oDe6do365Juv/gHu2bmvT03VdOE/ST712k8ydP0Nee+0LsGrfB9N5m5jkm3rmr8ByTwzoLb50ASih25jm/AdBBgA7SUd1UAexXoTo/EUPrGw8Jur16m3aMjdD6+nq/W2Jfb4OJhx8GscaqWjA9PwI6CNBB3sWIH47j/DUiyUDRqQLoOM4SObTkcE/479U7AxkY6yaJpY4igwnoIEAHxfJto9EezWLdF5E4VQDxJPyX679a/PM7v5w7efzoUj9bRkdHvaiZqZ1eONQPCQh75Z8jMLuqB+ggQAd1JQi54HAn8rff/8Z5/w/vZg/AkHr1iRqQnmBuCWWDbKPAxNwSQlrTBOggQAfFsW9i7z6aevaLc+//7teLce6LmzbVHtBvDG+CRP4GoQe89I2v0Iljz9BThz9P22dn6YnJARdpE4TQXw9xDDABHh50oBrPLyEcQ4iDRHqVIaCDAB0Ut2zANz69N+5tA6VXBmAc6wAiwNs+s98Dcfr4C14YG8qUIeyVPaCDACEEKCEcQ4iD4vhDNi2ggwAdJHufSAfwpo4+S6rgQ7lGADg2NgZbQgUgoTAoEd+VSS9KuhINfkE2e0AHAUIIUEI4hhAHDWIJoIMAHRQ3j37g3Vi8FjlqxS0rmF4ZgKfn5hKvDICDBJToIUVvKYZvxAcrnfS5LIS9ygV0ECCEACWEYwhxUK97AR0E6KBeacKubdv+JAE+lT1e0B5lAAYLDjvf/YQTFh0ZB+g6oPwSD+GHeE4505pTIj4yk5gJhoGwV1GADgKEkB/KBu/6DAMeygN4Oz79GaXDLcoNKlEAg5kHzz9YvUe3Hz4KXiaZIbjrppgXAJ0HJYP4FGtaAZRff/F5gr5/4WWCcPxZ3n6EYprvJQeQkMuL64P0eMgE4EnN8xxKfMSiHh+lAP5j9d7Snz5apXc+/JgQQgASgm23NlyCbv6nhtPUlTSUwV7wxaOH6Ku8vTgztYOenp2mUyeOeSACxp9dnm8fA0gozQqbMNz2ql+p10UV1wAdBAghQHdro8EANlQU37eMYaHshLBJ2IuGNjbWCVpbu++FOD64d5cHJvbDz/Ne+FuvfbOvXf4IvEPpP486Rq9nwnDby05tAPYyxtRrcaEMQhisF4CEKpVKG8Y7d+4QFEw7zDnAkxpuexXSbKay9xssygIY9IjkeReUW2uV4ul726AL6JLlhyUDeKb2eEG7lQJYKpGSiS1p+rSh5F2cI8eP+azo7BN9ER2Hn/xvreN8kJOJ6X3eky3mfIPc375HUVspBbBdudwdcIUiGYtMwJkM/gV4U0fU7mIMbu3jO5UC+O6b87nuASmSsfAEeFoW25CPmyj8KKvgiVopBVAUmuswnDGueniCl144Qjt5CN/Dc0qEYk6J4Z1v9r54gMEB4BsPvjQw3Bo+svWkYhsOBVkA4YWkFc4Yl9aZAE/DfLHrC+gmZvZ7QAJGQDk2u59Gd01RFofbrgryBeUAOg7leximrU8nY1sX/UFkAn/i9nGDHfgEA9i+kMaBwjZSDmAa/rJ5ZtcDygFsNkjJAqcRTRLZyUUmMKIaYUYMG6ccwGENztz9kYxFJpCvckIPIKRoFwQVswDCCykI+9x//GjVe/vn9lr3G0CdRcpB6Farnbfl4MwCmGIjCggB4vV/fkwIP/ik9ytpMOPWpks3/6vmTSCU11eKdkFQvnIA874dB6f2E3pCvBMJEK9/2AISx/+6t0l/f1DX/iZQP7vTvK4cwDQrk4m8faMtekgIUN6t+SIyUZFkjFQOYO6342TaJQ3WknoAYftV7YJwUaQcQBSaiLKeSRoQZtAnFkCdjRYTwnrNPgUn0ly8m1SM7bhEvKU4E4XbcKiZ7QHhBZ2K2QvqNDWNsrUAWKjtOJlWKzCEWgCUaZPCpZGA0K32WaRO8AlY5TYc2tgCCC+YIgkIicgUaxOxQwuARd4NiWw13RAq3IaDL7QAiIKtQjygG8IQ05KOsgAm7dGk8pOFMMn5X1K2x8hHC4B2O06yhWQhlMxOJpnKbTjYowVAFGwl6QEfhHYnRNJnNlnCHvBBmHDOndkp3gVB4bF6QNyQlOx2XExP9oIw4/M/eEAbgCjcynpAG4B2Oy4efK6KN2EU/jGSqL02AIUBNiy2ByyAxW7/ztor3gVB4doAtNtxcP8QysEDCGqvDUAUnh1ZS9PygAUwLc9mMF/VuyBwkTYAsR1n1wLRBHKq5/BfRUDNtQGIwn/75vzcez+ad0oOzVkY4RFJpTL/ay5Jlp5oMq0AipqgNwSMFkThEdVhc+nGT6+l+v8C96uREQAK4wSItlcUHlER6oMPtTMKQBgkJGBEr0hNWir6EO3Wtv4eJMnh16GVqJ5PtEdaobEAigoDxPd+PL9oh2jhkYRCwLd0dS6h3AbOxngA/TUDjADRDtF+rwxwbAh8sDxTAMJgIQEjhuiiD8/CJ9Kho+eJt5d9mQVQVEaAWIheMYn5X6k5p2PBWbRXMMw8gP4KCRhtr+j3iu/YMPhgWa4ARIUgAWKeesXh/x6kuWRSz4d2gswFENYlIAFjsXtFhk/TQnNUE+YeQOEAAWJme8WB53/mwoe2KQyAqKyQgBG9Yr4Xuc2GD+1RSABRcQgg5neR23z40AaFBhAOEAKMpi5yu3H/IAkLzYbO+YS/RWgBFJ7whQJGDNGZW+QGfAZssfncGXpoAQxxjwBR8YNLiEURURmDD7WxAMILEhIwGt0rGrTFJuFSL4kF0HOD/A8BonG9ooG7HDJetQDKeKlPGgFj2r1i5C5IRuGDWy2A8MKQEiDq6RV5uWXxWmb/3xUL4JDwBW8XMKJXTH+Rm+HLyHJL0E/i3AIoPJFwCBDTXeTOPnxweQeAuGCVvAcAY7KL3PmAD562AMILCiVgxBAtu8jtij9I8uzMD3yojgUQXtAgAWKsBxcsNGd8zhd0tQUw6BEN5wLG0F4R8GVoi03WjRZAWU8pSCdADPaKzkhp5UYO4YNL/w8AAP//X5WOYwAAAAZJREFUAwCRMCwkkseHQAAAAABJRU5ErkJggg=="
+      },
+      "transform": {
+        "position": [
+          4.1153655927705,
+          -2.998755734068552,
+          -10.408443450927734
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          2.492668689670506,
+          2.492668689670506,
+          2.492668689670506
+        ]
+      },
+      "asset_id": "EQ-0009",
+      "asset_name": "신규 장비 케이스",
+      "classification": "적재물",
+      "center_m": [
+        4.115,
+        -2.574,
+        -10.392
+      ],
+      "dimensions_m": {
+        "width": 1.097,
+        "depth": 0.781,
+        "height": 0.85
+      },
+      "zone": "Zone B",
+      "status": "등록됨",
+      "registration_source": "신규 반입",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "신규 장비 케이스",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.097,
+          "depth": 0.781,
+          "height": 0.85
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "truck",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "guard1",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "guard2",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "column",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "door",
+      "relation": "next to",
+      "target": "column",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0.194
+    },
+    {
+      "source": "guard1",
+      "relation": "next to",
+      "target": "column",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0.484
+    },
+    {
+      "source": "guard2",
+      "relation": "next to",
+      "target": "truck",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 2.209
+    },
+    {
+      "source": "duct",
+      "relation": "attached to",
+      "target": "column",
+      "method": "editorial-demo",
+      "operational_label": "부착",
+      "distance_m": null
+    },
+    {
+      "source": "catwalk",
+      "relation": "attached to",
+      "target": "column",
+      "method": "editorial-demo",
+      "operational_label": "부착",
+      "distance_m": null
+    },
+    {
+      "source": "5a90632e-6f4b-4cd2-ae73-9ca68c997a69",
+      "target": "floor",
+      "relation": "on",
+      "method": "raycast-support-contact",
+      "operational_label": "적재",
+      "distance_m": null
+    }
+  ],
+  "camera": {
+    "width": 1280,
+    "height": 855,
+    "fx": 1067.3081254330375,
+    "fy": 1067.3081254330375,
+    "cx": 640,
+    "cy": 427.5,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "target": [
+      0,
+      0,
+      -9.72577953338623
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ]
+  },
+  "zones": [
+    {
+      "id": "Zone A",
+      "name": "시설·보관",
+      "color": "#51c9db",
+      "bounds": {
+        "min": [
+          -3.1699272092992166,
+          -2.3134912544674524,
+          -19.869644775390626
+        ],
+        "max": [
+          10.3387194123581,
+          -2.3134912544674524,
+          -5.321422920227051
+        ]
+      }
+    },
+    {
+      "id": "Zone B",
+      "name": "작업·반입",
+      "color": "#f0bb64",
+      "bounds": {
+        "min": [
+          0.6098834862582602,
+          -2.3134912544674524,
+          -19.95899353027344
+        ],
+        "max": [
+          11.480901532444049,
+          -2.3134912544674524,
+          -6.6448160171508786
+        ]
+      }
+    }
+  ],
+  "summary": "Zone A는 셔터·기둥·안전 가드가 있는 시설 구역이며, Zone B는 화물 차량과 신규 자산의 반입 구역입니다. 안전 가드 앞쪽 여유 공간에 자산을 배치해 동선을 검토합니다. 신규 장비 케이스은 반입 홀 바닥 위에 놓여 있습니다.",
+  "recommended_placements": [
+    {
+      "id": "spot-0",
+      "label": "전면 반입 대기 위치",
+      "position": [
+        1.0098834862582602,
+        -2.3134912544674524,
+        -7.044816017150879
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "floor",
+      "height_m": 0.85,
+      "radius_px": 85
+    },
+    {
+      "id": "spot-1",
+      "label": "차량 앞쪽 대기 위치",
+      "position": [
+        4.1153655927705,
+        -2.998755734068552,
+        -10.408443450927734
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "floor",
+      "height_m": 0.7,
+      "radius_px": 85
+    }
+  ],
+  "scene_id": "twin-factory",
+  "coordinate_system": "three-camera-x-right-y-up-z-back",
+  "units": "meters",
+  "geometry_status": "monocular-estimate"
+}

@@ -1,0 +1,780 @@
+{
+  "version": 1,
+  "status": "generated",
+  "curated": true,
+  "digital_twin": true,
+  "provenance": "Photo-guided authored assets and relationships; monocular estimated dimensions, not surveyed measurements",
+  "nodes": [
+    {
+      "id": "floor",
+      "label": "바닥",
+      "name": "floor",
+      "box": {
+        "min": [
+          -0.8003382033456552,
+          -1.130617995900049,
+          -3.2887902069091797
+        ],
+        "max": [
+          1.5614147313507871,
+          -0.7993406603495017,
+          -2.9926093673706053
+        ]
+      },
+      "bbox2d": [
+        330,
+        680,
+        1220,
+        840
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/floor.jpg",
+      "outline": [
+        [
+          -0.9472556725421397,
+          -0.7746106870626852,
+          -3.2589826583862305
+        ],
+        [
+          1.7521509645067557,
+          -0.7658108094870044,
+          -3.221959352493286
+        ],
+        [
+          1.5814041529934453,
+          -1.1274320987289477,
+          -2.907979965209961
+        ],
+        [
+          -0.8664961134766272,
+          -1.1557940094276946,
+          -2.9811336994171143
+        ]
+      ],
+      "asset_id": "EQ-0001",
+      "asset_name": "바닥",
+      "classification": "구조물",
+      "center_m": [
+        0.381,
+        -0.965,
+        -3.141
+      ],
+      "dimensions_m": {
+        "width": 2.362,
+        "depth": 0.296,
+        "height": 0.331
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "floor",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 2.362,
+          "depth": 0.296,
+          "height": 0.331
+        }
+      }
+    },
+    {
+      "id": "rack",
+      "label": "보관 랙",
+      "name": "rack",
+      "box": {
+        "min": [
+          -0.5099826332442181,
+          -0.11539863918420942,
+          -4.265558738708496
+        ],
+        "max": [
+          1.8815000486820046,
+          1.2197858424477714,
+          -2.8076911640167235
+        ]
+      },
+      "bbox2d": [
+        480,
+        5,
+        1230,
+        485
+      ],
+      "source": "editorial-photo-depth",
+      "category": "구조물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/rack.jpg",
+      "outline": [
+        [
+          -0.5487434141179091,
+          1.4455959315668667,
+          -3.6578497886657715
+        ],
+        [
+          2.2063721034352035,
+          1.5762471891490482,
+          -3.9884419441223145
+        ],
+        [
+          2.0594339137403317,
+          -0.2041981083962871,
+          -3.722822904586792
+        ],
+        [
+          -0.5847816853703796,
+          -0.21381080371354505,
+          -3.898076057434082
+        ]
+      ],
+      "asset_id": "EQ-0002",
+      "asset_name": "보관 랙",
+      "classification": "구조물",
+      "center_m": [
+        0.686,
+        0.552,
+        -3.537
+      ],
+      "dimensions_m": {
+        "width": 2.391,
+        "depth": 1.458,
+        "height": 1.335
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "rack",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 2.391,
+          "depth": 1.458,
+          "height": 1.335
+        }
+      }
+    },
+    {
+      "id": "pallet",
+      "label": "이송 팔레트",
+      "name": "pallet",
+      "box": {
+        "min": [
+          -1.5194494081077796,
+          -0.002114010620693805,
+          -4.410862312316895
+        ],
+        "max": [
+          -0.517322672940434,
+          0.6060329607749673,
+          -3.71639497756958
+        ]
+      },
+      "bbox2d": [
+        225,
+        260,
+        520,
+        435
+      ],
+      "source": "editorial-photo-depth",
+      "category": "적재물",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/pallet.jpg",
+      "outline": [
+        [
+          -1.747198090556656,
+          0.700984294163092,
+          -4.490250587463379
+        ],
+        [
+          -0.4926658286157796,
+          0.6835738372043942,
+          -4.378725528717041
+        ],
+        [
+          -0.4590343424107934,
+          -0.0325149325874312,
+          -4.079814910888672
+        ],
+        [
+          -0.5994515475461916,
+          -0.012277923262994286,
+          -1.5405738353729248
+        ]
+      ],
+      "asset_id": "EQ-0003",
+      "asset_name": "이송 팔레트",
+      "classification": "적재물",
+      "center_m": [
+        -1.018,
+        0.302,
+        -4.064
+      ],
+      "dimensions_m": {
+        "width": 1.002,
+        "depth": 0.694,
+        "height": 0.608
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "pallet",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.002,
+          "depth": 0.694,
+          "height": 0.608
+        }
+      }
+    },
+    {
+      "id": "cartons",
+      "label": "출고 상자 묶음",
+      "name": "carton",
+      "box": {
+        "min": [
+          -1.5387474494448776,
+          0.22307473751817763,
+          -4.774383449554444
+        ],
+        "max": [
+          -0.7386762928145313,
+          1.0611235178648046,
+          -3.749947566986084
+        ]
+      },
+      "bbox2d": [
+        255,
+        175,
+        465,
+        375
+      ],
+      "source": "editorial-photo-depth",
+      "category": "적재물",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/cartons.jpg",
+      "outline": [
+        [
+          -1.731448658152943,
+          1.1310632143518575,
+          -4.796510696411133
+        ],
+        [
+          -0.7407425492796569,
+          1.0645528636790498,
+          -4.514459609985352
+        ],
+        [
+          -0.645141735519159,
+          0.18985599645278106,
+          -3.9318199157714844
+        ],
+        [
+          -1.4834051204023715,
+          0.19842951610577175,
+          -4.109373092651367
+        ]
+      ],
+      "asset_id": "EQ-0004",
+      "asset_name": "출고 상자 묶음",
+      "classification": "적재물",
+      "center_m": [
+        -1.139,
+        0.642,
+        -4.262
+      ],
+      "dimensions_m": {
+        "width": 0.8,
+        "depth": 1.024,
+        "height": 0.838
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "carton",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.8,
+          "depth": 1.024,
+          "height": 0.838
+        }
+      }
+    },
+    {
+      "id": "jack",
+      "label": "핸드 팔레트 트럭",
+      "name": "pallet truck",
+      "box": {
+        "min": [
+          -0.8516958203921737,
+          -0.1000014773392594,
+          -4.205068473815918
+        ],
+        "max": [
+          -0.2945439550637516,
+          0.30386098153414437,
+          -3.592500162124633
+        ]
+      },
+      "bbox2d": [
+        402,
+        342,
+        564,
+        464
+      ],
+      "source": "editorial-photo-depth",
+      "category": "설비",
+      "zone": "Zone B",
+      "thumbnail": "thumbs/jack.jpg",
+      "outline": [
+        [
+          -0.8773433342180897,
+          0.3114937468127251,
+          -3.931598424911499
+        ],
+        [
+          -0.305534709994465,
+          0.3397063551912144,
+          -4.287691116333008
+        ],
+        [
+          -0.20743595608728757,
+          -0.10235326780622742,
+          -2.91103196144104
+        ],
+        [
+          -0.8775107657561203,
+          -0.1382632509069517,
+          -3.9323487281799316
+        ]
+      ],
+      "asset_id": "EQ-0005",
+      "asset_name": "핸드 팔레트 트럭",
+      "classification": "설비",
+      "center_m": [
+        -0.573,
+        0.102,
+        -3.899
+      ],
+      "dimensions_m": {
+        "width": 0.557,
+        "depth": 0.613,
+        "height": 0.404
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "pallet truck",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.557,
+          "depth": 0.613,
+          "height": 0.404
+        }
+      }
+    },
+    {
+      "id": "containers",
+      "label": "보관 용기 묶음",
+      "name": "container",
+      "box": {
+        "min": [
+          0.10984111777638708,
+          0.22728935475377432,
+          -4.165656108856201
+        ],
+        "max": [
+          1.4769942599352592,
+          0.795659460309655,
+          -2.9056154823303224
+        ]
+      },
+      "bbox2d": [
+        658,
+        154,
+        1057,
+        370
+      ],
+      "source": "editorial-photo-depth",
+      "category": "적재물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/containers.jpg",
+      "outline": [
+        [
+          0.05368969352323142,
+          0.8128023047266978,
+          -3.1812291145324707
+        ],
+        [
+          1.4131839891835831,
+          0.9234835420923895,
+          -3.614424705505371
+        ],
+        [
+          1.643513837297659,
+          0.222682330473184,
+          -4.203526973724365
+        ],
+        [
+          0.06653912618703824,
+          0.20885892386487,
+          -3.9425854682922363
+        ]
+      ],
+      "asset_id": "EQ-0006",
+      "asset_name": "보관 용기 묶음",
+      "classification": "적재물",
+      "center_m": [
+        0.793,
+        0.511,
+        -3.536
+      ],
+      "dimensions_m": {
+        "width": 1.367,
+        "depth": 1.26,
+        "height": 0.568
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "container",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.367,
+          "depth": 1.26,
+          "height": 0.568
+        }
+      }
+    },
+    {
+      "id": "upper",
+      "label": "상단 보관 상자",
+      "name": "carton",
+      "box": {
+        "min": [
+          0.14889853386546414,
+          0.7558159394037866,
+          -3.208270254135132
+        ],
+        "max": [
+          1.2114267068228148,
+          1.0718585232660838,
+          -2.5615622711181643
+        ]
+      },
+      "bbox2d": [
+        677,
+        0,
+        1085,
+        162
+      ],
+      "source": "editorial-photo-depth",
+      "category": "적재물",
+      "zone": "Zone A",
+      "thumbnail": "thumbs/upper.jpg",
+      "outline": [
+        [
+          0.0928721555716688,
+          1.0655197308154973,
+          -2.6770737171173096
+        ],
+        [
+          1.190091273433912,
+          1.1352668439835858,
+          -2.8523104190826416
+        ],
+        [
+          1.5616201341385398,
+          0.9281989336621208,
+          -3.7427594661712646
+        ],
+        [
+          0.11368452350591994,
+          0.8126907153328601,
+          -3.2769978046417236
+        ]
+      ],
+      "asset_id": "EQ-0007",
+      "asset_name": "상단 보관 상자",
+      "classification": "적재물",
+      "center_m": [
+        0.68,
+        0.914,
+        -2.885
+      ],
+      "dimensions_m": {
+        "width": 1.063,
+        "depth": 0.647,
+        "height": 0.316
+      },
+      "status": "등록됨",
+      "registration_source": "현장 인식",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "carton",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 1.063,
+          "depth": 0.647,
+          "height": 0.316
+        }
+      }
+    },
+    {
+      "id": "ca91b75a-a942-41fd-afd8-0a42f976305b",
+      "name": "신규 장비 케이스",
+      "thumbnail": "data:image/png;base64,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",
+      "box": {
+        "min": [
+          0.3707814134053554,
+          -0.9957753417580364,
+          -3.2729977748641517
+        ],
+        "max": [
+          0.8223943264985473,
+          -0.6457753417580363,
+          -2.9512235704616403
+        ]
+      },
+      "source": "placed-glb",
+      "asset": {
+        "name": "신규 장비 케이스",
+        "category": "container",
+        "url": "/demo/equipment-case.glb",
+        "normalization_applied": true,
+        "demo": true,
+        "provenance": "authored presentation prop",
+        "thumbnail": "data:image/png;base64,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"
+      },
+      "transform": {
+        "position": [
+          0.5965878699519513,
+          -0.9957753417580364,
+          -3.1190388202667236
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1.026392989864326,
+          1.026392989864326,
+          1.026392989864326
+        ]
+      },
+      "asset_id": "EQ-0008",
+      "asset_name": "신규 장비 케이스",
+      "classification": "적재물",
+      "center_m": [
+        0.597,
+        -0.821,
+        -3.112
+      ],
+      "dimensions_m": {
+        "width": 0.452,
+        "depth": 0.322,
+        "height": 0.35
+      },
+      "zone": "Zone B",
+      "status": "등록됨",
+      "registration_source": "신규 반입",
+      "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+      "specification": {
+        "kind": "신규 장비 케이스",
+        "materials": [],
+        "provider": "현장 큐레이션 / GLB",
+        "estimated_size_m": {
+          "width": 0.452,
+          "depth": 0.322,
+          "height": 0.35
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "rack",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "pallet",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "cartons",
+      "relation": "on",
+      "target": "pallet",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "jack",
+      "relation": "on",
+      "target": "floor",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "containers",
+      "relation": "on",
+      "target": "rack",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "upper",
+      "relation": "on",
+      "target": "rack",
+      "method": "editorial-demo",
+      "operational_label": "적재",
+      "distance_m": null
+    },
+    {
+      "source": "pallet",
+      "relation": "next to",
+      "target": "rack",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0.007
+    },
+    {
+      "source": "jack",
+      "relation": "next to",
+      "target": "pallet",
+      "method": "editorial-demo",
+      "operational_label": "인접",
+      "distance_m": 0
+    },
+    {
+      "source": "ca91b75a-a942-41fd-afd8-0a42f976305b",
+      "target": "floor",
+      "relation": "on",
+      "method": "raycast-support-contact",
+      "operational_label": "적재",
+      "distance_m": null
+    }
+  ],
+  "camera": {
+    "width": 1280,
+    "height": 853,
+    "fx": 1066.538478875974,
+    "fy": 1066.538478875974,
+    "cx": 640,
+    "cy": 426.5,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "target": [
+      0,
+      0,
+      -3.412595272064209
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ]
+  },
+  "zones": [
+    {
+      "id": "Zone A",
+      "name": "시설·보관",
+      "color": "#51c9db",
+      "bounds": {
+        "min": [
+          -0.5099826332442181,
+          -0.9957753417580364,
+          -4.265558738708496
+        ],
+        "max": [
+          1.8815000486820046,
+          -0.9957753417580364,
+          -2.5615622711181643
+        ]
+      }
+    },
+    {
+      "id": "Zone B",
+      "name": "작업·반입",
+      "color": "#f0bb64",
+      "bounds": {
+        "min": [
+          -1.5387474494448776,
+          -0.9957753417580364,
+          -4.774383449554444
+        ],
+        "max": [
+          1.645994624721948,
+          -0.9957753417580364,
+          -2.7190388202667237
+        ]
+      }
+    }
+  ],
+  "summary": "Zone A에는 보관 랙과 용기·상자가 정리되어 있고, Zone B에는 출고 팔레트와 핸드 팔레트 트럭이 있습니다. 전면 여유 공간에서 신규 자산 반입을 검토합니다. 신규 장비 케이스은 바닥 위에 놓여 있습니다.",
+  "recommended_placements": [
+    {
+      "id": "spot-0",
+      "label": "입출고 대기 위치",
+      "position": [
+        0.5965878699519513,
+        -0.9957753417580364,
+        -3.1190388202667236
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "floor",
+      "height_m": 0.35,
+      "radius_px": 85
+    },
+    {
+      "id": "spot-1",
+      "label": "통로 우측 대기 위치",
+      "position": [
+        1.2459946247219478,
+        -0.9551641258235785,
+        -3.149055004119873
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "support": "floor",
+      "height_m": 0.35,
+      "radius_px": 85
+    }
+  ],
+  "scene_id": "twin-logistics",
+  "coordinate_system": "three-camera-x-right-y-up-z-back",
+  "units": "meters",
+  "geometry_status": "monocular-estimate"
+}

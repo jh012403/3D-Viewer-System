@@ -1,0 +1,362 @@
+{
+  "schema": "prism.asset-register/1.0",
+  "aas_style": true,
+  "aas_conformance_claim": false,
+  "scene_id": "twin-logistics",
+  "units": "m",
+  "geometry": "monocular-estimate",
+  "assets": [
+    {
+      "id": "EQ-0001",
+      "idShort": "EQ_0001",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0001"
+      },
+      "submodels": {
+        "identification": {
+          "name": "바닥",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.381,
+            -0.965,
+            -3.141
+          ],
+          "dimensions_m": {
+            "width": 2.362,
+            "depth": 0.296,
+            "height": 0.331
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "floor",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 2.362,
+              "depth": 0.296,
+              "height": 0.331
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0002",
+      "idShort": "EQ_0002",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0002"
+      },
+      "submodels": {
+        "identification": {
+          "name": "보관 랙",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.686,
+            0.552,
+            -3.537
+          ],
+          "dimensions_m": {
+            "width": 2.391,
+            "depth": 1.458,
+            "height": 1.335
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "rack",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 2.391,
+              "depth": 1.458,
+              "height": 1.335
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0003",
+      "idShort": "EQ_0003",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0003"
+      },
+      "submodels": {
+        "identification": {
+          "name": "이송 팔레트",
+          "classification": "적재물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -1.018,
+            0.302,
+            -4.064
+          ],
+          "dimensions_m": {
+            "width": 1.002,
+            "depth": 0.694,
+            "height": 0.608
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "pallet",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.002,
+              "depth": 0.694,
+              "height": 0.608
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0004",
+      "idShort": "EQ_0004",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0004"
+      },
+      "submodels": {
+        "identification": {
+          "name": "출고 상자 묶음",
+          "classification": "적재물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -1.139,
+            0.642,
+            -4.262
+          ],
+          "dimensions_m": {
+            "width": 0.8,
+            "depth": 1.024,
+            "height": 0.838
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "carton",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 0.8,
+              "depth": 1.024,
+              "height": 0.838
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0005",
+      "idShort": "EQ_0005",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0005"
+      },
+      "submodels": {
+        "identification": {
+          "name": "핸드 팔레트 트럭",
+          "classification": "설비",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -0.573,
+            0.102,
+            -3.899
+          ],
+          "dimensions_m": {
+            "width": 0.557,
+            "depth": 0.613,
+            "height": 0.404
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "pallet truck",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 0.557,
+              "depth": 0.613,
+              "height": 0.404
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0006",
+      "idShort": "EQ_0006",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0006"
+      },
+      "submodels": {
+        "identification": {
+          "name": "보관 용기 묶음",
+          "classification": "적재물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.793,
+            0.511,
+            -3.536
+          ],
+          "dimensions_m": {
+            "width": 1.367,
+            "depth": 1.26,
+            "height": 0.568
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "container",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.367,
+              "depth": 1.26,
+              "height": 0.568
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0007",
+      "idShort": "EQ_0007",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0007"
+      },
+      "submodels": {
+        "identification": {
+          "name": "상단 보관 상자",
+          "classification": "적재물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.68,
+            0.914,
+            -2.885
+          ],
+          "dimensions_m": {
+            "width": 1.063,
+            "depth": 0.647,
+            "height": 0.316
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "carton",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.063,
+              "depth": 0.647,
+              "height": 0.316
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0008",
+      "idShort": "EQ_0008",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-logistics:EQ-0008"
+      },
+      "submodels": {
+        "identification": {
+          "name": "신규 장비 케이스",
+          "classification": "적재물",
+          "source": "신규 반입"
+        },
+        "technicalData": {
+          "center_m": [
+            0.597,
+            -0.821,
+            -3.112
+          ],
+          "dimensions_m": {
+            "width": 0.452,
+            "depth": 0.322,
+            "height": 0.35
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "신규 장비 케이스",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 0.452,
+              "depth": 0.322,
+              "height": 0.35
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    }
+  ]
+}

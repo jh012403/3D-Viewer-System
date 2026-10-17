@@ -1,0 +1,2039 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "THREE.GLTFExporter r178"
+  },
+  "scenes": [
+    {
+      "name": "정밀 작업대 · 조립 셀",
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "extras": {
+        "schema": "prism.digital-twin/1",
+        "scene_id": "twin-workbench",
+        "units": "meters",
+        "background_excluded": true,
+        "zones": [
+          {
+            "id": "Zone A",
+            "name": "시설·보관",
+            "color": "#51c9db",
+            "bounds": {
+              "min": [
+                -1.4812977875859044,
+                -0.2880107303750876,
+                -3.5531676483154295
+              ],
+              "max": [
+                -0.23563024079130354,
+                -0.2880107303750876,
+                -1.179853138923645
+              ]
+            }
+          },
+          {
+            "id": "Zone B",
+            "name": "작업·반입",
+            "color": "#f0bb64",
+            "bounds": {
+              "min": [
+                -0.7592923560616258,
+                -0.2880107303750876,
+                -3.395133390426636
+              ],
+              "max": [
+                0.37968988029440187,
+                -0.2880107303750876,
+                -0.43313554525375364
+              ]
+            }
+          }
+        ],
+        "asset_register": {
+          "schema": "prism.asset-register/1.0",
+          "aas_style": true,
+          "aas_conformance_claim": false,
+          "scene_id": "twin-workbench",
+          "units": "m",
+          "geometry": "monocular-estimate",
+          "assets": [
+            {
+              "id": "EQ-0001",
+              "idShort": "EQ_0001",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0001"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "목재 작업대",
+                  "classification": "구조물",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.231,
+                    -0.298,
+                    -0.953
+                  ],
+                  "dimensions_m": {
+                    "width": 0.572,
+                    "depth": 0.503,
+                    "height": 0.053
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "table",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.572,
+                      "depth": 0.503,
+                      "height": 0.053
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone B",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0002",
+              "idShort": "EQ_0002",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0002"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "정밀 측정 장치",
+                  "classification": "설비",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.692,
+                    -0.278,
+                    -1.582
+                  ],
+                  "dimensions_m": {
+                    "width": 0.329,
+                    "depth": 0.721,
+                    "height": 0.133
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "instrument",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.329,
+                      "depth": 0.721,
+                      "height": 0.133
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone A",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0003",
+              "idShort": "EQ_0003",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0003"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "작업용 광학 장치",
+                  "classification": "설비",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.656,
+                    0.438,
+                    -2.367
+                  ],
+                  "dimensions_m": {
+                    "width": 0.84,
+                    "depth": 2.373,
+                    "height": 0.877
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "microscope",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.84,
+                      "depth": 2.373,
+                      "height": 0.877
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone A",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0004",
+              "idShort": "EQ_0004",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0004"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "고정 지그",
+                  "classification": "공구",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.397,
+                    -0.267,
+                    -2.198
+                  ],
+                  "dimensions_m": {
+                    "width": 0.501,
+                    "depth": 2.394,
+                    "height": 0.248
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "clamp",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.501,
+                      "depth": 2.394,
+                      "height": 0.248
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone B",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0005",
+              "idShort": "EQ_0005",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0005"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "부품 트레이",
+                  "classification": "공구",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.593,
+                    -0.367,
+                    -1.98
+                  ],
+                  "dimensions_m": {
+                    "width": 0.171,
+                    "depth": 0.502,
+                    "height": 0.054
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "tray",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.171,
+                      "depth": 0.502,
+                      "height": 0.054
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone B",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0006",
+              "idShort": "EQ_0006",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0006"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "작업 받침",
+                  "classification": "공구",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.267,
+                    -0.321,
+                    -1.432
+                  ],
+                  "dimensions_m": {
+                    "width": 0.396,
+                    "depth": 0.726,
+                    "height": 0.102
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "work pad",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.396,
+                      "depth": 0.726,
+                      "height": 0.102
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone B",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0007",
+              "idShort": "EQ_0007",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0007"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "광학 장치 지지대",
+                  "classification": "구조물",
+                  "source": "현장 인식"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -1.119,
+                    -0.004,
+                    -2.32
+                  ],
+                  "dimensions_m": {
+                    "width": 0.725,
+                    "depth": 1.905,
+                    "height": 0.634
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "mount",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.725,
+                      "depth": 1.905,
+                      "height": 0.634
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone A",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            },
+            {
+              "id": "EQ-0008",
+              "idShort": "EQ_0008",
+              "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": "urn:prism:twin-workbench:EQ-0008"
+              },
+              "submodels": {
+                "identification": {
+                  "name": "신규 장비 케이스",
+                  "classification": "적재물",
+                  "source": "신규 반입"
+                },
+                "technicalData": {
+                  "center_m": [
+                    -0.02,
+                    -0.233,
+                    -0.831
+                  ],
+                  "dimensions_m": {
+                    "width": 0.155,
+                    "depth": 0.11,
+                    "height": 0.12
+                  },
+                  "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+                  "specification": {
+                    "kind": "신규 장비 케이스",
+                    "materials": [],
+                    "provider": "현장 큐레이션 / GLB",
+                    "estimated_size_m": {
+                      "width": 0.155,
+                      "depth": 0.11,
+                      "height": 0.12
+                    }
+                  }
+                },
+                "operations": {
+                  "zone": "Zone B",
+                  "status": "등록됨",
+                  "status_source": "registration-workflow",
+                  "sensor_data": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "scene": 0,
+  "nodes": [
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.2308315158317586,
+        -0.298033762372541,
+        -0.9533138751983643,
+        1
+      ],
+      "name": "EQ-0001 목재 작업대",
+      "extras": {
+        "asset_id": "EQ-0001",
+        "name": "목재 작업대",
+        "classification": "구조물",
+        "zone": "Zone B",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.572,
+          "depth": 0.503,
+          "height": 0.053
+        },
+        "specification": {
+          "kind": "table",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.572,
+            "depth": 0.503,
+            "height": 0.053
+          }
+        }
+      },
+      "mesh": 0
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.6919901773284065,
+        -0.27757350830592353,
+        -1.5823822236061096,
+        1
+      ],
+      "name": "EQ-0002 정밀 측정 장치",
+      "extras": {
+        "asset_id": "EQ-0002",
+        "name": "정밀 측정 장치",
+        "classification": "설비",
+        "zone": "Zone A",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.329,
+          "depth": 0.721,
+          "height": 0.133
+        },
+        "specification": {
+          "kind": "instrument",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.329,
+            "depth": 0.721,
+            "height": 0.133
+          }
+        }
+      },
+      "mesh": 1
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.655785491572738,
+        0.43816220035719483,
+        -2.3665103936195373,
+        1
+      ],
+      "name": "EQ-0003 작업용 광학 장치",
+      "extras": {
+        "asset_id": "EQ-0003",
+        "name": "작업용 광학 장치",
+        "classification": "설비",
+        "zone": "Zone A",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.84,
+          "depth": 2.373,
+          "height": 0.877
+        },
+        "specification": {
+          "kind": "microscope",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.84,
+            "depth": 2.373,
+            "height": 0.877
+          }
+        }
+      },
+      "mesh": 2
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.39650743074764344,
+        -0.2671071411892995,
+        -2.1983469891548157,
+        1
+      ],
+      "name": "EQ-0004 고정 지그",
+      "extras": {
+        "asset_id": "EQ-0004",
+        "name": "고정 지그",
+        "classification": "공구",
+        "zone": "Zone B",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.501,
+          "depth": 2.394,
+          "height": 0.248
+        },
+        "specification": {
+          "kind": "clamp",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.501,
+            "depth": 2.394,
+            "height": 0.248
+          }
+        }
+      },
+      "mesh": 3
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.5927310121009561,
+        -0.36650144359311293,
+        -1.97975688457489,
+        1
+      ],
+      "name": "EQ-0005 부품 트레이",
+      "extras": {
+        "asset_id": "EQ-0005",
+        "name": "부품 트레이",
+        "classification": "공구",
+        "zone": "Zone B",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.171,
+          "depth": 0.502,
+          "height": 0.054
+        },
+        "specification": {
+          "kind": "tray",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.171,
+            "depth": 0.502,
+            "height": 0.054
+          }
+        }
+      },
+      "mesh": 4
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -0.26716546124921275,
+        -0.3209100457524805,
+        -1.431993682384491,
+        1
+      ],
+      "name": "EQ-0006 작업 받침",
+      "extras": {
+        "asset_id": "EQ-0006",
+        "name": "작업 받침",
+        "classification": "공구",
+        "zone": "Zone B",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.396,
+          "depth": 0.726,
+          "height": 0.102
+        },
+        "specification": {
+          "kind": "work pad",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.396,
+            "depth": 0.726,
+            "height": 0.102
+          }
+        }
+      },
+      "mesh": 5
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1.118730445120586,
+        -0.003941871368340344,
+        -2.3197868704795837,
+        1
+      ],
+      "name": "EQ-0007 광학 장치 지지대",
+      "extras": {
+        "asset_id": "EQ-0007",
+        "name": "광학 장치 지지대",
+        "classification": "구조물",
+        "zone": "Zone A",
+        "status": "등록됨",
+        "registration_source": "현장 인식",
+        "dimensions_m": {
+          "width": 0.725,
+          "depth": 1.905,
+          "height": 0.634
+        },
+        "specification": {
+          "kind": "mount",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.725,
+            "depth": 1.905,
+            "height": 0.634
+          }
+        }
+      },
+      "mesh": 6
+    },
+    {
+      "matrix": [
+        0.3519061679534832,
+        0,
+        0,
+        0,
+        0,
+        0.3519061679534832,
+        0,
+        0,
+        0,
+        0,
+        0.3519061679534832,
+        0,
+        -0.020310119705598147,
+        -0.29254383960563485,
+        -0.8331355452537537,
+        1
+      ],
+      "name": "EQ-0008 신규 장비 케이스",
+      "extras": {
+        "asset_id": "EQ-0008",
+        "name": "신규 장비 케이스",
+        "classification": "적재물",
+        "zone": "Zone B",
+        "status": "등록됨",
+        "registration_source": "신규 반입",
+        "dimensions_m": {
+          "width": 0.155,
+          "depth": 0.11,
+          "height": 0.12
+        },
+        "specification": {
+          "kind": "신규 장비 케이스",
+          "materials": [],
+          "provider": "현장 큐레이션 / GLB",
+          "estimated_size_m": {
+            "width": 0.155,
+            "depth": 0.11,
+            "height": 0.12
+          }
+        }
+      },
+      "children": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "equipment-case",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.42,
+          0.25,
+          0.28
+        ],
+        "name": "equipment-case"
+      },
+      "mesh": 7
+    },
+    {
+      "name": "lid",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.44,
+          0.035,
+          0.3
+        ],
+        "name": "lid"
+      },
+      "mesh": 8
+    },
+    {
+      "name": "latch-016",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.045,
+          0.05,
+          0.025
+        ],
+        "name": "latch-0.16"
+      },
+      "mesh": 9
+    },
+    {
+      "name": "latch016",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.045,
+          0.05,
+          0.025
+        ],
+        "name": "latch0.16"
+      },
+      "mesh": 10
+    },
+    {
+      "name": "handle",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.16,
+          0.022,
+          0.025
+        ],
+        "name": "handle"
+      },
+      "mesh": 11
+    },
+    {
+      "name": "handle-leg-007",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.02,
+          0.04,
+          0.025
+        ],
+        "name": "handle-leg-0.07"
+      },
+      "mesh": 12
+    },
+    {
+      "name": "handle-leg007",
+      "extras": {
+        "shape": "box",
+        "extents": [
+          0.02,
+          0.04,
+          0.025
+        ],
+        "name": "handle-leg0.07"
+      },
+      "mesh": 13
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 288,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 576,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 768,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 840,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1128,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1416,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1608,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1680,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1968,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2256,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2448,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2520,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2808,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3096,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3288,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3360,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3648,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3936,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4128,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4200,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4488,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4776,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4968,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5040,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5328,
+      "byteLength": 288,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5616,
+      "byteLength": 192,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5808,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5880,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5976,
+      "byteLength": 144,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6120,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6216,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6312,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6408,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6504,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6600,
+      "byteLength": 96,
+      "target": 34962,
+      "byteStride": 12
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6696,
+      "uri": "data:application/octet-stream;base64,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AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAACAAEAAgADAAEABAAGAAUABgAHAAUACAAKAAkACgALAAkADAAOAA0ADgAPAA0AEAASABEAEgATABEAFAAWABUAFgAXABUAbaK5Piszoj78ynM/baK5Piszoj78ynO/baK5Piszor78ynM/baK5Piszor78ynO/baK5viszoj78ynO/baK5viszoj78ynM/baK5viszor78ynO/baK5viszor78ynM/baK5viszoj78ynO/baK5Piszoj78ynO/baK5viszoj78ynM/baK5Piszoj78ynM/baK5viszor78ynM/baK5Piszor78ynM/baK5viszor78ynO/baK5Piszor78ynO/baK5viszoj78ynM/baK5Piszoj78ynM/baK5viszor78ynM/baK5Piszor78ynM/baK5Piszoj78ynO/baK5viszoj78ynO/baK5Piszor78ynO/baK5viszor78ynO/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAAACAAEAAgADAAEABAAGAAUABgAHAAUACAAKAAkACgALAAkADAAOAA0ADgAPAA0AEAASABEAEgATABEAFAAWABUAFgAXABUAPQpXvgAAAAApXA++PQpXvgAAAAApXA8+PQpXvgAAgD4pXA++PQpXvgAAgD4pXA8+PQpXPgAAAAApXA++PQpXPgAAAAApXA8+PQpXPgAAgD4pXA++PQpXPgAAgD4pXA8+AQAAAAMAAAAAAAAABAAAAAEAAAAAAAAAAAAAAAMAAAACAAAAAgAAAAQAAAAAAAAAAQAAAAcAAAADAAAABQAAAAEAAAAEAAAABQAAAAcAAAABAAAAAwAAAAcAAAACAAAABgAAAAQAAAACAAAAAgAAAAcAAAAGAAAABgAAAAUAAAAEAAAABwAAAAUAAAAGAAAArkdhvgAAgD6amRm+rkdhvgAAgD6amRk+rkdhvoXrkT6amRm+rkdhvoXrkT6amRk+rkdhPgAAgD6amRm+rkdhPgAAgD6amRk+rkdhPoXrkT6amRm+rkdhPoXrkT6amRk+SOE6vq5HYT7y0g0+SOE6vq5HYT6LbCc+SOE6vnE9ij7y0g0+SOE6vnE9ij6LbCc+zcwMvq5HYT7y0g0+zcwMvq5HYT6LbCc+zcwMvnE9ij7y0g0+zcwMvnE9ij6LbCc+zcwMPq5HYT7y0g0+zcwMPq5HYT6LbCc+zcwMPnE9ij7y0g0+zcwMPnE9ij6LbCc+SOE6Pq5HYT7y0g0+SOE6Pq5HYT6LbCc+SOE6PnE9ij7y0g0+SOE6PnE9ij6LbCc+CtejvfhToz7NzEy8CtejvfhToz7NzEw8CtejvY2Xrj7NzEy8CtejvY2Xrj7NzEw8CtejPfhToz7NzEy8CtejPfhToz7NzEw8CtejPY2Xrj7NzEy8CtejPY2Xrj7NzEw8CtejvSlcjz7NzEy8CtejvSlcjz7NzEw8CtejvQrXoz7NzEy8CtejvQrXoz7NzEw8j8J1vSlcjz7NzEy8j8J1vSlcjz7NzEw8j8J1vQrXoz7NzEy8j8J1vQrXoz7NzEw8j8J1PSlcjz7NzEy8j8J1PSlcjz7NzEw8j8J1PQrXoz7NzEy8j8J1PQrXoz7NzEw8CtejPSlcjz7NzEy8CtejPSlcjz7NzEw8CtejPQrXoz7NzEy8CtejPQrXoz7NzEw8"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.2858084738254547,
+        0.0263576190918684,
+        0.2514449954032898
+      ],
+      "min": [
+        -0.2858084738254547,
+        -0.0263576190918684,
+        -0.2514449954032898
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.16443496942520142,
+        0.06632670015096664,
+        0.36035290360450745
+      ],
+      "min": [
+        -0.16443496942520142,
+        -0.06632670015096664,
+        -0.36035290360450745
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.42015525698661804,
+        0.43826553225517273,
+        1.1866573095321655
+      ],
+      "min": [
+        -0.42015525698661804,
+        -0.43826553225517273,
+        -1.1866573095321655
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.25041624903678894,
+        0.12387776374816895,
+        1.1967864036560059
+      ],
+      "min": [
+        -0.25041624903678894,
+        -0.12387776374816895,
+        -1.1967864036560059
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.08525868505239487,
+        0.026931408792734146,
+        0.25115498900413513
+      ],
+      "min": [
+        -0.08525868505239487,
+        -0.026931408792734146,
+        -0.25115498900413513
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 20,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.197964608669281,
+        0.05116819590330124,
+        0.36278191208839417
+      ],
+      "min": [
+        -0.197964608669281,
+        -0.05116819590330124,
+        -0.36278191208839417
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 21,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 22,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 23,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 24,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.36256733536720276,
+        0.3167966306209564,
+        0.9523160457611084
+      ],
+      "min": [
+        -0.36256733536720276,
+        -0.3167966306209564,
+        -0.9523160457611084
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 25,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 26,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 27,
+      "componentType": 5123,
+      "count": 36,
+      "max": [
+        23
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 28,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.20999999344348907,
+        0.25,
+        0.14000000059604645
+      ],
+      "min": [
+        -0.20999999344348907,
+        0,
+        -0.14000000059604645
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 29,
+      "componentType": 5125,
+      "count": 36,
+      "max": [
+        7
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 30,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.2199999988079071,
+        0.2849999964237213,
+        0.15000000596046448
+      ],
+      "min": [
+        -0.2199999988079071,
+        0.25,
+        -0.15000000596046448
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 31,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        -0.13750000298023224,
+        0.27000001072883606,
+        0.16349999606609344
+      ],
+      "min": [
+        -0.18250000476837158,
+        0.2199999988079071,
+        0.13850000500679016
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 32,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.18250000476837158,
+        0.27000001072883606,
+        0.16349999606609344
+      ],
+      "min": [
+        0.13750000298023224,
+        0.2199999988079071,
+        0.13850000500679016
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 33,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.07999999821186066,
+        0.3409999907016754,
+        0.012500000186264515
+      ],
+      "min": [
+        -0.07999999821186066,
+        0.3190000057220459,
+        -0.012500000186264515
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 34,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        -0.05999999865889549,
+        0.3199999928474426,
+        0.012500000186264515
+      ],
+      "min": [
+        -0.07999999821186066,
+        0.2800000011920929,
+        -0.012500000186264515
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 35,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.07999999821186066,
+        0.3199999928474426,
+        0.012500000186264515
+      ],
+      "min": [
+        0.05999999865889549,
+        0.2800000011920929,
+        -0.012500000186264515
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8069522576650873,
+          0.4793201830913402,
+          0.10702310296918527,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08021982030622662,
+          0.508881320845802,
+          0.6514056374127929,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08021982030622662,
+          0.508881320845802,
+          0.6514056374127929,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8069522576650873,
+          0.4793201830913402,
+          0.10702310296918527,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8069522576650873,
+          0.4793201830913402,
+          0.10702310296918527,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8069522576650873,
+          0.4793201830913402,
+          0.10702310296918527,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08021982030622662,
+          0.508881320845802,
+          0.6514056374127929,
+          0.25
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1568627450980392,
+          0.44313725490196076,
+          0.5450980392156862,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.09411764705882353,
+          0.19215686274509805,
+          0.24313725490196078,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.796078431372549,
+          0.8235294117647058,
+          0.8235294117647058,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.796078431372549,
+          0.8235294117647058,
+          0.8235294117647058,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.09803921568627451,
+          0.12156862745098039,
+          0.13725490196078433,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.09803921568627451,
+          0.12156862745098039,
+          0.13725490196078433,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.09803921568627451,
+          0.12156862745098039,
+          0.13725490196078433,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 0.48
+      },
+      "alphaMode": "BLEND"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 8,
+            "NORMAL": 9,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 12,
+            "NORMAL": 13,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 16,
+            "NORMAL": 17,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 20,
+            "NORMAL": 21,
+            "TEXCOORD_0": 22
+          },
+          "indices": 23,
+          "material": 5
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 24,
+            "NORMAL": 25,
+            "TEXCOORD_0": 26
+          },
+          "indices": 27,
+          "material": 6
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 28
+          },
+          "indices": 29,
+          "material": 7
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 30
+          },
+          "indices": 29,
+          "material": 8
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 31
+          },
+          "indices": 29,
+          "material": 9
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 32
+          },
+          "indices": 29,
+          "material": 10
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 33
+          },
+          "indices": 29,
+          "material": 11
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 34
+          },
+          "indices": 29,
+          "material": 12
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 35
+          },
+          "indices": 29,
+          "material": 13
+        }
+      ]
+    }
+  ]
+}

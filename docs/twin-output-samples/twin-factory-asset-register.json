@@ -1,0 +1,406 @@
+{
+  "schema": "prism.asset-register/1.0",
+  "aas_style": true,
+  "aas_conformance_claim": false,
+  "scene_id": "twin-factory",
+  "units": "m",
+  "geometry": "monocular-estimate",
+  "assets": [
+    {
+      "id": "EQ-0001",
+      "idShort": "EQ_0001",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0001"
+      },
+      "submodels": {
+        "identification": {
+          "name": "반입 홀 바닥",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.11,
+            -1.963,
+            -5.51
+          ],
+          "dimensions_m": {
+            "width": 5.164,
+            "depth": 2.267,
+            "height": 0.5
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "floor",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 5.164,
+              "depth": 2.267,
+              "height": 0.5
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0002",
+      "idShort": "EQ_0002",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0002"
+      },
+      "submodels": {
+        "identification": {
+          "name": "화물 차량",
+          "classification": "설비",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            9.356,
+            -3.567,
+            -19.554
+          ],
+          "dimensions_m": {
+            "width": 4.25,
+            "depth": 0.811,
+            "height": 2.078
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "truck",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 4.25,
+              "depth": 0.811,
+              "height": 2.078
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0003",
+      "idShort": "EQ_0003",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0003"
+      },
+      "submodels": {
+        "identification": {
+          "name": "전면 안전 가드",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            0.379,
+            -2.696,
+            -9.288
+          ],
+          "dimensions_m": {
+            "width": 2.243,
+            "depth": 6.041,
+            "height": 1.449
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "guard rail",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 2.243,
+              "depth": 6.041,
+              "height": 1.449
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0004",
+      "idShort": "EQ_0004",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0004"
+      },
+      "submodels": {
+        "identification": {
+          "name": "안쪽 안전 가드",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            4.172,
+            -4.379,
+            -17.588
+          ],
+          "dimensions_m": {
+            "width": 1.699,
+            "depth": 3.884,
+            "height": 0.855
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "guard rail",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.699,
+              "depth": 3.884,
+              "height": 0.855
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0005",
+      "idShort": "EQ_0005",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0005"
+      },
+      "submodels": {
+        "identification": {
+          "name": "전면 구조 기둥",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -1.596,
+            0.222,
+            -7.741
+          ],
+          "dimensions_m": {
+            "width": 0.738,
+            "depth": 1.532,
+            "height": 4.942
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "column",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 0.738,
+              "depth": 1.532,
+              "height": 4.942
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0006",
+      "idShort": "EQ_0006",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0006"
+      },
+      "submodels": {
+        "identification": {
+          "name": "반입 셔터",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -2.664,
+            0.154,
+            -6.239
+          ],
+          "dimensions_m": {
+            "width": 1.012,
+            "depth": 1.835,
+            "height": 4.162
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "door",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.012,
+              "depth": 1.835,
+              "height": 4.162
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0007",
+      "idShort": "EQ_0007",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0007"
+      },
+      "submodels": {
+        "identification": {
+          "name": "환기 덕트",
+          "classification": "설비",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            -0.233,
+            2.254,
+            -10.534
+          ],
+          "dimensions_m": {
+            "width": 3.29,
+            "depth": 5.964,
+            "height": 2.805
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "duct",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 3.29,
+              "depth": 5.964,
+              "height": 2.805
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0008",
+      "idShort": "EQ_0008",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0008"
+      },
+      "submodels": {
+        "identification": {
+          "name": "상부 점검 통로",
+          "classification": "구조물",
+          "source": "현장 인식"
+        },
+        "technicalData": {
+          "center_m": [
+            6.476,
+            0.261,
+            -16.617
+          ],
+          "dimensions_m": {
+            "width": 7.726,
+            "depth": 6.505,
+            "height": 2.723
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "platform",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 7.726,
+              "depth": 6.505,
+              "height": 2.723
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone A",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    },
+    {
+      "id": "EQ-0009",
+      "idShort": "EQ_0009",
+      "assetInformation": {
+        "assetKind": "Instance",
+        "globalAssetId": "urn:prism:twin-factory:EQ-0009"
+      },
+      "submodels": {
+        "identification": {
+          "name": "신규 장비 케이스",
+          "classification": "적재물",
+          "source": "신규 반입"
+        },
+        "technicalData": {
+          "center_m": [
+            4.115,
+            -2.574,
+            -10.392
+          ],
+          "dimensions_m": {
+            "width": 1.097,
+            "depth": 0.781,
+            "height": 0.85
+          },
+          "dimension_source": "단안 깊이 또는 메시 정규화 기반 추정",
+          "specification": {
+            "kind": "신규 장비 케이스",
+            "materials": [],
+            "provider": "현장 큐레이션 / GLB",
+            "estimated_size_m": {
+              "width": 1.097,
+              "depth": 0.781,
+              "height": 0.85
+            }
+          }
+        },
+        "operations": {
+          "zone": "Zone B",
+          "status": "등록됨",
+          "status_source": "registration-workflow",
+          "sensor_data": false
+        }
+      }
+    }
+  ]
+}

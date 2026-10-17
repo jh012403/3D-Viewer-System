@@ -76,3 +76,5 @@ Four local caches: sunroom, ceramics, hall, groceries d4f646fcc79650d6. New Pyth
 Screenshots: docs/screenshots/stage2-sunroom.png, stage2-ceramics.png, stage2-hall.png and stage2-upload.png. Native Windows runtime ready; WSL reboot still pending. Existing TRELLIS.2/FastVLM weights and original missing assets remain absent. No power settings queried or modified.
 
 Digital-twin stage 3: operations shell with four KPIs, asset register/graph/placement tabs, clickable specification cards, projected ID toggle and floor zone lines. Occupancy is union of estimated asset footprints inside zone bounds; no sensor uptime/health data is fabricated. Four-scene ledger/selection/group-box/ID-toggle browser checks pass; screenshots twin-stage3-*.png.
+
+Digital-twin stage 5: asset register JSON, relationship JSON, background-free glTF with boxes/placed meshes/metadata, original-camera PNG, and print-to-PDF HTML report are implemented. Four real browser export runs pass: every PDF is one A4 page and each glTF reloads with the expected asset count. Samples: docs/twin-output-samples; screenshots twin-stage5-*.png. Draft placement must be confirmed/cancelled before export.

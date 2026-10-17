@@ -43,6 +43,7 @@ export class PlacementSimulation{
   this.visuals();
  }
  visuals(){
+  if(this.p.v.hidePresentationOverlays)return;
   const item=this.draft||this.p.selected;
   if(!this.p.v.manifest?.digital_twin||!item?.object){if(this.helper)this.helper.visible=false;if(this.safety)this.safety.visible=false;return;}
   const b=new THREE.Box3().setFromObject(item.object),center=b.getCenter(new THREE.Vector3()),size=b.getSize(new THREE.Vector3());

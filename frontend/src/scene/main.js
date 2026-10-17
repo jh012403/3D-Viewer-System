@@ -83,3 +83,5 @@ analyze.onclick=async()=>{
 };
 import {TwinDashboard} from './dashboard.js';
 viewer.dashboard=new TwinDashboard(viewer);
+import {TwinExports} from './twin-export.js';
+viewer.exports=new TwinExports(viewer);
