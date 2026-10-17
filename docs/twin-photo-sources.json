@@ -1,0 +1,42 @@
+[
+  {
+    "scene": "twin-logistics",
+    "provider": "Pexels",
+    "photo_id": 4481259,
+    "source_page": "https://www.pexels.com/photo/4481259/",
+    "download": "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?w=1280",
+    "license_page": "https://www.pexels.com/license/",
+    "sha256": "26a539b6c47288fbf1502a3128852c1b210c0eb4cba2dcd82a87a345e0370e87",
+    "local": "storage\\twin_sources\\4481259.jpg"
+  },
+  {
+    "scene": "twin-laboratory",
+    "provider": "Pexels",
+    "photo_id": 2280571,
+    "source_page": "https://www.pexels.com/photo/2280571/",
+    "download": "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?w=1280",
+    "license_page": "https://www.pexels.com/license/",
+    "sha256": "fbe77940ea3582ed3ff15f946cca3600d4672fe1e32915d34cc355862f18f4b3",
+    "local": "storage\\twin_sources\\2280571.jpg"
+  },
+  {
+    "scene": "twin-workbench",
+    "provider": "Pexels",
+    "photo_id": 3912981,
+    "source_page": "https://www.pexels.com/photo/3912981/",
+    "download": "https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?w=1280",
+    "license_page": "https://www.pexels.com/license/",
+    "sha256": "c8dc501a01ad805cb10d5576cff6666f9c4172fb4ae8089371e5bfcc5a5f9d7b",
+    "local": "storage\\twin_sources\\3912981.jpg"
+  },
+  {
+    "scene": "twin-factory",
+    "provider": "Pexels",
+    "photo_id": 209251,
+    "source_page": "https://www.pexels.com/photo/209251/",
+    "download": "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?w=1280",
+    "license_page": "https://www.pexels.com/license/",
+    "sha256": "f17e79777ce173f132661ef663b7508c345363ff78b986a9522e7fd4a3e660d3",
+    "local": "storage\\twin_sources\\209251.jpg"
+  }
+]

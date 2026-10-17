@@ -26,7 +26,7 @@ async function load(url){
 }
 async function refresh(){
   const res=await fetch('/scene-api/scenes');if(!res.ok)throw new Error('씬 서버에 연결할 수 없습니다.');
-  const scenes=await res.json();$('#scenes').replaceChildren();
+  const scenes=(await res.json()).sort((a,b)=>(a.sort_order??100)-(b.sort_order??100));$('#scenes').replaceChildren();
   scenes.forEach(m=>{const b=document.createElement('button');b.className='scene-card';b.dataset.scene=m.id;b.textContent=m.title;b.onclick=()=>load(m.url);$('#scenes').append(b);});
   return scenes;
 }

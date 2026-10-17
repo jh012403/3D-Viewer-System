@@ -1,5 +1,7 @@
 # Decisions — 2026-10-15
 
+- 2026-10-17: Add digital-twin functions above the category-agnostic existing mesh pipeline. Never restrict standalone uploads, selection or GLB download to industrial equipment. Keep original four demo caches and historical assets unchanged. New industrial caches live under twin-* with tracked authored profiles and photo-source hashes. Geometry and distances remain monocular estimates, not surveyed measurements; simulated status must be labeled. No accuracy evaluation.
+- New scene selection: Pexels 4481259 (warehouse), 2280571 (laboratory), 3912981 (precision workbench), 209251 (industrial loading hall). Each gets real SHARP/DAV2 output and photo-guided authored visible assets/relations, two operational zones and two recommendations. People are not registered as equipment. Do not claim these edited graphs are untouched automatic recognition results.
 - Deliver four actual browser recordings as H.264/yuv420p/30fps MP4 plus a dependency-free offline gallery. Record real PNG/JSON downloads, cache-only operation and authored prop provenance. Videos include step captions/cursor and no audio. Preserve raw WebM locally; commit portable MP4s and output artifacts. All evaluation/review plans below are historical and superseded by the demo pivot.
 
 

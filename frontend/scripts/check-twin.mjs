@@ -1,0 +1,18 @@
+import {chromium} from '@playwright/test';
+import {writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const stage=process.argv[2]||'twin-stage1',scenes=['twin-logistics','twin-laboratory','twin-workbench','twin-factory'];
+const browser=await chromium.launch({headless:true,args:['--enable-gpu','--use-angle=d3d11']});
+const errors=[],rows=[];
+try{const page=await browser.newPage({viewport:{width:1800,height:1100}});page.on('pageerror',e=>errors.push(e.message));
+for(const scene of scenes){
+ await page.goto('http://127.0.0.1:5173/scene.html?scene='+scene);
+ await page.waitForFunction(()=>window.sceneWorkspace?.placement?.proxy&&!window.sceneWorkspace.loading,{},{timeout:120000});
+ await page.waitForTimeout(500);
+ if(stage==='twin-stage1')await page.locator('#tabGraph').click();
+ const row=await page.evaluate(()=>{const v=window.sceneWorkspace;return {scene:v.manifest.id,nodes:v.placement.graph.nodes.length,edges:v.placement.graph.edges.length,zones:v.placement.baseGraph.zones.length,spots:v.placement.spots.length};});
+ assert(row.nodes>=6&&row.nodes<=10);assert(row.edges>=8&&row.edges<=12);rows.push(row);
+ await page.screenshot({path:`../docs/screenshots/${stage}-${scene}.png`});
+}
+assert.deepEqual(errors,[]);await writeFile(`../docs/${stage}-browser.json`,JSON.stringify({rows,errors},null,2));console.log(JSON.stringify({rows,errors}));
+}finally{await browser.close();}

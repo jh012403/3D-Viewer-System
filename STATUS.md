@@ -1,6 +1,8 @@
 # Progress — 2026-10-15 (Asia/Seoul)
 
 ## Current checkpoint
+2026-10-17 digital-twin stage 1: four NEW Pexels photographs converted through actual SHARP and DAV2 inference. Curated logistics 7/8, laboratory 8/9, workbench 7/8 and industrial loading hall 8/9 nodes/edges, two zones and two placement recommendations each. Source URLs/hashes: docs/twin-photo-sources.json. Original four caches remain untouched and below new scenes in the library. No accuracy evaluation. Next: asset schema, then placement simulation, then control-room UI/export/process/recording. Existing mesh runtime currently has no registered WSL distribution; installation is being attempted without reboot.
+
 Demo stage 6 COMPLETE: four actual browser recordings exported as offline H.264 MP4: sunroom 34.00s, ceramics 25.76s, groceries 28.86s, hall 27.33s. Each includes scene selection, orbit, graph, placement, graph update and actual PNG/JSON downloads. Offline file:// gallery playback passed for all four at 1600x1000, with no external requests. Recording checks found no inference requests, browser errors or placement overlaps. See docs/demo-videos/index.html, docs/demo-recording-run.json and docs/screenshots/demo-stage6-*.png. All eight recommended positions passed collision/settling checks. Production build passes (bundle-size advisory only). Cache integrity manifest refreshed. No accuracy/review/RANSAC execution or reboot. Current scope is complete; mesh runtime remains separately pending the user's restart.
 
 The following checkpoints are chronological history; the demo direction supersedes old accuracy plans.
