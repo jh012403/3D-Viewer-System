@@ -1,0 +1,90 @@
+[
+  {
+    "file": "01_대표.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1403759,
+    "duration_ms": null,
+    "sha256": "7b176fc758939fc6160f962bab7e61561d5595a33a7eb62a12a469fc17547a7c"
+  },
+  {
+    "file": "02_현장복원.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1456084,
+    "duration_ms": null,
+    "sha256": "e44a05a7a978756efcb957dc0d67bd937ae5b906db3f68e4cfd738a9338ffa0b"
+  },
+  {
+    "file": "03_자산인식.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 899626,
+    "duration_ms": null,
+    "sha256": "da42e2518c419cd99e4ca76960141b3669129596a709ace0ea1cf8bfbfac5ddc"
+  },
+  {
+    "file": "04_관계그래프.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 108395,
+    "duration_ms": null,
+    "sha256": "5f4cca1510074d7d9d4af6b7baba7f677eb9cb0dd7cc3e33d12f37d623e38afc"
+  },
+  {
+    "file": "05_메시생성.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 528627,
+    "duration_ms": null,
+    "sha256": "617e1967ad1559b6a9bb593d277390f2c032fd0562fcad53429507eaa6fcb7cf"
+  },
+  {
+    "file": "06_사양카드.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 288362,
+    "duration_ms": null,
+    "sha256": "aafd0043fe517c9ddf9dcc4636567fbe01c100b4d8bcd58852aa4536838ea6e4"
+  },
+  {
+    "file": "07_배치전후.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 765722,
+    "duration_ms": null,
+    "sha256": "fb6203c9970200ec666bb5c0983945ab7a47a7fe3a6931cbe5a8a6ad70508685"
+  },
+  {
+    "file": "08_간섭경고.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1354274,
+    "duration_ms": null,
+    "sha256": "309d8e5e790bb2bde39c056df816f124aa8e3652fbd57dc64d6aa168fedc76cf"
+  },
+  {
+    "file": "09_대장갱신.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 178784,
+    "duration_ms": null,
+    "sha256": "ed8314f221ec245ba5edf336ba882c05d16feedbba17211c206e9911094b79d1"
+  },
+  {
+    "file": "10_리포트.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 225332,
+    "duration_ms": null,
+    "sha256": "ff3543b54d08133cdbdeaf86a5d79596ba295a6c109b6b1d4b74162fd1949891"
+  },
+  {
+    "file": "11_시연.gif",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 2639983,
+    "duration_ms": 12000,
+    "sha256": "38704c262caabf769de8cd214870cab1f1ed4fc63df9937fef61aaecf0adfa7b"
+  }
+]
