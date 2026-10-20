@@ -21,7 +21,11 @@ export class SceneViewer {
     this.scene.add(new THREE.HemisphereLight(0xffffff,0x75816b,2));
     const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(-2,5,2);this.scene.add(light);
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);
-    this.renderer.setAnimationLoop(()=>{this.controls.update();this.renderer.render(this.scene,this.camera);this.afterRender?.();});
+    this.renderer.setAnimationLoop(()=>{this.controls.update();this.updateEdgeMask();this.renderer.render(this.scene,this.camera);this.afterRender?.();});
+  }
+  updateEdgeMask(){
+    const turn=this.controls.getAzimuthalAngle(),amount=Math.min(1,Math.abs(turn)/THREE.MathUtils.degToRad(this.maxOrbitDegrees||3))*6.5;
+    this.renderer.domElement.style.maskImage=amount<.1?'none':`linear-gradient(to ${turn>0?'right':'left'},transparent 0%,black ${amount.toFixed(2)}%,black 100%)`;
   }
   resize(){
     const w=this.container.clientWidth,h=this.container.clientHeight;
@@ -65,7 +69,8 @@ export class SceneViewer {
     if(this.manifest.presentation?.orbit_radius_m){
       this.controls.target.sub(this.camera.position).normalize().multiplyScalar(this.manifest.presentation.orbit_radius_m).add(this.camera.position);
     }
-    const angle=THREE.MathUtils.degToRad(deg);
+    this.maxOrbitDegrees=Math.min(3,deg||3);
+    const angle=THREE.MathUtils.degToRad(this.maxOrbitDegrees);
     this.controls.minAzimuthAngle=-angle;this.controls.maxAzimuthAngle=angle;
     const vertical=THREE.MathUtils.degToRad(this.manifest.presentation?.vertical_degrees??deg*.3);
     this.controls.minPolarAngle=Math.PI/2-vertical;this.controls.maxPolarAngle=Math.PI/2+vertical;

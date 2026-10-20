@@ -1,0 +1,445 @@
+{
+  "phase": "before",
+  "job": "job_000003",
+  "errors": [],
+  "views": {
+    "original": {
+      "confirmed": true,
+      "asset_id": "EQ-0008",
+      "review": {
+        "state": "clear",
+        "collisions": [],
+        "near": [],
+        "required_clearance_m": 0.5,
+        "geometry": "estimated AABB",
+        "checked_at": "2026-10-20T13:08:52.612Z"
+      },
+      "camera": [
+        0,
+        7.347880794884118e-18,
+        0
+      ],
+      "projection": [
+        1.6664663732437095,
+        0,
+        0,
+        0,
+        0,
+        2.500676386579072,
+        0,
+        0,
+        0,
+        0,
+        -1.0002000200020003,
+        -1,
+        0,
+        0,
+        -0.040004000400040006,
+        0
+      ],
+      "intrinsics": {
+        "width": 1280,
+        "height": 853,
+        "fx": 1066.538478875974,
+        "fy": 1066.538478875974,
+        "cx": 640,
+        "cy": 426.5,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          -3.412595272064209
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "position": [
+        0.596911887084456,
+        -1.0114940737208071,
+        -3.137075247792136
+      ],
+      "quaternion": [
+        0.28754569717947404,
+        0.6436125181509301,
+        0.29806597422786707,
+        0.6436125181509302
+      ],
+      "support": [
+        0.5966354042893339,
+        -0.9980813294154449,
+        -3.1216848211881625
+      ],
+      "gravity": {
+        "method": "floor-ROI trimmed orthogonal least squares",
+        "asset_id": "EQ-0001",
+        "points": 5075,
+        "inliers": 4157,
+        "normal": [
+          -0.013541964005523372,
+          0.6569482940823256,
+          0.7538140049861076
+        ],
+        "constant": 3.0169371792483934,
+        "rms_m": 0.007281268946254416,
+        "camera_vertical_angle_degrees": 48.93245445612047
+      },
+      "ground": {
+        "bottom": -3.031937179248393,
+        "min": -3.0373534415119376,
+        "top": -2.6819371792483926,
+        "support": -3.0169371792483934,
+        "embedding_m": 0.01499999999999968,
+        "local_up": [
+          -0.013541964005523377,
+          0.6569482940823254,
+          0.7538140049861077
+        ]
+      },
+      "tone": {
+        "reference": "scene cardboard asset bbox; bounded RGB mean matching",
+        "materials": [
+          {
+            "source_mean_rgb": [
+              119.86795507797268,
+              107.06776451200531,
+              80.76564285496302
+            ],
+            "target_mean_rgb": [
+              173.52321057781808,
+              147.26282250173034,
+              131.81075920666365
+            ],
+            "exposure_gain": 1.3,
+            "lighting_compensation": 0.52,
+            "temperature_rgb": [
+              1.0293524345559937,
+              0.9780115933735405,
+              1.1604697528010346
+            ],
+            "saturation": 1.0667515295069645,
+            "texture_size": [
+              768,
+              768
+            ],
+            "blur_pixels": 0.45
+          }
+        ]
+      },
+      "shadow": {
+        "method": "projected lower-2-percent convex contour",
+        "contact_opacity": 0.58,
+        "ambient_opacity": 0.22,
+        "color": [
+          37,
+          34,
+          32
+        ],
+        "offset_m": [
+          -0.025,
+          -0.018
+        ],
+        "bottom_vertices": 33795
+      },
+      "structuralLabels": 0
+    },
+    "minus3": {
+      "confirmed": true,
+      "asset_id": "EQ-0008",
+      "review": {
+        "state": "clear",
+        "collisions": [],
+        "near": [],
+        "required_clearance_m": 0.5,
+        "geometry": "estimated AABB",
+        "checked_at": "2026-10-20T13:08:52.612Z"
+      },
+      "camera": [
+        -0.006280314749153259,
+        7.347880794884118e-18,
+        -0.00016445582945114057
+      ],
+      "projection": [
+        1.6664663732437095,
+        0,
+        0,
+        0,
+        0,
+        2.500676386579072,
+        0,
+        0,
+        0,
+        0,
+        -1.0002000200020003,
+        -1,
+        0,
+        0,
+        -0.040004000400040006,
+        0
+      ],
+      "intrinsics": {
+        "width": 1280,
+        "height": 853,
+        "fx": 1066.538478875974,
+        "fy": 1066.538478875974,
+        "cx": 640,
+        "cy": 426.5,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          -3.412595272064209
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "position": [
+        0.596911887084456,
+        -1.0114940737208071,
+        -3.137075247792136
+      ],
+      "quaternion": [
+        0.28754569717947404,
+        0.6436125181509301,
+        0.29806597422786707,
+        0.6436125181509302
+      ],
+      "support": [
+        0.5966354042893339,
+        -0.9980813294154449,
+        -3.1216848211881625
+      ],
+      "gravity": {
+        "method": "floor-ROI trimmed orthogonal least squares",
+        "asset_id": "EQ-0001",
+        "points": 5075,
+        "inliers": 4157,
+        "normal": [
+          -0.013541964005523372,
+          0.6569482940823256,
+          0.7538140049861076
+        ],
+        "constant": 3.0169371792483934,
+        "rms_m": 0.007281268946254416,
+        "camera_vertical_angle_degrees": 48.93245445612047
+      },
+      "ground": {
+        "bottom": -3.031937179248393,
+        "min": -3.0373534415119376,
+        "top": -2.6819371792483926,
+        "support": -3.0169371792483934,
+        "embedding_m": 0.01499999999999968,
+        "local_up": [
+          -0.013541964005523377,
+          0.6569482940823254,
+          0.7538140049861077
+        ]
+      },
+      "tone": {
+        "reference": "scene cardboard asset bbox; bounded RGB mean matching",
+        "materials": [
+          {
+            "source_mean_rgb": [
+              119.86795507797268,
+              107.06776451200531,
+              80.76564285496302
+            ],
+            "target_mean_rgb": [
+              173.52321057781808,
+              147.26282250173034,
+              131.81075920666365
+            ],
+            "exposure_gain": 1.3,
+            "lighting_compensation": 0.52,
+            "temperature_rgb": [
+              1.0293524345559937,
+              0.9780115933735405,
+              1.1604697528010346
+            ],
+            "saturation": 1.0667515295069645,
+            "texture_size": [
+              768,
+              768
+            ],
+            "blur_pixels": 0.45
+          }
+        ]
+      },
+      "shadow": {
+        "method": "projected lower-2-percent convex contour",
+        "contact_opacity": 0.58,
+        "ambient_opacity": 0.22,
+        "color": [
+          37,
+          34,
+          32
+        ],
+        "offset_m": [
+          -0.025,
+          -0.018
+        ],
+        "bottom_vertices": 33795
+      },
+      "structuralLabels": 0
+    },
+    "plus3": {
+      "confirmed": true,
+      "asset_id": "EQ-0008",
+      "review": {
+        "state": "clear",
+        "collisions": [],
+        "near": [],
+        "required_clearance_m": 0.5,
+        "geometry": "estimated AABB",
+        "checked_at": "2026-10-20T13:08:52.612Z"
+      },
+      "camera": [
+        0.006280314749153259,
+        7.347880794884118e-18,
+        -0.00016445582945114057
+      ],
+      "projection": [
+        1.6664663732437095,
+        0,
+        0,
+        0,
+        0,
+        2.500676386579072,
+        0,
+        0,
+        0,
+        0,
+        -1.0002000200020003,
+        -1,
+        0,
+        0,
+        -0.040004000400040006,
+        0
+      ],
+      "intrinsics": {
+        "width": 1280,
+        "height": 853,
+        "fx": 1066.538478875974,
+        "fy": 1066.538478875974,
+        "cx": 640,
+        "cy": 426.5,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          -3.412595272064209
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "position": [
+        0.596911887084456,
+        -1.0114940737208071,
+        -3.137075247792136
+      ],
+      "quaternion": [
+        0.28754569717947404,
+        0.6436125181509301,
+        0.29806597422786707,
+        0.6436125181509302
+      ],
+      "support": [
+        0.5966354042893339,
+        -0.9980813294154449,
+        -3.1216848211881625
+      ],
+      "gravity": {
+        "method": "floor-ROI trimmed orthogonal least squares",
+        "asset_id": "EQ-0001",
+        "points": 5075,
+        "inliers": 4157,
+        "normal": [
+          -0.013541964005523372,
+          0.6569482940823256,
+          0.7538140049861076
+        ],
+        "constant": 3.0169371792483934,
+        "rms_m": 0.007281268946254416,
+        "camera_vertical_angle_degrees": 48.93245445612047
+      },
+      "ground": {
+        "bottom": -3.031937179248393,
+        "min": -3.0373534415119376,
+        "top": -2.6819371792483926,
+        "support": -3.0169371792483934,
+        "embedding_m": 0.01499999999999968,
+        "local_up": [
+          -0.013541964005523377,
+          0.6569482940823254,
+          0.7538140049861077
+        ]
+      },
+      "tone": {
+        "reference": "scene cardboard asset bbox; bounded RGB mean matching",
+        "materials": [
+          {
+            "source_mean_rgb": [
+              119.86795507797268,
+              107.06776451200531,
+              80.76564285496302
+            ],
+            "target_mean_rgb": [
+              173.52321057781808,
+              147.26282250173034,
+              131.81075920666365
+            ],
+            "exposure_gain": 1.3,
+            "lighting_compensation": 0.52,
+            "temperature_rgb": [
+              1.0293524345559937,
+              0.9780115933735405,
+              1.1604697528010346
+            ],
+            "saturation": 1.0667515295069645,
+            "texture_size": [
+              768,
+              768
+            ],
+            "blur_pixels": 0.45
+          }
+        ]
+      },
+      "shadow": {
+        "method": "projected lower-2-percent convex contour",
+        "contact_opacity": 0.58,
+        "ambient_opacity": 0.22,
+        "color": [
+          37,
+          34,
+          32
+        ],
+        "offset_m": [
+          -0.025,
+          -0.018
+        ],
+        "bottom_vertices": 33795
+      },
+      "structuralLabels": 0
+    }
+  }
+}

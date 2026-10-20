@@ -20,11 +20,16 @@ export function updateFootprint(p,item){
  const draw=(blur,alpha,dx,dy)=>{ctx.save();ctx.filter=`blur(${blur}px)`;ctx.fillStyle=`rgba(${rgb.join(',')},${alpha})`;ctx.beginPath();polygon.forEach(([a,b],i)=>{const u=(.5+(a-cx+dx)/w)*N,v=(.5-(b-cy+dy)/h)*N;i?ctx.lineTo(u,v):ctx.moveTo(u,v);});ctx.closePath();ctx.fill();ctx.restore();};
  // Photo light comes from camera upper right; the broad layer trails left/back.
  draw(12,.22,-.025,-.018);draw(2.2,.58,0,0);
+ // A metric-width rim: canvas scaling converts metres independently on x/y.
+ const rim=rgb.map(c=>Math.round(c*.35));
+ ctx.save();ctx.translate(N/2,N/2);ctx.scale(N/w,-N/h);
+ ctx.lineWidth=.012;ctx.lineJoin='round';ctx.strokeStyle=`rgba(${rim.join(',')},.92)`;
+ ctx.beginPath();polygon.forEach(([a,b],i)=>i?ctx.lineTo(a-cx,b-cy):ctx.moveTo(a-cx,b-cy));ctx.closePath();ctx.stroke();ctx.restore();
  item.shadow.material.map.needsUpdate=true;
  item.shadow.position.copy(x).multiplyScalar(cx).addScaledVector(y,cy).addScaledVector(up,item.supportPoint.dot(up)+.003);
  item.shadow.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x,y,up));item.shadow.scale.set(w,h,1);
  item.shadow.visible=true;
- item.shadowAudit={method:'projected lower-2-percent convex contour',contact_opacity:.58,ambient_opacity:.22,color:rgb,offset_m:[-.025,-.018],bottom_vertices:bottom.length};
+ item.shadowAudit={method:'projected lower-2-percent convex contour',contact_opacity:.58,ambient_opacity:.22,color:rgb,offset_m:[-.025,-.018],bottom_vertices:bottom.length,rim_width_m:.012,rim_opacity:.92,rim_color:rim};
 }
 function mean(data){
  const sum=[0,0,0];let n=0;
@@ -37,6 +42,19 @@ export async function sampleScene(p){
  const sample=node=>{if(!node?.bbox2d)return null;const[a,b,x,y]=node.bbox2d;return mean(ctx.getImageData(a,b,x-a,y-b).data);};
  p.floorColor=sample(p.baseNodes.find(n=>n.id===p.gravity?.floorId));
  p.cartonColor=sample(p.baseNodes.find(n=>/^(cartons|cardboard boxes)$/.test(n.id)||/cardboard/.test(n.name)));
+ p.faceReference=null;
+ if(p.v.manifest.id==='twin-logistics'){
+  const polygonMean=points=>{
+   const mask=document.createElement('canvas');mask.width=c.width;mask.height=c.height;const m=mask.getContext('2d');m.beginPath();points.forEach(([x,y],i)=>i?m.lineTo(x,y):m.moveTo(x,y));m.closePath();m.fill();
+   const alpha=m.getImageData(0,0,c.width,c.height).data,data=ctx.getImageData(0,0,c.width,c.height).data,sum=[0,0,0];let count=0;
+   for(let i=0;i<data.length;i+=4)if(alpha[i+3]>127){for(let k=0;k<3;k++)sum[k]+=data[i+k];count++;}
+   return sum.map(v=>v/count);
+  };
+  const topPolygon=[[345,252],[388,230],[420,250],[375,278]],sidePolygon=[[386,285],[428,264],[428,277],[386,299]];
+  const top=polygonMean(topPolygon),side=polygonMean(sidePolygon),luma=a=>a[0]*.2126+a[1]*.7152+a[2]*.0722;
+  const ratio=luma(top)/luma(side);
+  p.faceReference={top_rgb:top,side_rgb:side,target_ratio:ratio,topPolygon,sidePolygon,baseline_render_ratio:150.57862409342346/86.84611095748357};
+ }
 }
 export function matchCarton(p,item){
  if(!p.cartonColor||!/box|carton|상자/i.test(item.name+' '+item.asset.name+' '+item.asset.specification?.kind))return;
@@ -61,6 +79,20 @@ export function matchCarton(p,item){
    }
    // The scene's 2+2 fill/key rig otherwise doubles the photographic albedo.
    m.color.multiplyScalar(.52);m.roughness=1;m.metalness=0;
+   if(p.faceReference){
+    const gain=THREE.MathUtils.clamp((p.faceReference.target_ratio/p.faceReference.baseline_render_ratio)**2.2,.85,1.6),previous=m.onBeforeCompile;
+    m.onBeforeCompile=shader=>{
+     previous?.call(m,shader,p.v.renderer);
+     shader.uniforms.floorUp={value:p.up.clone()};shader.uniforms.faceTopGain={value:gain};
+     shader.fragmentShader='uniform vec3 floorUp; uniform float faceTopGain;\n'+shader.fragmentShader;
+     shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>',`vec3 faceWorldNormal=inverseTransformDirection(normal,viewMatrix);
+      float upwardFace=smoothstep(0.35,0.90,max(0.0,dot(faceWorldNormal,floorUp)));
+      outgoingLight*=mix(1.0,faceTopGain,upwardFace);
+      #include <opaque_fragment>`);
+    };
+    m.customProgramCacheKey=()=> 'scene-soft-depth-face-light-v2';
+    item.faceAudit={...p.faceReference,top_linear_gain:gain,method:'gravity-normal directional response calibrated to photographed carton faces'};
+   }
    m.needsUpdate=true;records.push({source_mean_rgb:source,target_mean_rgb:target,exposure_gain:gain,lighting_compensation:.52,temperature_rgb:temperature,saturation,texture_size:[canvas.width,canvas.height],blur_pixels:.45});
   }
  });
