@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import * as THREE from 'three';
+import {readFile} from 'node:fs/promises';
+import {fitSceneGravity,objectVertices,projectedBounds} from '../src/scene/gravity.js';
+const root='../storage/scene_cache/twin-logistics/';
+const surface=JSON.parse(await readFile(root+'surface.json')),graph=JSON.parse(await readFile(root+'graph.json'));
+const geometry=new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(surface.positions,3));
+const fit=fitSceneGravity(geometry,graph);
+assert(fit.audit.inliers>1000);assert(fit.audit.rms_m<.02);assert(fit.up.y>.5&&fit.up.z>.5);
+const object=new THREE.Mesh(new THREE.BoxGeometry(.4,.35,.3));
+object.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),fit.up);
+const item={object,localVertices:objectVertices(object)},support=fit.plane.projectPoint(new THREE.Vector3(.6,-1,-3.1),new THREE.Vector3());
+object.position.copy(support);let b=projectedBounds(item,fit.up);object.position.addScaledVector(fit.up,support.dot(fit.up)-b.bottom-.015);
+b=projectedBounds(item,fit.up);assert(Math.abs(b.bottom-support.dot(fit.up)+.015)<1e-9);assert(Math.abs(b.top-b.bottom-.35)<1e-6);
+object.position.addScaledVector(fit.x,.5);assert(Math.abs(projectedBounds(item,fit.up).bottom-b.bottom)<1e-9);
+console.log(JSON.stringify({floor:fit.audit,grounding:'pass',translation_cache:'pass'}));

@@ -27,7 +27,14 @@ export class SceneViewer {
     const w=this.container.clientWidth,h=this.container.clientHeight;
     const aspect=this.manifest?this.manifest.camera.width/this.manifest.camera.height:w/h;
     const rw=Math.min(w,h*aspect),rh=rw/aspect;
-    this.renderer.setSize(rw,rh);this.camera.aspect=aspect;this.camera.updateProjectionMatrix();
+    this.renderer.setSize(rw,rh);this.camera.aspect=aspect;this.updateProjection();
+  }
+  updateProjection(){
+    if(!this.manifest){this.camera.updateProjectionMatrix();return;}
+    const c=this.manifest.camera,n=this.camera.near;
+    // Preserve the exact SHARP input K, including a non-central principal point.
+    this.camera.projectionMatrix.makePerspective(-c.cx*n/c.fx,(c.width-c.cx)*n/c.fx,c.cy*n/c.fy,-(c.height-c.cy)*n/c.fy,n,this.camera.far);
+    this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
   }
   async load(url){
     const response=await fetch(url);if(!response.ok)throw new Error('씬 캐시를 불러올 수 없습니다.');
@@ -52,7 +59,7 @@ export class SceneViewer {
     if(!this.manifest)return;
     const {camera:c,orbit_degrees:deg}=this.manifest;
     this.camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(c.height/(2*c.fy)));
-    this.camera.zoom=original?1:(this.manifest.presentation?.preview_zoom||1.04);
+    this.camera.zoom=1;
     this.camera.position.fromArray(c.position);this.camera.up.fromArray(c.up);
     this.controls.target.fromArray(c.target);
     if(this.manifest.presentation?.orbit_radius_m){
@@ -62,6 +69,6 @@ export class SceneViewer {
     this.controls.minAzimuthAngle=-angle;this.controls.maxAzimuthAngle=angle;
     const vertical=THREE.MathUtils.degToRad(this.manifest.presentation?.vertical_degrees??deg*.3);
     this.controls.minPolarAngle=Math.PI/2-vertical;this.controls.maxPolarAngle=Math.PI/2+vertical;
-    this.controls.update();this.camera.updateProjectionMatrix();
+    this.controls.update();this.updateProjection();
   }
 }

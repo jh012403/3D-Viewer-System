@@ -4,6 +4,8 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {TransformControls} from 'three/addons/controls/TransformControls.js';
 import {relations,isSupport,isStructure,supportHeight} from './relations.js';
+import {fitSceneGravity,objectVertices,projectedBounds} from './gravity.js';
+import {updateFootprint,sampleScene,matchCarton} from './ground-appearance.js';
 const $=s=>document.querySelector(s);
 function dispose(object){object.traverse(n=>{n.geometry?.dispose();for(const m of Array.isArray(n.material)?n.material:[n.material]){if(m){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}}});}
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
@@ -16,6 +18,7 @@ export class Placement {
     this.depthTarget=new THREE.WebGLRenderTarget(1,1);this.depthTarget.depthTexture=new THREE.DepthTexture(1,1);
     this.occlusionUniforms={sceneDepth:{value:this.depthTarget.depthTexture},depthSize:{value:new THREE.Vector2(1,1)},depthNear:{value:viewer.camera.near},depthFar:{value:viewer.camera.far}};
     this.controls=new TransformControls(viewer.camera,viewer.renderer.domElement);
+    this.controls.setSpace('local');
     this.helper=this.controls.getHelper();this.objects.add(this.helper);
     this.controls.addEventListener('dragging-changed',e=>{viewer.controls.enabled=!e.value;this.dragging=e.value;});
     this.controls.addEventListener('objectChange',()=>this.update());
@@ -59,7 +62,12 @@ export class Placement {
       const {attributes,...rest}=n;return {...rest,category_attributes:attributes};
     });
     if(!preserveItems)this.assetRegistry={ids:new Map(),next:1};
-    this.spots=graph.recommended_placements||[];this.spotUI();
+    this.gravity=fitSceneGravity(this.v.surface.geometry,graph);
+    this.up=this.gravity?.up||new THREE.Vector3(0,1,0);
+    await sampleScene(this);
+    this.spots=structuredClone(graph.recommended_placements||[]);
+    if(this.gravity)for(const spot of this.spots){spot.normal=this.up.toArray();if(spot.support===this.gravity.floorId)spot.position=this.gravity.plane.projectPoint(new THREE.Vector3(...spot.position),new THREE.Vector3()).toArray();}
+    this.spotUI();
     if(this.proxy){this.occlusion.remove(this.proxy);this.proxy.geometry.dispose();}
     const geometry=this.v.surface.geometry.clone(),transparent=new Uint8Array(graph.camera.width*graph.camera.height);
     const canvas=document.createElement('canvas');canvas.width=graph.camera.width;canvas.height=graph.camera.height;
@@ -103,9 +111,19 @@ export class Placement {
     if(this.pending.asset.demo){const size=new THREE.Box3().setFromObject(this.pending.object).getSize(new THREE.Vector3());this.pending.object.scale.multiplyScalar(spot.height_m/size.y);}
     return this.commitPlacement({point:new THREE.Vector3(...spot.position),normal:new THREE.Vector3(...spot.normal)},spot);
   }
+  orient(item){item.object.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),this.up);item.normal.copy(this.up);}
+  height(item){const b=projectedBounds(item,this.up);return b.top-b.bottom;}
+  ground(item,point=item.supportPoint){
+    item.object.updateMatrixWorld(true);const b=projectedBounds(item,this.up);
+    item.object.position.addScaledVector(this.up,point.dot(this.up)-b.bottom-.015);
+    item.object.updateMatrixWorld(true);
+  }
+  groundAudit(item){const b=projectedBounds(item,this.up);return {...b,support:item.supportPoint.dot(this.up),embedding_m:item.supportPoint.dot(this.up)-b.bottom,local_up:new THREE.Vector3(0,1,0).applyQuaternion(item.object.quaternion).toArray()};}
+  supportRay(point,distance=.6){return new THREE.Raycaster(point.clone().addScaledVector(this.up,.25),this.up.clone().negate(),0,distance);}
+  floorOffset(x,z){return this.gravity?this.gravity.x.clone().multiplyScalar(x).addScaledVector(this.gravity.z,z):new THREE.Vector3(x,0,z);}
   animate(){
     const now=performance.now();for(const item of this.items){if(!item.landing)continue;const t=Math.min(1,(now-item.landing.start)/650),ease=1-(1-t)**3;
-      item.object.position.lerpVectors(item.landing.from,item.landing.to,ease);item.object.position.y+=Math.sin(t*Math.PI)*.035;
+      item.object.position.lerpVectors(item.landing.from,item.landing.to,ease);item.object.position.addScaledVector(this.up,Math.sin(t*Math.PI)*.035);
       item.shadow.material.opacity=.3+.7*ease;if(t===1){item.object.position.copy(item.landing.to);item.landing=null;}}
   }
   softenOcclusion(material){
@@ -162,7 +180,8 @@ export class Placement {
       this.softenOcclusion(material);
     }});
     if(this.pending)dispose(this.pending.object);
-    this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:new THREE.Vector3(0,1,0)};
+    this.pending={id:crypto.randomUUID(),name:asset.name,object,asset,normal:this.up.clone(),localVertices:objectVertices(object)};
+    matchCarton(this,this.pending);
     asset.thumbnail=this.objectThumbnail(object);
     if(asset.demo)this.pending.name=asset.name;
     $('#objectHint').textContent=asset.name+' · '+asset.category+' · 배치할 바닥이나 상판을 클릭하세요.';
@@ -203,13 +222,20 @@ export class Placement {
   }
   supportHit(ray){
     if(!this.v.surface)return null;
+    if(this.gravity&&ray.ray.direction.dot(this.up)<-.999){
+      const point=ray.ray.intersectPlane(this.gravity.plane,new THREE.Vector3()),floor=this.baseNodes.find(n=>n.id===this.gravity.floorId),c=this.baseGraph.camera;
+      if(point&&floor?.bbox2d){const u=c.fx*point.x/-point.z+c.cx,v=c.cy-c.fy*point.y/-point.z,b=floor.bbox2d;
+        if(u>b[0]+8&&u<b[2]-8&&v>b[1]+8&&v<b[3]-8&&point.distanceTo(ray.ray.origin)<=ray.far)return {point,normal:this.up.clone(),estimatedFloor:floor.id};
+      }
+    }
     this.v.surface.updateMatrixWorld(true);
     const hits=ray.intersectObject(this.v.surface,false);
     // Only accept the nearest visible surface; never tunnel through a wall.
     const h=hits[0];if(!h)return null;
     const normal=h.face.normal.clone().transformDirection(this.v.surface.matrixWorld);
-    if(normal.y<0)normal.negate();
-    if(normal.y<.65)return null;
+    if(normal.dot(this.up)<0)normal.negate();
+    if(normal.dot(this.up)<.65)return null;
+    if(this.gravity&&Math.abs(this.gravity.plane.distanceToPoint(h.point))<.06){this.gravity.plane.projectPoint(h.point,h.point);normal.copy(this.up);}
     h.normal=normal;return h;
   }
   placeFromRay(ray){
@@ -220,22 +246,21 @@ export class Placement {
   commitPlacement(h,spot=null){
     const item=this.pending;item.object.position.copy(h.point);item.normal.copy(h.normal);item.supportTarget=spot?.support;item.spotId=spot?.id;
     item.supportPoint=h.point.clone();item.supportId='support-'+item.id;item.lastPosition=item.object.position.clone();
+    this.orient(item);this.ground(item);
     this.measureSupport(item,h);
     if(!this.resolveCollision(item)){this.status('물체가 들어갈 빈 지지면을 찾지 못했습니다. 다른 위치를 선택하세요.');return false;}
     item.shadow=this.shadow(item);
     this.objects.add(item.object,item.shadow);this.items.push(item);this.pending=null;
-    item.landing={start:performance.now(),from:item.object.position.clone().add(new THREE.Vector3(-.035,.10,.02)),to:item.object.position.clone()};
+    item.landing={start:performance.now(),from:item.object.position.clone().addScaledVector(this.up,.10),to:item.object.position.clone()};
     $('#objectHint').textContent=item.name+' 선택됨';this.select(item);this.update();this.status('물체를 배치했습니다. 기즈모로 조절하세요.');return true;
   }
   shadow(item){
-    const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
-    const ctx=canvas.getContext('2d'),g=ctx.createRadialGradient(64,64,6,64,64,64);
-    g.addColorStop(0,'rgba(0,0,0,.45)');g.addColorStop(.5,'rgba(0,0,0,.22)');g.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=g;ctx.fillRect(0,0,128,128);
+    const canvas=document.createElement('canvas');canvas.width=canvas.height=256;
     const plane=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}));
     this.softenOcclusion(plane.material);
     plane.renderOrder=1;return plane;
   }
+  updateShadow(item){updateFootprint(this,item);}
   overlaps(item){
     const box=new THREE.Box3().setFromObject(item.object);box.min.y+=.035;box.max.y-=.01;
     // A wall mask can wrap several room walls; its AABB encloses empty room.
@@ -248,16 +273,16 @@ export class Placement {
     if(!this.overlaps(item))return true;
     const offsets=[];for(let x=-20;x<=20;x++)for(let z=-20;z<=20;z++)offsets.push([x*.08,z*.08]);offsets.sort((a,b)=>Math.hypot(...a)-Math.hypot(...b));
     for(const [dx,dz] of offsets){
-      item.object.position.copy(start).add(new THREE.Vector3(dx,0,dz));
+      item.object.position.copy(start).add(this.floorOffset(dx,dz));
       if(this.overlaps(item))continue;
       const box=new THREE.Box3().setFromObject(item.object),center=box.getCenter(new THREE.Vector3());
-      let hit=this.supportHit(new THREE.Raycaster(new THREE.Vector3(center.x,start.y+.25,center.z),new THREE.Vector3(0,-1,0),0,.5));
+      let hit=this.supportHit(this.supportRay(item.object.position));
       if(!hit){
         const floor=this.baseNodes.find(n=>n.plane&&n.name==='floor'&&box.min.x>=n.box.min[0]&&box.max.x<=n.box.max[0]&&box.min.z>=n.box.min[2]&&box.max.z<=n.box.max[2]);
         if(floor){const [a,b,c]=floor.plane.height_coefficients;hit={point:new THREE.Vector3(center.x,a*center.x+b*center.z+c,center.z),normal:new THREE.Vector3(-a,1,-b).normalize(),estimatedFloor:floor.id};}
       }
-      if(!hit||Math.abs(hit.point.y-start.y)>.15)continue;
-      item.object.position.y+=hit.point.y-box.min.y;
+      if(!hit||Math.abs(hit.point.clone().sub(start).dot(this.up))>.15)continue;
+      this.ground(item,hit.point);
       if(this.overlaps(item))continue;
       item.supportPoint=hit.point.clone();item.normal.copy(hit.normal);this.measureSupport(item,hit);item.lastPosition=item.object.position.clone();
       item.collisionResolution={method:'nearest-valid-surface-grid',step_m:.08,offset_m:[dx,dz],estimatedFloor:hit.estimatedFloor||null};return true;
@@ -274,6 +299,13 @@ export class Placement {
   }
   snapSelected(){
     const item=this.selected;if(!item)return;
+    if(this.gravity){
+      const hit=this.supportHit(this.supportRay(item.object.position));
+      if(!hit){item.object.position.copy(item.lastPosition);return;}
+      item.supportPoint.copy(hit.point);item.normal.copy(this.up);this.ground(item);
+      this.measureSupport(item,hit);if(!this.resolveCollision(item))item.object.position.copy(item.lastPosition);
+      item.lastPosition.copy(item.object.position);return;
+    }
     const previousPosition=item.lastPosition.clone();
     const box=new THREE.Box3().setFromObject(item.object),center=box.getCenter(new THREE.Vector3());
     const origin=new THREE.Vector3(center.x,box.max.y+.5,center.z);
@@ -297,10 +329,7 @@ export class Placement {
       item.object.updateMatrixWorld(true);
       const box=new THREE.Box3().setFromObject(item.object),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
       item.box={min:box.min.toArray(),max:box.max.toArray()};
-      item.shadow.position.set(center.x,(item.box.min[1])+.008,center.z);
-      item.shadow.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),item.normal);
-      item.shadow.scale.set(Math.max(.08,size.x*1.35),Math.max(.08,size.z*1.35),1);
-      item.shadow.visible=Math.abs(box.min.y-item.supportPoint.y)<.1;
+      this.updateShadow(item);
     }
     const supports=this.items.map(x=>({id:x.supportId,name:'지지면',source:'depth-surface',plane:{height_coefficients:[-x.normal.x/x.normal.y,-x.normal.z/x.normal.y,x.supportPoint.dot(x.normal)/x.normal.y],tolerance_m:.04},box:{min:x.supportBox.min.toArray(),max:x.supportBox.max.toArray()}}));
     const nodes=[...this.baseNodes,...supports,...this.items.map(x=>({id:x.id,name:x.name,thumbnail:x.asset.thumbnail,box:x.box,source:'placed-glb',asset:x.asset,transform:{position:x.object.position.toArray(),quaternion:x.object.quaternion.toArray(),scale:x.object.scale.toArray()}}))];
@@ -309,12 +338,12 @@ export class Placement {
       const center=new THREE.Box3().setFromObject(item.object).getCenter(new THREE.Vector3());
       const p=item.supportPoint,n=item.normal;
       const supportY=p.y-(n.x*(center.x-p.x)+n.z*(center.z-p.z))/n.y;
-      if(Math.abs(item.box.min[1]-supportY)>.04)continue;
+      if(Math.abs(projectedBounds(item,this.up).bottom-p.dot(this.up))>.04)continue;
       const support=this.baseNodes.find(n=>isSupport(n)&&n.box&&item.supportPoint.x>=n.box.min[0]-.05&&item.supportPoint.x<=n.box.max[0]+.05&&item.supportPoint.z>=n.box.min[2]-.05&&item.supportPoint.z<=n.box.max[2]+.05&&Math.abs(item.supportPoint.y-supportHeight(n,item))<.05);
       const target=item.supportTarget||support?.id||item.supportId;
       contacts.push({source:item.id,target,relation:'on',method:'raycast-support-contact'});
     }
-    this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',units:'meters',nodes,edges:relations(nodes,contacts),geometry_status:'monocular-estimate'};
+    this.graph={...this.baseGraph,version:1,scene_id:this.v.manifest?.id,coordinate_system:'three-camera-x-right-y-up-z-back',scene_up:this.up.toArray(),gravity_fit:this.gravity?.audit,units:'meters',nodes,edges:relations(nodes,contacts),geometry_status:'monocular-estimate'};
     if(this.baseGraph?.curated)this.graph.edges=[...this.baseGraph.edges,...contacts];
     if(this.baseGraph?.curated){
       this.graph.nodes=this.graph.nodes.filter(n=>n.source!=='depth-surface'||this.graph.edges.some(e=>e.target===n.id));
@@ -369,6 +398,6 @@ export class Placement {
       const image=await new Promise(r=>v.renderer.domElement.toBlob(r,'image/png'));
       if(!image)throw Error('이미지 내보내기 실패');
       return {image,graph:{...this.graph,camera:v.manifest.camera,alignment:v.manifest.alignment}};
-    }finally{v.camera.position.copy(pos);v.camera.zoom=zoom;v.camera.updateProjectionMatrix();v.controls.target.copy(target);v.controls.update();this.helper.visible=visible;v.surface.visible=surface;if(this.boxHelper)this.boxHelper.visible=highlight;}
+    }finally{v.camera.position.copy(pos);v.camera.zoom=zoom;v.updateProjection();v.controls.target.copy(target);v.controls.update();this.helper.visible=visible;v.surface.visible=surface;if(this.boxHelper)this.boxHelper.visible=highlight;}
   }
 }

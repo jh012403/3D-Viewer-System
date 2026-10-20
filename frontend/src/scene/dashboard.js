@@ -32,10 +32,10 @@ export class TwinDashboard{
   const old=new Set(this.ledger.querySelectorAll('[data-id]')?Array.from(this.ledger.querySelectorAll('[data-id]'),r=>r.dataset.id):[]);
   this.ledger.innerHTML='<div class="ledger-heading"><h2>현장 자산 대장</h2><span>ASSET REGISTER</span></div><p class="muted">행을 선택해 위치와 사양을 확인하세요.</p><div class="ledger-scroll"><table><thead><tr><th>ID · 자산</th><th>분류 / 구역</th><th>W×D×H (m)</th><th>상태</th></tr></thead><tbody></tbody></table></div><p class="ledger-note">좌표·크기·점유율은 사진 기반 추정값입니다.</p>';
   for(const n of nodes){const row=document.createElement('tr');row.dataset.id=n.id;row.tabIndex=0;row.classList.toggle('arriving',old.size>0&&!old.has(n.id));
-   const d=n.dimensions_m;for(const value of [n.asset_id+'\n'+n.asset_name,n.classification+'\n'+n.zone,[d.width,d.depth,d.height].map(v=>v.toFixed(2)).join('×'),n.status]){const td=document.createElement('td');td.textContent=value;row.append(td);}
+   const d=n.dimensions_m;for(const value of [n.asset_id+'\n'+n.asset_name,n.classification+'\n'+n.zone,n.classification==='구조물'?'—':[d.width,d.depth,d.height].map(v=>v.toFixed(2)).join('×'),n.status]){const td=document.createElement('td');td.textContent=value;row.append(td);}
    row.onclick=()=>{const item=this.p.items.find(i=>i.id===n.id);if(item)this.p.select(item);this.p.highlight(n);};row.onkeydown=e=>{if(e.key==='Enter')row.click();};this.ledger.querySelector('tbody').append(row);
   }
-  this.labels.replaceChildren();for(const n of nodes){const b=document.createElement('button');b.textContent=n.asset_id;b.dataset.id=n.id;b.onclick=()=>this.p.highlight(n);b.onmouseenter=()=>this.p.outline(n);b.onmouseleave=()=>this.p.outline(graph.nodes.find(n=>n.id===this.p.selectedGraphId));this.labels.append(b);}
+  this.labels.replaceChildren();for(const n of nodes.filter(n=>n.classification!=='구조물')){const b=document.createElement('button');b.textContent=n.asset_id;b.dataset.id=n.id;b.onclick=()=>this.p.highlight(n);b.onmouseenter=()=>this.p.outline(n);b.onmouseleave=()=>this.p.outline(graph.nodes.find(n=>n.id===this.p.selectedGraphId));this.labels.append(b);}
  }
  warningKpi(){const s=this.v.simulation?.result;$('#kpiWarnings').textContent=`${s?.collisions.length||0} / ${s?.near.length||0}`;$('#kpiWarnings').className=s?.state==='collision'?'danger':s?.state==='clearance'?'warning':'';}
  projectLabels(){if(this.labels.hidden||!this.v.manifest)return;const rect=this.v.renderer.domElement.getBoundingClientRect(),container=this.v.container.getBoundingClientRect();
