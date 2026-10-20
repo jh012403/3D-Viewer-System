@@ -1,0 +1,145 @@
+{
+  "before": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0.5,
+    "cells": 261,
+    "candidate_cells": 60,
+    "excluded_cells": 201,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "draft": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0.5,
+    "cells": 261,
+    "candidate_cells": 23,
+    "excluded_cells": 238,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper",
+      "4922dc54-3617-414c-8a84-22dfa6ff2ddf"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "placed": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0.5,
+    "cells": 261,
+    "candidate_cells": 23,
+    "excluded_cells": 238,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper",
+      "4922dc54-3617-414c-8a84-22dfa6ff2ddf"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "wider": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0.8,
+    "cells": 261,
+    "candidate_cells": 0,
+    "excluded_cells": 261,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper",
+      "4922dc54-3617-414c-8a84-22dfa6ff2ddf"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "zero": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0,
+    "cells": 261,
+    "candidate_cells": 205,
+    "excluded_cells": 56,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper",
+      "4922dc54-3617-414c-8a84-22dfa6ff2ddf"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "removed": {
+    "scene": "twin-logistics",
+    "simulation": true,
+    "scope": "observed floor candidate cells; no robot footprint or route feasibility certification",
+    "cell_size_m": 0.06,
+    "clearance_m": 0.5,
+    "cells": 261,
+    "candidate_cells": 60,
+    "excluded_cells": 201,
+    "obstacles": [
+      "rack",
+      "pallet",
+      "cartons",
+      "jack",
+      "containers",
+      "upper"
+    ],
+    "floor_up": [
+      -0.013541964005523372,
+      0.6569482940823256,
+      0.7538140049861076
+    ]
+  },
+  "errors": []
+}

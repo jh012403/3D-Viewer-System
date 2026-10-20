@@ -32,3 +32,8 @@ The original 23-24 cases, rm06_U01 and original 15 backgrounds have no backup. T
 ## Box placement correction (2026-10-20)
 
 See [before/after gallery](placement-correction/index.html) and [geometry/mesh notes](placement-correction/README.md). Floor-ROI fitting now supplies gravity where a floor asset is identified. Scene imports of job_000003 use the separate bottom-capped GLB and its placement yaw profile; standalone generation downloads retain their original artifact. The warehouse box is verified at original and plus/minus 5-degree camera views.
+
+
+## AMR candidate overlay (2026-10-20)
+
+Use the AMR button in the scene toolbar to show observed-floor candidate cells and asset-clearance exclusions. The overlay defaults off, updates with draft/confirmed placements, and is unavailable without a fitted floor. It is a photo-based simulation, not robot navigation certification. See [screenshots and scope](amr-areas/README.md). The final carton-lighting and three-degree orbit comparison is in [placement-finish](placement-finish/index.html).

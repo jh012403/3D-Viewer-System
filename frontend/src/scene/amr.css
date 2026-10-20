@@ -1,0 +1,7 @@
+#amrPanel{position:absolute;left:18px;top:18px;z-index:12;width:270px;padding:17px;background:rgba(9,25,34,.93);border:1px solid #355462;border-radius:12px;color:#d9ebef;box-shadow:0 8px 28px #0004}
+#amrPanel[hidden]{display:none}#amrPanel .amr-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+#amrPanel small{font-size:10px;color:#9bb4bf}#amrPanel .amr-heading small{border:1px solid #627f8b;padding:3px 5px;border-radius:4px}
+#amrPanel .amr-legend{display:flex;gap:18px;font-size:12px;margin-bottom:14px}#amrPanel .amr-legend span:before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+#amrPanel .candidate:before{background:#35dca6}#amrPanel .excluded:before{background:#ff615d}#amrPanel label{display:flex;align-items:center;gap:7px;font-size:12px}
+#amrPanel input{width:62px;padding:5px;background:#132d3a;color:#e9f7ff;border:1px solid #45606d;border-radius:5px}
+#amrPanel p{font-size:11px;color:#c8dce4;margin:12px 0 6px}#toggleAmr.active{border-color:#35dca6;color:#8bf4d2}

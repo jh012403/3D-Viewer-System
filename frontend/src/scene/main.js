@@ -85,3 +85,5 @@ import {TwinDashboard} from './dashboard.js';
 viewer.dashboard=new TwinDashboard(viewer);
 import {TwinExports} from './twin-export.js';
 viewer.exports=new TwinExports(viewer);
+import {AMRAreas} from './amr-areas.js';
+viewer.amr=new AMRAreas(viewer);
