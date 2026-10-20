@@ -12,8 +12,8 @@ function download(blob,name){const url=URL.createObjectURL(blob),a=document.crea
 export class Placement {
   constructor(viewer,status){
     this.v=viewer;this.status=status;this.items=[];this.baseNodes=[];this.graph={nodes:[],edges:[]};this.selected=null;
-    this.objects=new THREE.Scene();this.objects.add(new THREE.HemisphereLight(0xffffff,0x6a755d,2));
-    const light=new THREE.DirectionalLight(0xfff5e5,2);light.position.set(-2,4,2);this.objects.add(light);
+    this.objects=new THREE.Scene();this.fillLight=new THREE.HemisphereLight(0xffffff,0x6a755d,2);this.objects.add(this.fillLight);
+    this.keyLight=new THREE.DirectionalLight(0xfff5e5,2);this.keyLight.position.set(-2,4,2);this.objects.add(this.keyLight);
     this.occlusion=new THREE.Scene();this.depthMaterial=new THREE.MeshBasicMaterial({colorWrite:false,side:THREE.DoubleSide});
     this.depthTarget=new THREE.WebGLRenderTarget(1,1);this.depthTarget.depthTexture=new THREE.DepthTexture(1,1);
     this.occlusionUniforms={sceneDepth:{value:this.depthTarget.depthTexture},depthSize:{value:new THREE.Vector2(1,1)},depthNear:{value:viewer.camera.near},depthFar:{value:viewer.camera.far}};
@@ -64,6 +64,9 @@ export class Placement {
     if(!preserveItems)this.assetRegistry={ids:new Map(),next:1};
     this.gravity=fitSceneGravity(this.v.surface.geometry,graph);
     this.up=this.gravity?.up||new THREE.Vector3(0,1,0);
+    this.fillLight.position.copy(this.up);
+    if(this.gravity)this.keyLight.position.copy(this.up).multiplyScalar(4).addScaledVector(this.gravity.x,2).addScaledVector(this.gravity.z,2);
+    else this.keyLight.position.set(-2,4,2);
     await sampleScene(this);
     this.spots=structuredClone(graph.recommended_placements||[]);
     if(this.gravity)for(const spot of this.spots){spot.normal=this.up.toArray();if(spot.support===this.gravity.floorId)spot.position=this.gravity.plane.projectPoint(new THREE.Vector3(...spot.position),new THREE.Vector3()).toArray();}
@@ -111,7 +114,7 @@ export class Placement {
     if(this.pending.asset.demo){const size=new THREE.Box3().setFromObject(this.pending.object).getSize(new THREE.Vector3());this.pending.object.scale.multiplyScalar(spot.height_m/size.y);}
     return this.commitPlacement({point:new THREE.Vector3(...spot.position),normal:new THREE.Vector3(...spot.normal)},spot);
   }
-  orient(item){item.object.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),this.up);item.normal.copy(this.up);}
+  orient(item){item.object.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),this.up).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),THREE.MathUtils.degToRad(item.asset.placement_yaw_degrees||0)));item.normal.copy(this.up);}
   height(item){const b=projectedBounds(item,this.up);return b.top-b.bottom;}
   ground(item,point=item.supportPoint){
     item.object.updateMatrixWorld(true);const b=projectedBounds(item,this.up);

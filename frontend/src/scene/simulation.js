@@ -64,7 +64,7 @@ export class PlacementSimulation{
  }
  findSafe(){
   const item=this.draft;if(!item)return;
-  const previous=item.object.position.clone(),spots=this.p.spots||[];
+  const previous=item.object.position.clone(),previousSupport=item.supportPoint.clone(),previousTarget=item.supportTarget,spots=this.p.spots||[];
   for(const spot of spots){
    item.object.position.fromArray(spot.position);item.supportTarget=spot.support;item.supportPoint.fromArray(spot.position);this.p.ground(item);
    if(this.check(item).state==='clear'){item.spotId=spot.id;item.lastPosition.copy(item.object.position);this.inspect();this.p.status('추천 지지면의 안전한 위치로 이동했습니다.');return;}
@@ -74,18 +74,20 @@ export class PlacementSimulation{
   const candidates=[];for(let z=-18;z<=18;z++)for(let x=-18;x<=18;x++)candidates.push([x*.06,z*.06]);candidates.sort((a,b)=>Math.hypot(...a)-Math.hypot(...b));
   for(const spot of spots)for(const [dx,dz]of candidates){
    const point=new THREE.Vector3(...spot.position).add(this.p.floorOffset(dx,dz));
+   const support=this.p.baseNodes.find(n=>n.id===spot.support),c=this.p.baseGraph.camera,rect=support?.bbox2d;
+   const pu=c.fx*point.x/-point.z+c.cx,pv=c.cy-c.fy*point.y/-point.z;
+   if(rect&&(pu<rect[0]+8||pu>rect[2]-8||pv<rect[1]+8||pv>rect[3]-8))continue;
    const hit=this.p.supportHit(this.p.supportRay(point));
    if(!hit)continue;
-   const support=this.p.baseNodes.find(n=>n.id===spot.support),c=this.p.baseGraph.camera,rect=support?.bbox2d;
    const u=c.fx*hit.point.x/-hit.point.z+c.cx,v=c.cy-c.fy*hit.point.y/-hit.point.z;
    if(rect&&(u<rect[0]||u>rect[2]||v<rect[1]||v>rect[3]))continue;
-   const projected=hit.point.clone().project(this.p.v.camera);if(Math.abs(projected.x)>.83||Math.abs(projected.y)>.83)continue;
+   const projected=hit.point.clone().project(this.p.v.camera);if(Math.abs(projected.x)>.94||Math.abs(projected.y)>.94)continue;
    item.object.position.copy(hit.point);item.supportTarget=spot.support;
    this.p.ground(item,hit.point);
    if(this.check(item).state!=='clear')continue;
    item.supportPoint.copy(hit.point);item.normal.copy(hit.normal);item.lastPosition.copy(hit.point);item.spotId=spot.id;this.p.measureSupport(item,hit);this.inspect();this.p.status('가까운 빈 지지면에서 이격 기준을 충족하는 위치를 찾았습니다.');return;
   }
-  item.object.position.copy(previous);this.inspect();this.p.status('추천 위치에서 기준을 충족하지 못했습니다. 이동 기즈모로 위치를 조정하거나 검토 기준을 변경하세요.');
+  item.object.position.copy(previous);item.supportPoint.copy(previousSupport);item.supportTarget=previousTarget;this.inspect();this.p.status('추천 위치에서 기준을 충족하지 못했습니다. 이동 기즈모로 위치를 조정하거나 검토 기준을 변경하세요.');
  }
  confirm(){
   if(!this.draft)return false;this.inspect();if(this.result.state!=='clear')return false;

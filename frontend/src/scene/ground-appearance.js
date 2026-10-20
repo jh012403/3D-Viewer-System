@@ -59,7 +59,9 @@ export function matchCarton(p,item){
     const colors=new Float32Array(pos.count*3);for(let i=0;i<pos.count;i++){const t=(pos.getY(i)-min)/Math.max(.0001,max-min),shade=.86+.14*THREE.MathUtils.smoothstep(t,0,.55);colors.set([shade,shade,shade],i*3);}
     mesh.geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));m.vertexColors=true;
    }
-   m.needsUpdate=true;records.push({source_mean_rgb:source,target_mean_rgb:target,exposure_gain:gain,temperature_rgb:temperature,saturation,texture_size:[canvas.width,canvas.height],blur_pixels:.45});
+   // The scene's 2+2 fill/key rig otherwise doubles the photographic albedo.
+   m.color.multiplyScalar(.52);m.roughness=1;m.metalness=0;
+   m.needsUpdate=true;records.push({source_mean_rgb:source,target_mean_rgb:target,exposure_gain:gain,lighting_compensation:.52,temperature_rgb:temperature,saturation,texture_size:[canvas.width,canvas.height],blur_pixels:.45});
   }
  });
  item.toneAudit={reference:'scene cardboard asset bbox; bounded RGB mean matching',materials:records};

@@ -74,6 +74,10 @@ def generated_asset(job_id):
     if not directory.is_relative_to((ROOT/'storage/outputs').resolve()):raise HTTPException(400,'Invalid output path')
     path=directory/'object_mesh.glb'
     if not path.is_file():raise HTTPException(404,'Generated GLB is not ready')
+    # Optional, explicit box-bottom postprocess. Keep the original standalone
+    # generation artifact intact; only scene import prefers the reviewed copy.
+    grounded=directory/'object_mesh_grounded.glb'
+    if grounded.is_file():path=grounded
     with path.open('rb') as stream:header=stream.read(12)
     if len(header)!=12 or header[:4]!=b'glTF' or struct.unpack('<I',header[8:12])[0]!=path.stat().st_size:
         raise HTTPException(409,'GLB is still being written')
@@ -83,7 +87,7 @@ def generated_asset(job_id):
     try:semantic=json.loads((directory/'asset_metadata.json').read_text(encoding='utf-8'));meta={**meta,**semantic}
     except (OSError,ValueError):
         if isinstance(meta.get('asset_metadata'),dict):meta={**meta,**meta['asset_metadata']}
-    return path,{'job_id':job_id,'name':meta.get('asset_name') or meta.get('specific_type') or '생성 물체 '+job_id[:8],
+    return path,{'job_id':job_id,'placement_mesh':path.name,'name':meta.get('asset_name') or meta.get('specific_type') or '생성 물체 '+job_id[:8],
         'category':meta.get('normalized_category_id') or meta.get('object_category') or 'unknown',
         'specification':{'kind':meta.get('specific_type') or meta.get('object_category') or 'unknown',
           'materials':meta.get('material_hints') or [],'provider':meta.get('vlm_model') or meta.get('vlm_backend') or 'metadata',
@@ -106,7 +110,10 @@ async def import_generated_asset(job_id:str):
     material={}
     try:material=json.loads((path.parent/'material.json').read_text(encoding='utf-8'))
     except (OSError,ValueError):pass
-    return {**result,'source_job':job_id,'specification':meta['specification'],'material_settings':{k:material[k] for k in ('viewerBaseTint','viewerExposureEV') if k in material}}
+    profile={}
+    try:profile=json.loads((path.parent/'placement-profile.json').read_text(encoding='utf-8'))
+    except (OSError,ValueError):pass
+    return {**result,'source_job':job_id,'placement_mesh':meta['placement_mesh'],'placement_yaw_degrees':float(profile.get('yaw_degrees',0)),'specification':meta['specification'],'material_settings':{k:material[k] for k in ('viewerBaseTint','viewerExposureEV') if k in material}}
 
 @app.get("/scene-api/policies")
 def policies():

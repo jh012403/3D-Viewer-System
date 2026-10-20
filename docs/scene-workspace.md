@@ -27,3 +27,8 @@ Reflection, occlusion, contact geometry, glass and hidden surfaces remain monocu
 Use Python 3.12 at `.runtime/scene312-env`, with local SHARP, DAV2, SAM3 checkouts and weights. Large caches are git-ignored; [cache hashes](scene-cache-manifest.json) record integrity. Curation sources are `pipelines/scene/curate_demo.py` and `assets/scene-demo/*/graph.json`.
 
 The original 23-24 cases, rm06_U01 and original 15 backgrounds have no backup. TRELLIS.2 now runs in WSL and FastVLM/SAM3 run natively; a fresh generic photo-to-GLB job and standalone download passed. See [mesh recovery checkpoint](mesh-runtime-recovery.md) for actual-run evidence and remaining model limitations. The user controls reboot and GPU power settings; no reboot was performed for this presentation work.
+
+
+## Box placement correction (2026-10-20)
+
+See [before/after gallery](placement-correction/index.html) and [geometry/mesh notes](placement-correction/README.md). Floor-ROI fitting now supplies gravity where a floor asset is identified. Scene imports of job_000003 use the separate bottom-capped GLB and its placement yaw profile; standalone generation downloads retain their original artifact. The warehouse box is verified at original and plus/minus 5-degree camera views.

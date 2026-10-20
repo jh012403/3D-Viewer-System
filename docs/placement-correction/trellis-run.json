@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "input_image": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000003/sam2_candidates/candidates/sam3_text_0000/segmented.png",
+  "processed_input_image": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000003/reconstruction/trellis/trellis_processed_input.png",
+  "output_mesh": "/mnt/c/Users/user/Desktop/project/3D-Viewer-System/storage/temp/job_000003/reconstruction/trellis/trellis_raw.glb",
+  "model_path": "microsoft/TRELLIS.2-4B",
+  "device": "cuda",
+  "resolution": "1024",
+  "pipeline_type": "1024_cascade",
+  "runtime_lock_profile": "trellis2_official_lock_2026_04_22_v1",
+  "seed": 363987120,
+  "decimation_target": 500000,
+  "texture_size": 2048,
+  "official_app_parity": true,
+  "runtime_sec": 531.771,
+  "mesh_stats": {
+    "vertex_count": 303854,
+    "face_count": 473368,
+    "bbox_valid": true,
+    "bbox_size": [
+      0.6366691589355469,
+      0.6490050554275513,
+      1.0016040802001953
+    ]
+  }
+}

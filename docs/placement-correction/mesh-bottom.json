@@ -1,0 +1,25 @@
+{
+  "source": "storage\\outputs\\job_000003\\object_mesh.glb",
+  "output": "storage\\outputs\\job_000003\\object_mesh_grounded.glb",
+  "meshes": [
+    {
+      "node": "geometry_0",
+      "watertight_after_seam_weld": false,
+      "boundary_edges": 172,
+      "bottom_boundary_edges": 63,
+      "vertices": 236130,
+      "faces": 473368,
+      "cap": {
+        "vertices": 204,
+        "faces": 404,
+        "thickness": 0.0045
+      }
+    }
+  ],
+  "cap_count": 1,
+  "source_sha256": "84fbc528ba23dd99e5804c2d2fe87df89a1753238477bb563b4aafb1e306acb5",
+  "output_sha256": "d187dd55366d245766efc533ed2c1fa6215eeb041467dddcab1e24f21e2624b4",
+  "placement_yaw_degrees": 90.0,
+  "original_preserved": true,
+  "note": "Closed cap is a separate bottom patch, not a claim of globally repaired topology."
+}
