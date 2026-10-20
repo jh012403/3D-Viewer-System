@@ -1,25 +1,12 @@
-# 최종 발표 결과 이미지
+# 최종 발표 자료
 
-물류 창고·입출고 구역(`twin-logistics`) 하나로 통일한 발표용 자료입니다. PNG 10장과 GIF 모두 1920×1080입니다. GIF는 12초 반복 재생입니다.
+[13개 자료 갤러리](index.html). PNG 12장 모두 1920×1080, GIF는 같은 해상도 12초입니다. 이전 발표 파일은 `_old/`에 보관했습니다. 누락 항목은 없습니다.
 
-[전체 이미지 미리보기](index.html)
+- 기준은 물류 창고·입출고 구역(`twin-logistics`)과 실제 생성 완료 작업 `job_000003`입니다. 밝은 윗면/어두운 옆면, 12mm 접촉 모서리 그림자, ±3° 회전 제한과 방향별 가장자리 페이드를 적용한 뷰어에서 캡처했습니다.
+- 디버그·기술 안내·개발용 버튼은 캡처 전용 CSS로 숨겼습니다. 구조물 ID는 기본 숨김을 유지하고, 나머지 ID는 18px로 확대했습니다. 기존 앱 기능은 제거하지 않았습니다. 10번과 GIF의 실제 간섭 경고는 의도적으로 표시했습니다.
+- 06번은 일반 물체인 닫힌 골판지 상자의 실제 원본 사진·SAM3 마스크·TRELLIS.2 메시입니다. [원본 사진](https://commons.wikimedia.org/wiki/File:Small_Cardboard_Moving_Box_Taped_Closed_(47303025881).jpg): HireAHelper, CC BY 2.0. 사양 카드의 종류·재질 한국어 명칭은 사진을 확인해 붙인 발표용 별칭이며, 정확한 자동 추론으로 주장하지 않습니다.
+- 08번의 보정 전은 이전에 보관한 원본 시점 캡처, 보정 후는 최신 메시·바닥 정렬·음영·그림자를 적용한 같은 원본 시점입니다. 마무리 음영만 비교한 세 장은 [배치 보정 갤러리](../placement-correction/index.html)에 있습니다.
+- 11번은 실제 동일 등록 상태의 KPI·대장·그래프 캡처를 재배치했습니다. 12번은 실제 내보내기 파일의 렌더와 JSON 첫 부분 발췌입니다. 원본 파일은 [exports/asset-register.json](exports/asset-register.json), [exports/asset-relations.json](exports/asset-relations.json), [exports/render.png](exports/render.png)에 있습니다.
+- GIF는 생성 완료 결과 비교 2초 → 실제 뷰어의 배치 → 간섭 → 안전 위치 이동 → 등록 → 대장·그래프 갱신 흐름입니다. 생성 추론을 다시 실행한 실시간 녹화가 아니며, 완료된 생성 결과를 재사용하고 대기 시간을 생략한 12초 편집본입니다.
 
-| 파일 | 내용 |
-|---|---|
-| 01_대표.png | 배치 자산·자산 대장·KPI를 함께 보여주는 관제 화면 |
-| 02_현장복원.png | 원본 사진과 살짝 회전한 3D 복원 비교 |
-| 03_자산인식.png | 자산 ID와 선택 자산 하이라이트 |
-| 04_관계그래프.png | 구역별 자산 연결도 |
-| 05_메시생성.png | 실제 입력 사진·SAM3 마스크·TRELLIS 생성 메시 |
-| 06_사양카드.png | 반입 자산 메시와 실제 사양 카드 |
-| 07_배치전후.png | 같은 카메라의 배치 전·후 |
-| 08_간섭경고.png | 기존 자산과 겹친 배치 및 간섭·이격 검사 결과 |
-| 09_대장갱신.png | 반입 확정 후 대장과 그래프 |
-| 10_리포트.png | 실제 배치 검토 리포트 첫 페이지 |
-| 11_시연.gif | 배치 → 간섭 → 해소 → 확정 → 대장·그래프 갱신 |
-
-캡처 세션에만 발표용 CSS와 한국어 표시명을 적용했습니다. 디버그·로컬 실행 표기·기술 안내를 숨겼고, 간섭 기능을 보여주는 08번과 GIF에는 실제 검사 경고를 유지했습니다. 그래프 캡처에서는 SVG 위치와 충돌하는 등장 애니메이션을 해제했습니다. 기존 앱 기능·시연 캐시·메시 원본은 변경하지 않았습니다.
-
-생성물은 기존 실제 작업 `job_000002`의 GLB이며 새로 생성하거나 다른 모델로 바꾸지 않았습니다. 사진·마스크·GLB의 출처는 [생성 기록](../twin-real-mesh-provenance.json), 현장 사진 출처는 [Pexels 다운로드 기록](../twin-photo-sources.json)에 있습니다. 사진 기반 치수와 생성 메시의 한계는 [실행 문서](../digital-twin.md)에 유지합니다.
-
-재현: 서비스 실행 후 `frontend`에서 `node scripts/capture-presentation.mjs`, 저장소 루트에서 `.runtime/scene312-env/Scripts/python.exe scripts/encode_presentation.py`. `manifest.json`에 크기·재생 시간·해시 검증 결과를 기록합니다.
+재현: 서비스 실행 상태에서 `frontend`에서 `node scripts/capture-presentation-final.mjs`, 저장소 루트에서 `.runtime/scene312-env/Scripts/python.exe scripts/encode_presentation_final.py`. `manifest.json`에 규격·재생 길이·SHA256을 기록합니다.

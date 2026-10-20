@@ -1,6 +1,8 @@
 # 반입 상자 접지 수정
 
-장면은 `twin-logistics`로 통일합니다. 기존 시연 캐시·메시·발표 이미지는 변경하지 않습니다.
+최종 발표 갱신: `comparison-original.png`, `comparison-minus3.png`, `comparison-plus3.png`는 최신 면별 음영·12mm 접촉 그림자·±3° 마무리 비교본입니다. [현재 갤러리](index.html)는 이 세 장을 표시합니다. 아래 1차 보정 기록과 과거 ±5° 파일은 이력으로 유지하며, 최종 발표 자료는 [presentation](../presentation/index.html)에 있습니다.
+
+장면은 `twin-logistics`로 통일합니다. 기존 시연 캐시와 원본 메시는 유지합니다. 이전 발표 이미지는 사용자 요청에 따라 `presentation/_old/`에 보관했습니다.
 
 ## 1차: 중력축과 카메라
 

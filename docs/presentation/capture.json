@@ -1,13 +1,10 @@
 {
   "scene": "twin-logistics",
-  "job": "job_000002",
-  "viewport": {
-    "width": 1920,
-    "height": 1080
-  },
-  "files": 10,
-  "gif_frames": 120,
-  "gif_fps": 10,
+  "job": "job_000003",
+  "files": 12,
+  "frames": 120,
+  "fps": 10,
   "errors": [],
-  "notes": "Presentation-only CSS and Korean alias; actual caches, segmentation mask and generated GLB. No changes to original assets or inference outputs."
+  "missing": [],
+  "notes": "Actual completed generation results; GIF opens with photo/mask/mesh comparison, then actual placement UI. Inference wait omitted. Photo-verified Korean kind/material aliases. Presentation-only CSS. Before correction uses historical original-camera capture."
 }

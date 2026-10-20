@@ -36,4 +36,6 @@ See [before/after gallery](placement-correction/index.html) and [geometry/mesh n
 
 ## AMR candidate overlay (2026-10-20)
 
+Final presentation: [12 PNG slides and 12-second GIF](presentation/index.html), refreshed using corrected job_000003, with actual export artifacts and archived previous materials. The GIF reuses completed generation results and omits inference wait.
+
 Use the AMR button in the scene toolbar to show observed-floor candidate cells and asset-clearance exclusions. The overlay defaults off, updates with draft/confirmed placements, and is unavailable without a fitted floor. It is a photo-based simulation, not robot navigation certification. See [screenshots and scope](amr-areas/README.md). The final carton-lighting and three-degree orbit comparison is in [placement-finish](placement-finish/index.html).

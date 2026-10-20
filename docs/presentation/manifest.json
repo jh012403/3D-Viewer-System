@@ -3,88 +3,104 @@
     "file": "01_대표.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 1403759,
+    "bytes": 1437953,
     "duration_ms": null,
-    "sha256": "7b176fc758939fc6160f962bab7e61561d5595a33a7eb62a12a469fc17547a7c"
+    "sha256": "0b5d19845ac1e76b408cce9150545351ff8c1449dc4f289bc8894ac9e3dfcbc8"
   },
   {
     "file": "02_현장복원.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 1456084,
+    "bytes": 1468187,
     "duration_ms": null,
-    "sha256": "e44a05a7a978756efcb957dc0d67bd937ae5b906db3f68e4cfd738a9338ffa0b"
+    "sha256": "b1722f8a55f52e5b0e31c7aeff6984f96ba7bf6aaf87883e75e7bbe81edaef8e"
   },
   {
     "file": "03_자산인식.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 899626,
+    "bytes": 960894,
     "duration_ms": null,
-    "sha256": "da42e2518c419cd99e4ca76960141b3669129596a709ace0ea1cf8bfbfac5ddc"
+    "sha256": "203bce7821a521e0ca33107c8b5b6f08864cff13fdb96a58d98320cbf087595d"
   },
   {
-    "file": "04_관계그래프.png",
+    "file": "04_자산대장.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 108395,
+    "bytes": 86302,
     "duration_ms": null,
-    "sha256": "5f4cca1510074d7d9d4af6b7baba7f677eb9cb0dd7cc3e33d12f37d623e38afc"
+    "sha256": "dfc7b8e6b002de1306c97ce960b1c2762d36fc49185de406efd095ddef443152"
   },
   {
-    "file": "05_메시생성.png",
+    "file": "05_관계그래프.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 528627,
+    "bytes": 107380,
     "duration_ms": null,
-    "sha256": "617e1967ad1559b6a9bb593d277390f2c032fd0562fcad53429507eaa6fcb7cf"
+    "sha256": "381c77d955bcbf72deb21b3e39d54adae3f0f250322d1fafd7a3a09b53eebc47"
   },
   {
-    "file": "06_사양카드.png",
+    "file": "06_메시생성.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 288362,
+    "bytes": 434910,
     "duration_ms": null,
-    "sha256": "aafd0043fe517c9ddf9dcc4636567fbe01c100b4d8bcd58852aa4536838ea6e4"
+    "sha256": "74481cacb0e265d304e0d3a2070f3f0d1ae0bce756c0a9de9baa89c8a5672446"
   },
   {
-    "file": "07_배치전후.png",
+    "file": "07_사양카드.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 765722,
+    "bytes": 317584,
     "duration_ms": null,
-    "sha256": "fb6203c9970200ec666bb5c0983945ab7a47a7fe3a6931cbe5a8a6ad70508685"
+    "sha256": "9f7b811a7ad3140d2af64225d7aa6c6a2e3190a54c8a793701c586c93edf1672"
   },
   {
-    "file": "08_간섭경고.png",
+    "file": "08_배치보정.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 1354274,
+    "bytes": 1434649,
     "duration_ms": null,
-    "sha256": "309d8e5e790bb2bde39c056df816f124aa8e3652fbd57dc64d6aa168fedc76cf"
+    "sha256": "814da0cf78bd7f83a30a6d82437daa90b0cbef1cffac0c72b88e44c84a7b694a"
   },
   {
-    "file": "09_대장갱신.png",
+    "file": "09_배치시뮬레이션.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 178784,
+    "bytes": 1408497,
     "duration_ms": null,
-    "sha256": "ed8314f221ec245ba5edf336ba882c05d16feedbba17211c206e9911094b79d1"
+    "sha256": "7d387ca6a7d0780c529f15366f779ad1b241894d16366ab4172cb9bec577caed"
   },
   {
-    "file": "10_리포트.png",
+    "file": "10_간섭경고.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 225332,
+    "bytes": 1395846,
     "duration_ms": null,
-    "sha256": "ff3543b54d08133cdbdeaf86a5d79596ba295a6c109b6b1d4b74162fd1949891"
+    "sha256": "94e725e0272af426907923b3e25603f79578c7ff88253b43d765f3000417eaa1"
   },
   {
-    "file": "11_시연.gif",
+    "file": "11_대장갱신.png",
     "width": 1920,
     "height": 1080,
-    "bytes": 2639983,
+    "bytes": 159138,
+    "duration_ms": null,
+    "sha256": "b2cc57b25c5315f782490b59cf92e849a9282cd667eb8b1c9e2e47caf31f4f6c"
+  },
+  {
+    "file": "12_출력물.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 496341,
+    "duration_ms": null,
+    "sha256": "811c7c1bb6852ed6c45740277a61378a1cf94fbf4935bd54649f6d6f6ccb3e11"
+  },
+  {
+    "file": "13_시연.gif",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 2959897,
     "duration_ms": 12000,
-    "sha256": "38704c262caabf769de8cd214870cab1f1ed4fc63df9937fef61aaecf0adfa7b"
+    "sha256": "6b9a0b98677e0cda8c950d5764dee3c753c8ecb6b0bf5be4dd74933c19dcd473"
   }
 ]
