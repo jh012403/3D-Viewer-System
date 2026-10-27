@@ -1,0 +1,119 @@
+{
+  "started_kst": "20261027-235632",
+  "speed": 1.0,
+  "mode": "record",
+  "steps": [
+    {
+      "name": "Step 1. PRISM SCENE",
+      "seconds": 0.0,
+      "timecode": "00:00"
+    },
+    {
+      "name": "Step 2. 배경 사진 업로드",
+      "seconds": 3.015,
+      "timecode": "00:03"
+    },
+    {
+      "name": "Step 3. 최초 관계 그래프 생성",
+      "seconds": 6.093,
+      "timecode": "00:06"
+    },
+    {
+      "name": "Step 4. 물체 선택과 분리 마스크",
+      "seconds": 28.109,
+      "timecode": "00:28"
+    },
+    {
+      "name": "Step 5. 3D 메시 생성",
+      "seconds": 41.265,
+      "timecode": "00:41"
+    },
+    {
+      "name": "Step 6. 씬 배치",
+      "seconds": 71.984,
+      "timecode": "01:11"
+    },
+    {
+      "name": "Step 7. 갱신된 관계 그래프",
+      "seconds": 100.375,
+      "timecode": "01:40"
+    },
+    {
+      "name": "Step 8. 자산 목록",
+      "seconds": 111.218,
+      "timecode": "01:51"
+    },
+    {
+      "name": "Step 9. PRISM SCENE · 시연 종료",
+      "seconds": 141.75,
+      "timecode": "02:21"
+    }
+  ],
+  "errors": [],
+  "obs_samples": [],
+  "status": "passed",
+  "recording_mode": "ffmpeg-h264_nvenc",
+  "obs_connect_error": "[WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다",
+  "mkv": "C:\\Users\\user\\Desktop\\project\\3D-Viewer-System\\storage\\obs-demo\\record-\\20261027-235632\\capture-h264_nvenc.mkv",
+  "stage_results": [
+    {
+      "stage": "Step 1. PRISM SCENE",
+      "status": "completed",
+      "elapsed_seconds": 3.015
+    },
+    {
+      "stage": "Step 2. 배경 사진 업로드",
+      "status": "completed",
+      "elapsed_seconds": 3.078
+    },
+    {
+      "stage": "Step 3. 최초 관계 그래프 생성",
+      "status": "completed",
+      "elapsed_seconds": 22.016
+    },
+    {
+      "stage": "Step 4. 물체 선택과 분리 마스크",
+      "status": "completed",
+      "elapsed_seconds": 13.156
+    },
+    {
+      "stage": "Step 5. 3D 메시 생성",
+      "status": "completed",
+      "elapsed_seconds": 30.719
+    },
+    {
+      "stage": "Step 6. 씬 배치",
+      "status": "completed",
+      "elapsed_seconds": 28.391
+    },
+    {
+      "stage": "Step 7. 갱신된 관계 그래프",
+      "status": "completed",
+      "elapsed_seconds": 10.843
+    },
+    {
+      "stage": "Step 8. 자산 목록",
+      "status": "completed",
+      "elapsed_seconds": 30.532
+    },
+    {
+      "stage": "Step 9. PRISM SCENE · 시연 종료",
+      "status": "completed",
+      "elapsed_seconds": 3.0
+    }
+  ],
+  "scene_job": "demo-scene-0c4d5e370f",
+  "graph_before": {
+    "nodes": 7,
+    "edges": 8
+  },
+  "mesh_job": "demo_b3d0237da3",
+  "graph_after": {
+    "nodes": 8,
+    "edges": 9
+  },
+  "new_asset_id": "EQ-0008",
+  "scenario_seconds": 144.75,
+  "mp4": "C:\\Users\\user\\Desktop\\project\\3D-Viewer-System\\storage\\obs-demo\\record-\\20261027-235632\\capture-h264_nvenc.mp4",
+  "video_duration": "00:02:27.90"
+}

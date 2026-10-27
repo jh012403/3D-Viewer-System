@@ -6,6 +6,7 @@ Does not inspect recording quality or change OBS settings.
 import argparse
 import asyncio
 import json
+import os
 import time
 from pathlib import Path
 
@@ -18,13 +19,14 @@ from warmup import fresh_background
 
 class FinishOnce(Demo):
     async def guarded(self, name, action):
+        started=time.monotonic()
         try:
             await asyncio.wait_for(self.stage(name), 10)
             await asyncio.wait_for(action(), 290)
-            self.report.setdefault('stage_results', []).append({'stage': name, 'status': 'completed'})
+            self.report.setdefault('stage_results', []).append({'stage': name, 'status': 'completed', 'elapsed_seconds':round(time.monotonic()-started,3)})
         except Exception as exc:
             reason = str(exc) or 'Stage exceeded the 5-minute limit'
-            self.report.setdefault('stage_results', []).append({'stage': name, 'status': 'skipped_or_failed', 'reason': reason})
+            self.report.setdefault('stage_results', []).append({'stage': name, 'status': 'skipped_or_failed', 'reason': reason, 'elapsed_seconds':round(time.monotonic()-started,3)})
             print('CONTINUING:', name, reason, flush=True)
         finally:
             save(self.out/'run.json', self.report)
@@ -67,6 +69,7 @@ class FinishOnce(Demo):
         if await self.p.evaluate('sceneWorkspace.manifest?.id') != scene_id:
             await self.click('[data-scene="'+scene_id+'"]')
         await self.wait_state('sceneWorkspace.placement?.graph?.nodes?.length>0 && !sceneWorkspace.loading', 60)
+        self.report['graph_before']=await self.p.evaluate('({nodes:sceneWorkspace.placement.graph.nodes.length,edges:sceneWorkspace.placement.graph.edges.length})')
         await self.click('#tabGraph'); await self.pause(5)
         for i in range(min(3, await self.p.locator('#graph svg g[role="button"]').count())):
             node = self.p.locator('#graph svg g[role="button"]').nth(i)
@@ -102,6 +105,10 @@ class FinishOnce(Demo):
             await self.move(x,y,.1); await self.p.mouse.down()
             try: await self.move(x-dx,y,2)
             finally: await self.p.mouse.up()
+        for sign in (-1,1):
+            for _ in range(12):
+                await self.p.mouse.wheel(0,sign*18); await self.pause(.07)
+            await self.pause(1)
 
     async def place(self):
         self.p = self.scene_page
@@ -112,6 +119,7 @@ class FinishOnce(Demo):
         await self.click('#tabEdit'); await self.click('#refreshGenerated')
         job = self.report.get('mesh_job')
         if not job:
+            if self.c.get('prepared_demo'):raise RuntimeError('Prepared mesh did not complete; fallback is disabled in demo-mode validation')
             # The live job continues on the server; show a previously generated
             # asset explicitly, rather than claiming the timed-out job completed.
             options = await self.p.locator('#generatedAsset option').evaluate_all('(es)=>es.map(e=>({value:e.value,label:e.textContent})).filter(e=>e.value)')
@@ -127,12 +135,26 @@ class FinishOnce(Demo):
         await self.p.locator('#assetHeight').dispatch_event('change')
         await self.click('#findSafe'); await self.pause(4)
         await self.click('#confirmAsset'); await self.pause(4)
+        await self.wait_state('sceneWorkspace.placement.items.length===1',20)
+        if self.c.get('prepared_demo'):
+            graph=await self.p.evaluate('sceneWorkspace.placement.graph')
+            save(ROOT/'demo_assets/graph-updated.json',graph)
+            save(ROOT/'demo_assets/asset-list-updated.json',graph['nodes'])
+            await self.p.locator('#viewport').screenshot(path=str(ROOT/'demo_assets/composite-result.png'))
 
     async def updated_graph(self):
         self.p = self.scene_page; await self.fullscreen()
         await self.click('#tabGraph'); await self.pause(5)
-        node = self.p.locator('#graph svg g[role="button"]').last
+        items=await self.p.evaluate('sceneWorkspace.placement.items.length')
+        if not items:raise RuntimeError('No new asset registered')
+        asset_id=await self.p.evaluate('(()=>{const p=sceneWorkspace.placement;return p.graph.nodes.find(n=>n.id===p.items[0].id).asset_id})()')
+        node = self.p.locator('#graph svg g[role="button"]').filter(has=self.p.locator('text',has_text=asset_id)).first
         await node.hover(); await node.click(); await self.pause(3)
+        self.report['graph_after']=await self.p.evaluate('({nodes:sceneWorkspace.placement.graph.nodes.length,edges:sceneWorkspace.placement.graph.edges.length})')
+        self.report['new_asset_id']=asset_id
+        if self.c.get('prepared_demo'):
+            assert self.report['graph_after']['nodes']==self.report['graph_before']['nodes']+1
+            assert self.report['graph_after']['edges']>self.report['graph_before']['edges']
 
     async def assets(self):
         self.p = self.scene_page; await self.fullscreen()
@@ -143,12 +165,16 @@ class FinishOnce(Demo):
             await self.scroll_to(row); await row.hover(); await row.click(); await self.pause(2)
 
     async def start_recorder(self):
+        if self.args.rehearsal:
+            self.report['recording_mode']='none'
+            return
         try:
             # Existing control only: no encoder/profile/source changes.
             await asyncio.wait_for(super().setup_obs(), 30)
             if self.owns_record: return
         except Exception as exc:
             self.report['obs_error'] = str(exc)
+        await self.p.evaluate('(t)=>window.__demoCaption?.(t)', 'PRISM SCENE · 준비된 결과 시연' if self.c.get('prepared_demo') else 'PRISM SCENE')
         ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
         self.capture = None
         for codec in (['-c:v','h264_nvenc','-cq','20'], ['-c:v','libx264','-preset','veryfast','-crf','20']):
@@ -168,6 +194,8 @@ class FinishOnce(Demo):
         self.report['recording_mode']='playwright'; self.video_page=self.p
 
     async def run(self):
+        if self.c.get('prepared_demo') and os.environ.get('DEMO_MODE')!='1':
+            raise RuntimeError('Prepared demo requires DEMO_MODE=1')
         metrics = monitor()
         self.capture = None
         async with async_playwright() as pw:
@@ -176,6 +204,8 @@ class FinishOnce(Demo):
             self.context.set_default_timeout(20000)
             await self.context.add_init_script(path=str(ROOT/'demo/overlay.js'))
             self.p=await self.context.new_page()
+            self.context.on('page',lambda p:p.on('pageerror',lambda e:self.report['errors'].append(str(e))))
+            self.p.on('pageerror',lambda e:self.report['errors'].append(str(e)))
             self.scene_page=self.p
             try:
                 await self.p.goto(self.c['base_url']+'/scene.html'); await self.fullscreen()
@@ -191,7 +221,8 @@ class FinishOnce(Demo):
                     ('Step 8. 자산 목록',self.assets),
                     ('Step 9. PRISM SCENE · 시연 종료',lambda:self.pause(3)),
                 ]: await self.guarded(name,action)
-                self.report['status']='finished'
+                failures=[s for s in self.report['stage_results'] if s['status']!='completed']
+                self.report['status']='finished' if failures or self.report['errors'] else 'passed'
             finally:
                 self.report['scenario_seconds']=time.monotonic()-self.t0 if self.t0 else None
                 try:
@@ -226,6 +257,10 @@ class FinishOnce(Demo):
 
 
 if __name__=='__main__':
-    config=json.loads((ROOT/'demo/config.json').read_text(encoding='utf-8'))
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--rehearsal',action='store_true')
+    parser.add_argument('--config',default=str(ROOT/'demo/config.json'))
+    args=parser.parse_args()
+    config=json.loads(Path(args.config).read_text(encoding='utf-8'))
     config['timeout_seconds']=290
-    asyncio.run(FinishOnce(config,argparse.Namespace(speed=1.,rehearsal=False)).run())
+    asyncio.run(FinishOnce(config,argparse.Namespace(speed=1.,rehearsal=args.rehearsal)).run())

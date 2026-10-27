@@ -1,0 +1,13 @@
+{
+  "base_url":"http://127.0.0.1:5174",
+  "background_image":"demo_assets/public/scene-cache/twin-logistics/source.jpg",
+  "object_image":"demo_assets/public/storage/uploads/job_000006/input_image.jpg",
+  "object_prompt":"cardboard box",
+  "speed":1.0,
+  "captions":true,
+  "timeout_seconds":290,
+  "placement_scene":"twin-logistics",
+  "placement_height_m":0.35,
+  "prepared_demo":true,
+  "obs":{"host":"127.0.0.1","port":4455,"password_env":"PRISM_OBS_PASSWORD"}
+}

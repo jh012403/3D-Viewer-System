@@ -1,0 +1,18 @@
+{
+  "mode": "prepared-results demonstration, not live inference",
+  "background": "storage/scene_cache/twin-logistics/source.jpg",
+  "background_models": [
+    "apple/ml-sharp",
+    "Depth Anything V2 metric"
+  ],
+  "graph": "Existing photo-guided curated graph copied without modifying original cache",
+  "object_source": "storage/uploads/job_000006/input_image.jpg",
+  "object_models": [
+    "SAM3 text mask",
+    "FastVLM metadata",
+    "TRELLIS.2 GLB"
+  ],
+  "source_job": "job_000006",
+  "fixed_inputs": "One warehouse scene; one fixed cardboard-box intake photo. Different demo clicks/prompts return the same prepared mask.",
+  "timing": "Scene replay 8 seconds, segmentation replay 4 seconds, mesh replay 8 seconds; these are presentation delays, not measured inference times."
+}

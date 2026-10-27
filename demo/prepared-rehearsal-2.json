@@ -1,0 +1,115 @@
+{
+  "started_kst": "20261027-235355",
+  "speed": 1.0,
+  "mode": "rehearsal",
+  "steps": [
+    {
+      "name": "Step 1. PRISM SCENE",
+      "seconds": 0.0,
+      "timecode": "00:00"
+    },
+    {
+      "name": "Step 2. 배경 사진 업로드",
+      "seconds": 3.0,
+      "timecode": "00:03"
+    },
+    {
+      "name": "Step 3. 최초 관계 그래프 생성",
+      "seconds": 6.093,
+      "timecode": "00:06"
+    },
+    {
+      "name": "Step 4. 물체 선택과 분리 마스크",
+      "seconds": 28.796,
+      "timecode": "00:28"
+    },
+    {
+      "name": "Step 5. 3D 메시 생성",
+      "seconds": 41.89,
+      "timecode": "00:41"
+    },
+    {
+      "name": "Step 6. 씬 배치",
+      "seconds": 73.14,
+      "timecode": "01:13"
+    },
+    {
+      "name": "Step 7. 갱신된 관계 그래프",
+      "seconds": 101.296,
+      "timecode": "01:41"
+    },
+    {
+      "name": "Step 8. 자산 목록",
+      "seconds": 112.0,
+      "timecode": "01:52"
+    },
+    {
+      "name": "Step 9. PRISM SCENE · 시연 종료",
+      "seconds": 141.953,
+      "timecode": "02:21"
+    }
+  ],
+  "errors": [],
+  "obs_samples": [],
+  "status": "passed",
+  "recording_mode": "none",
+  "stage_results": [
+    {
+      "stage": "Step 1. PRISM SCENE",
+      "status": "completed",
+      "elapsed_seconds": 3.0
+    },
+    {
+      "stage": "Step 2. 배경 사진 업로드",
+      "status": "completed",
+      "elapsed_seconds": 3.093
+    },
+    {
+      "stage": "Step 3. 최초 관계 그래프 생성",
+      "status": "completed",
+      "elapsed_seconds": 22.703
+    },
+    {
+      "stage": "Step 4. 물체 선택과 분리 마스크",
+      "status": "completed",
+      "elapsed_seconds": 13.094
+    },
+    {
+      "stage": "Step 5. 3D 메시 생성",
+      "status": "completed",
+      "elapsed_seconds": 31.25
+    },
+    {
+      "stage": "Step 6. 씬 배치",
+      "status": "completed",
+      "elapsed_seconds": 28.156
+    },
+    {
+      "stage": "Step 7. 갱신된 관계 그래프",
+      "status": "completed",
+      "elapsed_seconds": 10.704
+    },
+    {
+      "stage": "Step 8. 자산 목록",
+      "status": "completed",
+      "elapsed_seconds": 29.953
+    },
+    {
+      "stage": "Step 9. PRISM SCENE · 시연 종료",
+      "status": "completed",
+      "elapsed_seconds": 3.0
+    }
+  ],
+  "scene_job": "demo-scene-5dde37593e",
+  "graph_before": {
+    "nodes": 7,
+    "edges": 8
+  },
+  "mesh_job": "demo_cc8e880fff",
+  "graph_after": {
+    "nodes": 8,
+    "edges": 9
+  },
+  "new_asset_id": "EQ-0008",
+  "scenario_seconds": 144.96799999999348
+}

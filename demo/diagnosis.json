@@ -1,0 +1,110 @@
+{
+  "started_kst": "20261027-233946",
+  "speed": 1.0,
+  "mode": "rehearsal",
+  "steps": [
+    {
+      "name": "Step 1. PRISM SCENE",
+      "seconds": 0.0,
+      "timecode": "00:00"
+    },
+    {
+      "name": "Step 2. 배경 사진 업로드",
+      "seconds": 3.031,
+      "timecode": "00:03"
+    },
+    {
+      "name": "Step 3. 최초 관계 그래프 생성",
+      "seconds": 6.125,
+      "timecode": "00:06"
+    },
+    {
+      "name": "Step 4. 물체 선택과 분리 마스크",
+      "seconds": 87.641,
+      "timecode": "01:27"
+    },
+    {
+      "name": "Step 5. 3D 메시 생성",
+      "seconds": 146.094,
+      "timecode": "02:26"
+    },
+    {
+      "name": "Step 6. 씬 배치",
+      "seconds": 408.188,
+      "timecode": "06:48"
+    },
+    {
+      "name": "Step 7. 갱신된 관계 그래프",
+      "seconds": 435.641,
+      "timecode": "07:15"
+    },
+    {
+      "name": "Step 8. 자산 목록",
+      "seconds": 446.531,
+      "timecode": "07:26"
+    },
+    {
+      "name": "Step 9. PRISM SCENE · 시연 종료",
+      "seconds": 477.375,
+      "timecode": "07:57"
+    }
+  ],
+  "errors": [],
+  "obs_samples": [],
+  "status": "finished",
+  "recording_mode": "none",
+  "stage_results": [
+    {
+      "stage": "Step 1. PRISM SCENE",
+      "status": "completed",
+      "elapsed_seconds": 3.031
+    },
+    {
+      "stage": "Step 2. 배경 사진 업로드",
+      "status": "completed",
+      "elapsed_seconds": 3.094
+    },
+    {
+      "stage": "Step 3. 최초 관계 그래프 생성",
+      "status": "completed",
+      "elapsed_seconds": 81.516
+    },
+    {
+      "stage": "Step 4. 물체 선택과 분리 마스크",
+      "status": "completed",
+      "elapsed_seconds": 58.453
+    },
+    {
+      "stage": "Step 5. 3D 메시 생성",
+      "status": "skipped_or_failed",
+      "reason": "Page.wait_for_function: Timeout 260000ms exceeded.",
+      "elapsed_seconds": 262.094
+    },
+    {
+      "stage": "Step 6. 씬 배치",
+      "status": "completed",
+      "elapsed_seconds": 27.453
+    },
+    {
+      "stage": "Step 7. 갱신된 관계 그래프",
+      "status": "completed",
+      "elapsed_seconds": 10.89
+    },
+    {
+      "stage": "Step 8. 자산 목록",
+      "status": "completed",
+      "elapsed_seconds": 30.844
+    },
+    {
+      "stage": "Step 9. PRISM SCENE · 시연 종료",
+      "status": "completed",
+      "elapsed_seconds": 3.0
+    }
+  ],
+  "scene_job": "a8ca79391d41409c8f85d13919b2f45c",
+  "placement_fallback": {
+    "job": "job_000007",
+    "reason": "Live mesh step did not complete within its time limit"
+  },
+  "scenario_seconds": 480.375
+}

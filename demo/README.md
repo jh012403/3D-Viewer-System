@@ -4,6 +4,32 @@
 
 ## 현재 우선 실행: 한 번 끝까지 녹화
 
+### 준비 결과 데모 모드 (현재 시연 경로)
+
+**완료 영상:** [capture-h264_nvenc.mp4](../storage/obs-demo/record-/20261027-235632/capture-h264_nvenc.mp4), **2분 27.90초**, ffmpeg/NVENC. 두 번 연속 리허설과 본 녹화 모두 9단계 성공·브라우저 오류 0건, 자산 7→8개·관계 8→9개입니다. 신규 `EQ-0008` 등록까지 확인했습니다. 결과: [리허설 1](prepared-rehearsal-1.json), [리허설 2](prepared-rehearsal-2.json), [본 녹화](prepared-recording.json), [실제 경로 진단표](diagnosis.md). MKV도 보존했으며 화질·프레임 분석은 하지 않았습니다.
+
+기본 앱·추론 서버는 그대로 두고, 별도 API `8020`과 Vite `5174`에서만 준비 결과를 사용합니다. 원본 프론트 코드는 변경하지 않았으며, 별도 Vite 설정이 이미 있는 `window.__AI3D_API_BASE_URL` 설정 지점에 데모 API 주소를 전달합니다. 기본 주소 `http://127.0.0.1:5173/scene.html`은 계속 실제 경로입니다.
+
+```powershell
+$env:DEMO_MODE='1'
+$env:PYTHONUTF8='1'
+# 최초 준비 또는 준비 파일이 없을 때만 실행 (기본 서버 실행 필요)
+.runtime/scene312-env/Scripts/python.exe demo/prepare_assets.py
+powershell -ExecutionPolicy Bypass -File demo/start-demo.ps1
+# http://127.0.0.1:5174/scene.html
+.runtime/scene312-env/Scripts/python.exe demo/finish_once.py --rehearsal --config demo/config.prepared.json
+.runtime/scene312-env/Scripts/python.exe demo/finish_once.py --rehearsal --config demo/config.prepared.json
+.runtime/scene312-env/Scripts/python.exe demo/finish_once.py --config demo/config.prepared.json
+```
+
+끄기: 현재 PowerShell에서 `& ./demo/stop-demo.ps1`을 실행합니다. 기록된 전용 API·프론트 PID와 명령줄을 확인해 종료하고 현재 셸의 `DEMO_MODE`도 삭제합니다. 실행 중인 프로세스는 환경변수 삭제만으로 모드가 바뀌지 않으므로 반드시 전용 프로세스를 종료하세요. 그다음 원래 `5173` 주소와 `demo/config.json`을 사용합니다. `DEMO_MODE`가 없거나 `0`이면 전용 서버·설정·준비 결과 녹화 명령은 실행을 거부합니다. 기본 서버의 설정 변경이나 재시작은 필요 없습니다.
+
+물류 창고 배경 한 장과, 기존 독립 메시 업로드 화면에 사용하는 고정 상자 사진을 사용합니다. 상자 사진이 창고에서 잘라낸 사진인 것처럼 표시하지 않습니다. `demo_assets/`에 실제 SHARP·깊이 결과, 사진에 맞춘 7개 자산·8개 관계 그래프, 실제 SAM3 마스크, 실제 TRELLIS GLB와 사양을 복사합니다. 준비 결과는 선택 좌표·프롬프트가 달라도 동일합니다. 그래프 갱신·배치·자산 대장은 기존 브라우저 로직으로 실제 실행하며 결과 JSON과 합성 화면을 저장합니다.
+
+현장 8초·마스크 4초·메시 8초는 **사전 준비 결과 재생 시간**입니다. 실제 추론 성능이 아닙니다. 기존 진행 UI를 그대로 사용하며 준비 API 응답에는 `X-PRISM-Demo-Mode: prepared-results`를 붙입니다. 출처는 [demo_assets/README.md](../demo_assets/README.md) 및 `provenance.json`에 있습니다. 녹화는 OBS → ffmpeg → Playwright 순서이며, 단계 실패 시 계속 진행하고 `finally`에서 파일을 저장합니다. 프레임/화질 분석은 하지 않습니다.
+
+실제 경로 1회 진단 원본: [diagnosis.json](diagnosis.json). 준비 결과 모드에서는 대체 자산 fallback을 허용하지 않고 생성 완료, 새 자산 등록, 노드·관계 증가를 확인합니다. 두 번 연속 통과한 뒤 녹화합니다.
+
 완료 영상: `storage/obs-demo/record-/20261027-232637/capture-h264_nvenc.mp4` (**8분 13.70초**). OBS 연결 거부로 ffmpeg/NVENC 화면 녹화를 사용했고 원본 MKV도 보존했습니다. 메시 생성은 260초 완료 대기에서 시간 초과하여 회전을 건너뛰었습니다. 이전 생성 자산 `job_000006`임을 표시하고 배치·그래프·대장·종료 화면까지 계속했습니다. 단계 기록: [last-recording.json](last-recording.json). 프레임 분석·화질 조정·재녹화는 하지 않았습니다.
 
 ```powershell
