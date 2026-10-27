@@ -1,0 +1,97 @@
+{
+  "started_kst": "20261027-232637",
+  "recording_mode": "ffmpeg-h264_nvenc",
+  "status": "finished",
+  "video_duration": "00:08:13.70",
+  "mp4": "C:\\Users\\user\\Desktop\\project\\3D-Viewer-System\\storage\\obs-demo\\record-\\20261027-232637\\capture-h264_nvenc.mp4",
+  "stage_results": [
+    {
+      "stage": "Step 1. PRISM SCENE",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 2. 배경 사진 업로드",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 3. 최초 관계 그래프 생성",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 4. 물체 선택과 분리 마스크",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 5. 3D 메시 생성",
+      "status": "skipped_or_failed",
+      "reason": "Page.wait_for_function: Timeout 260000ms exceeded."
+    },
+    {
+      "stage": "Step 6. 씬 배치",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 7. 갱신된 관계 그래프",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 8. 자산 목록",
+      "status": "completed"
+    },
+    {
+      "stage": "Step 9. PRISM SCENE · 시연 종료",
+      "status": "completed"
+    }
+  ],
+  "placement_fallback": {
+    "job": "job_000006",
+    "reason": "Live mesh step did not complete within its time limit"
+  },
+  "steps": [
+    {
+      "name": "Step 1. PRISM SCENE",
+      "seconds": 0.0,
+      "timecode": "00:00"
+    },
+    {
+      "name": "Step 2. 배경 사진 업로드",
+      "seconds": 3.0,
+      "timecode": "00:03"
+    },
+    {
+      "name": "Step 3. 최초 관계 그래프 생성",
+      "seconds": 6.141,
+      "timecode": "00:06"
+    },
+    {
+      "name": "Step 4. 물체 선택과 분리 마스크",
+      "seconds": 95.422,
+      "timecode": "01:35"
+    },
+    {
+      "name": "Step 5. 3D 메시 생성",
+      "seconds": 156.016,
+      "timecode": "02:36"
+    },
+    {
+      "name": "Step 6. 씬 배치",
+      "seconds": 418.156,
+      "timecode": "06:58"
+    },
+    {
+      "name": "Step 7. 갱신된 관계 그래프",
+      "seconds": 446.031,
+      "timecode": "07:26"
+    },
+    {
+      "name": "Step 8. 자산 목록",
+      "seconds": 456.969,
+      "timecode": "07:36"
+    },
+    {
+      "name": "Step 9. PRISM SCENE · 시연 종료",
+      "seconds": 487.985,
+      "timecode": "08:07"
+    }
+  ]
+}
